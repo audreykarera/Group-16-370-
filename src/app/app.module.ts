@@ -51,7 +51,6 @@ import { ReadCollectionNoteComponent } from './systems/collection note/add-colle
 import { CreateScheduleComponent } from './systems/schedule/create-schedule/create-schedule/create-schedule.component';
 import { ReadScheduleComponent } from './systems/schedule/create-schedule/read-schedule/read-schedule/read-schedule.component';
 import { UpdateScheduleComponent } from './systems/schedule/create-schedule/update-schedule/update-schedule/update-schedule.component';
-import { DeleteScheduleComponent } from './systems/schedule/create-schedule/delete-schedule/delete-schedule/delete-schedule.component';
 import { CreateBookingComponent } from './systems/bookings/create-booking/create-booking/create-booking.component';
 import { ReadBookingComponent } from './systems/bookings/read-booking/read-booking/read-booking.component';
 import { UpdateBookingComponent } from './systems/bookings/update-booking/update-booking/update-booking.component';
@@ -137,7 +136,6 @@ const angularMaterials = [
     CreateScheduleComponent,
     ReadScheduleComponent,
     UpdateScheduleComponent,
-    DeleteScheduleComponent,
     CreateBookingComponent,
     ReadBookingComponent,
     UpdateBookingComponent,
