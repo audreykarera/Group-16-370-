@@ -33,9 +33,13 @@ const routes: Routes = [
   { path: 'invoices', component: ReadInvoiceComponent },
   { path: 'employee-settings', component: EmployeeSettingsComponent },
 
+
   { path: 'assets', component: ReadAssetComponent},
 
-  { path: 'requestedquotes', component: ReadRequestedquoteComponent }
+  { path: 'requestedquotes', component: ReadRequestedquoteComponent },
+=======
+  { path: 'requestedquotes', component: ReadRequestedquoteComponent },
+
  
 
 ];
