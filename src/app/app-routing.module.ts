@@ -31,7 +31,7 @@ const routes: Routes = [
   { path: 'servicetypes', component: ReadServicetypeComponent },
   { path: 'collectionnote', component: ReadCollectionNoteComponent },
   { path: 'invoices', component: ReadInvoiceComponent },
-  { path: 'employee-settings', component: EmployeeSettingsComponent }, //hi
+  { path: 'employee-settings', component: EmployeeSettingsComponent },
 ];
 
 @NgModule({
