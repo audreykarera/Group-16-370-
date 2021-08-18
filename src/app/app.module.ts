@@ -68,6 +68,11 @@ import { CreateRequestedquoteComponent } from './systems/requested quote/create-
 import { ReadAssetComponent } from './systems/assets/read-asset/read-asset/read-asset.component';
 
 import { ReadRequestedquoteComponent } from './systems/requested quote/read-requestedquote/read-requestedquote/read-requestedquote.component';
+import { CreateAssetComponent } from './systems/assets/read-asset/create-asset/create-asset/create-asset.component';
+import { UpdateAssetComponent } from './systems/assets/read-asset/update-asset/update-asset/update-asset.component';
+import { DeleteAssetComponent } from './systems/assets/delete-asset/delete-asset/delete-asset.component';
+import { ReadComplaintsComponent } from './systems/complaints/read-complaints/read-complaints/read-complaints.component';
+import { ViewComplaintsComponent } from './systems/complaints/view-complaints/view-complaints/view-complaints.component';
 
 
 
@@ -141,6 +146,16 @@ const angularMaterials = [
     ReadAssetComponent,
 
     ReadRequestedquoteComponent,
+
+    CreateAssetComponent,
+
+    UpdateAssetComponent,
+
+    DeleteAssetComponent,
+
+    ReadComplaintsComponent,
+
+    ViewComplaintsComponent,
 
   ],
   imports: [

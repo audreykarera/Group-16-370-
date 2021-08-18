@@ -46,7 +46,7 @@
   </a>
   <mat-menu #documents="matMenu" xPosition="before">
     <button mat-menu-item routerLinkActive="list-item-active" routerLink="/invoices">Invoices</button>
-    <button mat-menu-item>Quotes</button>
+    <button mat-menu-item routerLinkActive="list-item-active" routerLink="/read-quote">Quotes</button>
     <button mat-menu-item routerLinkActive="list-item-active" routerLink="/requestedquotes">Requested Quotes</button>
     <button mat-menu-item routerLinkActive="list-item-active" routerLink="/collectionnote">Collection Notes</button>
   </mat-menu>
@@ -55,7 +55,7 @@
       <mat-icon> directions_car</mat-icon>
     </mat-icon> Assets
   </a>
-  <a mat-list-item>
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/read-complaints">
     <mat-icon>
       <mat-icon>error</mat-icon>
     </mat-icon> Complaints

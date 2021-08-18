@@ -1,3 +1,5 @@
+import { ReadQuoteComponent } from './systems/quotes/read-quote/read-quote/read-quote.component';
+import { ReadComplaintsComponent } from './systems/complaints/read-complaints/read-complaints/read-complaints.component';
 import { ReadScheduleComponent } from './systems/schedule/create-schedule/read-schedule/read-schedule/read-schedule.component';
 
 import { ReadAssetComponent } from './systems/assets/read-asset/read-asset/read-asset.component';
@@ -32,11 +34,12 @@ const routes: Routes = [
   { path: 'servicetypes', component: ReadServicetypeComponent },
   { path: 'collectionnote', component: ReadCollectionNoteComponent },
   { path: 'invoices', component: ReadInvoiceComponent },
-  { path: 'employee-settings', component: EmployeeSettingsComponent }, 
-  { path: 'schedule', component: ReadScheduleComponent }, 
-  { path: 'requestedquotes', component: ReadRequestedquoteComponent }, 
-  { path: 'assets', component: ReadAssetComponent }, 
-
+  { path: 'employee-settings', component: EmployeeSettingsComponent },
+  { path: 'schedule', component: ReadScheduleComponent },
+  { path: 'requestedquotes', component: ReadRequestedquoteComponent },
+  { path: 'assets', component: ReadAssetComponent },
+  { path: 'read-complaints', component: ReadComplaintsComponent},
+  { path: 'read-quote', component: ReadQuoteComponent},
 ];
 
 @NgModule({
