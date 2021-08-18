@@ -32,5 +32,10 @@ const routes: Routes = [
   { path: 'collectionnote', component: ReadCollectionNoteComponent },
   { path: 'invoices', component: ReadInvoiceComponent },
   { path: 'employee-settings', component: EmployeeSettingsComponent },
+];
 
-]
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
+})
+export class AppRoutingModule {}
