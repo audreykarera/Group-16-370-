@@ -35,7 +35,7 @@ const routes: Routes = [
 
   { path: 'assets', component: ReadAssetComponent},
 
-  { path: 'requestedquotes', component: ReadRequestedquoteComponent }
+  { path: 'requestedquotes', component: ReadRequestedquoteComponent },
 
 
 ];
