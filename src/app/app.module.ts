@@ -163,9 +163,12 @@ const angularMaterials = [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    NgxChartsModule
+    NgxChartsModule,
+    MatIconModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
+
