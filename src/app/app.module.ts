@@ -64,6 +64,7 @@ import { CreateExtracollectionComponent } from './systems/extra collection/creat
 import { ReadExtracollectionComponent } from './systems/extra collection/read-extracollection/read-extracollection/read-extracollection.component';
 import { EditExtracollectionComponent } from './systems/extra collection/edit-extracollection/edit-extracollection/edit-extracollection.component';
 import { EmployeeSettingsComponent } from './systems/employee-settings/employee-settings.component';
+import { ReadRequestedquoteComponent } from './systems/requested quote/read-requestedquote/read-requestedquote/read-requestedquote.component';
 
 
 
@@ -132,6 +133,7 @@ const angularMaterials = [
     ReadExtracollectionComponent,
     EditExtracollectionComponent,
     EmployeeSettingsComponent,
+    ReadRequestedquoteComponent,
   ],
   imports: [
     ...angularMaterials,
