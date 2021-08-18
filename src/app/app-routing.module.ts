@@ -1,4 +1,8 @@
+
+import { ReadAssetComponent } from './systems/assets/read-asset/read-asset/read-asset.component';
+
 import { ReadRequestedquoteComponent } from './systems/requested quote/read-requestedquote/read-requestedquote/read-requestedquote.component';
+
 import { EmployeeSettingsComponent } from './systems/employee-settings/employee-settings.component';
 import { ReadInvoiceComponent } from './systems/invoices/read-invoice/read-invoice/read-invoice.component';
 import { ReadCollectionNoteComponent } from './systems/collection note/add-collection-note/read-collection-note/read-collection-note/read-collection-note.component';
@@ -28,8 +32,12 @@ const routes: Routes = [
   { path: 'collectionnote', component: ReadCollectionNoteComponent },
   { path: 'invoices', component: ReadInvoiceComponent },
   { path: 'employee-settings', component: EmployeeSettingsComponent },
+
+  { path: 'assets', component: ReadAssetComponent}
+
   { path: 'requestedquotes', component: ReadRequestedquoteComponent }
  
+
 ];
 
 @NgModule({
