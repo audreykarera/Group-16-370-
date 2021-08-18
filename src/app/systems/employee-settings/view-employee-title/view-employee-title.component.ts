@@ -15,36 +15,29 @@ export class ViewEmployeeTitleComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  routerViewEmployeeTitles() {
+  routerEditEmployeeTitles() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false; 
     const dialogReference = this.dialog.open(
-      ViewEmployeeTitleComponent,
+      EditEmployeeTitleComponent,
       dialogConfig
     );
-}
-routerEditEmployeeTitles() {
-  const dialogConfig = new MatDialogConfig();
-  dialogConfig.disableClose = false; 
-  const dialogReference = this.dialog.open(
-    EditEmployeeTitleComponent,
-    dialogConfig
-  );
-}
-routerDeleteEmployeeTitles() {
-  const dialogConfig = new MatDialogConfig();
-  dialogConfig.disableClose = false; 
-  const dialogReference = this.dialog.open(
-    DeleteEmployeeTitleComponent,
-    dialogConfig
-  );
-}
-routerAddEmployeeTitles() {
-  const dialogConfig = new MatDialogConfig();
-  dialogConfig.disableClose = false; 
-  const dialogReference = this.dialog.open(
-    AddEmployeeTitleComponent,
-    dialogConfig
-  );
-}
+  }
+  routerDeleteEmployeeTitles() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false; 
+    const dialogReference = this.dialog.open(
+      DeleteEmployeeTitleComponent,
+      dialogConfig
+    );
+  }
+  routerAddEmployeeTitles() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false; 
+    const dialogReference = this.dialog.open(
+      AddEmployeeTitleComponent,
+      dialogConfig
+    );
+  }
+
 }

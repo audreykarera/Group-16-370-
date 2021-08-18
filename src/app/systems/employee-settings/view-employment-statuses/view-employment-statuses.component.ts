@@ -15,37 +15,28 @@ export class ViewEmploymentStatusesComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  routerViewEmploymentStatuses() {
+  routerEditEmploymentStatuses() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false; 
     const dialogReference = this.dialog.open(
-      ViewEmploymentStatusesComponent,
+      EditEmploymentStatusesComponent,
       dialogConfig
     );
-}
-routerEditEmploymentStatuses() {
-  const dialogConfig = new MatDialogConfig();
-  dialogConfig.disableClose = false; 
-  const dialogReference = this.dialog.open(
-    EditEmploymentStatusesComponent,
-    dialogConfig
-  );
-}
-routerDeleteEmploymentStatuses() {
-  const dialogConfig = new MatDialogConfig();
-  dialogConfig.disableClose = false; 
-  const dialogReference = this.dialog.open(
-    DeleteEmploymentStatusesComponent,
-    dialogConfig
-  );
   }
-  routerAddEmploymentStatuses() {
+  routerDeleteEmploymentStatuses() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false; 
     const dialogReference = this.dialog.open(
-      AddEmploymentStatusComponent,
+      DeleteEmploymentStatusesComponent,
       dialogConfig
     );
     }
-
+    routerAddEmploymentStatuses() {
+      const dialogConfig = new MatDialogConfig();
+      dialogConfig.disableClose = false; 
+      const dialogReference = this.dialog.open(
+        AddEmploymentStatusComponent,
+        dialogConfig
+      );
+      }
 }

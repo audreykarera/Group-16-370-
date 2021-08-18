@@ -73,6 +73,9 @@ import { UpdateAssetComponent } from './systems/assets/read-asset/update-asset/u
 import { DeleteAssetComponent } from './systems/assets/delete-asset/delete-asset/delete-asset.component';
 import { ReadComplaintsComponent } from './systems/complaints/read-complaints/read-complaints/read-complaints.component';
 import { ViewComplaintsComponent } from './systems/complaints/view-complaints/view-complaints/view-complaints.component';
+import { ViewEmployeeTitleComponent } from './systems/employee-settings/view-employee-title/view-employee-title.component';
+import { ViewEmployeeTypeComponent } from './systems/employee-settings/view-employee-type/view-employee-type.component';
+import { ViewEmploymentStatusesComponent } from './systems/employee-settings/view-employment-statuses/view-employment-statuses.component';
 
 
 
@@ -157,6 +160,12 @@ const angularMaterials = [
 
     ViewComplaintsComponent,
 
+    ViewEmployeeTitleComponent,
+
+    ViewEmployeeTypeComponent,
+
+    ViewEmploymentStatusesComponent,
+
   ],
   imports: [
     ...angularMaterials,
@@ -164,7 +173,7 @@ const angularMaterials = [
     AppRoutingModule,
     BrowserAnimationsModule,
     NgxChartsModule,
-    MatIconModule,
+    
     
   ],
   providers: [],

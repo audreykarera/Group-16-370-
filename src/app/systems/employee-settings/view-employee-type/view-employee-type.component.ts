@@ -15,14 +15,6 @@ export class ViewEmployeeTypeComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  routerViewEmployeeTypes() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = false; 
-    const dialogReference = this.dialog.open(
-      ViewEmployeeTypeComponent,
-      dialogConfig
-    );
-  }
   routerEditEmployeeTypes() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false; 
