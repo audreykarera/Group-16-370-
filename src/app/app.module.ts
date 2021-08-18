@@ -79,17 +79,17 @@ import { ViewComplaintsComponent } from './systems/complaints/view-complaints/vi
 
 const angularMaterials = [
   MatIconModule,
-  MatMenuModule, 
-  MatToolbarModule, 
-  MatSidenavModule, 
-  MatDividerModule, 
+  MatMenuModule,
+  MatToolbarModule,
+  MatSidenavModule,
+  MatDividerModule,
   MatListModule,
-  MatTableModule, 
+  MatTableModule,
   MatFormFieldModule,
-  MatDialogModule, 
-  MatDatepickerModule, 
+  MatDialogModule,
+  MatDatepickerModule,
   MatNativeDateModule,
-  MatInputModule, 
+  MatInputModule,
   MatSelectModule
 ]
 
