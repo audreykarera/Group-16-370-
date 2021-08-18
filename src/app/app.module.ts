@@ -69,6 +69,18 @@ import { CreateRequestedquoteComponent } from './systems/requested quote/create-
 import { ReadAssetComponent } from './systems/assets/read-asset/read-asset/read-asset.component';
 
 import { ReadRequestedquoteComponent } from './systems/requested quote/read-requestedquote/read-requestedquote/read-requestedquote.component';
+import { AddEmployeeTypeComponent } from './systems/employee-settings/add-employee-type/add-employee-type.component';
+import { AddEmployeeTitleComponent } from './systems/employee-settings/add-employee-title/add-employee-title.component';
+import { AddEmploymentStatusComponent } from './systems/employee-settings/add-employment-status/add-employment-status.component';
+import { DeleteEmployeeTypeComponent } from './systems/employee-settings/delete-employee-type/delete-employee-type.component';
+import { DeleteEmployeeTitleComponent } from './systems/employee-settings/delete-employee-title/delete-employee-title.component';
+import { DeleteEmploymentStatusesComponent } from './systems/employee-settings/delete-employment-statuses/delete-employment-statuses.component';
+import { EditEmployeeTypeComponent } from './systems/employee-settings/edit-employee-type/edit-employee-type.component';
+import { EditEmployeeTitleComponent } from './systems/employee-settings/edit-employee-title/edit-employee-title.component';
+import { EditEmploymentStatusesComponent } from './systems/employee-settings/edit-employment-statuses/edit-employment-statuses.component';
+import { ViewEmployeeTypeComponent } from './systems/employee-settings/view-employee-type/view-employee-type.component';
+import { ViewEmployeeTitleComponent } from './systems/employee-settings/view-employee-title/view-employee-title.component';
+import { ViewEmploymentStatusesComponent } from './systems/employee-settings/view-employment-statuses/view-employment-statuses.component';
 
 
 
@@ -143,6 +155,30 @@ const angularMaterials = [
     ReadAssetComponent,
 
     ReadRequestedquoteComponent,
+
+    AddEmployeeTypeComponent,
+
+    AddEmployeeTitleComponent,
+
+    AddEmploymentStatusComponent,
+
+    DeleteEmployeeTypeComponent,
+
+    DeleteEmployeeTitleComponent,
+
+    DeleteEmploymentStatusesComponent,
+
+    EditEmployeeTypeComponent,
+
+    EditEmployeeTitleComponent,
+
+    EditEmploymentStatusesComponent,
+
+    ViewEmployeeTypeComponent,
+
+    ViewEmployeeTitleComponent,
+
+    ViewEmploymentStatusesComponent,
 
   ],
   imports: [

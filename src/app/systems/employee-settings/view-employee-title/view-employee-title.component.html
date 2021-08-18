@@ -1,0 +1,40 @@
+<div class="modal-content" >
+      <div class="modal-header">
+      <h4 class="modal-title">Employee Titles</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="table-responsive">
+        <table class="table table-hover align-middle">
+          <tbody>
+            <tr>
+            <td class="col-5">Mr</td>
+                <td class="icon-hover">
+                <mat-icon (click) ="routerEditEmployeeTitles()" >edit</mat-icon>
+                </td>
+                <td class="icon-hover">
+                <mat-icon (click) ="routerDeleteEmployeeTitles()">delete</mat-icon>
+                </td>
+            </tr>
+            <tr>
+           <td class="col-5">Mrs</td>
+                <td class="icon-hover">
+                <mat-icon (click) ="routerEditEmployeeTitles()" >edit</mat-icon>
+                </td>
+                <td class="icon-hover">
+                <mat-icon (click) ="routerDeleteEmployeeTitles()">delete</mat-icon>
+                </td>
+            </tr>
+            
+            <tr>
+            <td class="col-5">Miss</td>
+                <td class="icon-hover">
+                <mat-icon (click) ="routerEditEmployeeTitles()" >edit</mat-icon>
+                </td>
+                <td class="icon-hover">
+                <mat-icon (click) ="routerDeleteEmployeeTitles()">delete</mat-icon>
+                </td>
+                </tr>
+        <button type="button" class="btn btn-primary"(click) ="routerAddEmployeeTitles()">Add </button>
+
+
