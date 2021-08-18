@@ -1,3 +1,4 @@
+import { EmployeeSettingsComponent } from './systems/employee-settings/employee-settings.component';
 import { ReadInvoiceComponent } from './systems/invoices/read-invoice/read-invoice/read-invoice.component';
 import { ReadCollectionNoteComponent } from './systems/collection note/add-collection-note/read-collection-note/read-collection-note/read-collection-note.component';
 import { ReadServicetypeComponent } from './systems/service types/read-servicetype/read-servicetype/read-servicetype.component';
@@ -25,7 +26,7 @@ const routes: Routes = [
   { path: 'servicetypes', component: ReadServicetypeComponent },
   { path: 'collectionnote', component: ReadCollectionNoteComponent },
   { path: 'invoices', component: ReadInvoiceComponent },
-  
+  { path: 'employee-settings', component: EmployeeSettingsComponent }
 ];
 
 @NgModule({
