@@ -1,0 +1,11 @@
+@import "src/styles.scss";
+
+::ng-deep .mat-form-field {
+    width: 250px !important;
+    font-size: small;
+}
+
+.col-centered {
+    margin: 0 auto;
+    float: none;
+}

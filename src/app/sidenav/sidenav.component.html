@@ -1,0 +1,75 @@
+<mat-nav-list>
+  <div class="logo py-4">
+    <img src="/src/assets/Logo.jpeg" alt="Company Logo">
+  </div>
+  <mat-divider></mat-divider>
+  <br>
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/employees">
+    <mat-icon>
+      <mat-icon>people</mat-icon>
+    </mat-icon> Employees
+  </a>
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/clients">
+    <mat-icon>
+      <mat-icon>people_outline</mat-icon>
+    </mat-icon> Clients
+  </a>
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/suppliers">
+    <mat-icon>
+      <mat-icon>shopping_cart</mat-icon>
+    </mat-icon> Suppliers
+  </a>
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/users">
+    <mat-icon>
+      <mat-icon>supervised_user_circle</mat-icon>
+    </mat-icon> Users
+  </a>
+  <a mat-list-item>
+    <mat-icon>
+      <mat-icon>calendar_today</mat-icon>
+    </mat-icon> Bookings
+  </a>
+  <a mat-list-item>
+    <mat-icon>
+      <mat-icon>schedule</mat-icon>
+    </mat-icon> Schedule
+  </a>
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/reports">
+    <mat-icon>
+      <mat-icon>poll</mat-icon>
+    </mat-icon> Reports
+  </a>
+  <a mat-list-item [matMenuTriggerFor]="documents">
+    <mat-icon>
+      <mat-icon> insert_drive_file</mat-icon>
+    </mat-icon> Documents <mat-icon>keyboard_arrow_down</mat-icon>
+  </a>
+  <mat-menu #documents="matMenu" xPosition="before">
+    <button mat-menu-item routerLinkActive="list-item-active" routerLink="/invoices">Invoices</button>
+    <button mat-menu-item>Quotes</button>
+    <button mat-menu-item routerLinkActive="list-item-active" routerLink="/collectionnote">Collection Notes</button>
+  </mat-menu>
+  <a mat-list-item>
+    <mat-icon>
+      <mat-icon> directions_car</mat-icon>
+    </mat-icon> Assets
+  </a>
+  <a mat-list-item>
+    <mat-icon>
+      <mat-icon>error</mat-icon>
+    </mat-icon> Complaints
+  </a>
+  <a mat-list-item [matMenuTriggerFor]="settings">
+    <mat-icon>
+      <mat-icon>settings</mat-icon>
+    </mat-icon> System Management <mat-icon>keyboard_arrow_down</mat-icon>
+  </a>
+  <mat-menu #settings="matMenu" xPosition="before">
+    <button mat-menu-item routerLinkActive="list-item-active" routerLink="/services">Services</button>
+    <button mat-menu-item routerLinkActive="list-item-active" routerLink="/servicetypes">Service Type</button>
+    <button mat-menu-item routerLinkActive="list-item-active" routerLink="/packages">Packages</button>
+    <button mat-menu-item routerLinkActive="list-item-active" routerLink="/extracollection">Extra collection</button>
+    <button mat-menu-item>User Settings</button>
+    <button mat-menu-item>Employee Settings</button>
+  </mat-menu>
+</mat-nav-list>

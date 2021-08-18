@@ -1,0 +1,54 @@
+<div class="container-fluid page">
+    <div class="d-flex page__box p-3 mt-2">Skip Packages</div>
+    <div class="page__content shadow p-3">
+      <div class="page__content-data">
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </div>
+        <br>
+        <div class="position-relative">
+          <div class="position-absolute top-0 end-0 icon-hover">
+            <mat-icon style="font-size: xx-large" (click)="routerAddPackage()">add</mat-icon>
+          </div>
+        </div>
+        <br>
+        <div class="table-responsive">
+          <table class="table table-hover align-middle">
+            <thead>
+              <tr>
+                <th class="col">Package Name</th>
+                <th class="col">Package Price Rate</th>
+                <th class="col">Package Details</th>
+                <th class="col-1">Edit</th>
+                <th class="col-1">Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Weekend Package</td>
+                <td>R700</td>
+                <td>The skip is on your property for the weekend
+                <br> Drop off Friday <br> Collect Monday <br> No collections on Sundays</td>
+                <td class="icon-hover">
+                  <mat-icon (click)="routerEditPackage()">edit</mat-icon>
+                </td>
+                <td class="icon-hover">
+                  <mat-icon>delete</mat-icon>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <nav aria-label="Page navigation example">
+          <ul class="pagination justify-content-end">
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">4</a></li>
+            <li class="page-item"><a class="page-link" href="#">5</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>

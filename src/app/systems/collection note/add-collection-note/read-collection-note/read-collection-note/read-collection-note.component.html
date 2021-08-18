@@ -1,0 +1,52 @@
+<div class="container-fluid page">
+  <div class="d-flex page__box p-3 mt-2">Collection Notes</div>
+  <div class="page__content shadow p-3">
+    <div class="page__content-data">
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </div>
+      <br>
+      <div class="position-relative">
+        <div class="position-absolute top-0 end-0 icon-hover">
+          <mat-icon style="font-size: xx-large" (click)="routerAddCollectionNote()">add</mat-icon>
+        </div>
+      </div>
+      <br>
+      <div class="table-responsive">
+        <table class="table table-hover align-middle">
+          <thead>
+            <tr>
+              <th class="col-3">Collection Number</th>
+              <th class="col-3">Date Collected</th>
+              <th class="col-3">Time</th>
+              <th class="col-1">View</th>
+              
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>317002</td>
+              <td>24/03/2021</td>
+              <td>11:33 AM</td>
+              <td class="icon-hover">
+                <mat-icon (click)="routerViewCollectionNote()">remove_red_eye</mat-icon>
+              </td>
+             
+            </tr>
+            
+          </tbody>
+        </table>
+      </div>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-end">
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">4</a></li>
+          <li class="page-item"><a class="page-link" href="#">5</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
