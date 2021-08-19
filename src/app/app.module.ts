@@ -76,6 +76,8 @@ import { ViewComplaintsComponent } from './systems/complaints/view-complaints/vi
 import { ViewEmployeeTitleComponent } from './systems/employee-settings/view-employee-title/view-employee-title.component';
 import { ViewEmployeeTypeComponent } from './systems/employee-settings/view-employee-type/view-employee-type.component';
 import { ViewEmploymentStatusesComponent } from './systems/employee-settings/view-employment-statuses/view-employment-statuses.component';
+import { ScheduleEmployeeComponent } from './employee-side/schedule-employee/schedule-employee.component';
+import { NavbarComponent } from './client-side/client-homepage/navbar/navbar.component';
 
 
 
@@ -165,6 +167,10 @@ const angularMaterials = [
     ViewEmployeeTypeComponent,
 
     ViewEmploymentStatusesComponent,
+
+    ScheduleEmployeeComponent,
+
+    NavbarComponent,
 
   ],
   imports: [

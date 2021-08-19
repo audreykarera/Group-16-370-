@@ -1,3 +1,5 @@
+import { NavbarComponent } from './client-side/client-homepage/navbar/navbar.component';
+import { ScheduleEmployeeComponent } from './employee-side/schedule-employee/schedule-employee.component';
 import { ReadQuoteComponent } from './systems/quotes/read-quote/read-quote/read-quote.component';
 import { ReadComplaintsComponent } from './systems/complaints/read-complaints/read-complaints/read-complaints.component';
 import { ReadScheduleComponent } from './systems/schedule/create-schedule/read-schedule/read-schedule/read-schedule.component';
@@ -40,6 +42,8 @@ const routes: Routes = [
   { path: 'assets', component: ReadAssetComponent },
   { path: 'read-complaints', component: ReadComplaintsComponent},
   { path: 'read-quote', component: ReadQuoteComponent},
+  { path: 'tempemployeeside', component: ScheduleEmployeeComponent},
+  { path: 'tempclientside', component: NavbarComponent},
 ];
 
 @NgModule({
