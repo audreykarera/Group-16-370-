@@ -1,3 +1,5 @@
+import { UserLoginComponent } from './employee-side/user-login/user-login/user-login.component';
+import { EditEmployeeComponent } from './employee-side/edit-employee/edit-employee.component';
 import { NavbarComponent } from './client-side/client-homepage/navbar/navbar.component';
 import { ScheduleEmployeeComponent } from './employee-side/schedule-employee/schedule-employee.component';
 import { ReadQuoteComponent } from './systems/quotes/read-quote/read-quote/read-quote.component';
@@ -44,6 +46,9 @@ const routes: Routes = [
   { path: 'read-quote', component: ReadQuoteComponent},
   { path: 'tempemployeeside', component: ScheduleEmployeeComponent},
   { path: 'tempclientside', component: NavbarComponent},
+  { path: 'tempeditemployee', component: EditEmployeeComponent},
+  { path: 'login', component: UserLoginComponent},
+  
 ];
 
 @NgModule({
