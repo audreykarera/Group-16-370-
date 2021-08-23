@@ -1,3 +1,4 @@
+import { EmployeeSideBookingsComponent } from './systems/bookings/employee-side-bookings/employee-side-bookings.component';
 import { LoginComponent } from './employee-side/user-login/login/login.component';
 import { LodgeComplaintComponent } from './systems/complaints/lodge-complaint/lodge-complaint/lodge-complaint.component';
 import { RegisterClientsComponent } from './systems/clients/register-clients/register-clients/register-clients.component';
@@ -54,6 +55,7 @@ const routes: Routes = [
   { path: 'register-client', component: RegisterClientsComponent},
   { path: 'lodge-complaint', component: LodgeComplaintComponent},
   { path: 'login', component: LoginComponent},
+  { path: 'employeesidebookings', component: EmployeeSideBookingsComponent}
 ];
 
 @NgModule({
