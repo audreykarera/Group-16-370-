@@ -1,3 +1,4 @@
+import { EmployeeSideCollectionNoteComponent } from './systems/collection note/employee-side-collection-note/employee-side-collection-note.component';
 import { EmployeeSideBookingsComponent } from './systems/bookings/employee-side-bookings/employee-side-bookings.component';
 import { LoginComponent } from './employee-side/user-login/login/login.component';
 import { LodgeComplaintComponent } from './systems/complaints/lodge-complaint/lodge-complaint/lodge-complaint.component';
@@ -55,7 +56,8 @@ const routes: Routes = [
   { path: 'register-client', component: RegisterClientsComponent},
   { path: 'lodge-complaint', component: LodgeComplaintComponent},
   { path: 'login', component: LoginComponent},
-  { path: 'employeesidebookings', component: EmployeeSideBookingsComponent}
+  { path: 'employeesidebookings', component: EmployeeSideBookingsComponent},
+  { path: 'employeesidecollectionnote', component: EmployeeSideCollectionNoteComponent }
 ];
 
 @NgModule({

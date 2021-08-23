@@ -84,7 +84,7 @@ import { TopNavComponent } from './topnav/top-nav/top-nav.component';
 import { RequestQuoteComponent } from './systems/quotes/request-quote/request-quote/request-quote.component';
 import { LodgeComplaintComponent } from './systems/complaints/lodge-complaint/lodge-complaint/lodge-complaint.component';
 import { LoginComponent } from './employee-side/user-login/login/login.component';
-
+import { EmployeeSideCollectionNoteComponent } from './systems/collection note/employee-side-collection-note/employee-side-collection-note.component';
 
 
 
@@ -189,6 +189,8 @@ const angularMaterials = [
     LodgeComplaintComponent,
 
     LoginComponent,
+
+    EmployeeSideCollectionNoteComponent,
 
   ],
   imports: [
