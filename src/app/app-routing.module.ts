@@ -1,3 +1,7 @@
+import { LodgeComplaintComponent } from './systems/complaints/lodge-complaint/lodge-complaint/lodge-complaint.component';
+import { RequestQuoteComponent } from './systems/quotes/request-quote/request-quote/request-quote.component';
+import { TopNavComponent } from './topnav/top-nav/top-nav.component';
+import { RegisterClientsComponent } from './systems/clients/register-clients/register-clients/register-clients.component';
 import { NavbarComponent } from './client-side/client-homepage/navbar/navbar.component';
 import { ScheduleEmployeeComponent } from './employee-side/schedule-employee/schedule-employee.component';
 import { ReadQuoteComponent } from './systems/quotes/read-quote/read-quote/read-quote.component';
@@ -44,6 +48,10 @@ const routes: Routes = [
   { path: 'read-quote', component: ReadQuoteComponent},
   { path: 'tempemployeeside', component: ScheduleEmployeeComponent},
   { path: 'tempclientside', component: NavbarComponent},
+  { path: 'register-client', component: RegisterClientsComponent},
+  { path: 'top-nav', component: TopNavComponent},
+  { path: 'request-quote', component: RequestQuoteComponent},
+  { path: 'lodge-complaint', component: LodgeComplaintComponent},
 ];
 
 @NgModule({

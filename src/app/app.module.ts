@@ -13,6 +13,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import {MatCardModule} from '@angular/material/card';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -78,6 +79,10 @@ import { ViewEmployeeTypeComponent } from './systems/employee-settings/view-empl
 import { ViewEmploymentStatusesComponent } from './systems/employee-settings/view-employment-statuses/view-employment-statuses.component';
 import { ScheduleEmployeeComponent } from './employee-side/schedule-employee/schedule-employee.component';
 import { NavbarComponent } from './client-side/client-homepage/navbar/navbar.component';
+import { RegisterClientsComponent } from './systems/clients/register-clients/register-clients/register-clients.component';
+import { TopNavComponent } from './topnav/top-nav/top-nav.component';
+import { RequestQuoteComponent } from './systems/quotes/request-quote/request-quote/request-quote.component';
+import { LodgeComplaintComponent } from './systems/complaints/lodge-complaint/lodge-complaint/lodge-complaint.component';
 
 
 
@@ -95,7 +100,9 @@ const angularMaterials = [
   MatDatepickerModule,
   MatNativeDateModule,
   MatInputModule,
-  MatSelectModule
+  MatSelectModule,
+  MatCardModule,
+
 ]
 
 @NgModule({
@@ -172,6 +179,14 @@ const angularMaterials = [
 
     NavbarComponent,
 
+    RegisterClientsComponent,
+
+    TopNavComponent,
+
+    RequestQuoteComponent,
+
+    LodgeComplaintComponent,
+
   ],
   imports: [
     ...angularMaterials,
@@ -179,8 +194,8 @@ const angularMaterials = [
     AppRoutingModule,
     BrowserAnimationsModule,
     NgxChartsModule,
-    
-    
+
+
   ],
   providers: [],
   bootstrap: [AppComponent],
