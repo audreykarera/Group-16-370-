@@ -1,0 +1,61 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>Edit Profile</mat-card-title>
+    <mat-card-subtitle>Please fill in the following input fields</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div>
+      <mat-form-field appearance="fill" class="m-2">
+        <mat-label >Company?</mat-label>
+        <mat-select>
+          <mat-option value="one">Yes</mat-option>
+          <mat-option value="two">No</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Company Name</mat-label>
+        <input matInput placeholder="">
+        <mat-icon matSuffix>business</mat-icon>
+        <mat-hint>Enter the name of your Company</mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Name</label>
+        <input class="form-control form-control-sm" type="text" placeholder="ex. 'Tristan'" aria-label=".form-control-sm example">
+        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Email Address</label>
+        <input class="form-control form-control-sm" type="text" placeholder="ex. 'tristanogle1@gmail.com'" aria-label=".form-control-sm example">
+        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Province</label>
+        <input class="form-control form-control-sm" type="text" placeholder="" aria-label=".form-control-sm example">
+        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Suburb</label>
+        <input class="form-control form-control-sm" type="text" placeholder="" aria-label=".form-control-sm example">
+        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Old Password</label>
+        <input class="form-control form-control-sm" type="text" placeholder="" aria-label=".form-control-sm example">
+      </div>
+      <div class="col">
+        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Surname</label>
+        <input class="form-control form-control-sm" type="text" placeholder="ex. 'Ogle'" aria-label=".form-control-sm example">
+        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Contact Number</label>
+        <input class="form-control form-control-sm" type="text" placeholder="ex. '0844081135'" aria-label=".form-control-sm example">
+        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">City</label>
+        <input class="form-control form-control-sm" type="text" placeholder="" aria-label=".form-control-sm example">
+        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Street</label>
+        <input class="form-control form-control-sm" type="text" placeholder="" aria-label=".form-control-sm example">
+        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">New Password</label>
+        <input class="form-control form-control-sm" type="text" placeholder="" aria-label=".form-control-sm example">
+      </div>
+    </div>
+
+
+  </mat-card-content>
+  <mat-card-actions>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+      <button class="btn btn-outline-success me-md-2" type="button">Edit</button>
+      <button class="btn btn-outline-danger" type="button">Cancel</button>
+  </div>
+  </mat-card-actions>
+</mat-card>
+

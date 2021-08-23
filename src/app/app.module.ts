@@ -85,6 +85,7 @@ import { RequestQuoteComponent } from './systems/quotes/request-quote/request-qu
 import { LodgeComplaintComponent } from './systems/complaints/lodge-complaint/lodge-complaint/lodge-complaint.component';
 import { LoginComponent } from './employee-side/user-login/login/login.component';
 import { EmployeeSideCollectionNoteComponent } from './systems/collection note/employee-side-collection-note/employee-side-collection-note.component';
+import { EditClientComponent } from './systems/clients/edit-client/edit-client/edit-client.component';
 
 
 
@@ -191,6 +192,8 @@ const angularMaterials = [
     LoginComponent,
 
     EmployeeSideCollectionNoteComponent,
+
+    EditClientComponent,
 
   ],
   imports: [

@@ -1,3 +1,4 @@
+import { EditClientComponent } from './systems/clients/edit-client/edit-client/edit-client.component';
 import { EmployeeSideCollectionNoteComponent } from './systems/collection note/employee-side-collection-note/employee-side-collection-note.component';
 import { EmployeeSideBookingsComponent } from './systems/bookings/employee-side-bookings/employee-side-bookings.component';
 import { LoginComponent } from './employee-side/user-login/login/login.component';
@@ -54,6 +55,7 @@ const routes: Routes = [
   { path: 'tempeditemployee', component: EditEmployeeComponent},
   { path: 'request-quote', component: RequestQuoteComponent},
   { path: 'register-client', component: RegisterClientsComponent},
+  { path: 'editclient', component: EditClientComponent},
   { path: 'lodge-complaint', component: LodgeComplaintComponent},
   { path: 'login', component: LoginComponent},
   { path: 'employeesidebookings', component: EmployeeSideBookingsComponent},
