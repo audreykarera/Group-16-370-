@@ -83,6 +83,7 @@ import { RegisterClientsComponent } from './systems/clients/register-clients/reg
 import { TopNavComponent } from './topnav/top-nav/top-nav.component';
 import { RequestQuoteComponent } from './systems/quotes/request-quote/request-quote/request-quote.component';
 import { LodgeComplaintComponent } from './systems/complaints/lodge-complaint/lodge-complaint/lodge-complaint.component';
+import { LoginComponent } from './employee-side/user-login/login/login.component';
 
 
 
@@ -186,6 +187,8 @@ const angularMaterials = [
     RequestQuoteComponent,
 
     LodgeComplaintComponent,
+
+    LoginComponent,
 
   ],
   imports: [

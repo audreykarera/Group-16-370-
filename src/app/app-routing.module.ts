@@ -1,3 +1,4 @@
+import { LoginComponent } from './employee-side/user-login/login/login.component';
 import { LodgeComplaintComponent } from './systems/complaints/lodge-complaint/lodge-complaint/lodge-complaint.component';
 import { RegisterClientsComponent } from './systems/clients/register-clients/register-clients/register-clients.component';
 import { RequestQuoteComponent } from './systems/quotes/request-quote/request-quote/request-quote.component';
@@ -52,6 +53,7 @@ const routes: Routes = [
   { path: 'request-quote', component: RequestQuoteComponent},
   { path: 'register-client', component: RegisterClientsComponent},
   { path: 'lodge-complaint', component: LodgeComplaintComponent},
+  { path: 'login', component: LoginComponent},
 ];
 
 @NgModule({
