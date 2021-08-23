@@ -78,6 +78,8 @@ import { ViewEmployeeTypeComponent } from './systems/employee-settings/view-empl
 import { ViewEmploymentStatusesComponent } from './systems/employee-settings/view-employment-statuses/view-employment-statuses.component';
 import { ScheduleEmployeeComponent } from './employee-side/schedule-employee/schedule-employee.component';
 import { NavbarComponent } from './client-side/client-homepage/navbar/navbar.component';
+import { EmployeeSideCollectionNoteComponent } from './systems/collection note/employee-side-collection-note/employee-side-collection-note.component';
+import { EmployeeSideBookingsComponent } from './systems/bookings/employee-side-bookings/employee-side-bookings.component';
 
 
 
@@ -171,6 +173,10 @@ const angularMaterials = [
     ScheduleEmployeeComponent,
 
     NavbarComponent,
+
+    EmployeeSideCollectionNoteComponent,
+
+    EmployeeSideBookingsComponent,
 
   ],
   imports: [
