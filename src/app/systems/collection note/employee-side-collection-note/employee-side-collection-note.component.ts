@@ -4,14 +4,14 @@ import { SharedComponent } from 'src/app/component/shared components/shared/shar
 import { DialogInterface } from 'src/app/interfaces/dialog.interface';
 
 @Component({
-  selector: 'app-create-servicetype',
-  templateUrl: './create-servicetype.component.html',
-  styleUrls: ['./create-servicetype.component.scss']
+  selector: 'app-employee-side-collection-note',
+  templateUrl: './employee-side-collection-note.component.html',
+  styleUrls: ['./employee-side-collection-note.component.scss']
 })
-export class CreateServicetypeComponent implements OnInit {
+export class EmployeeSideCollectionNoteComponent implements OnInit {
 
   constructor(public dialog: MatDialog) { }
-  
+
   ngOnInit(): void {
   }
   openConfirmDialog() {
@@ -29,14 +29,11 @@ export class CreateServicetypeComponent implements OnInit {
       data: dialogInterface,
     });
   }
-  
-  /**
-     * This method invokes the Cancel Dialog
-     */
+
   openCancelDialog() {
     const dialogInterface: DialogInterface = {
       dialogHeader: 'Confirmation Message',
-      dialogContent: 'Are you sure you want cancel this ?',
+      dialogContent: 'Are you sure you want cancel?',
       cancelButtonLabel: 'No',
       confirmButtonLabel: 'Yes',
       callbackMethod: () => {
@@ -47,6 +44,6 @@ export class CreateServicetypeComponent implements OnInit {
       width: '300px',
       data: dialogInterface,
     });
+  }
 
-}
 }
