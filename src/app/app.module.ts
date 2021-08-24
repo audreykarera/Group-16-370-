@@ -17,6 +17,8 @@ import {MatCardModule} from '@angular/material/card';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FullCalendarModule } from '@fullcalendar/angular';;
+import dayGridPlugin from '@fullcalendar/daygrid';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -49,9 +51,6 @@ import { SharedComponent } from './component/shared components/shared/shared.com
 import { AddCollectionNoteComponent } from './systems/collection note/add-collection-note/add-collection-note/add-collection-note.component';
 import { ViewCollectionNoteComponent } from './systems/collection note/add-collection-note/view-collection-note/view-collection-note/view-collection-note.component';
 import { ReadCollectionNoteComponent } from './systems/collection note/add-collection-note/read-collection-note/read-collection-note/read-collection-note.component';
-import { CreateScheduleComponent } from './systems/schedule/create-schedule/create-schedule/create-schedule.component';
-import { ReadScheduleComponent } from './systems/schedule/create-schedule/read-schedule/read-schedule/read-schedule.component';
-import { UpdateScheduleComponent } from './systems/schedule/create-schedule/update-schedule/update-schedule/update-schedule.component';
 import { CreateBookingComponent } from './systems/bookings/create-booking/create-booking/create-booking.component';
 import { ReadBookingComponent } from './systems/bookings/read-booking/read-booking/read-booking.component';
 import { UpdateBookingComponent } from './systems/bookings/update-booking/update-booking/update-booking.component';
@@ -86,7 +85,12 @@ import { LodgeComplaintComponent } from './systems/complaints/lodge-complaint/lo
 import { LoginComponent } from './employee-side/user-login/login/login.component';
 import { EmployeeSideCollectionNoteComponent } from './systems/collection note/employee-side-collection-note/employee-side-collection-note.component';
 import { EditClientComponent } from './systems/clients/edit-client/edit-client/edit-client.component';
+import { ScheduleModule, RecurrenceEditorModule } from '@syncfusion/ej2-angular-schedule';
+import { ReadScheduleComponent } from './systems/schedule/read-schedule/read-schedule/read-schedule.component';
 
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin
+]);
 
 
 const angularMaterials = [
@@ -104,6 +108,7 @@ const angularMaterials = [
   MatInputModule,
   MatSelectModule,
   MatCardModule,
+  FullCalendarModule,
 
 ]
 
@@ -140,9 +145,6 @@ const angularMaterials = [
     AddCollectionNoteComponent,
     ViewCollectionNoteComponent,
     ReadCollectionNoteComponent,
-    CreateScheduleComponent,
-    ReadScheduleComponent,
-    UpdateScheduleComponent,
     CreateBookingComponent,
     ReadBookingComponent,
     UpdateBookingComponent,
@@ -195,6 +197,8 @@ const angularMaterials = [
 
     EditClientComponent,
 
+    ReadScheduleComponent,
+
   ],
   imports: [
     ...angularMaterials,
@@ -202,7 +206,9 @@ const angularMaterials = [
     AppRoutingModule,
     BrowserAnimationsModule,
     NgxChartsModule,
+    ScheduleModule, RecurrenceEditorModule,
 
+    
 
   ],
   providers: [],

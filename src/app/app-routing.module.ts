@@ -1,3 +1,4 @@
+import { ReadScheduleComponent } from './systems/schedule/read-schedule/read-schedule/read-schedule.component';
 import { EditClientComponent } from './systems/clients/edit-client/edit-client/edit-client.component';
 import { EmployeeSideCollectionNoteComponent } from './systems/collection note/employee-side-collection-note/employee-side-collection-note.component';
 import { EmployeeSideBookingsComponent } from './systems/bookings/employee-side-bookings/employee-side-bookings.component';
@@ -10,7 +11,6 @@ import { NavbarComponent } from './client-side/client-homepage/navbar/navbar.com
 import { ScheduleEmployeeComponent } from './employee-side/schedule-employee/schedule-employee.component';
 import { ReadQuoteComponent } from './systems/quotes/read-quote/read-quote/read-quote.component';
 import { ReadComplaintsComponent } from './systems/complaints/read-complaints/read-complaints/read-complaints.component';
-import { ReadScheduleComponent } from './systems/schedule/create-schedule/read-schedule/read-schedule/read-schedule.component';
 
 import { ReadAssetComponent } from './systems/assets/read-asset/read-asset/read-asset.component';
 
@@ -45,7 +45,6 @@ const routes: Routes = [
   { path: 'collectionnote', component: ReadCollectionNoteComponent },
   { path: 'invoices', component: ReadInvoiceComponent },
   { path: 'employee-settings', component: EmployeeSettingsComponent },
-  { path: 'schedule', component: ReadScheduleComponent },
   { path: 'requestedquotes', component: ReadRequestedquoteComponent },
   { path: 'assets', component: ReadAssetComponent },
   { path: 'read-complaints', component: ReadComplaintsComponent},
@@ -59,7 +58,8 @@ const routes: Routes = [
   { path: 'lodge-complaint', component: LodgeComplaintComponent},
   { path: 'login', component: LoginComponent},
   { path: 'employeesidebookings', component: EmployeeSideBookingsComponent},
-  { path: 'employeesidecollectionnote', component: EmployeeSideCollectionNoteComponent }
+  { path: 'employeesidecollectionnote', component: EmployeeSideCollectionNoteComponent },
+  { path: 'schedule', component: ReadScheduleComponent},
 ];
 
 @NgModule({

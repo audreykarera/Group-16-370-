@@ -31,18 +31,6 @@
             <table class="table table-bordered">
               <thead class="table-success">
                 <tr>
-                  <th><strong>Service Invoice</strong></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>5</td>
-                </tr>
-              </tbody>
-            </table>
-            <table class="table table-bordered">
-              <thead class="table-success">
-                <tr>
                   <th><strong>Date</strong></th>
                 </tr>
               </thead>
@@ -51,8 +39,8 @@
                   <td>2021/06/21</td>
                 </tr>
               </tbody>
-
             </table>
+            
           </div>
 
           <div>
@@ -69,7 +57,7 @@
                 <tbody>
                   <tr>
                     <td><input class="form-control form-control-sm" type="text"></td>
-                    <td><input class="form-control form-control-sm" type="inputSmall"></td>
+                    <td><input class="form-control form-control-sm" type="text"></td>
                     <td>
                      <input class="form-control form-control-sm" type="text">
                     </td>
@@ -116,8 +104,8 @@
           </div>
           <br>
           <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button class="btn btn-outline-success me-md-2" type="button">Save</button>
-            <button class="btn btn-outline-danger" type="button">Cancel</button>
+            <button class="btn btn-outline-success me-md-2" (click)="openConfirmDialog()" type="button">Save</button>
+            <button class="btn btn-outline-danger" (click)="openCancelDialog()" type="button">Cancel</button>
         </div>
         </div>
       </div>

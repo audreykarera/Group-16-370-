@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/angular';
 
 @Component({
-  selector: 'app-schedule-employee',
-  templateUrl: './schedule-employee.component.html',
-  styleUrls: ['./schedule-employee.component.scss']
+  selector: 'app-read-schedule',
+  templateUrl: './read-schedule.component.html',
+  styleUrls: ['./read-schedule.component.scss']
 })
-export class ScheduleEmployeeComponent implements OnInit {
+export class ReadScheduleComponent implements OnInit {
+
+  constructor() { }
 
   ngOnInit(): void {
   }
