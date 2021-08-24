@@ -110,6 +110,7 @@ const angularMaterials = [
   MatSelectModule,
   MatCardModule,
   FullCalendarModule,
+  MatButtonModule,
 
 ]
 
@@ -209,7 +210,7 @@ const angularMaterials = [
     NgxChartsModule,
     ScheduleModule, RecurrenceEditorModule,
 
-    
+
 
   ],
   providers: [],

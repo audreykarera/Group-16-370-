@@ -1,3 +1,4 @@
+
 import { ReadScheduleComponent } from './systems/schedule/read-schedule/read-schedule/read-schedule.component';
 import { EditClientComponent } from './systems/clients/edit-client/edit-client/edit-client.component';
 import { EmployeeSideCollectionNoteComponent } from './systems/collection note/employee-side-collection-note/employee-side-collection-note.component';
@@ -60,6 +61,7 @@ const routes: Routes = [
   { path: 'employeesidebookings', component: EmployeeSideBookingsComponent},
   { path: 'employeesidecollectionnote', component: EmployeeSideCollectionNoteComponent },
   { path: 'schedule', component: ReadScheduleComponent},
+
 ];
 
 @NgModule({
