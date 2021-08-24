@@ -1,3 +1,4 @@
+import { EstimateCostingComponent } from './systems/estimate-costing/estimate-costing.component';
 
 import { ReadScheduleComponent } from './systems/schedule/read-schedule/read-schedule/read-schedule.component';
 import { EditClientComponent } from './systems/clients/edit-client/edit-client/edit-client.component';
@@ -61,7 +62,8 @@ const routes: Routes = [
   { path: 'employeesidebookings', component: EmployeeSideBookingsComponent},
   { path: 'employeesidecollectionnote', component: EmployeeSideCollectionNoteComponent },
   { path: 'schedule', component: ReadScheduleComponent},
-
+  { path: 'estimate-costing', component: EstimateCostingComponent}
+  
 ];
 
 @NgModule({

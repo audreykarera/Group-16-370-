@@ -88,6 +88,7 @@ import { EmployeeSideCollectionNoteComponent } from './systems/collection note/e
 import { EditClientComponent } from './systems/clients/edit-client/edit-client/edit-client.component';
 import { ScheduleModule, RecurrenceEditorModule } from '@syncfusion/ej2-angular-schedule';
 import { ReadScheduleComponent } from './systems/schedule/read-schedule/read-schedule/read-schedule.component';
+import { EstimateCostingComponent } from './systems/estimate-costing/estimate-costing.component';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin
@@ -200,6 +201,8 @@ const angularMaterials = [
     EditClientComponent,
 
     ReadScheduleComponent,
+
+    EstimateCostingComponent,
 
   ],
   imports: [
