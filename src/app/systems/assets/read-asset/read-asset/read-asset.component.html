@@ -20,9 +20,10 @@
           <thead>
             <tr>
               <th class="col">Asset Type</th>
-              <th class="col">Asset Name</th>
-              <th class="col">Description</th>
-              <th class="col">Quantity</th>
+              <th class="col">Registration Number</th>
+              <th class="col">Asset Make</th>
+              <th class="col">Asset Model</th>
+              <th class="col">Asset Availability</th>
               <th class="col-1">Edit</th>
               <th class="col-1">Delete</th>
             </tr>
@@ -30,9 +31,23 @@
           <tbody>
             <tr>
               <td>Vehicle</td>
-              <td>KIA K2700</td>
-              <td>A vehicle that transports skip bins</td>
-              <td>3</td>
+              <td>JGB979-GP</td>
+              <td>KIA</td>
+              <td>K2700 (Truck)</td>
+              <td>Available</td>
+              <td class="icon-hover" (click)="routerEditAsset()">
+                <mat-icon>edit</mat-icon>
+              </td>
+              <td class="icon-hover" (click)="routerDeleteAsset()">
+                <mat-icon>delete</mat-icon>
+              </td>
+            </tr>
+            <tr>
+              <td>Equipment</td>
+              <td>N/A</td>
+              <td>GFS</td>
+              <td>GFS Skip Bin</td>
+              <td>Available</td>
               <td class="icon-hover" (click)="routerEditAsset()">
                 <mat-icon>edit</mat-icon>
               </td>
