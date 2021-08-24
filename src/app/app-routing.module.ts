@@ -1,3 +1,4 @@
+import { EstimateCostingComponent } from './systems/clients/estimate-costing/estimate-costing/estimate-costing.component';
 import { EditClientComponent } from './systems/clients/edit-client/edit-client/edit-client.component';
 import { EmployeeSideCollectionNoteComponent } from './systems/collection note/employee-side-collection-note/employee-side-collection-note.component';
 import { EmployeeSideBookingsComponent } from './systems/bookings/employee-side-bookings/employee-side-bookings.component';
@@ -59,7 +60,8 @@ const routes: Routes = [
   { path: 'lodge-complaint', component: LodgeComplaintComponent},
   { path: 'login', component: LoginComponent},
   { path: 'employeesidebookings', component: EmployeeSideBookingsComponent},
-  { path: 'employeesidecollectionnote', component: EmployeeSideCollectionNoteComponent }
+  { path: 'employeesidecollectionnote', component: EmployeeSideCollectionNoteComponent },
+  {path: 'estimate-costing', component: EstimateCostingComponent},
 ];
 
 @NgModule({

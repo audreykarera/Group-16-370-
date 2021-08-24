@@ -14,6 +14,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -86,6 +87,7 @@ import { LodgeComplaintComponent } from './systems/complaints/lodge-complaint/lo
 import { LoginComponent } from './employee-side/user-login/login/login.component';
 import { EmployeeSideCollectionNoteComponent } from './systems/collection note/employee-side-collection-note/employee-side-collection-note.component';
 import { EditClientComponent } from './systems/clients/edit-client/edit-client/edit-client.component';
+import { EstimateCostingComponent } from './systems/clients/estimate-costing/estimate-costing/estimate-costing.component';
 
 
 
@@ -104,6 +106,7 @@ const angularMaterials = [
   MatInputModule,
   MatSelectModule,
   MatCardModule,
+  MatButtonModule,
 
 ]
 
@@ -194,6 +197,8 @@ const angularMaterials = [
     EmployeeSideCollectionNoteComponent,
 
     EditClientComponent,
+
+    EstimateCostingComponent,
 
   ],
   imports: [
