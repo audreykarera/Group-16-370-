@@ -1,3 +1,4 @@
+import { ClientSideBookingSlotsComponent } from './systems/clients/client-side-booking-slots/client-side-booking-slots.component';
 import { UserSettingsComponent } from './systems/user-settings/user-settings.component';
 import { EstimateCostingComponent } from './systems/estimate-costing/estimate-costing.component';
 
@@ -64,7 +65,8 @@ const routes: Routes = [
   { path: 'employeesidecollectionnote', component: EmployeeSideCollectionNoteComponent },
   { path: 'schedule', component: ReadScheduleComponent},
   { path: 'estimate-costing', component: EstimateCostingComponent},
-  { path: 'user-settings', component: UserSettingsComponent}
+  { path: 'user-settings', component: UserSettingsComponent},
+  { path: 'client-side-bookingslots', component: ClientSideBookingSlotsComponent}
   
 ];
 

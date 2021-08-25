@@ -93,6 +93,7 @@ import { UserSettingsComponent } from './systems/user-settings/user-settings.com
 import { CreateUserRoleComponent } from './systems/user-settings/create-user-role/create-user-role.component';
 import { EditUserRoleComponent } from './systems/user-settings/edit-user-role/edit-user-role.component';
 import { DeleteUserRoleComponent } from './systems/user-settings/delete-user-role/delete-user-role.component';
+import { ClientSideBookingSlotsComponent } from './systems/clients/client-side-booking-slots/client-side-booking-slots.component';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin
@@ -215,6 +216,8 @@ const angularMaterials = [
     EditUserRoleComponent,
 
     DeleteUserRoleComponent,
+
+    ClientSideBookingSlotsComponent,
 
   ],
   imports: [
