@@ -20,6 +20,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FullCalendarModule } from '@fullcalendar/angular';;
 import dayGridPlugin from '@fullcalendar/daygrid';
+import interaction from '@fullcalendar/interaction';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -89,13 +90,20 @@ import { EditClientComponent } from './systems/clients/edit-client/edit-client/e
 import { ScheduleModule, RecurrenceEditorModule } from '@syncfusion/ej2-angular-schedule';
 import { ReadScheduleComponent } from './systems/schedule/read-schedule/read-schedule/read-schedule.component';
 import { EstimateCostingComponent } from './systems/estimate-costing/estimate-costing.component';
+<<<<<<< Updated upstream
 import { UserSettingsComponent } from './systems/user-settings/user-settings.component';
 import { CreateUserRoleComponent } from './systems/user-settings/create-user-role/create-user-role.component';
 import { EditUserRoleComponent } from './systems/user-settings/edit-user-role/edit-user-role.component';
 import { DeleteUserRoleComponent } from './systems/user-settings/delete-user-role/delete-user-role.component';
+=======
+import { ClientBookingComponent } from './client-side/client-booking/client-booking/client-booking.component';
+import { ViewBookingsComponent } from './client-side/view bookings/view-bookings/view-bookings.component';
+import { BookingDetailsComponent } from './client-side/booking details/booking-details/booking-details.component';
+>>>>>>> Stashed changes
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
-  dayGridPlugin
+  dayGridPlugin,
+  interaction
 ]);
 
 
@@ -208,6 +216,7 @@ const angularMaterials = [
 
     EstimateCostingComponent,
 
+<<<<<<< Updated upstream
     UserSettingsComponent,
 
     CreateUserRoleComponent,
@@ -216,6 +225,13 @@ const angularMaterials = [
 
     DeleteUserRoleComponent,
 
+=======
+    ClientBookingComponent,
+
+    ViewBookingsComponent,
+
+    BookingDetailsComponent,
+>>>>>>> Stashed changes
 
   ],
   imports: [
