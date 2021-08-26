@@ -20,6 +20,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FullCalendarModule } from '@fullcalendar/angular';;
 import dayGridPlugin from '@fullcalendar/daygrid';
+import interaction from '@fullcalendar/interaction';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -95,7 +96,8 @@ import { EditUserRoleComponent } from './systems/user-settings/edit-user-role/ed
 import { DeleteUserRoleComponent } from './systems/user-settings/delete-user-role/delete-user-role.component';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
-  dayGridPlugin
+  dayGridPlugin,
+  interaction
 ]);
 
 

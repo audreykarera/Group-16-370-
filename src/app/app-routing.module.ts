@@ -1,3 +1,4 @@
+import { ViewBookingsComponent } from './client-side/view bookings/view-bookings/view-bookings.component';
 
 import { UserSettingsComponent } from './systems/user-settings/user-settings.component';
 import { EstimateCostingComponent } from './systems/estimate-costing/estimate-costing.component';
@@ -66,6 +67,8 @@ const routes: Routes = [
   { path: 'schedule', component: ReadScheduleComponent},
   { path: 'estimate-costing', component: EstimateCostingComponent},
   { path: 'user-settings', component: UserSettingsComponent},
+  { path: 'mybookings', component: ViewBookingsComponent},
+  
   
 ];
 

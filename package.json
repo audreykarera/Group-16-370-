@@ -24,6 +24,7 @@
     "@angular/router": "~10.2.0",
     "@fullcalendar/angular": "^5.9.0",
     "@fullcalendar/daygrid": "^5.9.0",
+    "@fullcalendar/interaction": "^5.9.0",
     "@swimlane/ngx-charts": "^18.0.1",
     "@syncfusion/ej2-angular-schedule": "^19.2.56",
     "@syncfusion/ej2-material-theme": "~19.2.55",
