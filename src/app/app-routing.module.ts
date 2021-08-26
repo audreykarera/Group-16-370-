@@ -1,13 +1,8 @@
-<<<<<<< Updated upstream
+import { ViewBookingsComponent } from './client-side/view bookings/view-bookings/view-bookings.component';
 
 import { UserSettingsComponent } from './systems/user-settings/user-settings.component';
 import { EstimateCostingComponent } from './systems/estimate-costing/estimate-costing.component';
 
-=======
-import { ViewBookingsComponent } from './client-side/view bookings/view-bookings/view-bookings.component';
-import { ClientBookingComponent } from './client-side/client-booking/client-booking/client-booking.component';
-import { ReadBookingComponent } from './systems/bookings/read-booking/read-booking/read-booking.component';
->>>>>>> Stashed changes
 import { ReadScheduleComponent } from './systems/schedule/read-schedule/read-schedule/read-schedule.component';
 import { EditClientComponent } from './systems/clients/edit-client/edit-client/edit-client.component';
 import { EmployeeSideCollectionNoteComponent } from './systems/collection note/employee-side-collection-note/employee-side-collection-note.component';
@@ -70,16 +65,11 @@ const routes: Routes = [
   { path: 'employeesidebookings', component: EmployeeSideBookingsComponent},
   { path: 'employeesidecollectionnote', component: EmployeeSideCollectionNoteComponent },
   { path: 'schedule', component: ReadScheduleComponent},
-<<<<<<< Updated upstream
   { path: 'estimate-costing', component: EstimateCostingComponent},
   { path: 'user-settings', component: UserSettingsComponent},
-=======
-  { path: 'bookings', component: ReadBookingComponent},
-  { path: 'make-booking', component: ClientBookingComponent},
   { path: 'mybookings', component: ViewBookingsComponent},
->>>>>>> Stashed changes
   
-
+  
 ];
 
 @NgModule({
