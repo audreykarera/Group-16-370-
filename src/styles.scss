@@ -47,7 +47,7 @@ td{
 
 .pagination > li > a,
 .pagination > li > span {
-    color:black; 
+    color:black;
 }
 
 textarea:focus,
@@ -67,7 +67,7 @@ input[type="url"]:focus,
 input[type="search"]:focus,
 input[type="tel"]:focus,
 input[type="color"]:focus,
-.uneditable-input:focus {   
+.uneditable-input:focus {
   border-color: #28a745;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px #28a745;
   outline: 0 none;
@@ -81,7 +81,7 @@ input[type="color"]:focus,
  ::ng-deep.mat-form-field-underline {
   /*change color of underline*/
   background-color: #28a745 !important;
-} 
+}
 
 ::ng-deep.mat-form-field-ripple {
  /*change color of underline when focused*/

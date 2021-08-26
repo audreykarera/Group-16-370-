@@ -66,7 +66,7 @@ import { ReadExtracollectionComponent } from './systems/extra collection/read-ex
 import { EditExtracollectionComponent } from './systems/extra collection/edit-extracollection/edit-extracollection/edit-extracollection.component';
 import { EmployeeSettingsComponent } from './systems/employee-settings/employee-settings.component';
 
-import { CreateRequestedquoteComponent } from './systems/requested quote/create-requestedquote/create-requestedquote/create-requestedquote.component';
+
 import { ReadAssetComponent } from './systems/assets/read-asset/read-asset/read-asset.component';
 
 import { ReadRequestedquoteComponent } from './systems/requested quote/read-requestedquote/read-requestedquote/read-requestedquote.component';
@@ -96,6 +96,7 @@ import { DeleteUserRoleComponent } from './systems/user-settings/delete-user-rol
 import { ReadClientBookingComponent } from './client-side/read-client-bookings/read-client-booking/read-client-booking.component';
 import { BookingSlotsComponent } from './client-side/booking slots/booking-slots/booking-slots.component';
 import { EstimateCostingComponent } from './systems/estimate-costing/estimate-costing/estimate-costing.component';
+import { ViewSentQuoteComponent } from './systems/requested quote/view-sent-quote/view-sent-quote/view-sent-quote.component';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -169,7 +170,6 @@ const angularMaterials = [
     EditExtracollectionComponent,
     EmployeeSettingsComponent,
 
-    CreateRequestedquoteComponent,
     ReadAssetComponent,
 
     ReadRequestedquoteComponent,
@@ -222,6 +222,7 @@ const angularMaterials = [
 
     BookingSlotsComponent,
     EstimateCostingComponent,
+    ViewSentQuoteComponent,
 
 
   ],
