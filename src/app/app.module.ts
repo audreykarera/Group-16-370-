@@ -89,11 +89,13 @@ import { EmployeeSideCollectionNoteComponent } from './systems/collection note/e
 import { EditClientComponent } from './systems/clients/edit-client/edit-client/edit-client.component';
 import { ScheduleModule, RecurrenceEditorModule } from '@syncfusion/ej2-angular-schedule';
 import { ReadScheduleComponent } from './systems/schedule/read-schedule/read-schedule/read-schedule.component';
-import { EstimateCostingComponent } from './systems/estimate-costing/estimate-costing.component';
 import { UserSettingsComponent } from './systems/user-settings/user-settings.component';
 import { CreateUserRoleComponent } from './systems/user-settings/create-user-role/create-user-role.component';
 import { EditUserRoleComponent } from './systems/user-settings/edit-user-role/edit-user-role.component';
 import { DeleteUserRoleComponent } from './systems/user-settings/delete-user-role/delete-user-role.component';
+import { ReadClientBookingComponent } from './client-side/read-client-bookings/read-client-booking/read-client-booking.component';
+import { BookingSlotsComponent } from './client-side/booking slots/booking-slots/booking-slots.component';
+import { EstimateCostingComponent } from './systems/estimate-costing/estimate-costing/estimate-costing.component';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -208,8 +210,6 @@ const angularMaterials = [
 
     ReadScheduleComponent,
 
-    EstimateCostingComponent,
-
     UserSettingsComponent,
 
     CreateUserRoleComponent,
@@ -217,6 +217,11 @@ const angularMaterials = [
     EditUserRoleComponent,
 
     DeleteUserRoleComponent,
+
+    ReadClientBookingComponent,
+
+    BookingSlotsComponent,
+    EstimateCostingComponent,
 
 
   ],

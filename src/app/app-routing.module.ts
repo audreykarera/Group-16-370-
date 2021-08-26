@@ -1,7 +1,8 @@
-import { ViewBookingsComponent } from './client-side/view bookings/view-bookings/view-bookings.component';
+import { EstimateCostingComponent } from './systems/estimate-costing/estimate-costing/estimate-costing.component';
+import { BookingSlotsComponent } from './client-side/booking slots/booking-slots/booking-slots.component';
+import { ReadClientBookingComponent } from './client-side/read-client-bookings/read-client-booking/read-client-booking.component';
 
 import { UserSettingsComponent } from './systems/user-settings/user-settings.component';
-import { EstimateCostingComponent } from './systems/estimate-costing/estimate-costing.component';
 
 import { ReadScheduleComponent } from './systems/schedule/read-schedule/read-schedule/read-schedule.component';
 import { EditClientComponent } from './systems/clients/edit-client/edit-client/edit-client.component';
@@ -35,6 +36,7 @@ import { GenerateReportComponent } from './systems/reports/generate-report/gener
 import { ReadServicesComponent } from './systems/services/read-service/read-services/read-services.component';
 import { ReadSuppliersComponent } from './systems/supplier/read-supplier/read-suppliers/read-suppliers.component';
 import { ReadUsersComponent } from './systems/users/read-users/read-users/read-users.component';
+import { ReadBookingComponent } from './systems/bookings/read-booking/read-booking/read-booking.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -67,9 +69,10 @@ const routes: Routes = [
   { path: 'schedule', component: ReadScheduleComponent},
   { path: 'estimate-costing', component: EstimateCostingComponent},
   { path: 'user-settings', component: UserSettingsComponent},
-  { path: 'mybookings', component: ViewBookingsComponent},
-  
-  
+  { path: 'bookings', component: ReadBookingComponent},
+  { path: 'mybookings', component: ReadClientBookingComponent},
+  { path: 'make-booking', component: BookingSlotsComponent},
+
 ];
 
 @NgModule({
