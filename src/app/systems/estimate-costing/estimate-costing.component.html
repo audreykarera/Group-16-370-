@@ -6,12 +6,29 @@
     </button>
 
     <div class="row">
-      <div class="col navbar-hover">Home</div>
-      <div class="col navbar-hover">Services</div>
-      <div class="col navbar-hover">Make a Booking</div>
-      <div class="col navbar-hover">About Us</div>
-      <div class="col navbar-hover"></div>
+      <div class="col navbar-hover">
+        <div class="menu-items">Home</div>
+      </div>
+      <div class="col navbar-hover">
+        <div class="menu-items">Services</div>
+      </div>
+      <div class="col navbar-hover">
+        <div class="menu-items">
+          <button mat-button [matMenuTriggerFor]="menu">Bookings</button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>Make a Booking</button>
+            <button mat-menu-item>View Bookings</button>
+          </mat-menu>
+        </div>
+      </div>
+      <div class="col navbar-hover">
+        <div class="menu-items">Pricing</div>
+      </div>
+      <div class="col navbar-hover">
+        <div class="menu-items">About Us</div>
+      </div>
     </div>
+
 
     <span class="example-spacer"></span>
     <button mat-icon-button class="example-icon favorite-icon">
