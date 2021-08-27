@@ -1,3 +1,5 @@
+import { ReadExtracollectionComponent } from './systems/extra collection/read-extracollection/read-extracollection/read-extracollection.component';
+import { RequestQuoteComponent } from './systems/quotes/request quote/request-quote/request-quote.component';
 import { EstimateCostingComponent } from './systems/estimate-costing/estimate-costing/estimate-costing.component';
 import { BookingSlotsComponent } from './client-side/booking slots/booking-slots/booking-slots.component';
 import { ReadClientBookingComponent } from './client-side/read-client-bookings/read-client-booking/read-client-booking.component';
@@ -11,7 +13,6 @@ import { EmployeeSideBookingsComponent } from './systems/bookings/employee-side-
 import { LoginComponent } from './employee-side/user-login/login/login.component';
 import { LodgeComplaintComponent } from './systems/complaints/lodge-complaint/lodge-complaint/lodge-complaint.component';
 import { RegisterClientsComponent } from './systems/clients/register-clients/register-clients/register-clients.component';
-import { RequestQuoteComponent } from './systems/quotes/request-quote/request-quote/request-quote.component';
 import { EditEmployeeComponent } from './employee-side/edit-employee/edit-employee.component';
 import { NavbarComponent } from './client-side/client-homepage/navbar/navbar.component';
 import { ScheduleEmployeeComponent } from './employee-side/schedule-employee/schedule-employee.component';
@@ -59,7 +60,6 @@ const routes: Routes = [
   { path: 'tempemployeeside', component: ScheduleEmployeeComponent},
   { path: 'tempclientside', component: NavbarComponent},
   { path: 'tempeditemployee', component: EditEmployeeComponent},
-  { path: 'request-quote', component: RequestQuoteComponent},
   { path: 'register-client', component: RegisterClientsComponent},
   { path: 'editclient', component: EditClientComponent},
   { path: 'lodge-complaint', component: LodgeComplaintComponent},
@@ -72,6 +72,9 @@ const routes: Routes = [
   { path: 'bookings', component: ReadBookingComponent},
   { path: 'mybookings', component: ReadClientBookingComponent},
   { path: 'make-booking', component: BookingSlotsComponent},
+  { path: 'request-quote', component: RequestQuoteComponent},
+  { path: 'extracollection', component: ReadExtracollectionComponent},
+
 
 ];
 

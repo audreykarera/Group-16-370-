@@ -31,12 +31,11 @@ interface santisable {
 }
 
 @Component({
-  selector: 'app-estimate-costing',
-  templateUrl: './estimate-costing.component.html',
-  styleUrls: ['./estimate-costing.component.scss']
+  selector: 'app-request-quote',
+  templateUrl: './request-quote.component.html',
+  styleUrls: ['./request-quote.component.scss']
 })
-export class EstimateCostingComponent implements OnInit {
-
+export class RequestQuoteComponent implements OnInit {
   services: service[] = [
     {value: 'CollectionandDisposal', viewValue: 'Collection and Disposal'},
     {value: 'SkipService', viewValue: 'Skip Service'},

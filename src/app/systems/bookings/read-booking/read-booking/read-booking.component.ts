@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CalendarOptions } from '@fullcalendar/angular';
+import { BookingDetailsComponent } from 'src/app/client-side/booking details/booking-details/booking-details.component';
 
 @Component({
   selector: 'app-read-booking',
@@ -8,7 +10,7 @@ import { CalendarOptions } from '@fullcalendar/angular';
 })
 export class ReadBookingComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
@@ -23,7 +25,12 @@ export class ReadBookingComponent implements OnInit {
     ]
   };
 
-  handleDateClick(arg: { dateStr: string; }) {
-    alert('date click! ' + arg.dateStr)
-  }
+  handleDateClick(){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    const dialogReference = this.dialog.open(
+      BookingDetailsComponent,
+      dialogConfig
+    );
+}
 }
