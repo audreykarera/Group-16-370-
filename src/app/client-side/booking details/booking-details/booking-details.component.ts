@@ -11,5 +11,8 @@ export class BookingDetailsComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  handleDateClick(arg) {
+    alert('date click! ' + arg.dateStr);
 
+}
 }
