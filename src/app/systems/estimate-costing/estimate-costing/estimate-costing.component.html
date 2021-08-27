@@ -1,16 +1,20 @@
 <div style="margin-bottom: 1rem;">
   <mat-toolbar>
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-      <!-- <img src="assets/img/GFS logo.png" alt="" style="width: 07rem; height: 03rem;"> -->
+       <!-- <img src="assets/img/GFS logo.png" alt="" style="width: 05rem; height: 03rem;"> -->
       <mat-icon></mat-icon>
     </button>
 
     <div class="row">
       <div class="col navbar-hover">
-        <div class="menu-items">Hello</div>
+        <div class="menu-items">
+          <button mat-button>Home</button>
+        </div>
       </div>
       <div class="col navbar-hover">
-        <div class="menu-items">Services</div>
+        <div class="menu-items">
+          <button mat-button>Services</button>
+        </div>
       </div>
       <div class="col navbar-hover">
         <div class="menu-items">
@@ -22,7 +26,13 @@
         </div>
       </div>
       <div class="col navbar-hover">
-        <div class="menu-items">Pricing</div>
+        <div class="menu-items">
+          <button mat-button [matMenuTriggerFor]="menu2">Pricing</button>
+          <mat-menu #menu2="matMenu">
+            <button mat-menu-item>Estimate Cost</button>
+            <button mat-menu-item>Request a Quote</button>
+          </mat-menu>
+        </div>
       </div>
       <div class="col navbar-hover">
         <div class="menu-items">About Us</div>
@@ -124,8 +134,8 @@
       </mat-card-content>
       <mat-card-actions>
         <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-          <button class="btn btn-outline-success me-md-2" type="button">Generate</button>
-          <button class="btn btn-outline-primary" type="button">Request Quote</button>
+          <button class="btn btn-outline-success me-md-2" type="button" (click)="routerGenerateEstimate()">Generate</button>
+          <button class="btn btn-outline-primary" type="button" routerLinkActive="list-item-active" routerLink="/request-quote">Request Quote</button>
         </div>
       </mat-card-actions>
     </mat-card>

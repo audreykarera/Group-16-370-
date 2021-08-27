@@ -97,6 +97,7 @@ import { ReadClientBookingComponent } from './client-side/read-client-bookings/r
 import { BookingSlotsComponent } from './client-side/booking slots/booking-slots/booking-slots.component';
 import { EstimateCostingComponent } from './systems/estimate-costing/estimate-costing/estimate-costing.component';
 import { ViewSentQuoteComponent } from './systems/requested quote/view-sent-quote/view-sent-quote/view-sent-quote.component';
+import { ShowEstimateComponent } from './systems/estimate-costing/show-estimate/show-estimate/show-estimate.component';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -223,6 +224,7 @@ const angularMaterials = [
     BookingSlotsComponent,
     EstimateCostingComponent,
     ViewSentQuoteComponent,
+    ShowEstimateComponent,
 
 
   ],
