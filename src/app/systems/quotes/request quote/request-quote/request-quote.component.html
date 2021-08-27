@@ -1,0 +1,124 @@
+ <mat-card class="example-card">
+  <mat-card-header>
+
+    <mat-card-title>Request Quote for Service</mat-card-title>
+    <mat-card-subtitle>Please fill in the details for the following input fields</mat-card-subtitle>
+  </mat-card-header>
+   <mat-card-content>
+    <div class="row">
+      <div class="col">
+        <mat-form-field appearance="fill" class="m-2">
+                        <mat-label>Service</mat-label>
+                        <mat-select (onSelectionChange)="get($event)">
+                            <mat-option *ngFor="let item of services" (click)="get(item)" [value]="item.value">
+                                {{item.viewValue}}
+                            </mat-option>
+                        </mat-select>
+        </mat-form-field>
+        <span *ngIf="isSelected">
+                        <span *ngIf="CollectionandDisposal">
+                            <mat-form-field appearance="fill" class="m-2">
+                                <mat-label>Service Type</mat-label>
+                                <mat-select>
+                                    <mat-option *ngFor="let item of recyclables" (click)="get(item)" [value]="item.value">
+                                        {{item.viewValue}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </span>
+                         <span *ngIf="SkipService">
+                            <mat-form-field appearance="fill" class="m-2">
+                                <mat-label>Service Type</mat-label>
+                                <mat-select>
+                                    <mat-option *ngFor="let item of packages" (click)="get(item)" [value]="item.value">
+                                        {{item.viewValue}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </span>
+                         <span *ngIf="Delivery">
+                            <mat-form-field appearance="fill" class="m-2">
+                                <mat-label>Service Type</mat-label>
+                                <mat-select>
+                                    <mat-option *ngFor="let item of deliverables" (click)="get(item)" [value]="item.value">
+                                        {{item.viewValue}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </span>
+                        <span *ngIf="Santisation">
+                            <mat-form-field appearance="fill" class="m-2">
+                                <mat-label>Service Type</mat-label>
+                                <mat-select>
+                                    <mat-option *ngFor="let item of  santisables" (click)="get(item)" [value]="item.value">
+                                        {{item.viewValue}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </span>
+                        <span *ngIf="Removal">
+                            <mat-form-field appearance="fill" class="m-2">
+                                <mat-label>Service Type</mat-label>
+                                <mat-select>
+                                    <mat-option *ngFor="let item of removables" (click)="get(item)" [value]="item.value">
+                                        {{item.viewValue}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </span>
+                        <span *ngIf="Removal">
+                            <mat-form-field appearance="fill">
+                                <mat-label>No. of extra collections</mat-label>
+                                <input matInput placeholder="">
+                            </mat-form-field>
+                        </span>
+                         <span *ngIf="Delivery">
+                            <mat-form-field appearance="fill">
+                                <mat-label>No. of extra collections</mat-label>
+                                <input matInput placeholder="">
+                            </mat-form-field>
+                        </span>
+                         <span *ngIf="CollectionandDisposal">
+                            <mat-form-field appearance="fill">
+                                <mat-label>How many units?</mat-label>
+                                <input matInput placeholder="">
+                            </mat-form-field>
+                        </span>
+                         <span *ngIf="SkipService">
+                            <mat-form-field appearance="fill">
+                                <mat-label>No. of extra collections</mat-label>
+                                <input matInput placeholder="">
+                            </mat-form-field>
+                        </span>
+        </span>    
+      </div>
+    </div>
+    <div class="col">
+        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Additional service details</label>
+        <input class="form-control form-control-sm" type="text" placeholder="Provide any additional service details"
+          aria-label=".form-control-sm example">
+        <label class="col-form-label col-form-label-sm mt-2 float-right" for="inputSmall">Province</label>
+        <select class="form-select form-select-sm" aria-label=".form-select-sm example" type="text">
+          <option selected>Click for options</option>
+          <option value="1">Gauteng</option>
+          <option value="2">Kwa-Zulu-Natal</option>
+        </select>
+        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Insert City</label>
+        <input class="form-control form-control-sm" type="text" placeholder="Name of the City"
+          aria-label=".form-control-sm example">
+        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Insert Suburb</label>
+        <input class="form-control form-control-sm" type="text" placeholder="Name of the Suburb"
+          aria-label=".form-control-sm example">
+        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Insert Street</label>
+        <input class="form-control form-control-sm" type="text" placeholder="Name of the Street"
+          aria-label=".form-control-sm example">
+      </div>
+   </mat-card-content> 
+<mat-card-actions>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+      <button class="btn btn-outline-success me-md-2" type="button">Request Quote</button>
+      <button class="btn btn-outline-danger" type="button">Cancel</button>
+    </div>
+  </mat-card-actions>
+</mat-card>
+

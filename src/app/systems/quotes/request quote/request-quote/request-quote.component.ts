@@ -1,6 +1,3 @@
-import { ShowEstimateComponent } from './../show-estimate/show-estimate/show-estimate.component';
-
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 
 interface service {
@@ -34,16 +31,15 @@ interface santisable {
 }
 
 @Component({
-  selector: 'app-estimate-costing',
-  templateUrl: './estimate-costing.component.html',
-  styleUrls: ['./estimate-costing.component.scss']
+  selector: 'app-request-quote',
+  templateUrl: './request-quote.component.html',
+  styleUrls: ['./request-quote.component.scss']
 })
-export class EstimateCostingComponent implements OnInit {
-
+export class RequestQuoteComponent implements OnInit {
   services: service[] = [
     {value: 'CollectionandDisposal', viewValue: 'Collection and Disposal'},
     {value: 'SkipService', viewValue: 'Skip Service'},
-    {value: 'Delivery', viewValue: 'Delivery'},
+    {value: 'Delivery', viewValue: 'Delivery'}, 
     {value: 'Santisation', viewValue: 'Santisation'},
     {value: 'Removal', viewValue: 'Removal'},
   ];
@@ -55,12 +51,12 @@ export class EstimateCostingComponent implements OnInit {
     {value: 'Paper & Cardboard', viewValue: 'Paper & Cardboard'},
     {value: 'Bottles', viewValue: 'Bottles'},
     {value: 'Plastic', viewValue: 'Plastic'},
-  ];
+  ]; 
 
   deliverables: deliverable[]=[
     {value: 'Sand, stone & topsoil', viewValue: 'Sand, stone & topsoil'},
     {value: 'Compost & fertilizer', viewValue: 'Compost & fertilizer'},
-  ];
+  ]; 
 
   packages: apackage[]=[
     {value: '2 Date Rate', viewValue: '2 Day Rate'},
@@ -69,7 +65,7 @@ export class EstimateCostingComponent implements OnInit {
     {value: 'Full week', viewValue: 'Full week'},
     {value: 'Short Term', viewValue: 'Short Term'},
     {value: 'Long Term', viewValue: 'Long Term'},
-
+    
   ];
 
   santisables: santisable []=[
@@ -83,7 +79,7 @@ export class EstimateCostingComponent implements OnInit {
   ];
 
 
-  isSelected: boolean=false;
+  isSelected: boolean=false; 
   CollectionandDisposal: Boolean | undefined;
   SkipService: Boolean | undefined;
   Delivery: Boolean | undefined;
@@ -91,7 +87,7 @@ export class EstimateCostingComponent implements OnInit {
   Removal: Boolean | undefined;
 
   get(data: { value: string; }){
-    this.isSelected = true;
+    this.isSelected = true; 
     if(data.value == 'CollectionandDisposal'){
       this.CollectionandDisposal = true;
       this.SkipService = false;
@@ -126,20 +122,11 @@ export class EstimateCostingComponent implements OnInit {
     else{
     }
   }
-  constructor(public dialog: MatDialog) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
+  
 
-
-  routerGenerateEstimate(){
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = false;
-    const dialogReference = this.dialog.open(
-      ShowEstimateComponent, dialogConfig
-    );
-  }
 
 }
-
-

@@ -9,20 +9,24 @@
 
   <mat-card-content>
     <div>
-      <mat-form-field appearance="fill" class="m-2">
+     <mat-form-field appearance="fill" class="m-2">
         <mat-label >Company?</mat-label>
-        <mat-select>
-          <mat-option value="one">Yes</mat-option>
-          <mat-option value="two">No</mat-option>
-        </mat-select>
+        <mat-select (onSelectionChange)="get($event)">
+                            <mat-option *ngFor="let item of companies" (click)="get(item)" [value]="item.value">
+                                {{item.viewValue}}
+                            </mat-option>
+                        </mat-select>
       </mat-form-field>
-
-      <mat-form-field appearance="fill">
-        <mat-label>Company Name</mat-label>
-        <input matInput placeholder="">
-        <mat-icon matSuffix>business</mat-icon>
-        <mat-hint>Enter the name of your Company</mat-hint>
-      </mat-form-field>
+      <span *ngIf="isSelected">
+                        <span *ngIf="Yes">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Company Name</mat-label>
+                                <input matInput placeholder="">
+                                <mat-icon matSuffix>business</mat-icon>
+                                <mat-hint>Enter the name of your Company</mat-hint>
+                            </mat-form-field>
+                        </span>    
+      </span>                      
     </div>
     <div class="row">
       <div class="col">

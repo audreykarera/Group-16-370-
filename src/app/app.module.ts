@@ -82,7 +82,6 @@ import { ScheduleEmployeeComponent } from './employee-side/schedule-employee/sch
 import { NavbarComponent } from './client-side/client-homepage/navbar/navbar.component';
 import { RegisterClientsComponent } from './systems/clients/register-clients/register-clients/register-clients.component';
 import { TopNavComponent } from './topnav/top-nav/top-nav.component';
-import { RequestQuoteComponent } from './systems/quotes/request-quote/request-quote/request-quote.component';
 import { LodgeComplaintComponent } from './systems/complaints/lodge-complaint/lodge-complaint/lodge-complaint.component';
 import { LoginComponent } from './employee-side/user-login/login/login.component';
 import { EmployeeSideCollectionNoteComponent } from './systems/collection note/employee-side-collection-note/employee-side-collection-note.component';
@@ -97,7 +96,8 @@ import { ReadClientBookingComponent } from './client-side/read-client-bookings/r
 import { BookingSlotsComponent } from './client-side/booking slots/booking-slots/booking-slots.component';
 import { EstimateCostingComponent } from './systems/estimate-costing/estimate-costing/estimate-costing.component';
 import { ViewSentQuoteComponent } from './systems/requested quote/view-sent-quote/view-sent-quote/view-sent-quote.component';
-import { ShowEstimateComponent } from './systems/estimate-costing/show-estimate/show-estimate/show-estimate.component';
+import { ClientViewInvoicesComponent } from './systems/invoices/client-view-invoices/client-view-invoices.component';
+import { RequestQuoteComponent } from './systems/quotes/request quote/request-quote/request-quote.component';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -199,8 +199,6 @@ const angularMaterials = [
 
     TopNavComponent,
 
-    RequestQuoteComponent,
-
     LodgeComplaintComponent,
 
     LoginComponent,
@@ -224,7 +222,8 @@ const angularMaterials = [
     BookingSlotsComponent,
     EstimateCostingComponent,
     ViewSentQuoteComponent,
-    ShowEstimateComponent,
+    ClientViewInvoicesComponent,
+    RequestQuoteComponent,
 
 
   ],

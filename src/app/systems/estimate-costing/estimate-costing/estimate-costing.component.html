@@ -67,37 +67,69 @@
         </div>
       </mat-card-header>
       <mat-card-content>
+      <mat-form-field appearance="fill" class="m-2">
+                        <mat-label>Service</mat-label>
+                        <mat-select (onSelectionChange)="get($event)">
+                            <mat-option *ngFor="let item of services" (click)="get(item)" [value]="item.value">
+                                {{item.viewValue}}
+                            </mat-option>
+                        </mat-select>
+        </mat-form-field>
+         <span *ngIf="isSelected">
+                        <span *ngIf="CollectionandDisposal">
+                            <mat-form-field appearance="fill" class="m-2">
+                                <mat-label>Service Type</mat-label>
+                                <mat-select>
+                                    <mat-option *ngFor="let item of recyclables" (click)="get(item)" [value]="item.value">
+                                        {{item.viewValue}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </span>
+                         <span *ngIf="SkipService">
+                            <mat-form-field appearance="fill" class="m-2">
+                                <mat-label>Service Type</mat-label>
+                                <mat-select>
+                                    <mat-option *ngFor="let item of packages" (click)="get(item)" [value]="item.value">
+                                        {{item.viewValue}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </span>
+                         <span *ngIf="Delivery">
+                            <mat-form-field appearance="fill" class="m-2">
+                                <mat-label>Service Type</mat-label>
+                                <mat-select>
+                                    <mat-option *ngFor="let item of deliverables" (click)="get(item)" [value]="item.value">
+                                        {{item.viewValue}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </span>
+                        <span *ngIf="Santisation">
+                            <mat-form-field appearance="fill" class="m-2">
+                                <mat-label>Service Type</mat-label>
+                                <mat-select>
+                                    <mat-option *ngFor="let item of  santisables" (click)="get(item)" [value]="item.value">
+                                        {{item.viewValue}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </span>
+                        <span *ngIf="Removal">
+                            <mat-form-field appearance="fill" class="m-2">
+                                <mat-label>Service Type</mat-label>
+                                <mat-select>
+                                    <mat-option *ngFor="let item of removables" (click)="get(item)" [value]="item.value">
+                                        {{item.viewValue}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </span>
+        </span>    
         <div class="position-relative">
           <mat-icon class="position-absolute top-0 end-0 icon-hover">add_circle</mat-icon>
         </div>
-        <label class="col-form-label col-form-label-sm mt-2 float-right" for="inputSmall">Service</label>
-        <select class="form-select form-select-sm" aria-label=".form-select-sm example" type="text">
-          <option selected></option>
-          <option value="1">Collection & Disposal</option>
-          <option value="2">Skip Services</option>
-          <option value="3">Delivery</option>
-        </select>
-        <label class="col-form-label col-form-label-sm mt-2 float-right" for="inputSmall">Package</label>
-        <select class="form-select form-select-sm" aria-label=".form-select-sm example" type="text">
-          <option selected></option>
-          <option value="1">2 day rate</option>
-          <option value="2">Weekend</option>
-          <option value="3">Mid-week</option>
-          <option value="4">Full week</option>
-          <option value="5">Short term</option>
-          <option value="6">Long term</option>
-        </select>
-        <label class="col-form-label col-form-label-sm mt-2 float-right" for="inputSmall">Additional Collections</label>
-        <select class="form-select form-select-sm" aria-label=".form-select-sm example" type="text">
-          <option selected></option>
-          <option value="1">0</option>
-          <option value="2">1</option>
-          <option value="3">2</option>
-          <option value="4">3</option>
-          <option value="5">4</option>
-          <option value="6">5</option>
-
-        </select>
         <label class="col-form-label col-form-label-sm mt-2 float-right" for="inputSmall">Province</label>
         <select class="form-select form-select-sm" aria-label=".form-select-sm example" type="text">
           <option selected></option>

@@ -1,4 +1,5 @@
 import { CreateBookingComponent } from './systems/bookings/create-booking/create-booking/create-booking.component';
+
 import { EstimateCostingComponent } from './systems/estimate-costing/estimate-costing/estimate-costing.component';
 import { BookingSlotsComponent } from './client-side/booking slots/booking-slots/booking-slots.component';
 import { ReadClientBookingComponent } from './client-side/read-client-bookings/read-client-booking/read-client-booking.component';
@@ -12,7 +13,6 @@ import { EmployeeSideBookingsComponent } from './systems/bookings/employee-side-
 import { LoginComponent } from './employee-side/user-login/login/login.component';
 import { LodgeComplaintComponent } from './systems/complaints/lodge-complaint/lodge-complaint/lodge-complaint.component';
 import { RegisterClientsComponent } from './systems/clients/register-clients/register-clients/register-clients.component';
-import { RequestQuoteComponent } from './systems/quotes/request-quote/request-quote/request-quote.component';
 import { EditEmployeeComponent } from './employee-side/edit-employee/edit-employee.component';
 import { NavbarComponent } from './client-side/client-homepage/navbar/navbar.component';
 import { ScheduleEmployeeComponent } from './employee-side/schedule-employee/schedule-employee.component';
@@ -38,6 +38,8 @@ import { ReadServicesComponent } from './systems/services/read-service/read-serv
 import { ReadSuppliersComponent } from './systems/supplier/read-supplier/read-suppliers/read-suppliers.component';
 import { ReadUsersComponent } from './systems/users/read-users/read-users/read-users.component';
 import { ReadBookingComponent } from './systems/bookings/read-booking/read-booking/read-booking.component';
+import { ClientViewInvoicesComponent } from './systems/invoices/client-view-invoices/client-view-invoices.component';
+import { RequestQuoteComponent } from './systems/quotes/request quote/request-quote/request-quote.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -60,7 +62,6 @@ const routes: Routes = [
   { path: 'tempemployeeside', component: ScheduleEmployeeComponent},
   { path: 'tempclientside', component: NavbarComponent},
   { path: 'tempeditemployee', component: EditEmployeeComponent},
-  { path: 'request-quote', component: RequestQuoteComponent},
   { path: 'register-client', component: RegisterClientsComponent},
   { path: 'editclient', component: EditClientComponent},
   { path: 'lodge-complaint', component: LodgeComplaintComponent},
@@ -73,6 +74,8 @@ const routes: Routes = [
   { path: 'bookings', component: ReadBookingComponent},
   { path: 'mybookings', component: ReadClientBookingComponent},
   { path: 'make-booking', component: BookingSlotsComponent},
+  { path: 'clientviewinvoices', component: ClientViewInvoicesComponent},
+  { path: 'request-quote', component: RequestQuoteComponent},
   { path: 'create-booking', component: CreateBookingComponent},
 
 ];
