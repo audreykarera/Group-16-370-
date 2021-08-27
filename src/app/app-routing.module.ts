@@ -1,3 +1,4 @@
+import { RequestQuoteComponent } from './systems/quotes/request quote/request-quote/request-quote.component';
 import { ClientViewInvoicesComponent } from './systems/invoices/client-view-invoices/client-view-invoices.component';
 import { EstimateCostingComponent } from './systems/estimate-costing/estimate-costing/estimate-costing.component';
 import { BookingSlotsComponent } from './client-side/booking slots/booking-slots/booking-slots.component';
@@ -71,7 +72,8 @@ const routes: Routes = [
   { path: 'bookings', component: ReadBookingComponent},
   { path: 'mybookings', component: ReadClientBookingComponent},
   { path: 'make-booking', component: BookingSlotsComponent},
-  { path: 'clientviewinvoices', component: ClientViewInvoicesComponent}
+  { path: 'clientviewinvoices', component: ClientViewInvoicesComponent},
+  { path: 'request-quote', component: RequestQuoteComponent},
 
 ];
 
