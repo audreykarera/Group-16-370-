@@ -1,5 +1,4 @@
-import { ReadExtracollectionComponent } from './systems/extra collection/read-extracollection/read-extracollection/read-extracollection.component';
-import { RequestQuoteComponent } from './systems/quotes/request quote/request-quote/request-quote.component';
+import { ClientViewInvoicesComponent } from './systems/invoices/client-view-invoices/client-view-invoices.component';
 import { EstimateCostingComponent } from './systems/estimate-costing/estimate-costing/estimate-costing.component';
 import { BookingSlotsComponent } from './client-side/booking slots/booking-slots/booking-slots.component';
 import { ReadClientBookingComponent } from './client-side/read-client-bookings/read-client-booking/read-client-booking.component';
@@ -72,9 +71,7 @@ const routes: Routes = [
   { path: 'bookings', component: ReadBookingComponent},
   { path: 'mybookings', component: ReadClientBookingComponent},
   { path: 'make-booking', component: BookingSlotsComponent},
-  { path: 'request-quote', component: RequestQuoteComponent},
-  { path: 'extracollection', component: ReadExtracollectionComponent},
-
+  { path: 'clientviewinvoices', component: ClientViewInvoicesComponent}
 
 ];
 
