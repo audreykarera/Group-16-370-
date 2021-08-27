@@ -1,7 +1,7 @@
+import { CreateBookingComponent } from './../../../systems/bookings/create-booking/create-booking/create-booking.component';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CalendarOptions } from '@fullcalendar/angular';
-import { BookingDetailsComponent } from '../../booking details/booking-details/booking-details.component';
 
 @Component({
   selector: 'app-booking-slots',
@@ -28,7 +28,7 @@ export class BookingSlotsComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     const dialogReference = this.dialog.open(
-      BookingDetailsComponent,
+      CreateBookingComponent,
       dialogConfig
     );
 }
