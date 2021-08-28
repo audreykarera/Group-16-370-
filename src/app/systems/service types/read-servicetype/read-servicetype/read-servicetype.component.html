@@ -24,9 +24,9 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Domestic Rubbish</td>
-                <td>Household waste</td>
+              <tr *ngFor="let servicetype of servicetypes" >
+                <td><span>{{servicetype.serviceTypeName}}</span></td>
+                <td><span>{{servicetype.serviceTypeDescription}}</span></td>
                 <td class="icon-hover">
                   <mat-icon (click)="routerEditServiceType()">edit</mat-icon>
                 </td>

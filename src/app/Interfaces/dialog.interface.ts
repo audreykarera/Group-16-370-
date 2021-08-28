@@ -1,3 +1,4 @@
+
 export interface DialogInterface {
     cancelButtonLabel: string;
     confirmButtonLabel: string;
@@ -12,12 +13,6 @@ export interface DialogInterface {
   SupplierContactPersonNumber: string;
   SupplierContactPersonEmail: string;
  }
-
- export interface Package {
-  PackageName: string;
-  PackageDetails: string;
- }
-
  export interface Employees {
 
  }
@@ -28,6 +23,9 @@ export interface User {
 
 }
 export interface ServiceType {
+  serviceTypeName: string;
+  serviceTypeDescription: string;
+  
 
 }
 

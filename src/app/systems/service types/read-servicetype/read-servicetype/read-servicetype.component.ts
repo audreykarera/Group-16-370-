@@ -1,12 +1,22 @@
-import { ServiceTypeService } from './../../service type service/service-type.service';
-import { DialogInterface, ServiceType } from './../../../../Interfaces/dialog.interface';
+import { HttpClient } from '@angular/common/http';
+
+import { DialogInterface } from './../../../../Interfaces/dialog.interface';
 import { EditServicetypeComponent } from './../../edit-servicetype/edit-servicetype/edit-servicetype.component';
 import { CreateServicetypeComponent } from './../../create-servicetypes/create-servicetype/create-servicetype.component';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { SharedComponent } from 'src/app/component/shared components/shared/shared.component';
+
+
+export class ServiceType{
+  constructor(
+    public serviceTypeName: string,
+    public serviceTypeDescription: string
+  ){
+  }
+  
+}
 
 @Component({
   selector: 'app-read-servicetype',
@@ -15,20 +25,27 @@ import { SharedComponent } from 'src/app/component/shared components/shared/shar
 })
 export class ReadServicetypeComponent implements OnInit {
 
-  ServiceType: ServiceType[] = [];
-  ServiceType$: Observable<ServiceType[]> = this.service.getServiceType();
-  
-  constructor(private service: ServiceTypeService,
+  servicetypes: ServiceType[];
+  constructor(private HttpClient: HttpClient,
     public router: Router,
     public dialog: MatDialog
   ) { }
 
 
   ngOnInit(): void {
-    this.ServiceType$.subscribe((res) => {
-      console.log(res);
-    });
+    this.getServiceTypes();
   }
+
+  getServiceTypes(){
+    this.HttpClient.get<any>('http://localhost:60000/api/servicetype/getservicetype').subscribe(
+      Response => {
+        console.log(Response);
+        this.servicetypes = Response;
+
+      }
+    );
+  }
+
   routerAddServiceType() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;

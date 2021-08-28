@@ -1,4 +1,3 @@
-import { SupplierserviceService } from './systems/supplier/supplier service/supplierservice.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -22,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FullCalendarModule } from '@fullcalendar/angular';;
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interaction from '@fullcalendar/interaction';
+import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -124,6 +124,7 @@ const angularMaterials = [
   MatCardModule,
   FullCalendarModule,
   MatButtonModule,
+  CommonModule
   
 
 ]

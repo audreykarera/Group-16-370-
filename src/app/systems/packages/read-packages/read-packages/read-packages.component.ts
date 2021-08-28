@@ -1,13 +1,22 @@
-import { PackageService } from './../../packages service/package.service';
-import { DialogInterface, Package } from 'src/app/Interfaces/dialog.interface';
+import { HttpClient } from '@angular/common/http';
 import { EditPackagesComponent } from './../../edit-packages/edit-packages/edit-packages.component';
 import { CreatePackageComponent } from './../../create-packages/create-package/create-package.component';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { SupplierserviceService } from 'src/app/systems/supplier/supplier service/supplierservice.service';
-import { Observable } from 'rxjs';
+
 import { SharedComponent } from 'src/app/component/shared components/shared/shared.component';
+import { DialogInterface, } from 'src/app/Interfaces/dialog.interface';
+
+export class Package{
+  constructor(
+    public packageName: string,
+    public packageDetails: string,
+    public packageRateDate: string
+  ){
+  }
+  
+}
 
 @Component({
   selector: 'app-read-packages',
@@ -16,19 +25,27 @@ import { SharedComponent } from 'src/app/component/shared components/shared/shar
 })
 export class ReadPackagesComponent implements OnInit {
 
-  Package: Package[] = [];
-  Package$: Observable<Package[]> = this.service.getPackage();
-  
-  constructor(private service: PackageService,
+
+  packages: Package[];
+  constructor(private HttpClient: HttpClient,
     public router: Router,
     public dialog: MatDialog
   ) { }
 
 
   ngOnInit(): void {
-    this.Package$.subscribe((res) => {
-      console.log(res);
-    });
+    this.getPackages();
+
+  }
+
+  getPackages(){
+    this.HttpClient.get<any>('http://localhost:60000/api/package/getpackage').subscribe(
+      Response => {
+        console.log(Response);
+        this.packages = Response;
+
+      }
+    );
   }
   routerAddPackage() {
     const dialogConfig = new MatDialogConfig();
