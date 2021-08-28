@@ -1,3 +1,4 @@
+import { SupplierserviceService } from './systems/supplier/supplier service/supplierservice.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -98,6 +99,7 @@ import { EstimateCostingComponent } from './systems/estimate-costing/estimate-co
 import { ViewSentQuoteComponent } from './systems/requested quote/view-sent-quote/view-sent-quote/view-sent-quote.component';
 import { ClientViewInvoicesComponent } from './systems/invoices/client-view-invoices/client-view-invoices.component';
 import { RequestQuoteComponent } from './systems/quotes/request quote/request-quote/request-quote.component';
+import {HttpClientModule} from '@angular/common/http';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -122,6 +124,7 @@ const angularMaterials = [
   MatCardModule,
   FullCalendarModule,
   MatButtonModule,
+  
 
 ]
 
@@ -234,7 +237,7 @@ const angularMaterials = [
     BrowserAnimationsModule,
     NgxChartsModule,
     ScheduleModule, RecurrenceEditorModule,
-
+    HttpClientModule  
 
 
   ],

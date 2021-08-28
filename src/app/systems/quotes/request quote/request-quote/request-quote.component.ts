@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { SharedComponent } from 'src/app/component/shared components/shared/shared.component';
+import { DialogInterface } from 'src/app/Interfaces/dialog.interface';
 
 interface service {
   value: string;
@@ -85,6 +88,7 @@ export class RequestQuoteComponent implements OnInit {
   Delivery: Boolean | undefined;
   Santisation: Boolean | undefined;
   Removal: Boolean | undefined;
+  
 
   get(data: { value: string; }){
     this.isSelected = true; 
@@ -122,11 +126,43 @@ export class RequestQuoteComponent implements OnInit {
     else{
     }
   }
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
+  openConfirmDialog() {
+    const dialogInterface: DialogInterface = {
+      dialogHeader: 'Confirmation Message',
+      dialogContent: 'Are you sure you want to request this quote?',
+      cancelButtonLabel: 'No',
+      confirmButtonLabel: 'Yes',
+      callbackMethod: () => {
+       
+      },
+    };
+    this.dialog.open(SharedComponent, {
+      width: '300px',
+      data: dialogInterface,
+    });
+  }
   
-
+  /**
+     * This method invokes the Cancel Dialog
+     */
+  openCancelDialog() {
+    const dialogInterface: DialogInterface = {
+      dialogHeader: 'Confirmation Message',
+      dialogContent: 'Are you sure you want to cancel this request for quote ?',
+      cancelButtonLabel: 'No',
+      confirmButtonLabel: 'Yes',
+      callbackMethod: () => {
+       
+      },
+    };
+    this.dialog.open(SharedComponent, {
+      width: '300px',
+      data: dialogInterface,
+    });
+  }
 
 }

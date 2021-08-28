@@ -17,7 +17,7 @@ export class EditPackagesComponent implements OnInit {
   openConfirmDialog() {
     const dialogInterface: DialogInterface = {
       dialogHeader: 'Confirmation Message',
-      dialogContent: 'Are you sure you want to save this?',
+      dialogContent: 'Are you sure you want to save changes made?',
       cancelButtonLabel: 'No',
       confirmButtonLabel: 'Yes',
       callbackMethod: () => {
@@ -36,7 +36,7 @@ export class EditPackagesComponent implements OnInit {
   openCancelDialog() {
     const dialogInterface: DialogInterface = {
       dialogHeader: 'Confirmation Message',
-      dialogContent: 'Are you sure you want cancel this ?',
+      dialogContent: 'Are you sure you want cancel changes made ?',
       cancelButtonLabel: 'No',
       confirmButtonLabel: 'Yes',
       callbackMethod: () => {

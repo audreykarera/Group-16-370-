@@ -17,7 +17,7 @@ export class CreateInvoiceComponent implements OnInit {
   openConfirmDialog() {
     const dialogInterface: DialogInterface = {
       dialogHeader: 'Confirmation Message',
-      dialogContent: 'Are you sure you want to save the invoice?',
+      dialogContent: 'Are you sure you want to save this invoice?',
       cancelButtonLabel: 'No',
       confirmButtonLabel: 'Yes',
       callbackMethod: () => {

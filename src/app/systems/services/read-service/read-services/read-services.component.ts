@@ -3,6 +3,8 @@ import { CreateServiceComponent } from './../../create-service/create-service/cr
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { SharedComponent } from 'src/app/component/shared components/shared/shared.component';
+import { DialogInterface } from 'src/app/Interfaces/dialog.interface';
 
 @Component({
   selector: 'app-read-services',
@@ -36,4 +38,21 @@ export class ReadServicesComponent implements OnInit {
     );
 
 }
+
+openDeleteDialog() {
+  const dialogInterface: DialogInterface = {
+    dialogHeader: 'Confirmation Message',
+    dialogContent: 'Are you sure you want to delete this?',
+    cancelButtonLabel: 'No',
+    confirmButtonLabel: 'Yes',
+    callbackMethod: () => {
+     
+    },
+  };
+  this.dialog.open(SharedComponent, {
+    width: '300px',
+    data: dialogInterface,
+  });
+}
+
 }

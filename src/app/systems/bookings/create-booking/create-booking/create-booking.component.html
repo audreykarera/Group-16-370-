@@ -65,8 +65,8 @@
                     aria-label=".form-control-sm example">
                   <br>
                   <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <button class="btn btn-outline-success me-md-2" type="button">Send</button>
-                    <button class="btn btn-outline-danger" type="button">Cancel</button>
+                    <button class="btn btn-outline-success me-md-2" (click)="openConfirmDialog()" type="button">Make Booking</button>
+                    <button class="btn btn-outline-danger" (click)="openCancelDialog()" type="button">Cancel</button>
                   </div>
                 </div>
               </div>

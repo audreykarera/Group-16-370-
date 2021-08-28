@@ -1,3 +1,4 @@
+import { ReadExtracollectionComponent } from './systems/extra collection/read-extracollection/read-extracollection/read-extracollection.component';
 import { CreateBookingComponent } from './systems/bookings/create-booking/create-booking/create-booking.component';
 
 import { EstimateCostingComponent } from './systems/estimate-costing/estimate-costing/estimate-costing.component';
@@ -59,7 +60,7 @@ const routes: Routes = [
   { path: 'assets', component: ReadAssetComponent },
   { path: 'read-complaints', component: ReadComplaintsComponent},
   { path: 'read-quote', component: ReadQuoteComponent},
-  { path: 'tempemployeeside', component: ScheduleEmployeeComponent},
+  { path: 'Employee Schedule', component: ScheduleEmployeeComponent},
   { path: 'tempclientside', component: NavbarComponent},
   { path: 'tempeditemployee', component: EditEmployeeComponent},
   { path: 'register-client', component: RegisterClientsComponent},
@@ -77,6 +78,7 @@ const routes: Routes = [
   { path: 'clientviewinvoices', component: ClientViewInvoicesComponent},
   { path: 'request-quote', component: RequestQuoteComponent},
   { path: 'create-booking', component: CreateBookingComponent},
+  { path: 'extracollection', component: ReadExtracollectionComponent},
 
 ];
 
