@@ -14,8 +14,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import {MatCardModule} from '@angular/material/card';
-import {MatButtonModule} from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -124,7 +125,7 @@ const angularMaterials = [
   MatCardModule,
   FullCalendarModule,
   MatButtonModule,
-  
+  MatPaginatorModule,
 
 ]
 
@@ -237,7 +238,7 @@ const angularMaterials = [
     BrowserAnimationsModule,
     NgxChartsModule,
     ScheduleModule, RecurrenceEditorModule,
-    HttpClientModule  
+    HttpClientModule
 
 
   ],
