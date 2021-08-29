@@ -24,7 +24,7 @@ export class ReadServicesComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     const dialogReference = this.dialog.open(
-      CreateServiceComponent, 
+      CreateServiceComponent,
       dialogConfig
     );
   }
@@ -33,7 +33,7 @@ export class ReadServicesComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     const dialogReference = this.dialog.open(
-      EditServiceComponent, 
+      EditServiceComponent,
       dialogConfig
     );
 
@@ -46,7 +46,7 @@ openDeleteDialog() {
     cancelButtonLabel: 'No',
     confirmButtonLabel: 'Yes',
     callbackMethod: () => {
-     
+
     },
   };
   this.dialog.open(SharedComponent, {
