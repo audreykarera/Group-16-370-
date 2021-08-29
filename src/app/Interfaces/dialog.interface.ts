@@ -13,10 +13,7 @@ export interface DialogInterface {
   SupplierContactPersonEmail: string;
  }
 
- export interface Package {
-  PackageName: string;
-  PackageDetails: string;
- }
+
 
  export interface Employees {
 
@@ -30,6 +27,7 @@ export interface User {
 export interface ServiceType {
 
 }
+
 
  
   
