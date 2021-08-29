@@ -20,21 +20,19 @@ import { ServicePrice } from 'src/app/models/servicePrice';
   styleUrls: ['./read-services.component.scss']
 })
 export class ReadServicesComponent implements OnInit {
-  observeService: Observable<Service[]>=this.serviceService.getServices();
-  observeServiceType: Observable<ServiceType[]>=this.serviceServiceType.getServiceType();
-  observeServicePrice: Observable<ServicePrice[]>=this.serviceServicePrice.getServicePrices();
-  Service: Service[]=[];
-  ServiceType: ServiceType[]=[];
-  ServicePrice: ServicePrice[]=[];
+ 
+  serviceList: Service[];
+  serviceTypeList: ServiceType[];
+  servicePriceList: ServicePrice[];
   
   
 
   constructor(
     public router: Router,
     public dialog: MatDialog,
-    public serviceService: ServiceService,
-    public serviceServiceType: ServiceTypeService,
-    public serviceServicePrice: ServicePriceService
+    private serviceService: ServiceService,
+    private serviceServiceType: ServiceTypeService,
+    private serviceServicePrice: ServicePriceService
   ) { }
 
   ngOnInit(): void {
@@ -42,34 +40,17 @@ export class ReadServicesComponent implements OnInit {
   }
 
   readService(){
-    this.observeService.subscribe(data=>{
-      this.Service=data;
-      console.log(this.Service);
-    }, (err:HttpErrorResponse)=>{
-      console.log(err);
-    })    
+    this.serviceService.getServices().subscribe((res)=>{
+      this.serviceList =res as Service[];
+    })
   }
   
-  readServiceType(){
-    this.observeServiceType.subscribe(data=>{
-      this.ServiceType=data;
-      console.log(this.ServiceType);
-    }, (err:HttpErrorResponse)=>{
-      console.log(err);
-    })
+  deleteService(id){
+    this.serviceService.deleteService(id).subscribe((res)=>{
+      console.log(id);
+      this.readService();
+    });
   }
-
-  readServicePrice(){
-    this.observeServicePrice.subscribe(data=>{
-      this.ServicePrice=data;
-      console.log(this.ServicePrice);
-    }, (err:HttpErrorResponse)=>{
-      console.log(err);
-    })
-  }
-
-
-
 
   routerAddSerice() {
     const dialogConfig = new MatDialogConfig();
