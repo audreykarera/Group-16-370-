@@ -1,5 +1,8 @@
+//Modules
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+//Mat modules
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
@@ -13,18 +16,19 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import {MatCardModule} from '@angular/material/card';
-import {MatButtonModule} from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FullCalendarModule } from '@fullcalendar/angular';;
+import { FullCalendarModule } from '@fullcalendar/angular';
+import {HttpClientModule} from '@angular/common/http';
+//Calendar
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interaction from '@fullcalendar/interaction';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-
+//Components
 import { AppComponent } from './app.component';
+//Generated Compontents
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
@@ -67,10 +71,7 @@ import { CreateExtracollectionComponent } from './systems/extra collection/creat
 import { ReadExtracollectionComponent } from './systems/extra collection/read-extracollection/read-extracollection/read-extracollection.component';
 import { EditExtracollectionComponent } from './systems/extra collection/edit-extracollection/edit-extracollection/edit-extracollection.component';
 import { EmployeeSettingsComponent } from './systems/employee-settings/employee-settings.component';
-
-
 import { ReadAssetComponent } from './systems/assets/read-asset/read-asset/read-asset.component';
-
 import { ReadRequestedquoteComponent } from './systems/requested quote/read-requestedquote/read-requestedquote/read-requestedquote.component';
 import { CreateAssetComponent } from './systems/assets/read-asset/create-asset/create-asset/create-asset.component';
 import { UpdateAssetComponent } from './systems/assets/read-asset/update-asset/update-asset/update-asset.component';
@@ -100,7 +101,6 @@ import { EstimateCostingComponent } from './systems/estimate-costing/estimate-co
 import { ViewSentQuoteComponent } from './systems/requested quote/view-sent-quote/view-sent-quote/view-sent-quote.component';
 import { ClientViewInvoicesComponent } from './systems/invoices/client-view-invoices/client-view-invoices.component';
 import { RequestQuoteComponent } from './systems/quotes/request quote/request-quote/request-quote.component';
-import {HttpClientModule} from '@angular/common/http';
 
 
 
@@ -127,9 +127,6 @@ const angularMaterials = [
   MatCardModule,
   FullCalendarModule,
   MatButtonModule,
-  CommonModule, 
-  
-
 ]
 
 @NgModule({
@@ -177,72 +174,47 @@ const angularMaterials = [
     ReadExtracollectionComponent,
     EditExtracollectionComponent,
     EmployeeSettingsComponent,
-
     ReadAssetComponent,
-
     ReadRequestedquoteComponent,
-
     CreateAssetComponent,
-
     UpdateAssetComponent,
-
     DeleteAssetComponent,
-
     ReadComplaintsComponent,
-
     ViewComplaintsComponent,
-
     ViewEmployeeTitleComponent,
-
     ViewEmployeeTypeComponent,
-
     ViewEmploymentStatusesComponent,
-
     ScheduleEmployeeComponent,
-
     NavbarComponent,
-
     RegisterClientsComponent,
-
     TopNavComponent,
-
     LodgeComplaintComponent,
-
     LoginComponent,
-
     EmployeeSideCollectionNoteComponent,
-
     EditClientComponent,
-
     ReadScheduleComponent,
-
     UserSettingsComponent,
-
     CreateUserRoleComponent,
-
     EditUserRoleComponent,
-
     DeleteUserRoleComponent,
-
     ReadClientBookingComponent,
-
     BookingSlotsComponent,
     EstimateCostingComponent,
     ViewSentQuoteComponent,
     ClientViewInvoicesComponent,
     RequestQuoteComponent,
-
-
   ],
+
   imports: [
     ...angularMaterials,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     NgxChartsModule,
-    ScheduleModule, RecurrenceEditorModule,
-    HttpClientModule,FormsModule, 
-
+    ScheduleModule, 
+    RecurrenceEditorModule,
+    HttpClientModule, 
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

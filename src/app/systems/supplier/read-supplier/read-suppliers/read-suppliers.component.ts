@@ -1,11 +1,13 @@
 import { Observable } from 'rxjs';
-import { DialogInterface, Suppliers } from './../../../../Interfaces/dialog.interface';
-import { SupplierserviceService } from './../../supplier service/supplierservice.service';
+import { DialogInterface} from './../../../../Interfaces/dialog.interface';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CreateSupplierComponent } from '../../create-supplier/create-supplier/create-supplier.component';
 import { EditSuppliersComponent } from '../../edit-supplier/edit-suppliers/edit-suppliers.component';
 import { SharedComponent } from 'src/app/component/shared components/shared/shared.component';
+import { Supplier } from 'src/app/models/supplier';
+import { SupplierService } from 'src/app/shared/services/supplier.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-read-suppliers',
@@ -13,16 +15,27 @@ import { SharedComponent } from 'src/app/component/shared components/shared/shar
   styleUrls: ['./read-suppliers.component.scss']
 })
 export class ReadSuppliersComponent implements OnInit {
+  supplierList: Supplier[];
+  supplier: Supplier;
 
-  Suppliers: Suppliers[] = [];
-  Suppliers$: Observable<Suppliers[]> = this.service.getSuppliers();
-  constructor(private service: SupplierserviceService,
+  constructor(private supplierService: SupplierService,
     public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
-    this.Suppliers$.subscribe((res) => {
-      console.log(res);
+    this.readSuppliers();
+  }
+
+  readSuppliers(){
+    this.supplierService.getSuppliers().subscribe((res)=>{
+      this.supplierList = res as Supplier[];
+    })
+  }
+
+  onDelete(id){
+    this.supplierService.deleteSupplier(id).subscribe((res)=>{
+      console.log(id);
+      this.readSuppliers();
     });
   }
 

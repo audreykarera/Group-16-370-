@@ -1,5 +1,6 @@
 export class PackageRate {
     PackageRateId: number;
-    PackageRatePrice: number
-    PackagePriceDate: string;
+    PackagePrice: number;
+    PackagePriceDate: number;
+
 }

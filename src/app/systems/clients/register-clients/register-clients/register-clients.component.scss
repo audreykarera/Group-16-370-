@@ -5,9 +5,13 @@
   max-width: 900px;
   padding: 50px;
   margin: 20px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.example-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-  background-size: cover;
+
+mat-icon.mat-card-avatar {
+  width: 40px;
+  height: 40px;
+  font-size: 40px;
 }

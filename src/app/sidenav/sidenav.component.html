@@ -13,87 +13,87 @@
                         </mat-select>
                     </mat-form-field>
                     <span *ngIf="isSelected">
-                        <span *ngIf="Admin"> 
+                        <span *ngIf="Admin">
                          <a mat-list-item routerLinkActive="list-item-active" routerLink="/employees">
                           <mat-icon>
                            <mat-icon>people</mat-icon>
                           </mat-icon> Employees
-                         </a>  
-                        </span>  
-                        <span *ngIf="Admin"> 
+                         </a>
+                        </span>
+                        <span *ngIf="Admin">
                          <a mat-list-item routerLinkActive="list-item-active" routerLink="/clients">
                           <mat-icon>
                            <mat-icon>people_outline</mat-icon>
                           </mat-icon> Clients
-                         </a>  
-                        </span> 
-                        <span *ngIf="Admin"> 
+                         </a>
+                        </span>
+                        <span *ngIf="Admin">
                          <a mat-list-item routerLinkActive="list-item-active" routerLink="/suppliers">
                           <mat-icon>
                            <mat-icon>shopping_cart</mat-icon>
                           </mat-icon> Suppliers
-                         </a>  
-                        </span> 
-                        <span *ngIf="Admin"> 
+                         </a>
+                        </span>
+                        <span *ngIf="Admin">
                          <a mat-list-item routerLinkActive="list-item-active" routerLink="/users">
                           <mat-icon>
                            <mat-icon>supervised_user_circle</mat-icon>
                           </mat-icon> Users
-                         </a>  
-                        </span> 
-                        <span *ngIf="Admin"> 
+                         </a>
+                        </span>
+                        <span *ngIf="Admin">
                          <a mat-list-item routerLinkActive="list-item-active" routerLink="/bookings">
                           <mat-icon>
                            <mat-icon>calendar_today</mat-icon>
                           </mat-icon> Bookings
-                         </a>  
-                        </span> 
-                        <span *ngIf="Admin"> 
+                         </a>
+                        </span>
+                        <span *ngIf="Admin">
                          <a mat-list-item routerLinkActive="list-item-active" routerLink="/schedule">
                           <mat-icon>
                            <mat-icon>schedule</mat-icon>
                           </mat-icon> Schedule
-                         </a>  
-                        </span> 
-                        <span *ngIf="Admin"> 
+                         </a>
+                        </span>
+                        <span *ngIf="Admin">
                          <a mat-list-item routerLinkActive="list-item-active" routerLink="/reports">
                           <mat-icon>
                            <mat-icon>poll</mat-icon>
                           </mat-icon> Reports
-                         </a>  
-                        </span> 
-                        <span *ngIf="Admin"> 
+                         </a>
+                        </span>
+                        <span *ngIf="Admin">
                          <a mat-list-item [matMenuTriggerFor]="documents">
                           <mat-icon>
                             <mat-icon> insert_drive_file</mat-icon>
-                          </mat-icon> Documents <mat-icon>keyboard_arrow_down</mat-icon>  
-                         </a>  
+                          </mat-icon> Documents <mat-icon>keyboard_arrow_down</mat-icon>
+                         </a>
                          <mat-menu #documents="matMenu" xPosition="before">
                            <button mat-menu-item routerLinkActive="list-item-active" routerLink="/invoices">Invoices</button>
                            <button mat-menu-item routerLinkActive="list-item-active" routerLink="/read-quote">Quotes</button>
                            <button mat-menu-item routerLinkActive="list-item-active" routerLink="/collectionnote">Collection Notes</button>
-                         </mat-menu>  
-                        </span> 
-                        <span *ngIf="Admin"> 
+                         </mat-menu>
+                        </span>
+                        <span *ngIf="Admin">
                          <a mat-list-item routerLinkActive="list-item-active" routerLink="/assets">
                           <mat-icon>
                            <mat-icon>directions_car</mat-icon>
                           </mat-icon> Assets
-                         </a>  
-                        </span> 
-                        <span *ngIf="Admin"> 
+                         </a>
+                        </span>
+                        <span *ngIf="Admin">
                          <a mat-list-item routerLinkActive="list-item-active" routerLink="/read-complaints">
                           <mat-icon>
                            <mat-icon>error</mat-icon>
                           </mat-icon> Complaints
-                         </a>  
-                        </span>  
-                        <span *ngIf="Admin"> 
+                         </a>
+                        </span>
+                        <span *ngIf="Admin">
                          <a mat-list-item [matMenuTriggerFor]="settings">
                           <mat-icon>
                             <mat-icon> settings</mat-icon>
-                          </mat-icon> System Management <mat-icon>keyboard_arrow_down</mat-icon>  
-                         </a>  
+                          </mat-icon> System Management <mat-icon>keyboard_arrow_down</mat-icon>
+                         </a>
                          <mat-menu #settings="matMenu" xPosition="before">
                            <button mat-menu-item routerLinkActive="list-item-active" routerLink="/services">Services</button>
                            <button mat-menu-item routerLinkActive="list-item-active" routerLink="/servicetypes">Service Type</button>
@@ -101,91 +101,91 @@
                            <button mat-menu-item routerLinkActive="list-item-active" routerLink="/extracollection">Extra collection</button>
                            <button mat-menu-item routerLinkActive="list-item-active" routerLink= "/user-settings">User Settings</button>
                            <button mat-menu-item routerLinkActive="list-item-active" routerLink="/employee-settings">Employee Settings</button>
-                         </mat-menu>  
-                        </span> 
-                        <span *ngIf="Employee"> 
+                         </mat-menu>
+                        </span>
+                        <span *ngIf="Employee">
                          <a mat-list-item routerLinkActive="list-item-active" routerLink="/employeesidecollectionnote">
                           <mat-icon>
-                           <mat-icon></mat-icon>
+                           <mat-icon>summarize</mat-icon>
                           </mat-icon> Collection Note
-                         </a>  
-                        </span> 
-                        <span *ngIf="Employee"> 
+                         </a>
+                        </span>
+                        <span *ngIf="Employee">
                          <a mat-list-item routerLinkActive="list-item-active" routerLink="/employeesidebookings">
                           <mat-icon>
                            <mat-icon>calendar_today</mat-icon>
                           </mat-icon> Bookings
-                         </a>  
+                         </a>
                         </span>
-                        <span *ngIf="Employee"> 
+                        <span *ngIf="Employee">
                          <a mat-list-item routerLinkActive="list-item-active" routerLink="/login">
                           <mat-icon>
-                           <mat-icon></mat-icon>
-                          </mat-icon> User Login 
-                         </a>  
+                           <mat-icon>login</mat-icon>
+                          </mat-icon> User Login
+                         </a>
                         </span>
-                        <span *ngIf="Employee"> 
+                        <span *ngIf="Employee">
                          <a mat-list-item routerLinkActive="list-item-active" routerLink="/tempeditemployee">
                           <mat-icon>
                            <mat-icon>edit</mat-icon>
                           </mat-icon> Edit Employee
-                         </a>  
+                         </a>
                         </span>
-                        <span *ngIf="Employee"> 
+                        <span *ngIf="Employee">
                          <a mat-list-item routerLinkActive="list-item-active" routerLink="/Employee Schedule">
                           <mat-icon>
                            <mat-icon>schedule</mat-icon>
                           </mat-icon> Schedule
-                         </a>  
-                        </span>  
-                        <span *ngIf="Client"> 
+                         </a>
+                        </span>
+                        <span *ngIf="Client">
                          <a mat-list-item routerLinkActive="list-item-active" routerLink="/register-client">
                           <mat-icon>
-                           <mat-icon></mat-icon>
+                           <mat-icon>how_to_reg</mat-icon>
                           </mat-icon> Register Client
-                         </a>  
+                         </a>
                         </span>
-                        <span *ngIf="Client"> 
+                        <span *ngIf="Client">
                          <a mat-list-item routerLinkActive="list-item-active" routerLink="/editclient">
                           <mat-icon>
-                           <mat-icon></mat-icon>
+                           <mat-icon>manage_accounts</mat-icon>
                           </mat-icon> Edit Client
-                         </a>  
+                         </a>
                         </span>
-                        <span *ngIf="Client"> 
+                        <span *ngIf="Client">
                          <a mat-list-item routerLinkActive="list-item-active" routerLink="/lodge-complaint">
                           <mat-icon>
-                           <mat-icon></mat-icon>
+                           <mat-icon>error_outline</mat-icon>
                           </mat-icon> Lodge Complaint
-                         </a>  
+                         </a>
                         </span>
-                        <span *ngIf="Client"> 
+                        <span *ngIf="Client">
                          <a mat-list-item routerLinkActive="list-item-active" routerLink="/request-quote">
                           <mat-icon>
-                           <mat-icon></mat-icon>
+                           <mat-icon>request_quote</mat-icon>
                           </mat-icon> Request Quote
-                         </a>  
+                         </a>
                         </span>
-                         <span *ngIf="Client"> 
+                         <span *ngIf="Client">
                          <a mat-list-item routerLinkActive="list-item-active" routerLink="/mybookings">
                           <mat-icon>
                            <mat-icon>calendar_today</mat-icon>
                           </mat-icon> My Bookings
-                         </a>  
+                         </a>
                         </span>
-                        <span *ngIf="Client"> 
+                        <span *ngIf="Client">
                          <a mat-list-item routerLinkActive="list-item-active" routerLink="/clientviewinvoices">
                           <mat-icon>
-                           <mat-icon></mat-icon>
+                           <mat-icon>receipt_long</mat-icon>
                           </mat-icon> View Invoices
-                         </a>  
+                         </a>
                         </span>
-                        <span *ngIf="Client"> 
+                        <span *ngIf="Client">
                          <a mat-list-item routerLinkActive="list-item-active" routerLink="/requestedquotes">
                           <mat-icon>
-                           <mat-icon></mat-icon>
+                           <mat-icon>request_quote</mat-icon>
                           </mat-icon> My Quotes
-                         </a>  
+                         </a>
                         </span>
                     </span>
 </mat-nav-list>
