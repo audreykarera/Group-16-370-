@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { Observable } from 'rxjs';
-import { Clients } from 'src/app/Interfaces/dialog.interface';
-import { ClientService } from '../client service/client.service';
+
 import { ViewClientsComponent } from '../view-clients/view-clients/view-clients.component';
 
 @Component({
@@ -12,17 +10,11 @@ import { ViewClientsComponent } from '../view-clients/view-clients/view-clients.
 })
 export class ReadClientsComponent implements OnInit {
 
-  
-  Clients: Clients[] = [];
-  Clients$: Observable<Clients[]> = this.service.getClients();
-  constructor(private service: ClientService,
+  constructor(
     public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
-    this.Clients$.subscribe((res) => {
-      console.log(res);
-    });
   }
   
 

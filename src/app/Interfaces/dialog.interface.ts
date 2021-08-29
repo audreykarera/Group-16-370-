@@ -13,21 +13,9 @@ export interface DialogInterface {
   SupplierContactPersonNumber: string;
   SupplierContactPersonEmail: string;
  }
- export interface Employees {
 
- }
- export interface Clients {
 
-}
-export interface User {
-
-}
-export interface ServiceType {
-  serviceTypeName: string;
-  serviceTypeDescription: string;
-  
-
-}
+ 
 
  
   

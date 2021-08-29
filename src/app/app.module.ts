@@ -22,6 +22,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';;
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interaction from '@fullcalendar/interaction';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -101,6 +102,8 @@ import { ClientViewInvoicesComponent } from './systems/invoices/client-view-invo
 import { RequestQuoteComponent } from './systems/quotes/request quote/request-quote/request-quote.component';
 import {HttpClientModule} from '@angular/common/http';
 
+
+
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
   interaction
@@ -124,7 +127,7 @@ const angularMaterials = [
   MatCardModule,
   FullCalendarModule,
   MatButtonModule,
-  CommonModule
+  CommonModule, 
   
 
 ]
@@ -238,8 +241,7 @@ const angularMaterials = [
     BrowserAnimationsModule,
     NgxChartsModule,
     ScheduleModule, RecurrenceEditorModule,
-    HttpClientModule  
-
+    HttpClientModule,FormsModule, 
 
   ],
   providers: [],

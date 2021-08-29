@@ -1,22 +1,18 @@
-import { HttpClient } from '@angular/common/http';
+import { PackageRateService } from './../../../../shared/package rate service/package-rate.service';
+import { PackageRate } from './../../../../models/packageRate';
+import { PackageService } from './../../../../shared/package service/package.service';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { EditPackagesComponent } from './../../edit-packages/edit-packages/edit-packages.component';
 import { CreatePackageComponent } from './../../create-packages/create-package/create-package.component';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { Router } from '@angular/router';
 
 import { SharedComponent } from 'src/app/component/shared components/shared/shared.component';
-import { DialogInterface, } from 'src/app/Interfaces/dialog.interface';
+import { Observable } from 'rxjs';
+import { Package } from 'src/app/models/package';
+import { DialogInterface } from 'src/app/interfaces/dialog.interface';
 
-export class Package{
-  constructor(
-    public packageName: string,
-    public packageDetails: string,
-    public packageRateDate: string
-  ){
-  }
-  
-}
+
 
 @Component({
   selector: 'app-read-packages',
@@ -24,29 +20,39 @@ export class Package{
   styleUrls: ['./read-packages.component.scss']
 })
 export class ReadPackagesComponent implements OnInit {
+  PackageService: any;
+  packages: Package[] = [];
+  packages$: Observable<Package[]> = this.servicePackage.getPackages();
+  packagerates: PackageRate[] = [];
+  packagerates$: Observable<PackageRate[]> = this.servicePackageRate.getPackageRates();
 
 
-  packages: Package[];
-  constructor(private HttpClient: HttpClient,
-    public router: Router,
+  constructor(
+    public servicePackage: PackageService,
+    public servicePackageRate: PackageRateService,
     public dialog: MatDialog
   ) { }
 
-
   ngOnInit(): void {
-    this.getPackages();
-
+    this.readPackage();
   }
+  readPackage(){
+    this.packages$.subscribe(data=>{
+      this.packages=data;
+      console.log(this.packages);
+    }, (err:HttpErrorResponse)=>{
+      console.log(err);
+    })
+  } 
+  readPackageRates(){
+    this.packagerates$.subscribe(data=>{
+      this.packagerates=data;
+      console.log(this.packagerates);
+    }, (err:HttpErrorResponse)=>{
+      console.log(err);
+    })
+  } 
 
-  getPackages(){
-    this.HttpClient.get<any>('http://localhost:60000/api/package/getpackage').subscribe(
-      Response => {
-        console.log(Response);
-        this.packages = Response;
-
-      }
-    );
-  }
   routerAddPackage() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;

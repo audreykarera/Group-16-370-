@@ -25,10 +25,10 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let Package of packages " >
-                <td><span>{{Package.packageName}}</span></td>
-                <td><span>{{Package.packageRateDate}}</span></td>
-                <td><span>{{Package.packageDetails}}</span></td>
+              <tr *ngFor="let item of packages " >
+                <td><span>{{item.packageName}}</span></td>
+                <td><span>{{item.packageRate.packageRatePrice}}</span></td>
+                <td><span>{{item.packageDetails}}</span></td>
                 <td class="icon-hover">
                   <mat-icon (click)="routerEditPackage()">edit</mat-icon>
                 </td>
