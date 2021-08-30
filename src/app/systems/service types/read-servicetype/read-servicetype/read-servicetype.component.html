@@ -28,10 +28,10 @@
                 <td>{{item.serviceTypeName}}</td>
                 <td>{{item.serviceTypeDescription}}</td>
                 <td class="icon-hover">
-                  <mat-icon (click)="routerEditServiceType(item.serviceTypeId)">edit</mat-icon>
+                  <mat-icon (click)="routerEditServiceType(item.serviceTypeId,item.serviceTypeName,item.serviceTypeDescription)">edit</mat-icon>
                 </td>
                 <td class="icon-hover">
-                  <mat-icon (click)="deleteServiceType(item.serviceTypeId)">delete</mat-icon>
+                  <mat-icon (click)="onDelete(item.serviceTypeId)">delete</mat-icon>
                 </td>
               </tr>
             </tbody>

@@ -20,15 +20,17 @@ export class ServiceTypeService {
     return this.http.get(this.apiUrl + 'getservicetype/');
   }  
 
-  postServiceType(serviceType: ServiceType): Observable<ServiceType> {
-    return this.http.post<ServiceType>(this.apiUrl, serviceType)
-   
+  getServiceTypeId(id){
+    return this.http.get(this.apiUrl+'getservicetype'+id);
   }
-  // postServiceType(obj){
-  //   return this.http.get(this.apiUrl +'createservicetype/', obj);
-  // }
 
-  //edit
+  patchServiceType(obj){
+    return this.http.patch(this.apiUrl + 'updateservicetype/', obj);
+  }
+
+  postServiceType(obj){
+    return this.http.post(this.apiUrl +'createservicetype/', obj);
+  } 
 
   deleteServiceType(id){
     return this.http.delete(this.apiUrl +'deleteservicetype'+ id);

@@ -1,6 +1,6 @@
 import { ServiceType } from 'src/app/models/serviceType';
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SharedComponent } from 'src/app/component/shared components/shared/shared.component';
 import { DialogInterface } from 'src/app/Interfaces/dialog.interface';
 import { ServiceTypeService } from 'src/app/shared/services/service-type.service';
@@ -12,18 +12,27 @@ import { ServiceTypeService } from 'src/app/shared/services/service-type.service
 })
 export class EditServicetypeComponent implements OnInit {
 
-  serviceTypeList: ServiceType[];
+ serviceType:ServiceType;
 
   constructor(public dialog: MatDialog,
-    private serviceTypeService:ServiceTypeService) { }
+    private serviceTypeService:ServiceTypeService,
+    @Inject(MAT_DIALOG_DATA)
+    public data: any) { }
   
   ngOnInit(): void {
-    this.readServiceTypes();
+    
+    console.log(this.data);
   }
 
   readServiceTypes(){
     this.serviceTypeService.getServiceTypes().subscribe((res)=>{
-      this.serviceTypeList=res as ServiceType[];
+      this.serviceType=res as ServiceType;
+    })
+  }
+
+  updateServiceTypes(obj){
+    this.serviceTypeService.patchServiceType(obj).subscribe((res)=>{
+      this.serviceType=res as ServiceType;
     })
   }
   openConfirmDialog() {

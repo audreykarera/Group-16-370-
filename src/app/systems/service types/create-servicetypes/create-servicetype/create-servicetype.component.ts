@@ -22,11 +22,11 @@ export class CreateServicetypeComponent implements OnInit {
       }
    
       
-      // onSave(){
-      //   this.serviceTypeService.postServiceType(this.serviceType).subscribe((res)=>{
-      //     this.serviceType = res as ServiceType{;
-      //   })
-      // }
+      onSave(){
+        this.serviceTypeService.postServiceType(this.serviceType).subscribe((res)=>{
+          this.serviceType = res as ServiceType;
+        })
+      }
     
       refreshForm(){
         this.serviceType = {
