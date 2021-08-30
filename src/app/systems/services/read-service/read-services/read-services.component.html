@@ -30,18 +30,18 @@
                 <td>{{item.serviceName}}</td>
                 <td>{{item.serviceDescription}}</td>
                 <td>{{item.serviceType.serviceTypeName}}</td>
-                <td>{{item.servicePrice.servicePriceAmount}}</td>
+                <td>R{{item.servicePrice.servicePriceAmount}}</td>
                 <td class="icon-hover">
                   <mat-icon (click)="routerEditService()">edit</mat-icon>
                 </td>
                 <td class="icon-hover">
-                  <mat-icon (click)="openDeleteDialog()">delete</mat-icon>
+                  <mat-icon (click)="deleteServiceType(item.serviceTypeId)">delete</mat-icon>
                 </td>
               </tr>
             </tbody>
           </table>
-        </div>
-        <nav aria-label="Page navigation example">
+
+            <nav aria-label="Page navigation example">
           <ul class="pagination justify-content-end">
             <li class="page-item"><a class="page-link" href="#">1</a></li>
             <li class="page-item"><a class="page-link" href="#">2</a></li>
@@ -50,6 +50,7 @@
             <li class="page-item"><a class="page-link" href="#">5</a></li>
           </ul>
         </nav>
+        </div>      
       </div>
     </div>
   </div>

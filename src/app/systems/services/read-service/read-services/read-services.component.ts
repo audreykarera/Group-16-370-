@@ -1,6 +1,7 @@
+import { ServiceType } from './../../../../models/serviceType';
 import { ServicePriceService } from './../../../../shared/services/service-price.service';
 import { ServiceTypeService } from './../../../../shared/services/service-type.service';
-import { ServiceType } from './../../../../Interfaces/dialog.interface';
+
 import { Observable } from 'rxjs';
 import { ServiceService } from './../../../../shared/services/service.service';
 import { EditServiceComponent } from './../../edit-service/edit-service/edit-service.component';
@@ -44,9 +45,15 @@ export class ReadServicesComponent implements OnInit {
       this.serviceList =res as Service[];
     })
   }
+
+  readServiceType(){
+    this.serviceServiceType.getServiceTypes().subscribe((res)=>{
+      this.serviceTypeList=res as ServiceType[];
+    })
+  }
   
   deleteService(id){
-    this.serviceService.deleteService(id).subscribe((res)=>{
+    this.serviceServiceType.deleteServiceType(id).subscribe((res)=>{
       console.log(id);
       this.readService();
     });

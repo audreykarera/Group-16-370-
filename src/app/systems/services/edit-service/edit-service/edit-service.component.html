@@ -13,23 +13,27 @@
         <div class="form-group">
             <div class="container">
                 <div class="row">
-                    <div class="col" >
+                    <div class="col" *ngFor="let item of serviceList">
                         <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Service Name</label>
-                        <input class="form-control form-control-sm" type="text" placeholder="Service Name"
+                        <input class="form-control form-control-sm" type="text" placeholder="{{item.serviceName}}"
                             aria-label=".form-control-sm example">
                         <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Service Description</label>
-                        <input class="form-control form-control-sm" type="text" placeholder="Service Description"
+                        <input class="form-control form-control-sm" type="text" placeholder="{{item.serviceDescription}}"
                             aria-label=".form-control-sm example">
                         <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Service Type</label>
                         <select class="form-select form-select-sm" aria-label=".form-select-sm example" type="text">
+                             <option>{{item.serviceType.serviceTypeName}}</option> <!--need to get the dropdown to read array of service types-->
+                            
+                          </select>
+                         <!--><select ng-options="item.serviceType.serviceTypeName for item in ServiceType"class="form-select form-select-sm" aria-label=".form-select-sm example" type="text">
                             <option selected></option>
-                             <option value="1">Domestic rubbish</option>
+                             <option value="" label="Select a Service Type"></option>
                             <option value="2">plastic</option>
                             <option value="3">oil</option>
                             <option value="3">compost and fertilizer</option>
-                          </select>
+                          </select> -->
                            <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Starting Price</label>
-                        <input class="form-control form-control-sm" type="text" placeholder="Starting Price"
+                        <input class="form-control form-control-sm" type="text" placeholder="R{{item.servicePrice.servicePriceAmount}}"
                             aria-label=".form-control-sm example">
                           
                           <br>

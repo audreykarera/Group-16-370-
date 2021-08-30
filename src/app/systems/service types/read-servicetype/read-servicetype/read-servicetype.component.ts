@@ -1,6 +1,5 @@
-import { ServiceTypeService } from './../../../service types/service type service/service-type.service';
-
-import { DialogInterface, ServiceType } from './../../../../Interfaces/dialog.interface';
+import { ServiceTypeService } from 'src/app/shared/services/service-type.service';
+import { DialogInterface } from './../../../../Interfaces/dialog.interface';
 import { EditServicetypeComponent } from './../../edit-servicetype/edit-servicetype/edit-servicetype.component';
 import { CreateServicetypeComponent } from './../../create-servicetypes/create-servicetype/create-servicetype.component';
 import { Component, OnInit } from '@angular/core';
@@ -9,6 +8,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { SharedComponent } from 'src/app/component/shared components/shared/shared.component';
 import { HttpErrorResponse } from '@angular/common/http';
+import { ServiceType } from 'src/app/models/serviceType';
 
 @Component({
   selector: 'app-read-servicetype',
@@ -17,26 +17,32 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class ReadServicetypeComponent implements OnInit {
 
-  ServiceType: ServiceType[] = [];
-  observeServiceType: Observable<ServiceType[]> = this.service.getServiceType();
+  serviceTypeList: ServiceType[];
+  serviceType:ServiceType;
   
-  constructor(private service: ServiceTypeService,
+  
+  constructor(
     public router: Router,
     public dialog: MatDialog,
-    public serviceServiceType: ServiceTypeService,
+    private serviceServiceType: ServiceTypeService,
   ) { }
 
-
   ngOnInit(): void {
-  this.readServiceType();
+  this.readServiceTypes();
   }
-  readServiceType(){
-    this.observeServiceType.subscribe(data=>{
-      this.ServiceType=data;
-      console.log(this.ServiceType);
-    }, (err:HttpErrorResponse)=>{
-      console.log(err);
+
+  readServiceTypes(){
+    this.serviceServiceType.getServiceTypes().subscribe((res)=>{
+      this.serviceTypeList =res as ServiceType[];
     })
+  }
+  
+  deleteServiceType(id){
+    this.serviceServiceType.deleteServiceType(id).subscribe((res)=>{
+      console.log(id);
+      this.readServiceTypes();
+    });
+    
   }
 
   routerAddServiceType() {
@@ -48,7 +54,7 @@ export class ReadServicetypeComponent implements OnInit {
     );
   }
 
-  routerEditServiceType() {
+  routerEditServiceType(id) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     const dialogReference = this.dialog.open(

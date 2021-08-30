@@ -11,8 +11,17 @@ export class ServicePriceService {
   apiUrl="http://localhost:60000/api/serviceprice/";
   constructor(private http:HttpClient) { }
 
-  getServicePrices():Observable<ServicePrice[]>{
-    console.log(`${this.apiUrl}getserviceprice`)
-    return this.http.get<ServicePrice[]>(`${this.apiUrl}getserviceprice`).pipe(map(res=>res));
+  getServicePrices(){
+    return this.http.get(this.apiUrl + 'getserviceprice/');
+  }  
+
+  postServices(obj){
+    return this.http.get(this.apiUrl +'createserviceprice/', obj);
+  }
+
+  //edit
+
+  deleteService(id){
+    return this.http.delete(this.apiUrl +'deleteserviceprice'+id);
   }
 }

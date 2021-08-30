@@ -1,7 +1,9 @@
+import { ServiceType } from 'src/app/models/serviceType';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { SharedComponent } from 'src/app/component/shared components/shared/shared.component';
 import { DialogInterface } from 'src/app/Interfaces/dialog.interface';
+import { ServiceTypeService } from 'src/app/shared/services/service-type.service';
 
 @Component({
   selector: 'app-edit-servicetype',
@@ -10,9 +12,19 @@ import { DialogInterface } from 'src/app/Interfaces/dialog.interface';
 })
 export class EditServicetypeComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
+  serviceTypeList: ServiceType[];
+
+  constructor(public dialog: MatDialog,
+    private serviceTypeService:ServiceTypeService) { }
   
   ngOnInit(): void {
+    this.readServiceTypes();
+  }
+
+  readServiceTypes(){
+    this.serviceTypeService.getServiceTypes().subscribe((res)=>{
+      this.serviceTypeList=res as ServiceType[];
+    })
   }
   openConfirmDialog() {
     const dialogInterface: DialogInterface = {

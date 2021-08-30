@@ -1,5 +1,5 @@
-import { UserService } from './../../user service/user.service';
-import { DialogInterface, User } from 'src/app/Interfaces/dialog.interface';
+
+import { DialogInterface } from 'src/app/Interfaces/dialog.interface';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { EditUsersComponent } from '../../edit-user/edit-users/edit-users.component';
@@ -13,16 +13,13 @@ import { SharedComponent } from 'src/app/component/shared components/shared/shar
 })
 export class ReadUsersComponent implements OnInit {
 
-  User: User[] = [];
-  User$: Observable<User[]> = this.service.getUser();
-  constructor(private service: UserService,
+  constructor(
     public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
-    this.User$.subscribe((res) => {
-      console.log(res);
-    });
+   
+   
   }
 
   routerEditUser() {
