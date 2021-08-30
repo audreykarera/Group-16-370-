@@ -39,6 +39,12 @@ export class ReadSuppliersComponent implements OnInit {
     });
   }
 
+  editSupplier(obj){
+    this.supplierService.postSupplier(obj).subscribe((res)=>{
+      this.readSuppliers();
+    })
+  }
+
   routerAddSupplier() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
@@ -48,7 +54,8 @@ export class ReadSuppliersComponent implements OnInit {
     );
   }
 
-  routerEditSupplier() {
+  routerEditSupplier(supplierId: number, supplierName: string, supplierContactPersonEmail: string, supplierContactPersonNumber: string) {
+    console.log(supplierId, supplierName, supplierContactPersonEmail, supplierContactPersonNumber);
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     const dialogReference = this.dialog.open(
@@ -73,3 +80,7 @@ export class ReadSuppliersComponent implements OnInit {
   }
 
 }
+function obj(obj: any): any {
+  throw new Error('Function not implemented.');
+}
+

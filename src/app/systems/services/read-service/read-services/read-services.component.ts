@@ -1,6 +1,6 @@
 import { ServicePriceService } from './../../../../shared/services/service-price.service';
 import { ServiceTypeService } from './../../../../shared/services/service-type.service';
-import { ServiceType } from './../../../../Interfaces/dialog.interface';
+import { ServiceType } from 'src/app/models/serviceType';
 import { Observable } from 'rxjs';
 import { ServiceService } from './../../../../shared/services/service.service';
 import { EditServiceComponent } from './../../edit-service/edit-service/edit-service.component';

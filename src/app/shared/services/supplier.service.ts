@@ -17,6 +17,14 @@ export class SupplierService {
     return this.http.get(this.apiUrl + 'getsuppliers/');
   }
 
+  getSupplierId(id){
+    return this.http.get(this.apiUrl + 'getsupplier' + id);
+  }
+
+  patchSupplier(obj){
+    return this.http.get(this.apiUrl + 'updatesupplier/',obj);
+  }
+
   postSupplier(obj){
     return this.http.post(this.apiUrl + 'createsupplier/', obj);
   }

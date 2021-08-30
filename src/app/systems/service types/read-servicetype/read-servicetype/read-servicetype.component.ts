@@ -1,14 +1,22 @@
-import { ServiceTypeService } from './../../../service types/service type service/service-type.service';
+import { HttpClient } from '@angular/common/http';
 
-import { DialogInterface, ServiceType } from './../../../../Interfaces/dialog.interface';
+import { DialogInterface } from './../../../../Interfaces/dialog.interface';
 import { EditServicetypeComponent } from './../../edit-servicetype/edit-servicetype/edit-servicetype.component';
 import { CreateServicetypeComponent } from './../../create-servicetypes/create-servicetype/create-servicetype.component';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { SharedComponent } from 'src/app/component/shared components/shared/shared.component';
-import { HttpErrorResponse } from '@angular/common/http';
+
+
+export class ServiceType{
+  constructor(
+    public serviceTypeName: string,
+    public serviceTypeDescription: string
+  ){
+  }
+
+}
 
 @Component({
   selector: 'app-read-servicetype',
@@ -17,26 +25,25 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class ReadServicetypeComponent implements OnInit {
 
-  ServiceType: ServiceType[] = [];
-  observeServiceType: Observable<ServiceType[]> = this.service.getServiceType();
-
-  constructor(private service: ServiceTypeService,
+  servicetypes: ServiceType[];
+  constructor(private HttpClient: HttpClient,
     public router: Router,
-    public dialog: MatDialog,
-    public serviceServiceType: ServiceTypeService,
+    public dialog: MatDialog
   ) { }
 
 
   ngOnInit(): void {
-  this.readServiceType();
+    this.getServiceTypes();
   }
-  readServiceType(){
-    this.observeServiceType.subscribe(data=>{
-      this.ServiceType=data;
-      console.log(this.ServiceType);
-    }, (err:HttpErrorResponse)=>{
-      console.log(err);
-    })
+
+  getServiceTypes(){
+    this.HttpClient.get<any>('http://localhost:60000/api/servicetype/getservicetype').subscribe(
+      Response => {
+        console.log(Response);
+        this.servicetypes = Response;
+
+      }
+    );
   }
   // readService(){
   //   this.serviceService.getServices().subscribe((res)=>{

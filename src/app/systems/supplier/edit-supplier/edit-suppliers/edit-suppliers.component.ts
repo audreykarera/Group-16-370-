@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { SharedComponent } from 'src/app/component/shared components/shared/shared.component';
 import { DialogInterface } from 'src/app/interfaces/dialog.interface';
+import { Supplier } from 'src/app/models/supplier';
+import { SupplierService } from 'src/app/shared/services/supplier.service';
 
 @Component({
   selector: 'app-edit-suppliers',
@@ -9,8 +11,9 @@ import { DialogInterface } from 'src/app/interfaces/dialog.interface';
   styleUrls: ['./edit-suppliers.component.scss']
 })
 export class EditSuppliersComponent implements OnInit {
-
-  constructor(public dialog: MatDialog) { }
+  supplier:Supplier;
+  constructor(private supplierService: SupplierService,
+    public dialog: MatDialog) { }
   
   ngOnInit(): void {
   }

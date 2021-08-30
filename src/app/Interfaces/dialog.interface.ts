@@ -1,3 +1,4 @@
+
 export interface DialogInterface {
     cancelButtonLabel: string;
     confirmButtonLabel: string;
@@ -14,19 +15,7 @@ export interface DialogInterface {
  }
 
 
-
- export interface Employees {
-
- }
- export interface Clients {
-
-}
-export interface User {
-
-}
-export interface ServiceType {
-
-}
+ 
 
 
  

@@ -9,7 +9,7 @@
         <br>
         <div class="position-relative">
           <div class="position-absolute top-0 end-0 icon-hover">
-            <mat-icon style="font-size: xx-large" (click)="routerAddServiceType()">add</mat-icon>
+            <mat-icon style="font-size: xx-large"  (click)="routerAddServiceType()">add</mat-icon>
           </div>
         </div>
         <br>
@@ -24,9 +24,9 @@
               </tr>
             </thead>
             <tbody>
-               <tr *ngFor="let item of ServiceType">
-                <td>{{item.serviceTypeName}}</td>
-                <td>{{item.serviceTypeDescription}}</td>
+              <tr *ngFor="let servicetype of servicetypes" >
+                <td><span>{{servicetype.serviceTypeName}}</span></td>
+                <td><span>{{servicetype.serviceTypeDescription}}</span></td>
                 <td class="icon-hover">
                   <mat-icon (click)="routerEditServiceType()">edit</mat-icon>
                 </td>
