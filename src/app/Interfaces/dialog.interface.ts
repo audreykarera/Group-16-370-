@@ -14,6 +14,11 @@ export interface DialogInterface {
   SupplierContactPersonEmail: string;
  }
 
+ export class EmployeeType{
+  EmployeeTypeId: number;
+  EmployeeTypeName: string;
+}
+
 
  
 

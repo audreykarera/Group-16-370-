@@ -1,7 +1,8 @@
 //Modules
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms'; 
+import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 //Mat modules
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -101,6 +102,8 @@ import { EstimateCostingComponent } from './systems/estimate-costing/estimate-co
 import { ViewSentQuoteComponent } from './systems/requested quote/view-sent-quote/view-sent-quote/view-sent-quote.component';
 import { ClientViewInvoicesComponent } from './systems/invoices/client-view-invoices/client-view-invoices.component';
 import { RequestQuoteComponent } from './systems/quotes/request quote/request-quote/request-quote.component';
+
+import { AddEmployeeTypeComponent } from './systems/employee-settings/add-employee-type/add-employee-type/add-employee-type.component';
 
 
 
@@ -203,6 +206,8 @@ const angularMaterials = [
     ViewSentQuoteComponent,
     ClientViewInvoicesComponent,
     RequestQuoteComponent,
+    AddEmployeeTypeComponent,
+    AddEmployeeTypeComponent,
   ],
 
   imports: [
