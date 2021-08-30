@@ -19,7 +19,7 @@ export class ReadServicetypeComponent implements OnInit {
 
   ServiceType: ServiceType[] = [];
   observeServiceType: Observable<ServiceType[]> = this.service.getServiceType();
-  
+
   constructor(private service: ServiceTypeService,
     public router: Router,
     public dialog: MatDialog,
@@ -38,12 +38,16 @@ export class ReadServicetypeComponent implements OnInit {
       console.log(err);
     })
   }
-
+  // readService(){
+  //   this.serviceService.getServices().subscribe((res)=>{
+  //     this.serviceList =res as Service[];
+  //   })
+  // }
   routerAddServiceType() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     const dialogReference = this.dialog.open(
-      CreateServicetypeComponent, 
+      CreateServicetypeComponent,
       dialogConfig
     );
   }
@@ -52,7 +56,7 @@ export class ReadServicetypeComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     const dialogReference = this.dialog.open(
-      EditServicetypeComponent, 
+      EditServicetypeComponent,
       dialogConfig
     );
 
@@ -64,7 +68,7 @@ openDeleteDialog() {
     cancelButtonLabel: 'No',
     confirmButtonLabel: 'Yes',
     callbackMethod: () => {
-     
+
     },
   };
   this.dialog.open(SharedComponent, {
