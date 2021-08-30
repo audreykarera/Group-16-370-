@@ -44,7 +44,7 @@ export class ReadSuppliersComponent implements OnInit {
       this.readSuppliers();
     })
   }
-
+//Used to go to the add model
   routerAddSupplier() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
@@ -53,14 +53,22 @@ export class ReadSuppliersComponent implements OnInit {
       dialogConfig
     );
   }
-
+//Used to go to the edit model
   routerEditSupplier(supplierId: number, supplierName: string, supplierContactPersonEmail: string, supplierContactPersonNumber: string) {
     console.log(supplierId, supplierName, supplierContactPersonEmail, supplierContactPersonNumber);
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     const dialogReference = this.dialog.open(
       EditSuppliersComponent, 
-      dialogConfig
+      {
+        disableClose: true,
+        data: {
+          supplierId, 
+          supplierName, 
+          supplierContactPersonEmail,
+          supplierContactPersonNumber
+        }
+      }
     );
   }
   openDeleteDialog() {

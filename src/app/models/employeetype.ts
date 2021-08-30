@@ -1,4 +1,4 @@
-export class EmployeeType {
-    EmployeeTypeId: number;  
-    EmployeeTypeName: string; 
+export class EmployeeType{
+    EmployeeTypeId: number;
+    EmployeeTypeName: string;
 }

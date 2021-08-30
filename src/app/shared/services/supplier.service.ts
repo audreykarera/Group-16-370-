@@ -13,22 +13,23 @@ export class SupplierService {
     private http: HttpClient
   ) { }
 
+  //Get all suppliers
   getSuppliers(){
     return this.http.get(this.apiUrl + 'getsuppliers/');
   }
-
+//Get supplier by id
   getSupplierId(id){
     return this.http.get(this.apiUrl + 'getsupplier' + id);
   }
-
+//Update supplier
   patchSupplier(obj){
-    return this.http.get(this.apiUrl + 'updatesupplier/',obj);
+    return this.http.patch(this.apiUrl + 'updatesupplier/',obj);
   }
-
+//Create supplier
   postSupplier(obj){
     return this.http.post(this.apiUrl + 'createsupplier/', obj);
   }
-
+//Delete supplier
   deleteSupplier(id){
     return this.http.delete(this.apiUrl + 'deletesupplier' + id);
   }
