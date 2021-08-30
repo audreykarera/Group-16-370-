@@ -1,12 +1,13 @@
-import { EmployeeTypeService } from './../../../shared/employee type/employee-type.service';
 import { EmployeeType } from './../../../models/employeeType';
-import { AddEmployeeTypeComponent } from './../add-employee-type/add-employee-type.component';
 import { DeleteEmployeeTypeComponent } from './../delete-employee-type/delete-employee-type.component';
 import { EditEmployeeTypeComponent } from './../edit-employee-type/edit-employee-type.component';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { EmployeeTypeService } from 'src/app/shared/services/employee-type.service';
+import { AddEmployeeTypeComponent } from '../add-employee-type/add-employee-type/add-employee-type.component';
+
 
 @Component({
   selector: 'app-view-employee-type',
@@ -14,27 +15,28 @@ import { Observable } from 'rxjs';
   styleUrls: ['./view-employee-type.component.scss']
 })
 export class ViewEmployeeTypeComponent implements OnInit {
-
-  employeetypes: EmployeeType[] = [];
-  employeetypes$: Observable<EmployeeType[]> = this.serviceEmployeeType.getEmployeeType();
+  employeeTypeList: EmployeeType[]; 
+  employeeType: EmployeeType; 
 
 
   constructor(
-    public serviceEmployeeType: EmployeeTypeService,
+    public employeeTypeService: EmployeeTypeService,
     public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
-    this.readEmployeeType();
+    this.readEmployeeTypes();
   }
-  readEmployeeType(){
-    this.employeetypes$.subscribe(data=>{
-      this.employeetypes=data;
-      console.log(this.employeetypes);
-    }, (err:HttpErrorResponse)=>{
-      console.log(err);
-    })
+  
+  readEmployeeTypes(){
+    console.log(this.employeeTypeList);
+    this.employeeTypeService.getEmploymentStatuses().subscribe((res)=>{
+      this.employeeTypeList = res as EmployeeType[];
+      console.log(this.employeeTypeList);
+    });
   }
+
+
   routerEditEmployeeTypes() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false; 

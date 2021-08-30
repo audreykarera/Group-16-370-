@@ -22,10 +22,11 @@ export class CreateSupplierComponent implements OnInit {
 
   onSave(){
     this.supplierService.postSupplier(this.supplier).subscribe((res)=>{
-      this.supplier = res as Supplier; 
+      this.supplier = res as Supplier; //Again... Look at line 14 for the supplier we are referring to
     })
   }
 
+  //This method rfreshes the form verytime something is done. That is why it is called in the OnInit
   refreshForm(){
     this.supplier = {
       SupplierId: 0,

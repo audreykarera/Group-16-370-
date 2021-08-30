@@ -7,6 +7,18 @@ export interface DialogInterface {
     callbackMethod: () => void;
   }
  
+ export interface Suppliers {
+  SupplierID: number;
+  SupplierName: string;
+  SupplierContactPersonNumber: string;
+  SupplierContactPersonEmail: string;
+ }
+
+ export class EmployeeType{
+  EmployeeTypeId: number;
+  EmployeeTypeName: string;
+}
+
 
  
 

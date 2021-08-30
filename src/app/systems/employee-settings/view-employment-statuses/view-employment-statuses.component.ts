@@ -1,4 +1,4 @@
-import { EmploymentStatusService } from './../../../shared/employment status/employment-status.service';
+
 import { EmploymentStatus } from './../../../models/employmentStatus';
 import { AddEmploymentStatusComponent } from './../add-employment-status/add-employment-status.component';
 import { DeleteEmploymentStatusesComponent } from './../delete-employment-statuses/delete-employment-statuses.component';
@@ -16,25 +16,25 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class ViewEmploymentStatusesComponent implements OnInit {
 
   employmentstatuses: EmploymentStatus[] = [];
-  employmentstatuses$: Observable<EmploymentStatus[]> = this.serviceEmploymentStatus.getEmploymentStatus();
+  //employmentstatuses$: Observable<EmploymentStatus[]> = this.serviceEmploymentStatus.getEmploymentStatus();
 
 
   constructor(
-    public serviceEmploymentStatus: EmploymentStatusService,
+    //public serviceEmploymentStatus: EmploymentStatusService,
     public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
-    this.readEmploymentStatus();
+    //this.readEmploymentStatus();
   }
-  readEmploymentStatus(){
-    this.employmentstatuses$.subscribe(data=>{
-      this.employmentstatuses=data;
-      console.log(this.employmentstatuses);
-    }, (err:HttpErrorResponse)=>{
-      console.log(err);
-    })
-  } 
+  // readEmploymentStatus(){
+  //   this.employmentstatuses$.subscribe(data=>{
+  //     this.employmentstatuses=data;
+  //     console.log(this.employmentstatuses);
+  //   }, (err:HttpErrorResponse)=>{
+  //     console.log(err);
+  //   })
+  // } 
   routerEditEmploymentStatuses() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false; 

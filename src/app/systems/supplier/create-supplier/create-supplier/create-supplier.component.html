@@ -17,17 +17,21 @@
                     <div class="col">
                         <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Supplier Name</label>
                         <input class="form-control form-control-sm" type="text" placeholder="Supplier Name"
-                            aria-label=".form-control-sm example"  [(ngModel)]="supplier.SupplierName">
-                        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Supplier Contact Number</label>
+                            aria-label=".form-control-sm example" [(ngModel)]="supplier.SupplierName"> <!--ng model, look at line 14 for the first supplier we will be referring to-->
+                        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Supplier Contact
+                            Number</label>
                         <input class="form-control form-control-sm" type="text" placeholder="Supplier Contact Number"
                             aria-label=".form-control-sm example" [(ngModel)]="supplier.SupplierContactPersonNumber">
-                        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Supplier Email Address</label>
+                        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Supplier Email
+                            Address</label>
                         <input class="form-control form-control-sm" type="text" placeholder="Supplier Email Address"
                             aria-label=".form-control-sm example" [(ngModel)]="supplier.SupplierContactPersonEmail">
-                            <br>
+                        <br>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button class="btn btn-outline-success me-md-2" (click)="onSave()" type="button">Save</button>
-                            <button class="btn btn-outline-danger"  (click)="openCancelDialog()"type="button">Cancel</button>
+                            <button class="btn btn-outline-success me-md-2" (click)="onSave()"
+                                type="button">Save</button>
+                            <button class="btn btn-outline-danger" (click)="openCancelDialog()"
+                                type="button">Cancel</button>
                         </div>
                     </div>
                 </div>
@@ -37,3 +41,59 @@
 </body>
 
 </html>
+
+
+<!-- <form [formGroup]="supplierForm" (ngSubmit)="onSave()">
+    <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Supplier Name</label>
+    <input class="form-control form-control-sm" [ngClass]="
+    (supplierForm.get('supplierName').touched || supplierForm.get('supplierName').dirty) &&
+    supplierForm.get('supplierName').hasError('required')
+    ? 'is-invalid' 
+    : '' || supplierForm.get('supplierName').hasError('minlength')
+    ? 'is-invalid'
+    : '' ||
+    ((supplierForm.get('supplierName').touched ||
+    supplierForm.get('supplierName').dirty) &&
+    !supplierForm.get('supplierName').invalid)
+    ? 'is-valid'
+    : ''" type="text" aria-label=".form-control-sm example" formControlName="supplierName">
+    <div class="invalid-feedback">
+    </div>
+    <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Supplier Contact Number</label>
+    <input class="form-control form-control-sm" [ngClass]="
+    (supplierForm.get('supplierContactPersonNumber').touched || supplierForm.get('supplierContactPersonNumber').dirty) &&
+    supplierForm.get('supplierContactPersonNumber').hasError('required')
+    ? 'is-invalid'
+    : '' ||
+    ((supplierForm.get('supplierContactPersonNumber').touched ||
+    supplierForm.get('supplierContactPersonNumber').dirty) &&
+    !supplierForm.get('supplierContactPersonNumber').invalid)
+    ? 'is-valid'
+    : ''" type="text" aria-label=".form-control-sm example"
+        formControlName="supplierContactPersonNumber">
+    <div class="invalid-feedback">
+    </div>
+    <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Supplier Email</label>
+    <input class="form-control form-control-sm" [ngClass]="
+    (supplierForm.get('supplierContactPersonEmail').touched || supplierForm.get('supplierContactPersonEmail').dirty) &&
+    supplierForm.get('supplierContactPersonEmail').hasError('required')
+    ? 'is-invalid' 
+    : '' || supplierForm.get('supplierContactPersonEmail').hasError('minlength')
+    ? 'is-invalid'
+    : '' ||
+    ((supplierForm.get('supplierContactPersonEmail').touched ||
+    supplierForm.get('supplierContactPersonEmail').dirty) &&
+    !supplierForm.get('supplierContactPersonEmail').invalid)
+    ? 'is-valid'
+    : ''" type="text" aria-label=".form-control-sm example"
+        formControlName="supplierContactPersonEmail">
+    <div class="invalid-feedback">
+    </div>
+    <br>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button class="btn btn-outline-success me-md-2" [disabled]="supplierForm.invalid"
+            type="submit">Save</button>
+        <button class="btn btn-outline-danger" (click)="openCancelDialog()"
+            type="button">Cancel</button>
+    </div>
+</form> -->
