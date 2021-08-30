@@ -1,4 +1,4 @@
-export class EmploymentStatus{
-    EmploymentStatusId: number;
-    EmploymentStatusName: string;
+export class EmploymentStatus {
+    EmploymentStatusId: number;  
+    EmploymentStatusName: string; 
 }
