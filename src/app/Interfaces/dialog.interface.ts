@@ -1,3 +1,4 @@
+
 export interface DialogInterface {
     cancelButtonLabel: string;
     confirmButtonLabel: string;
@@ -5,6 +6,8 @@ export interface DialogInterface {
     dialogContent: string;
     callbackMethod: () => void;
   }
+ 
+
  
 
 

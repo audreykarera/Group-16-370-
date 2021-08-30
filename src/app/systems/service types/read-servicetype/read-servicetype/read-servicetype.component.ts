@@ -5,7 +5,6 @@ import { CreateServicetypeComponent } from './../../create-servicetypes/create-s
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { SharedComponent } from 'src/app/component/shared components/shared/shared.component';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ServiceType } from 'src/app/models/serviceType';

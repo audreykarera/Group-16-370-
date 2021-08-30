@@ -9,6 +9,7 @@
 
 <body>
     <div class="modal-body" style="width: 20rem; height: 20rem;">
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
         <h3>Add Service Type</h3>
         <div class="form-group">
             <div class="container">
@@ -22,17 +23,19 @@
                             aria-label=".form-control-sm example" [(ngModel)]="serviceType.ServiceTypeDescription">
                             <br>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button class="btn btn-outline-success me-md-2" (click)="openConfirmDialog()" type="button">Save</button>
-                            <button class="btn btn-outline-danger" (click)="openCancelDialog()" type="button">Cancel</button>
+                            <button class="btn btn-outline-success me-md-2" type="button">Submit</button>
+                            <button class="btn btn-outline-danger"  type="button">Cancel</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</body>
+    </form>   
+    
+    
 
-</html>
+
+
 
 
 

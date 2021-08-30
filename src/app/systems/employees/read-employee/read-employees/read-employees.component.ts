@@ -1,9 +1,8 @@
-
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CreateEmployeeComponent } from '../../create-employee/create-employee/create-employee.component';
 import { ViewEmployeeComponent } from '../../view-employee/view-employee/view-employee.component';
-import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-read-employees',

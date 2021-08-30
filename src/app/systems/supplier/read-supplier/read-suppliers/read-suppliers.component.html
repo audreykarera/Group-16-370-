@@ -30,7 +30,7 @@
               <td>{{item.supplierContactPersonNumber}}</td>
               <td>{{item.supplierContactPersonEmail}}</td>
               <td class="icon-hover">
-                <mat-icon (click)="routerEditSupplier(item)">edit</mat-icon>
+                <mat-icon (click)="routerEditSupplier(item.supplierId, item.supplierName, item.supplierContactPersonEmail, item.supplierContactPersonNumber)">edit</mat-icon>
               </td>
               <td class="icon-hover">
                 <mat-icon (click)="onDelete(item.supplierId)">delete</mat-icon>

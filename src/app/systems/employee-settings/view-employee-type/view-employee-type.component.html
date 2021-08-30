@@ -7,8 +7,8 @@
         <div class="table-responsive">
         <table class="table table-hover align-middle">
           <tbody>
-            <tr>
-            <td class="col-5">System administrator</td>
+            <tr *ngFor="let item of employeetypes">
+            <td class="col-5"><span>{{item.employeeTypeName}}</span></td>
                 <td class="icon-hover">
                 <mat-icon (click) = "routerEditEmployeeTypes()">edit</mat-icon>
                 </td>
@@ -16,23 +16,4 @@
                 <mat-icon (click) ="routerDeleteEmployeeTypes()">delete</mat-icon>
                 </td>
             </tr>
-            <tr>
-           <td class="col-5">Driver</td>
-                <td class="icon-hover">
-                <mat-icon (click) = "routerEditEmployeeTypes()" >edit</mat-icon>
-                </td>
-                <td class="icon-hover">
-                <mat-icon (click) ="routerDeleteEmployeeTypes()" >delete</mat-icon>
-                </td>
-            </tr>
-            
-            <tr>
-            <td class="col-5">Manager</td>
-                <td class="icon-hover">
-                <mat-icon (click) = "routerEditEmployeeTypes()" >edit</mat-icon>
-                </td>
-                <td class="icon-hover">
-                <mat-icon (click) ="routerDeleteEmployeeTypes()">delete</mat-icon>
-                </td>
-                </tr>
         <button type="button" class="btn btn-primary"(click) ="routerAddEmployeeTypes()">Add </button>
