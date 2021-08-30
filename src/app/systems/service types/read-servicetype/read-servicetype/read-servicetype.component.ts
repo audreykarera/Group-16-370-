@@ -1,4 +1,5 @@
-import { ServiceTypeService } from 'src/app/shared/services/service-type.service';
+import { HttpClient } from '@angular/common/http';
+
 import { DialogInterface } from './../../../../Interfaces/dialog.interface';
 import { EditServicetypeComponent } from './../../edit-servicetype/edit-servicetype/edit-servicetype.component';
 import { CreateServicetypeComponent } from './../../create-servicetypes/create-servicetype/create-servicetype.component';
@@ -6,8 +7,17 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { SharedComponent } from 'src/app/component/shared components/shared/shared.component';
-import { HttpErrorResponse } from '@angular/common/http';
-import { ServiceType } from 'src/app/models/serviceType';
+import { ServiceTypeService } from 'src/app/shared/services/service-type.service';
+
+
+export class ServiceType{
+  constructor(
+    public serviceTypeName: string,
+    public serviceTypeDescription: string
+  ){
+  }
+
+}
 
 @Component({
   selector: 'app-read-servicetype',
@@ -16,18 +26,17 @@ import { ServiceType } from 'src/app/models/serviceType';
 })
 export class ReadServicetypeComponent implements OnInit {
 
+  servicetypes: ServiceType[];
   serviceTypeList: ServiceType[];
-  serviceType:ServiceType;
-  
-  
-  constructor(
+  constructor(private HttpClient: HttpClient,
     public router: Router,
     public dialog: MatDialog,
     private serviceServiceType: ServiceTypeService,
   ) { }
 
+
   ngOnInit(): void {
-  this.readServiceTypes();
+    this.readServiceTypes();
   }
 
   readServiceTypes(){
@@ -35,29 +44,25 @@ export class ReadServicetypeComponent implements OnInit {
       this.serviceTypeList =res as ServiceType[];
     })
   }
-  
-  deleteServiceType(id){
-    this.serviceServiceType.deleteServiceType(id).subscribe((res)=>{
-      console.log(id);
-      this.readServiceTypes();
-    });
-    
-  }
-
+  // readService(){
+  //   this.serviceService.getServices().subscribe((res)=>{
+  //     this.serviceList =res as Service[];
+  //   })
+  // }
   routerAddServiceType() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     const dialogReference = this.dialog.open(
-      CreateServicetypeComponent, 
+      CreateServicetypeComponent,
       dialogConfig
     );
   }
 
-  routerEditServiceType(id) {
+  routerEditServiceType() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     const dialogReference = this.dialog.open(
-      EditServicetypeComponent, 
+      EditServicetypeComponent,
       dialogConfig
     );
 
@@ -69,7 +74,7 @@ openDeleteDialog() {
     cancelButtonLabel: 'No',
     confirmButtonLabel: 'Yes',
     callbackMethod: () => {
-     
+
     },
   };
   this.dialog.open(SharedComponent, {
