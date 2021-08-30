@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { ServiceType } from 'src/app/models/serviceType';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SharedComponent } from 'src/app/component/shared components/shared/shared.component';
 import { DialogInterface } from 'src/app/Interfaces/dialog.interface';
+import { ServiceTypeService } from 'src/app/shared/services/service-type.service';
 
 @Component({
   selector: 'app-edit-servicetype',
@@ -10,10 +12,30 @@ import { DialogInterface } from 'src/app/Interfaces/dialog.interface';
 })
 export class EditServicetypeComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
+ serviceType:ServiceType;
+
+  constructor(public dialog: MatDialog,
+    private serviceTypeService:ServiceTypeService,
+    @Inject(MAT_DIALOG_DATA)
+    public data: any) { }
   
   ngOnInit(): void {
+    
+    console.log(this.data);
   }
+
+  readServiceTypes(){
+    this.serviceTypeService.getServiceTypes().subscribe((res)=>{
+      this.serviceType=res as ServiceType;
+    })
+  }
+
+  updateServiceTypes(){
+    this.serviceTypeService.patchServiceType(this.serviceType).subscribe((res)=>{
+      this.serviceType=res as ServiceType;
+    })
+  }
+
   openConfirmDialog() {
     const dialogInterface: DialogInterface = {
       dialogHeader: 'Confirmation Message',

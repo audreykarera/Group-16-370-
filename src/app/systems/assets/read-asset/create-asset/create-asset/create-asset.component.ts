@@ -1,7 +1,10 @@
+import { AssetService } from './../../../../../shared/services/apiServices/asset.service';
+
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { SharedComponent } from 'src/app/component/shared components/shared/shared.component';
 import { DialogInterface } from 'src/app/interfaces/dialog.interface';
+import { Vehicle } from 'src/app/models/asset';
 
 @Component({
   selector: 'app-create-asset',
@@ -10,10 +13,34 @@ import { DialogInterface } from 'src/app/interfaces/dialog.interface';
 })
 export class CreateAssetComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
+  vehicle: Vehicle;
+
+  constructor(
+    public dialog: MatDialog,
+    private assetService: AssetService
+  ) { }
 
   ngOnInit(): void {
+    this.refreshForm();
   }
+
+  onSave(){
+    this.assetService.postVehicle(this.vehicle).subscribe((res) =>{
+      this.vehicle = res as Vehicle;
+    })
+  }
+
+  refreshForm(){
+    this.vehicle = {
+      vehicleID: 0,
+      vehicleNumberPlate: '',
+      vehicleMake: '',
+      vehicleModel: '',
+      vehicleAvailable: true //not sure how it should be setup
+    }
+  }
+
+
   openConfirmDialog() {
     const dialogInterface: DialogInterface = {
       dialogHeader: 'Confirmation Message',
@@ -21,7 +48,7 @@ export class CreateAssetComponent implements OnInit {
       cancelButtonLabel: 'No',
       confirmButtonLabel: 'Yes',
       callbackMethod: () => {
-       
+
       },
     };
     this.dialog.open(SharedComponent, {
@@ -29,7 +56,7 @@ export class CreateAssetComponent implements OnInit {
       data: dialogInterface,
     });
   }
-  
+
   /**
      * This method invokes the Cancel Dialog
      */
@@ -40,7 +67,7 @@ export class CreateAssetComponent implements OnInit {
       cancelButtonLabel: 'No',
       confirmButtonLabel: 'Yes',
       callbackMethod: () => {
-       
+
       },
     };
     this.dialog.open(SharedComponent, {

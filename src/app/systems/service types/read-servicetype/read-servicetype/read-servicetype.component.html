@@ -24,14 +24,14 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let servicetype of servicetypes" >
-                <td><span>{{servicetype.serviceTypeName}}</span></td>
-                <td><span>{{servicetype.serviceTypeDescription}}</span></td>
+               <tr *ngFor="let item of serviceTypeList">
+                <td>{{item.serviceTypeName}}</td>
+                <td>{{item.serviceTypeDescription}}</td>
                 <td class="icon-hover">
-                  <mat-icon (click)="routerEditServiceType()">edit</mat-icon>
+                  <mat-icon (click)="routerEditServiceType(item.serviceTypeId,item.serviceTypeName,item.serviceTypeDescription)">edit</mat-icon>
                 </td>
                 <td class="icon-hover">
-                  <mat-icon (click)="openDeleteDialog()">delete</mat-icon>
+                  <mat-icon (click)="onDelete(item.serviceTypeId)">delete</mat-icon>
                 </td>
               </tr>
             </tbody>

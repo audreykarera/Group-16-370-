@@ -1,6 +1,7 @@
+import { LocationService } from './../../../../shared/services/location.service';
+import { ServiceType } from './../../../../models/serviceType';
 import { ServicePriceService } from './../../../../shared/services/service-price.service';
 import { ServiceTypeService } from './../../../../shared/services/service-type.service';
-import { ServiceType } from 'src/app/models/serviceType';
 import { Observable } from 'rxjs';
 import { ServiceService } from './../../../../shared/services/service.service';
 import { EditServiceComponent } from './../../edit-service/edit-service/edit-service.component';
@@ -20,21 +21,21 @@ import { ServicePrice } from 'src/app/models/servicePrice';
   styleUrls: ['./read-services.component.scss']
 })
 export class ReadServicesComponent implements OnInit {
-  observeService: Observable<Service[]>=this.serviceService.getServices();
-  observeServiceType: Observable<ServiceType[]>=this.serviceServiceType.getServiceType();
-  observeServicePrice: Observable<ServicePrice[]>=this.serviceServicePrice.getServicePrices();
-  Service: Service[]=[];
-  ServiceType: ServiceType[]=[];
-  ServicePrice: ServicePrice[]=[];
+ 
+  serviceList: Service[];
+  serviceTypeList: ServiceType[];
+  servicePriceList: ServicePrice[];
+  locationList: Location[];
   
   
 
   constructor(
     public router: Router,
     public dialog: MatDialog,
-    public serviceService: ServiceService,
-    public serviceServiceType: ServiceTypeService,
-    public serviceServicePrice: ServicePriceService
+    private serviceService: ServiceService,
+    private serviceServiceType: ServiceTypeService,
+    private serviceServicePrice: ServicePriceService,
+    private locationService:LocationService
   ) { }
 
   ngOnInit(): void {
@@ -42,34 +43,23 @@ export class ReadServicesComponent implements OnInit {
   }
 
   readService(){
-    this.observeService.subscribe(data=>{
-      this.Service=data;
-      console.log(this.Service);
-    }, (err:HttpErrorResponse)=>{
-      console.log(err);
-    })    
+    this.serviceService.getServices().subscribe((res)=>{
+      this.serviceList =res as Service[];
+    })
+  }
+
+  readServiceType(){
+    this.serviceServiceType.getServiceTypes().subscribe((res)=>{
+      this.serviceTypeList=res as ServiceType[];
+    })
   }
   
-  readServiceType(){
-    this.observeServiceType.subscribe(data=>{
-      this.ServiceType=data;
-      console.log(this.ServiceType);
-    }, (err:HttpErrorResponse)=>{
-      console.log(err);
-    })
+  deleteService(id){
+    this.serviceServiceType.deleteServiceType(id).subscribe((res)=>{
+      console.log(id);
+      this.readService();
+    });
   }
-
-  readServicePrice(){
-    this.observeServicePrice.subscribe(data=>{
-      this.ServicePrice=data;
-      console.log(this.ServicePrice);
-    }, (err:HttpErrorResponse)=>{
-      console.log(err);
-    })
-  }
-
-
-
 
   routerAddSerice() {
     const dialogConfig = new MatDialogConfig();
@@ -80,12 +70,23 @@ export class ReadServicesComponent implements OnInit {
     );
   }
 
-  routerEditService() {
+  routerEditService(serviceId:number,serviceName:string,serviceDescription:string,serviceType:ServiceType[],location:Location[],servicePrice:ServicePrice[]) {
+    console.log(serviceId,serviceName,serviceDescription,serviceType,location,servicePrice)
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     const dialogReference = this.dialog.open(
       EditServiceComponent,
-      dialogConfig
+     {
+       disableClose:false,
+       data:{
+         serviceId,
+         serviceName,
+         serviceDescription,
+         serviceType,
+         location,
+         servicePrice
+       }
+     }
     );
 
 }

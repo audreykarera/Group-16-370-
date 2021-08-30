@@ -11,7 +11,6 @@ import { ViewEmployeeComponent } from '../../view-employee/view-employee/view-em
 })
 export class ReadEmployeesComponent implements OnInit {
 
-  
   constructor(
     public dialog: MatDialog
   ) { }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
+
 
 import { ViewClientsComponent } from '../view-clients/view-clients/view-clients.component';
 
@@ -15,6 +17,8 @@ export class ReadClientsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    
+ 
   }
   
 
