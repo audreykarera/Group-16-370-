@@ -41,6 +41,7 @@ import { ReadUsersComponent } from './systems/users/read-users/read-users/read-u
 import { ReadBookingComponent } from './systems/bookings/read-booking/read-booking/read-booking.component';
 import { ClientViewInvoicesComponent } from './systems/invoices/client-view-invoices/client-view-invoices.component';
 import { RequestQuoteComponent } from './systems/quotes/request quote/request-quote/request-quote.component';
+import { EditSuppliersComponent } from './systems/supplier/edit-supplier/edit-suppliers/edit-suppliers.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -79,7 +80,7 @@ const routes: Routes = [
   { path: 'request-quote', component: RequestQuoteComponent},
   { path: 'create-booking', component: CreateBookingComponent},
   { path: 'extracollection', component: ReadExtracollectionComponent},
-
+  { path: 'editsupplier', component: EditSuppliersComponent},
 ];
 
 @NgModule({
