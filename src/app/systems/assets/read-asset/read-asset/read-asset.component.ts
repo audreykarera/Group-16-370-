@@ -1,8 +1,12 @@
+import { Observable } from 'rxjs';
+
 import { DeleteAssetComponent } from './../../delete-asset/delete-asset/delete-asset.component';
 import { UpdateAssetComponent } from './../update-asset/update-asset/update-asset.component';
 import { CreateAssetComponent } from './../create-asset/create-asset/create-asset.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
+import { Vehicle } from 'src/app/Interfaces/apiCalls';
+import { ApiService } from 'src/app/shared/services/apiServices/asset.service';
 
 @Component({
   selector: 'app-read-asset',
@@ -11,9 +15,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReadAssetComponent implements OnInit {
 
-  constructor( public dialog: MatDialog) { }
+  vehicles: Vehicle[] = [];
+  vehicles$: Observable<Vehicle[]> = this.service.getVehicle();
+
+  constructor(
+    public dialog: MatDialog,
+    private service: ApiService
+  ) { }
 
   ngOnInit(): void {
+    this.vehicles$.subscribe((res) =>{
+      console.log(res);
+    });
   }
 
   routerAddAsset() {
