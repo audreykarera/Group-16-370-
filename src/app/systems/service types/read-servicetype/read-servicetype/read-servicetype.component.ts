@@ -76,6 +76,7 @@ export class ReadServicetypeComponent implements OnInit {
       }
     );
   }
+  
 openDeleteDialog() {
   const dialogInterface: DialogInterface = {
     dialogHeader: 'Confirmation Message',

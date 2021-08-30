@@ -30,11 +30,12 @@ export class EditServicetypeComponent implements OnInit {
     })
   }
 
-  updateServiceTypes(obj){
-    this.serviceTypeService.patchServiceType(obj).subscribe((res)=>{
+  updateServiceTypes(){
+    this.serviceTypeService.patchServiceType(this.serviceType).subscribe((res)=>{
       this.serviceType=res as ServiceType;
     })
   }
+
   openConfirmDialog() {
     const dialogInterface: DialogInterface = {
       dialogHeader: 'Confirmation Message',

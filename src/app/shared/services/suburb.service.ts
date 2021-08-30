@@ -9,10 +9,24 @@ export class SuburbService {
 
   constructor(private http:HttpClient) { }
 
-  getProvinces(){
-    return this.http.get(this.apiUrl+'getsuburb/');
+ 
+  getSuburbs(){
+    return this.http.get(this.apiUrl + 'getsuburb/');
+  }  
+
+  getSuburbId(id){
+    return this.http.get(this.apiUrl+'getsuburb'+id);
   }
-  deleteProvince(id){
-    return this.http.delete(this.apiUrl+'deletesuburb'+id);
+
+  patchSuburb(obj){
+    return this.http.patch(this.apiUrl + 'updatesuburb/', obj);
+  }
+
+  postSuburb(obj){
+    return this.http.post(this.apiUrl +'createsuburb/', obj);
+  } 
+
+  deleteSuburb(id){
+    return this.http.delete(this.apiUrl +'deletesuburb'+ id);
   }
 }

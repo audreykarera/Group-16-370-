@@ -12,16 +12,15 @@ import { ServiceTypeService } from 'src/app/shared/services/service-type.service
 })
 export class CreateServicetypeComponent implements OnInit {
   serviceType: ServiceType;
-  apiUrl="http://localhost:60000/api/servicetype/";
 
-  constructor(private serviceTypeService:ServiceTypeService,
+  constructor(
+    private serviceTypeService:ServiceTypeService,
     public dialog: MatDialog) { }
   
       ngOnInit(): void {
         this.refreshForm();
       }
-   
-      
+        
       onSave(){
         this.serviceTypeService.postServiceType(this.serviceType).subscribe((res)=>{
           this.serviceType = res as ServiceType;

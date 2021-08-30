@@ -1,3 +1,4 @@
+import { LocationService } from './../../../../shared/services/location.service';
 import { ServiceType } from './../../../../models/serviceType';
 import { ServicePriceService } from './../../../../shared/services/service-price.service';
 import { ServiceTypeService } from './../../../../shared/services/service-type.service';
@@ -24,6 +25,7 @@ export class ReadServicesComponent implements OnInit {
   serviceList: Service[];
   serviceTypeList: ServiceType[];
   servicePriceList: ServicePrice[];
+  locationList: Location[];
   
   
 
@@ -32,7 +34,8 @@ export class ReadServicesComponent implements OnInit {
     public dialog: MatDialog,
     private serviceService: ServiceService,
     private serviceServiceType: ServiceTypeService,
-    private serviceServicePrice: ServicePriceService
+    private serviceServicePrice: ServicePriceService,
+    private locationService:LocationService
   ) { }
 
   ngOnInit(): void {
@@ -67,12 +70,23 @@ export class ReadServicesComponent implements OnInit {
     );
   }
 
-  routerEditService() {
+  routerEditService(serviceId:number,serviceName:string,serviceDescription:string,serviceType:ServiceType[],location:Location[],servicePrice:ServicePrice[]) {
+    console.log(serviceId,serviceName,serviceDescription,serviceType,location,servicePrice)
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     const dialogReference = this.dialog.open(
       EditServiceComponent,
-      dialogConfig
+     {
+       disableClose:false,
+       data:{
+         serviceId,
+         serviceName,
+         serviceDescription,
+         serviceType,
+         location,
+         servicePrice
+       }
+     }
     );
 
 }

@@ -15,15 +15,12 @@ apiUrl="http://localhost:60000/api/service/";
     private http:HttpClient
     ) { }
 
-  // getAllService():Observable<Service[]>{
-  //   return this.http.get<Service[]>(this.apiUrl + '/getService');
-  // }
-
+ 
   getServices(){
     return this.http.get(this.apiUrl + 'getservice/');
   }  
 
-  postServices(obj){
+  postService(obj){
     return this.http.get(this.apiUrl +'createservice/', obj);
   }
 

@@ -1,13 +1,10 @@
+import { Service } from './../../../../models/service';
+import { ServiceService } from 'src/app/shared/services/service.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { SharedComponent } from 'src/app/component/shared components/shared/shared.component';
 import { DialogInterface } from 'src/app/interfaces/dialog.interface';
-
-interface service{
-  value: string;
-  viewValue: string;
-}
 
 @Component({
   selector: 'app-create-service',
@@ -15,22 +12,39 @@ interface service{
   styleUrls: ['./create-service.component.scss']
 })
 export class CreateServiceComponent implements OnInit {
+  service:Service;
 
-
-  onSubmit(form:any) {
-    console.log(form.value!)
-  }
-
-  services: service[] = [
-    {value: 'complaints-0', viewValue: 'Collection'},
-    {value: 'users-1', viewValue: 'Delivery'},
-    {value: 'collection-2', viewValue: 'Removal'}, 
-  ];
-  formGroup!: FormGroup;
-  constructor(public dialog: MatDialog) { }
+  //  services: service[] = [
+  //   {value: 'complaints-0', viewValue: 'Collection'},
+  //   {value: 'users-1', viewValue: 'Delivery'},
+  //   {value: 'collection-2', viewValue: 'Removal'}, 
+  // ];
+  // formGroup!: FormGroup;
+  constructor(
+    public dialog: MatDialog,
+    public serviceService:ServiceService) { }
 
   ngOnInit(): void {
+    this.refreshForm();
   }
+
+  // onSave(){
+  //   this.serviceService.postService(this.service).subscribe((res)=>{
+  //     this.service= res as Service;
+  //   })    
+  // }
+  
+  refreshForm(){
+    this.service={
+      ServiceId:0,
+      ServiceName: '',
+      ServiceDescription:'',
+      ServiceType:[],
+      ServicePrice:[],
+      Location:[],
+    }
+  }
+
   openConfirmDialog() {
     const dialogInterface: DialogInterface = {
       dialogHeader: 'Confirmation Message',

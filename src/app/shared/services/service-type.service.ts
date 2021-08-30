@@ -9,10 +9,8 @@ import {catchError, map} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ServiceTypeService {
-
-
   apiUrl="http://localhost:60000/api/servicetype/";
-  serviceTypeService: ServiceTypeService;
+ 
 
   constructor(private http:HttpClient) { }
 
