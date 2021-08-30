@@ -30,12 +30,12 @@
           </thead>
 
           <tbody>
-            <tr *ngFor="let item of vehicles" >
-              <td>{{item.vehicleId}}</td>
-              <td>{{item.vehicleName}}</td>
-              <td>{{item.vehicleMake}}</td>
-              <td>{{item.vehicleModel}}</td>
-              <td>{{item.vehicleAvailable}}</td>
+             <tr *ngFor="let item of equipmentList" >
+              <td>Equipment</td>
+              <td>{{item.EquipmentId}}</td>
+              <td>{{item.EquipmentName}}</td>
+              <td>GFS Skip Bin</td>
+              <td>{{item.EquipmentAvailable}}</td>
               <td class="icon-hover" (click)="routerEditAsset()">
                 <mat-icon>edit</mat-icon>
               </td>
@@ -43,19 +43,6 @@
                 <mat-icon>delete</mat-icon>
               </td>
             </tr>
-            <!-- <tr>
-              <td>Equipment</td>
-              <td>N/A</td>
-              <td>GFS</td>
-              <td>GFS Skip Bin</td>
-              <td>Available</td>
-              <td class="icon-hover" (click)="routerEditAsset()">
-                <mat-icon>edit</mat-icon>
-              </td>
-              <td class="icon-hover" (click)="routerDeleteAsset()">
-                <mat-icon>delete</mat-icon>
-              </td>
-            </tr> -->
           </tbody>
         </table>
       </div>

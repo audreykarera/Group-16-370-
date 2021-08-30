@@ -1,7 +1,5 @@
-export interface Vehicle {
-  vehicleID: number;
-  vehicleNumberPlate: string;
-  vehicleMake: string;
-  vehicleModel: string;
-  vehicleAvailable: boolean;
+export class Equipment {
+  EquipmentId: number;
+  EquipmentName: string;
+  EquipmentAvailable: boolean;
 }
