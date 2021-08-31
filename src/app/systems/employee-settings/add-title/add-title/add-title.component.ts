@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Title } from 'src/app/models/titles';
+import { NotificationsService } from 'src/app/shared/services/notifications.service';
 import { TitleService } from 'src/app/shared/services/title.service';
 
 @Component({
@@ -11,17 +13,28 @@ export class AddTitleComponent implements OnInit {
   
   titles: Title
   constructor(
-    private titleService: TitleService
+    private titleService: TitleService,
+    private notificationsService: NotificationsService,
+    public dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
     this.refreshForm()
   }
 
+  Close(){
+    this.dialog.closeAll();
+  }
+
   onSave(){
     this.titleService.postTitle(this.titles).subscribe((res)=>{
       this.titles = res as Title; 
-    })
+    });
+    this.Close();
+    this.notificationsService.successToaster("New Title added", "Success");
+    setTimeout(()=>{
+      window.location.reload();
+    }, 1000);
   }
 
   refreshForm(){
@@ -30,6 +43,5 @@ export class AddTitleComponent implements OnInit {
     TitleDescription: ''
    
     }
-
 }}
 

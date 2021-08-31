@@ -31,6 +31,7 @@ import interaction from '@fullcalendar/interaction';
 //Components
 import { AppComponent } from './app.component';
 //Generated Compontents
+import { FilterPipe } from './shared/filter.pip';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
@@ -108,6 +109,12 @@ import { AddEmployeeTypeComponent } from './systems/employee-settings/add-employ
 import { AddTitleComponent } from './systems/employee-settings/add-title/add-title/add-title.component';
 import { AddEmploymentStatusComponent } from './systems/employee-settings/add-employment-status/add-employment-status/add-employment-status.component';
 import { EditTitleComponent } from './systems/employee-settings/edit-title/edit-title/edit-title.component';
+import { ReadPaymentTypeComponent } from './systems/payment type/read-payment-type/read-payment-type/read-payment-type.component';
+import { CreatePaymentTypeComponent } from './systems/payment type/create-payment-type/create-payment-type/create-payment-type.component';
+import { EditPaymentTypeComponent } from './systems/payment type/edit-payment-type/edit-payment-type/edit-payment-type.component';
+import { CreateQuoteStatusComponent } from './systems/quote status/create-quote-status/create-quote-status/create-quote-status.component';
+import { ReadQuoteStatusComponent } from './systems/quote status/read-quote-status/read-quote-status/read-quote-status.component';
+import { EditQuoteStatusComponent } from './systems/quote status/edit-quote-status/edit-quote-status/edit-quote-status.component';
 
 
 
@@ -215,6 +222,7 @@ const angularMaterials = [
     AddTitleComponent,
     AddEmploymentStatusComponent,
     EditTitleComponent,
+    FilterPipe
   ],
 
   imports: [

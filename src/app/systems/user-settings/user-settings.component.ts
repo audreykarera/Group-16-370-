@@ -1,10 +1,12 @@
+import { UserRole } from './../../models/userRole';
 import { EditUserRoleComponent } from './edit-user-role/edit-user-role.component';
 import { DeleteUserRoleComponent } from './delete-user-role/delete-user-role.component';
-import { CreateUserRoleComponent } from './create-user-role/create-user-role.component';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogInterface } from 'src/app/Interfaces/dialog.interface';
 import { SharedComponent } from 'src/app/component/shared components/shared/shared.component';
+import { UserRoleService } from 'src/app/shared/services/user-role.service';
+import { CreateUserRoleComponent } from './create-user-role/create-user-role.component';
 
 @Component({
   selector: 'app-user-settings',
@@ -13,11 +15,14 @@ import { SharedComponent } from 'src/app/component/shared components/shared/shar
 })
 export class UserSettingsComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
+
+  constructor(
+    public dialog: MatDialog) { }
 
   ngOnInit(): void {
-  }
 
+
+  }
   routercreateuserrole() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;

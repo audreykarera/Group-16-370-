@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Quote Status</title>
+</head>
+
+<body>
+    <div class="modal-body" style="width: 20rem; height: 12rem;">
+        <h3>Add Quote Status</h3>
+        <div class="form-group">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Enter new Quote Status</label>
+                        <input class="form-control form-control-sm" type="text" placeholder="Quote Status"
+                            aria-label=".form-control-sm example">
+                        <br>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button class="btn btn-outline-success me-md-2" (click)="onSave()"
+                                type="button">Save</button>
+                            <button class="btn btn-outline-danger" 
+                                type="button">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
