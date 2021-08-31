@@ -1,5 +1,5 @@
+import { CreateBookingStatusComponent } from './../../create-booking-status/create-booking-status/create-booking-status.component';
 import { EditBookingStatusComponent } from './../../edit-booking-status/edit-booking-status/edit-booking-status.component';
-import { CreateBookingComponent } from './../../../bookings/create-booking/create-booking/create-booking.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 
@@ -19,7 +19,7 @@ export class ReadBookingStatusComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     const dialogReference = this.dialog.open(
-      CreateBookingComponent,
+      CreateBookingStatusComponent,
       dialogConfig
     );
   }
@@ -35,3 +35,4 @@ export class ReadBookingStatusComponent implements OnInit {
 
 
 }
+
