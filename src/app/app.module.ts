@@ -31,6 +31,7 @@ import interaction from '@fullcalendar/interaction';
 //Components
 import { AppComponent } from './app.component';
 //Generated Compontents
+import { FilterPipe } from './shared/filter.pip';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
@@ -215,6 +216,7 @@ const angularMaterials = [
     AddTitleComponent,
     AddEmploymentStatusComponent,
     EditTitleComponent,
+    FilterPipe
   ],
 
   imports: [

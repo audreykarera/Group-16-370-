@@ -14,8 +14,8 @@ import { AddEmployeeTypeComponent } from '../add-employee-type/add-employee-type
   styleUrls: ['./view-employee-type.component.scss']
 })
 export class ViewEmployeeTypeComponent implements OnInit {
-  employeeTypeList: EmployeeType[]; 
-  employeeType: EmployeeType; 
+  employeeTypeList: EmployeeType[];
+  employeeType: EmployeeType;
 
 
   constructor(
@@ -26,35 +26,35 @@ export class ViewEmployeeTypeComponent implements OnInit {
   ngOnInit(): void {
     this.readEmployeeTypes();
   }
-  
-  readEmployeeTypes(){
+
+  readEmployeeTypes() {
     console.log(this.employeeTypeList);
-    this.employeeTypeService.getEmployeeType().subscribe((res)=>{
+    this.employeeTypeService.getEmployeeType().subscribe((res) => {
       this.employeeTypeList = res as EmployeeType[];
       console.log(this.employeeTypeList);
     });
   }
-    onDelete(id){
-      this.employeeTypeService.deleteEmployeeType(id).subscribe((res)=>{
-        console.log(id);
-        this.readEmployeeTypes();
-      });
+  onDelete(id) {
+    this.employeeTypeService.deleteEmployeeType(id).subscribe((res) => {
+      console.log(id);
+      this.readEmployeeTypes();
+    });
   }
 
   routerEditEmployeeTypes() {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = false; 
+    dialogConfig.disableClose = false;
     const dialogReference = this.dialog.open(
       EditEmployeeTypeComponent,
       dialogConfig
     );
-  
+
   }
   routerAddEmployeeTypes() {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = false; 
+    dialogConfig.disableClose = false;
     const dialogReference = this.dialog.open(
-     AddEmployeeTypeComponent,
+      AddEmployeeTypeComponent,
       dialogConfig
     );
   }
