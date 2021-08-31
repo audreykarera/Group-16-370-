@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms'; 
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { ToastrModule } from 'ngx-toastr';
 //Mat modules
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -220,7 +221,8 @@ const angularMaterials = [
     RecurrenceEditorModule,
     HttpClientModule, 
     FormsModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule, 
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent],

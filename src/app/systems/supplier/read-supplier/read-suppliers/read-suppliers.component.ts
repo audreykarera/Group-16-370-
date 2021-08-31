@@ -8,6 +8,7 @@ import { SharedComponent } from 'src/app/component/shared components/shared/shar
 import { Supplier } from 'src/app/models/supplier';
 import { SupplierService } from 'src/app/shared/services/supplier.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { NotificationsService } from 'src/app/shared/services/notifications.service';
 
 @Component({
   selector: 'app-read-suppliers',
@@ -19,7 +20,8 @@ export class ReadSuppliersComponent implements OnInit {
   supplier: Supplier;
 
   constructor(private supplierService: SupplierService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private notificationService: NotificationsService
   ) { }
 
   ngOnInit(): void {
@@ -29,6 +31,9 @@ export class ReadSuppliersComponent implements OnInit {
   readSuppliers(){
     this.supplierService.getSuppliers().subscribe((res)=>{
       this.supplierList = res as Supplier[];
+    },(err: HttpErrorResponse)=>{
+      this.notificationService.failToaster("Unable to display suppliers", "Error");
+      console.log(err);
     })
   }
 
@@ -36,14 +41,11 @@ export class ReadSuppliersComponent implements OnInit {
     this.supplierService.deleteSupplier(id).subscribe((res)=>{
       console.log(id);
       this.readSuppliers();
+    }, (err: HttpErrorResponse)=>{
+      this.notificationService.failToaster("Unable to delete supplier", "Error");
     });
   }
 
-  editSupplier(obj){
-    this.supplierService.postSupplier(obj).subscribe((res)=>{
-      this.readSuppliers();
-    })
-  }
 //Used to go to the add model
   routerAddSupplier() {
     const dialogConfig = new MatDialogConfig();
@@ -57,7 +59,7 @@ export class ReadSuppliersComponent implements OnInit {
   routerEditSupplier(supplierId: number, supplierName: string, supplierContactPersonEmail: string, supplierContactPersonNumber: string) {
     console.log(supplierId, supplierName, supplierContactPersonEmail, supplierContactPersonNumber);
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = false;
+    dialogConfig.disableClose = true;
     const dialogReference = this.dialog.open(
       EditSuppliersComponent, 
       {
@@ -71,24 +73,6 @@ export class ReadSuppliersComponent implements OnInit {
       }
     );
   }
-  openDeleteDialog() {
-    const dialogInterface: DialogInterface = {
-      dialogHeader: 'Confirmation Message',
-      dialogContent: 'Are you sure you want to delete this?',
-      cancelButtonLabel: 'No',
-      confirmButtonLabel: 'Yes',
-      callbackMethod: () => {
-       
-      },
-    };
-    this.dialog.open(SharedComponent, {
-      width: '300px',
-      data: dialogInterface,
-    });
-  }
 
-}
-function obj(obj: any): any {
-  throw new Error('Function not implemented.');
 }
 

@@ -4,6 +4,7 @@ import { SharedComponent } from 'src/app/component/shared components/shared/shar
 import { DialogInterface } from 'src/app/interfaces/dialog.interface';
 import { Supplier } from 'src/app/models/supplier';
 import { SupplierService } from 'src/app/shared/services/supplier.service';
+import { NotificationsService } from 'src/app/shared/services/notifications.service';
 
 @Component({
   selector: 'app-edit-suppliers',
@@ -15,32 +16,27 @@ export class EditSuppliersComponent implements OnInit {
   constructor(private supplierService: SupplierService,
     public dialog: MatDialog, 
     @Inject(MAT_DIALOG_DATA)
-    public data:any) { }
+    public data:any,
+    private notificationService: NotificationsService) { }
   
   ngOnInit(): void {
     console.log(this.data);
     this.refreshForm();
   }
-  openConfirmDialog() {
-    const dialogInterface: DialogInterface = {
-      dialogHeader: 'Confirmation Message',
-      dialogContent: 'Are you sure you want to save this?',
-      cancelButtonLabel: 'No',
-      confirmButtonLabel: 'Yes',
-      callbackMethod: () => {
-       
-      },
-    };
-    this.dialog.open(SharedComponent, {
-      width: '300px',
-      data: dialogInterface,
-    });
+
+  Close(){
+    this.dialog.closeAll();
   }
   
   onSave(){
     this.supplierService.patchSupplier(this.supplier).subscribe((res)=>{
       this.supplier = res as Supplier; 
-    })
+    });
+    this.Close();
+    this.notificationService.successToaster("Successfully saved supplied", "Error");
+    setTimeout(()=>{
+      window.location.reload();
+    }, 1000);
   }
 
   refreshForm(){
@@ -52,24 +48,5 @@ export class EditSuppliersComponent implements OnInit {
     }
   }
 
-  /**
-     * This method invokes the Cancel Dialog
-     */
-  openCancelDialog() {
-    const dialogInterface: DialogInterface = {
-      dialogHeader: 'Confirmation Message',
-      dialogContent: 'Are you sure you want cancel this ?',
-      cancelButtonLabel: 'No',
-      confirmButtonLabel: 'Yes',
-      callbackMethod: () => {
-       
-      },
-    };
-    this.dialog.open(SharedComponent, {
-      width: '300px',
-      data: dialogInterface,
-    });
-
-}
 }
 
