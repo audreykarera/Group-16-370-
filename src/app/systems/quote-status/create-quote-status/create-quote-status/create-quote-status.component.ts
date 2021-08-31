@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { QuoteStatus } from 'src/app/models/quotestatus';
+import { NotificationsService } from 'src/app/shared/services/notifications.service';
+import { QuoteStatusService } from 'src/app/shared/services/quote-status.service';
 
 @Component({
   selector: 'app-create-quote-status',
@@ -7,9 +11,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateQuoteStatusComponent implements OnInit {
 
-  constructor() { }
+  quoteStatus: QuoteStatus
+
+  constructor(
+    private quoteStatusService: QuoteStatusService, 
+    private notificationsService: NotificationsService,
+    public dialog: MatDialog,
+  ) { }
 
   ngOnInit(): void {
+    this.refreshForm()
   }
 
+  Close(){
+    this.dialog.closeAll();
+  }
+  onSave(){
+    this.quoteStatusService.postQuoteStatus(this.quoteStatus).subscribe((res)=>{
+      this.quoteStatus = res as QuoteStatus; 
+    });
+    this.Close();
+    this.notificationsService.successToaster("New Quote Status added", "Success");
+    setTimeout(()=>{
+      window.location.reload();
+    }, 1000);
+  }
+
+  refreshForm(){
+    this.quoteStatus = {
+      QouteStatusId: 0,
+      QuoteStatusName: ''
+    }
+  }
 }
+

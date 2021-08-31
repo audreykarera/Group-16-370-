@@ -113,9 +113,9 @@ import { EditTitleComponent } from './systems/employee-settings/edit-title/edit-
 import { ReadPaymentTypeComponent } from './systems/payment-type/read-payment-type/read-payment-type/read-payment-type.component';
 import { EditPaymentTypeComponent } from './systems/payment-type/edit-payment-type/edit-payment-type/edit-payment-type.component';
 import { CreatePaymentTypeComponent } from './systems/payment-type/create-payment-type/create-payment-type/create-payment-type.component';
-import { CreateQuoteStatusComponent } from './systems/quote-status/create-quote-status/create-quote-status/create-quote-status.component';
 import { ReadQuoteStatusComponent } from './systems/quote-status/read-quote-status/read-quote-status/read-quote-status.component';
 import { EditQuoteStatusComponent } from './systems/quote-status/edit-quote-status/edit-quote-status/edit-quote-status.component';
+import { CreateQuoteStatusComponent } from './systems/quote-status/create-quote-status/create-quote-status/create-quote-status.component';
 
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
@@ -226,9 +226,9 @@ const angularMaterials = [
     ReadPaymentTypeComponent,
     EditPaymentTypeComponent,
     CreatePaymentTypeComponent,
-    CreateQuoteStatusComponent,
     ReadQuoteStatusComponent,
-    EditQuoteStatusComponent
+    EditQuoteStatusComponent,
+    CreateQuoteStatusComponent
   ],
 
   imports: [
