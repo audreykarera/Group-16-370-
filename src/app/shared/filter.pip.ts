@@ -1,6 +1,5 @@
 
 import { Pipe, PipeTransform } from '@angular/core';
-import { Console } from 'node:console';
 
 @Pipe({ name: 'appFilter' })
 export class FilterPipe implements PipeTransform {
