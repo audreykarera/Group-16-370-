@@ -19,8 +19,8 @@ export class AddEmployeeTypeComponent implements OnInit {
   }
 
   onSave(){
-    this.employeeTypeService.postEmploymentStatus(this.employeeType).subscribe((res)=>{
-      this.employeeType = res as EmployeeType; //Again... Look at line 14 for the supplier we are referring to
+    this.employeeTypeService.postEmployeeType(this.employeeType).subscribe((res)=>{
+      this.employeeType = res as EmployeeType; 
     })
   }
 

@@ -1,5 +1,4 @@
 import { EmployeeType } from './../../../models/employeeType';
-import { DeleteEmployeeTypeComponent } from './../delete-employee-type/delete-employee-type.component';
 import { EditEmployeeTypeComponent } from './../edit-employee-type/edit-employee-type.component';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
@@ -30,12 +29,17 @@ export class ViewEmployeeTypeComponent implements OnInit {
   
   readEmployeeTypes(){
     console.log(this.employeeTypeList);
-    this.employeeTypeService.getEmploymentStatuses().subscribe((res)=>{
+    this.employeeTypeService.getEmployeeType().subscribe((res)=>{
       this.employeeTypeList = res as EmployeeType[];
       console.log(this.employeeTypeList);
     });
   }
-
+    onDelete(id){
+      this.employeeTypeService.deleteEmployeeType(id).subscribe((res)=>{
+        console.log(id);
+        this.readEmployeeTypes();
+      });
+  }
 
   routerEditEmployeeTypes() {
     const dialogConfig = new MatDialogConfig();
@@ -44,14 +48,7 @@ export class ViewEmployeeTypeComponent implements OnInit {
       EditEmployeeTypeComponent,
       dialogConfig
     );
-  }
-  routerDeleteEmployeeTypes() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = false; 
-    const dialogReference = this.dialog.open(
-      DeleteEmployeeTypeComponent,
-      dialogConfig
-    );
+  
   }
   routerAddEmployeeTypes() {
     const dialogConfig = new MatDialogConfig();
