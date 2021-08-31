@@ -1,10 +1,13 @@
-import { AssetService } from './../../../../../shared/services/apiServices/asset.service';
+
+import { Equipment } from './../../../../../models/asset';
+
 
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { SharedComponent } from 'src/app/component/shared components/shared/shared.component';
 import { DialogInterface } from 'src/app/interfaces/dialog.interface';
-import { Vehicle } from 'src/app/models/asset';
+import { AssetService } from 'src/app/shared/services/asset.service';
+
 
 @Component({
   selector: 'app-create-asset',
@@ -13,11 +16,11 @@ import { Vehicle } from 'src/app/models/asset';
 })
 export class CreateAssetComponent implements OnInit {
 
-  vehicle: Vehicle;
+  equipment: Equipment;
 
   constructor(
     public dialog: MatDialog,
-    private assetService: AssetService
+    private equipmentService: AssetService
   ) { }
 
   ngOnInit(): void {
@@ -25,20 +28,21 @@ export class CreateAssetComponent implements OnInit {
   }
 
   onSave(){
-    this.assetService.postVehicle(this.vehicle).subscribe((res) =>{
-      this.vehicle = res as Vehicle;
+    this.equipmentService.postEquipment(this.equipment).subscribe((res)=>{
+      this.equipment = res as Equipment;
     })
   }
 
   refreshForm(){
-    this.vehicle = {
-      vehicleID: 0,
-      vehicleNumberPlate: '',
-      vehicleMake: '',
-      vehicleModel: '',
-      vehicleAvailable: true //not sure how it should be setup
+    this.equipment = {
+      EquipmentId: 0,
+      EquipmentName: 'Skip',
+      EquipmentAvailable: true //Idk what the bool refresh should look like
     }
   }
+
+
+
 
 
   openConfirmDialog() {

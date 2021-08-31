@@ -1,10 +1,14 @@
 import { Service } from './../../../../models/service';
+import { ServiceTypeService } from 'src/app/shared/services/service-type.service';
+
 import { ServiceService } from 'src/app/shared/services/service.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { SharedComponent } from 'src/app/component/shared components/shared/shared.component';
 import { DialogInterface } from 'src/app/interfaces/dialog.interface';
+import { ServiceType } from 'src/app/models/serviceType';
+
 
 @Component({
   selector: 'app-create-service',
@@ -13,6 +17,9 @@ import { DialogInterface } from 'src/app/interfaces/dialog.interface';
 })
 export class CreateServiceComponent implements OnInit {
   service:Service;
+  serviceTypeList: ServiceType[];
+  
+
 
   //  services: service[] = [
   //   {value: 'complaints-0', viewValue: 'Collection'},
@@ -20,20 +27,30 @@ export class CreateServiceComponent implements OnInit {
   //   {value: 'collection-2', viewValue: 'Removal'}, 
   // ];
   // formGroup!: FormGroup;
-  constructor(
+  constructor(private _service:ServiceService,
     public dialog: MatDialog,
-    public serviceService:ServiceService) { }
+    public serviceService:ServiceService,
+    public serviceTypeService:ServiceTypeService){ }
 
   ngOnInit(): void {
     this.refreshForm();
+    this.readServiceTypes();
+    
   }
 
   // onSave(){
   //   this.serviceService.postService(this.service).subscribe((res)=>{
-  //     this.service= res as Service;
-  //   })    
+  //     this.service = res as Service;
+  //   })
   // }
-  
+
+ 
+  readServiceTypes(){
+    this.serviceTypeService.getServiceTypes().subscribe((res)=>{
+      this.serviceTypeList =res as ServiceType[];
+    })
+  }
+ 
   refreshForm(){
     this.service={
       ServiceId:0,

@@ -1,4 +1,6 @@
 
+import { Equipment, Vehicle } from './../../../../models/asset';
+
 import { Observable } from 'rxjs';
 
 import { DeleteAssetComponent } from './../../delete-asset/delete-asset/delete-asset.component';
@@ -6,9 +8,11 @@ import { UpdateAssetComponent } from './../update-asset/update-asset/update-asse
 import { CreateAssetComponent } from './../create-asset/create-asset/create-asset.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
+import { AssetService } from 'src/app/shared/services/asset.service';
+import { DialogInterface } from 'src/app/interfaces/dialog.interface';
+import { SharedComponent } from 'src/app/component/shared components/shared/shared.component';
 
-import { AssetService } from 'src/app/shared/services/apiServices/asset.service';
-import { Vehicle } from 'src/app/models/asset';
+
 
 @Component({
   selector: 'app-read-asset',
@@ -17,35 +21,60 @@ import { Vehicle } from 'src/app/models/asset';
 })
 export class ReadAssetComponent implements OnInit {
 
-  // vehicle: Vehicle;
-  // vehicleList: Vehicle[];
-   vehicles: Vehicle[] = [];
-   vehicles$: Observable<Vehicle[]> = this.assetService.getVehicle();
+  vehicleList: Vehicle[];
+  vehicle: Vehicle;
+  equipmentList: Equipment[];
+  equipment: Equipment;
 
   constructor(
     public dialog: MatDialog,
-    private assetService: AssetService
+    private equipmentService: AssetService,
+    private vehicleService: AssetService
   ) { }
 
   ngOnInit(): void {
-     this.vehicles$.subscribe((res) =>{
-       console.log(res);
-     });
-    // this.readVehicles();
+    this.readEquipment();
+    this.readVehicle();
   }
 
-  // readVehicles(){
-  //   this.assetService.getVehicle().subscribe((res) =>{
-  //     this.vehicleList = res as Vehicle[];
-  //   })
-  // }
+  readEquipment(){
+    this.equipmentService.getEquipment().subscribe((res) =>{
+      this.equipmentList = res as Equipment[];
+    });
+  }
 
-  // onDelete(id){
-  //   this.assetService.deleteVehicle(id).subscribe((res)=>{
-  //     console.log(id);
-  //     this.readVehicles();
-  //   });
-  // }
+  onDeleteEquip(id){
+    this.equipmentService.deleteEquipment(id).subscribe((res)=>{
+      console.log(id);
+      this.readEquipment();
+    });
+  }
+
+  editEquipment(obj){
+    this.equipmentService.postEquipment(obj).subscribe((res)=>{
+      this.readEquipment();
+    });
+  }
+
+  readVehicle(){
+    this.vehicleService.getVehicle().subscribe((res) =>{
+      this.vehicleList = res as Vehicle[];
+    });
+  }
+
+  editVehicle(obj){
+    this.vehicleService.postVehicle(obj).subscribe((res) =>{
+      this.readVehicle();
+    })
+  }
+
+  onDeleteVehicle(id){
+    this.vehicleService.deleteVehicle(id).subscribe((res)=>{
+      console.log(id);
+      this.readVehicle();
+    });
+  }
+
 
   routerAddAsset() {
     const dialogConfig = new MatDialogConfig();
@@ -65,13 +94,22 @@ export class ReadAssetComponent implements OnInit {
     );
   }
 
-  routerDeleteAsset() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = false; //This must be set to true when the close button works
-    const dialogReference = this.dialog.open(
-      DeleteAssetComponent,
-      dialogConfig
-    );
+
+
+  openDeleteDialog() {
+    const dialogInterface: DialogInterface = {
+      dialogHeader: 'Confirmation Message',
+      dialogContent: 'Are you sure you want to delete this?',
+      cancelButtonLabel: 'No',
+      confirmButtonLabel: 'Yes',
+      callbackMethod: () => {
+
+      },
+    };
+    this.dialog.open(SharedComponent, {
+      width: '300px',
+      data: dialogInterface,
+    });
   }
 
 }

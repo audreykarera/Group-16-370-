@@ -1,12 +1,12 @@
-
+import { EmploymentStatusService } from './../../../shared/services/employment-status.service';
+import { AddEmploymentStatusComponent } from './../add-employment-status/add-employment-status/add-employment-status.component';
 import { EmploymentStatus } from './../../../models/employmentStatus';
-import { AddEmploymentStatusComponent } from './../add-employment-status/add-employment-status.component';
-import { DeleteEmploymentStatusesComponent } from './../delete-employment-statuses/delete-employment-statuses.component';
 import { EditEmploymentStatusesComponent } from './../edit-employment-statuses/edit-employment-statuses.component';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
+import { getDefaultEventEnd } from '@fullcalendar/angular';
 
 @Component({
   selector: 'app-view-employment-statuses',
@@ -14,27 +14,34 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./view-employment-statuses.component.scss']
 })
 export class ViewEmploymentStatusesComponent implements OnInit {
-
-  employmentstatuses: EmploymentStatus[] = [];
-  //employmentstatuses$: Observable<EmploymentStatus[]> = this.serviceEmploymentStatus.getEmploymentStatus();
+  
+  employmentStatusList: EmploymentStatus[]; 
+  employmentStatus: EmploymentStatus; 
 
 
   constructor(
-    //public serviceEmploymentStatus: EmploymentStatusService,
+    public employmentStatusService: EmploymentStatusService,
     public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
-    //this.readEmploymentStatus();
+    this.readEmploymentStatuses();
   }
-  // readEmploymentStatus(){
-  //   this.employmentstatuses$.subscribe(data=>{
-  //     this.employmentstatuses=data;
-  //     console.log(this.employmentstatuses);
-  //   }, (err:HttpErrorResponse)=>{
-  //     console.log(err);
-  //   })
-  // } 
+  
+  readEmploymentStatuses(){
+    console.log(this.employmentStatusList);
+    this.employmentStatusService.getEmploymentStatuses().subscribe((res)=>{
+      this.employmentStatusList = res as EmploymentStatus[];
+      console.log(this.employmentStatusList);
+    });
+  }
+    onDelete(id){
+      this.employmentStatusService.deleteEmploymentStatus(id).subscribe((res)=>{
+        console.log(id);
+        this.readEmploymentStatuses();
+      });
+    }
+
   routerEditEmploymentStatuses() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false; 
@@ -42,14 +49,7 @@ export class ViewEmploymentStatusesComponent implements OnInit {
       EditEmploymentStatusesComponent,
       dialogConfig
     );
-  }
-  routerDeleteEmploymentStatuses() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = false; 
-    const dialogReference = this.dialog.open(
-      DeleteEmploymentStatusesComponent,
-      dialogConfig
-    );
+
     }
     routerAddEmploymentStatuses() {
       const dialogConfig = new MatDialogConfig();

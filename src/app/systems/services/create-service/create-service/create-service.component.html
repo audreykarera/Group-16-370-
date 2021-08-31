@@ -16,24 +16,19 @@
                     <div class="col">
                         <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Service Name</label>
                         <input class="form-control form-control-sm" type="text" placeholder="Service Name"
-                            aria-label=".form-control-sm example" [(ngModel)]="service.ServiceName">
+                            aria-label=".form-control-sm example" [(ngModel)]="service.ServiceName" >
                         <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Service Description</label>
                         <input class="form-control form-control-sm" type="text" placeholder="Service Description"
                             aria-label=".form-control-sm example" [(ngModel)]="service.ServiceDescription">
                         <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Service Type</label>
-                        <select class="form-select form-select-sm" aria-label=".form-select-sm example" type="text">
-                            <option selected></option>
-                            <option value="1">Domestic rubbish</option>
-                            <option value="2">plastic</option>
-                            <option value="3">oil</option>
-                            <option value="3">compost and fertilizer</option>
-                          </select>
+                        <input class="form-control form-control-sm" type="text" placeholder="Service Type"
+                            aria-label=".form-control-sm example" [(ngModel)]="service.ServiceType">
                           <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Starting Price</label>
-                        <input class="form-control form-control-sm" type="text" placeholder="Starting Price"
-                            aria-label=".form-control-sm example">
+                        <input class="form-control form-control-sm" type="text" placeholder="R100.00"
+                            aria-label=".form-control-sm example" [(ngModel)]="service.ServicePrice">
                             <br>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button class="btn btn-outline-success me-md-2" (click)="openConfirmDialog()" type="button">Save</button>
+                            <button class="btn btn-outline-success me-md-2"  type="button">Save</button>
                             <button class="btn btn-outline-danger" (click)="openCancelDialog()" type="button">Cancel</button>
                         </div>
                     </div>
