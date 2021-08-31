@@ -33,6 +33,10 @@ export class ServiceTypeService {
   deleteServiceType(id) {
     return this.http.delete(this.apiUrl + 'deleteservicetype' + id);
   }
+  getServiceTypeByName(name){
+    return this.http.get(this.apiUrl + 'getservicetypebyname' + name); 
+  }
+  
 
 }
 

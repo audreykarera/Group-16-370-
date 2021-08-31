@@ -116,6 +116,7 @@ import { CreatePaymentTypeComponent } from './systems/payment-type/create-paymen
 import { ReadQuoteStatusComponent } from './systems/quote-status/read-quote-status/read-quote-status/read-quote-status.component';
 import { EditQuoteStatusComponent } from './systems/quote-status/edit-quote-status/edit-quote-status/edit-quote-status.component';
 import { CreateQuoteStatusComponent } from './systems/quote-status/create-quote-status/create-quote-status/create-quote-status.component';
+import { ReadBookingStatusComponent } from './systems/booking-status/read-booking-status/read-booking-status/read-booking-status.component';
 
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
@@ -228,7 +229,8 @@ const angularMaterials = [
     CreatePaymentTypeComponent,
     ReadQuoteStatusComponent,
     EditQuoteStatusComponent,
-    CreateQuoteStatusComponent
+    CreateQuoteStatusComponent,
+    ReadBookingStatusComponent
   ],
 
   imports: [

@@ -2,11 +2,15 @@
   <div class="d-flex page__box p-3 mt-2">Booking Statuses</div>
   <div class="page__content shadow p-3">
     <div class="page__content-data">
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </div>
       <br>
       <br>
         <div class="position-relative">
           <div class="position-absolute top-0 end-0 icon-hover">
-            <mat-icon style="font-size: xx-large" (click)="routerAddBookingStatus()">add</mat-icon>
+            <mat-icon style="font-size: xx-large" (click)="routerAddBookingStatus()" >add</mat-icon>
           </div>
         </div>
         <br>
@@ -23,7 +27,7 @@
           <tbody>
             <tr>
               <td>1</td>
-              <td>Administrator</td>
+              <td>Booked</td>
               <td class="icon-hover">
                 <mat-icon (click)="routerEditBookingStatus()">edit</mat-icon>
               </td>
@@ -46,3 +50,5 @@
     </div>
   </div>
 </div>
+
+
