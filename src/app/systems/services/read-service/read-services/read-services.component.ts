@@ -1,3 +1,4 @@
+import { NotificationsService } from './../../../../shared/services/notifications.service';
 import { LocationService } from './../../../../shared/services/location.service';
 import { ServiceType } from './../../../../models/serviceType';
 import { ServicePriceService } from './../../../../shared/services/service-price.service';
@@ -22,11 +23,11 @@ import { ServicePrice } from 'src/app/models/servicePrice';
 })
 export class ReadServicesComponent implements OnInit {
  
-  serviceList: Service[];
+  serviceList: Service;
   serviceTypeList: ServiceType[];
   servicePriceList: ServicePrice[];
   locationList: Location[];
-  
+  searchText = '';
   
 
   constructor(
@@ -35,7 +36,8 @@ export class ReadServicesComponent implements OnInit {
     private serviceService: ServiceService,
     private serviceServiceType: ServiceTypeService,
     private serviceServicePrice: ServicePriceService,
-    private locationService:LocationService
+    private locationService:LocationService,
+    private notificationService: NotificationsService
   ) { }
 
   ngOnInit(): void {
@@ -44,7 +46,10 @@ export class ReadServicesComponent implements OnInit {
 
   readService(){
     this.serviceService.getServices().subscribe((res)=>{
-      this.serviceList =res as Service[];
+      this.serviceList =res as Service;
+    },(err: HttpErrorResponse)=>{
+      this.notificationService.failToaster("Unable to display service types", "Error");
+      console.log(err);
     })
   }
 
@@ -58,9 +63,16 @@ export class ReadServicesComponent implements OnInit {
     this.serviceServiceType.deleteServiceType(id).subscribe((res)=>{
       console.log(id);
       this.readService();
+    }, (err: HttpErrorResponse)=>{
+      this.notificationService.failToaster("Unable to delete service type", "Error");
     });
   }
 
+    editService(obj){
+      this.serviceService.patchService(obj).subscribe((res)=>{
+        this.readService();
+      })
+    }
   routerAddSerice() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;

@@ -1,9 +1,11 @@
+import { Router } from '@angular/router';
 import { ServiceType } from './../../../../models/serviceType';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { SharedComponent } from 'src/app/component/shared components/shared/shared.component';
 import { DialogInterface } from 'src/app/interfaces/dialog.interface';
 import { ServiceTypeService } from 'src/app/shared/services/service-type.service';
+import { NotificationsService } from 'src/app/shared/services/notifications.service';
 
 @Component({
   selector: 'app-create-servicetype',
@@ -15,16 +17,27 @@ export class CreateServicetypeComponent implements OnInit {
 
   constructor(
     private serviceTypeService:ServiceTypeService,
-    public dialog: MatDialog) { }
+    private notificationService: NotificationsService,
+    public dialog: MatDialog,
+    public router:Router) { }
   
       ngOnInit(): void {
         this.refreshForm();
+      }
+
+      Close(){
+        this.dialog.closeAll();
       }
         
       onSave(){
         this.serviceTypeService.postServiceType(this.serviceType).subscribe((res)=>{
           this.serviceType = res as ServiceType;
-        })
+        });
+        this.Close();
+        this.notificationService.successToaster("Successfully save service type","Error");
+        setTimeout(()=>{
+          window.location.reload();
+        }, 1000);
       }
     
       refreshForm(){
@@ -34,40 +47,4 @@ export class CreateServicetypeComponent implements OnInit {
           ServiceTypeDescription:''
         }
       }
-
-   openConfirmDialog() {
-    const dialogInterface: DialogInterface = {
-      dialogHeader: 'Confirmation Message',
-      dialogContent: 'Are you sure you want to save this?',
-      cancelButtonLabel: 'No',
-      confirmButtonLabel: 'Yes',
-      callbackMethod: () => {
-       
-      },
-    };
-    this.dialog.open(SharedComponent, {
-      width: '300px',
-      data: dialogInterface,
-    });
-      }
-  
-  /**
-     * This method invokes the Cancel Dialog
-     */
-  openCancelDialog() {
-    const dialogInterface: DialogInterface = {
-      dialogHeader: 'Confirmation Message',
-      dialogContent: 'Are you sure you want cancel this ?',
-      cancelButtonLabel: 'No',
-      confirmButtonLabel: 'Yes',
-      callbackMethod: () => {
-       
-      },
-    };
-    this.dialog.open(SharedComponent, {
-      width: '300px',
-      data: dialogInterface,
-    });
-
-  }
 }

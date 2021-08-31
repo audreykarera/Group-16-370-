@@ -16,18 +16,25 @@ apiUrl="http://localhost:60000/api/service/";
     ) { }
 
  
-  getServices(){
-    return this.http.get(this.apiUrl + 'getservice/');
-  }  
-
-  postService(obj){
-    return this.http.get(this.apiUrl +'createservice/', obj);
-  }
-
-  //edit
-
-  deleteService(id){
-    return this.http.delete(this.apiUrl +'deletesupplier'+id);
-  }
+    getServices() {
+      return this.http.get(this.apiUrl + 'getservice/');
+    }
+  
+    getServiceId(id) {
+      return this.http.get(this.apiUrl + 'getservice' + id);
+    }
+  
+    patchService(obj) {
+      return this.http.patch(this.apiUrl + 'updateservice/', obj);
+    }
+  
+    postService(obj) {
+      return this.http.post(this.apiUrl + 'createservice/', obj);
+    }
+  
+    deleteService(id) {
+      return this.http.delete(this.apiUrl + 'deleteservice' + id);
+    }
+  
 
 }

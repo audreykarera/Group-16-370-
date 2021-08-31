@@ -1,3 +1,4 @@
+import { NotificationsService } from './../../../../shared/services/notifications.service';
 import { DialogInterface } from './../../../../Interfaces/dialog.interface';
 import { EditServicetypeComponent } from './../../edit-servicetype/edit-servicetype/edit-servicetype.component';
 import { CreateServicetypeComponent } from './../../create-servicetypes/create-servicetype/create-servicetype.component';
@@ -7,6 +8,7 @@ import { Router } from '@angular/router';
 import { SharedComponent } from 'src/app/component/shared components/shared/shared.component';
 import { ServiceTypeService } from 'src/app/shared/services/service-type.service';
 import { ServiceType } from 'src/app/models/serviceType';
+import { HttpErrorResponse } from '@angular/common/http';
 
 
 
@@ -17,13 +19,15 @@ import { ServiceType } from 'src/app/models/serviceType';
 })
 export class ReadServicetypeComponent implements OnInit {
 
-  servicetypes: ServiceType[];
+  servicetypes: ServiceType;
   serviceTypeList: ServiceType[];
+  searchText = '';
 
   constructor(
     public router: Router,
     public dialog: MatDialog,
     private serviceTypeService: ServiceTypeService,
+    private notificationService:NotificationsService
   ) { }
 
 
@@ -34,6 +38,9 @@ export class ReadServicetypeComponent implements OnInit {
   readServiceTypes(){
     this.serviceTypeService.getServiceTypes().subscribe((res)=>{
       this.serviceTypeList =res as ServiceType[];
+    },(err: HttpErrorResponse)=>{
+      this.notificationService.failToaster("Unable to display service types", "Error");
+      console.log(err);
     })
   }
 
@@ -41,7 +48,9 @@ export class ReadServicetypeComponent implements OnInit {
     this.serviceTypeService.deleteServiceType(id).subscribe((res)=>{
       console.log(id);
       this.readServiceTypes();
-    })
+    }, (err: HttpErrorResponse)=>{
+      this.notificationService.failToaster("Unable to delete service type", "Error");
+    });
   }
    
   editServiceTypes(obj){
@@ -76,21 +85,4 @@ export class ReadServicetypeComponent implements OnInit {
       }
     );
   }
-  
-openDeleteDialog() {
-  const dialogInterface: DialogInterface = {
-    dialogHeader: 'Confirmation Message',
-    dialogContent: 'Are you sure you want to delete this?',
-    cancelButtonLabel: 'No',
-    confirmButtonLabel: 'Yes',
-    callbackMethod: () => {
-
-    },
-  };
-  this.dialog.open(SharedComponent, {
-    width: '300px',
-    data: dialogInterface,
-  });
-}
-
 }
