@@ -1,10 +1,7 @@
-import { Observable } from 'rxjs';
-import { DialogInterface} from './../../../../Interfaces/dialog.interface';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CreateSupplierComponent } from '../../create-supplier/create-supplier/create-supplier.component';
 import { EditSuppliersComponent } from '../../edit-supplier/edit-suppliers/edit-suppliers.component';
-import { SharedComponent } from 'src/app/component/shared components/shared/shared.component';
 import { Supplier } from 'src/app/models/supplier';
 import { SupplierService } from 'src/app/shared/services/supplier.service';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -18,15 +15,19 @@ import { NotificationsService } from 'src/app/shared/services/notifications.serv
 export class ReadSuppliersComponent implements OnInit {
   supplierList: Supplier[];
   supplier: Supplier;
+  searchText = '';
 
   constructor(private supplierService: SupplierService,
     public dialog: MatDialog,
-    private notificationService: NotificationsService
-  ) { }
+    private notificationService: NotificationsService,
+  ) { 
+  }
 
   ngOnInit(): void {
     this.readSuppliers();
   }
+  
+
   
 
   readSuppliers(){
@@ -56,6 +57,16 @@ export class ReadSuppliersComponent implements OnInit {
       dialogConfig
     );
   }
+
+  // Filter(event:Event){
+  //   let result = this.supplierList.filter(event.target as HTMLInputElement).values
+  // }
+
+  // SearchByName(name){
+  //   this.supplierService.getSupplierByName(name).subscribe((res)=>{
+  //     this.supplier = res as Supplier;
+  //   });
+  // }
 //Used to go to the edit model
   routerEditSupplier(supplierId: number, supplierName: string, supplierContactPersonEmail: string, supplierContactPersonNumber: string) {
     console.log(supplierId, supplierName, supplierContactPersonEmail, supplierContactPersonNumber);

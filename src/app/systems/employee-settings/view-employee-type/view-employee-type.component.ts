@@ -15,8 +15,8 @@ import { NotificationsService } from 'src/app/shared/services/notifications.serv
   styleUrls: ['./view-employee-type.component.scss']
 })
 export class ViewEmployeeTypeComponent implements OnInit {
-  employeeTypeList: EmployeeType[]; 
-  employeeType: EmployeeType; 
+  employeeTypeList: EmployeeType[];
+  employeeType: EmployeeType;
 
 
   constructor(
@@ -34,7 +34,7 @@ export class ViewEmployeeTypeComponent implements OnInit {
   
   readEmployeeTypes(){
     console.log(this.employeeTypeList);
-    this.employeeTypeService.getEmployeeType().subscribe((res)=>{
+    this.employeeTypeService.getEmployeeType().subscribe((res) => {
       this.employeeTypeList = res as EmployeeType[];
       console.log(this.employeeTypeList);
     });
@@ -53,7 +53,7 @@ export class ViewEmployeeTypeComponent implements OnInit {
   routerEditEmployeeTypes(employeeTypeId: number, employeeTypeName: string) {
     console.log(employeeTypeId, employeeTypeName);
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = false; 
+    dialogConfig.disableClose = false;
     const dialogReference = this.dialog.open(
       EditEmployeeTypeComponent,
       {
@@ -64,13 +64,13 @@ export class ViewEmployeeTypeComponent implements OnInit {
         }
       }
     );
-  
+
   }
   routerAddEmployeeTypes() {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = false; 
+    dialogConfig.disableClose = false;
     const dialogReference = this.dialog.open(
-     AddEmployeeTypeComponent,
+      AddEmployeeTypeComponent,
       dialogConfig
     );
   }

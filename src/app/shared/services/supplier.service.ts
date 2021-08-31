@@ -33,4 +33,8 @@ export class SupplierService {
   deleteSupplier(id){
     return this.http.delete(this.apiUrl + 'deletesupplier' + id);
   }
+
+  getSupplierByName(name){
+    return this.http.get(this.apiUrl + 'getsuppliername' + name); 
+  }
 }
