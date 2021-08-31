@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
-import { getDefaultEventEnd } from '@fullcalendar/angular';
+import { NotificationsService } from 'src/app/shared/services/notifications.service';
 
 @Component({
   selector: 'app-view-employment-statuses',
@@ -21,11 +21,16 @@ export class ViewEmploymentStatusesComponent implements OnInit {
 
   constructor(
     public employmentStatusService: EmploymentStatusService,
-    public dialog: MatDialog
+    public dialog: MatDialog, 
+    private notificationsService: NotificationsService
   ) { }
 
   ngOnInit(): void {
     this.readEmploymentStatuses();
+  }
+
+  Close(){
+    this.dialog.closeAll();
   }
   
   readEmploymentStatuses(){
@@ -39,9 +44,13 @@ export class ViewEmploymentStatusesComponent implements OnInit {
       this.employmentStatusService.deleteEmploymentStatus(id).subscribe((res)=>{
         console.log(id);
         this.readEmploymentStatuses();
-      });
-    }
-
+      });this.Close();
+      this.notificationsService.successToaster("Employment Status deleted", "Success");
+      setTimeout(()=>{
+        window.location.reload();
+      }, 1000);
+      }
+    
   routerEditEmploymentStatuses(employmentStatusId: number, employmentStatusName: string) {
     console.log(employmentStatusId, employmentStatusName);
     const dialogConfig = new MatDialogConfig();

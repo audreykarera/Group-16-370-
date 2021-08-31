@@ -27,6 +27,7 @@ export class ReadSuppliersComponent implements OnInit {
   ngOnInit(): void {
     this.readSuppliers();
   }
+  
 
   readSuppliers(){
     this.supplierService.getSuppliers().subscribe((res)=>{

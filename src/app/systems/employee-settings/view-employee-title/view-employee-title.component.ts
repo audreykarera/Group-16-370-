@@ -1,3 +1,4 @@
+import { NotificationsService } from './../../../shared/services/notifications.service';
 import { EditTitleComponent } from './../edit-title/edit-title/edit-title.component';
 import { AddTitleComponent } from './../add-title/add-title/add-title.component';
 import { TitleService } from './../../../shared/services/title.service';
@@ -20,12 +21,17 @@ export class ViewEmployeeTitleComponent implements OnInit {
 
   constructor(
     public titleService: TitleService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    notificationsService: NotificationsService
   ) { }
 
   ngOnInit(): void {
     this.readTitles();
   }
+  Close(){
+    this.dialog.closeAll();
+  }
+  
   
   readTitles(){
     console.log(this.titleList);
