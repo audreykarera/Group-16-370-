@@ -1,3 +1,4 @@
+import { CreateSlotComponent } from './systems/schedule/create-slot/create-slot/create-slot.component';
 import { ReadBookingStatusComponent } from './systems/booking-status/read-booking-status/read-booking-status/read-booking-status.component';
 
 import { ReadQuoteStatusComponent } from './systems/quote-status/read-quote-status/read-quote-status/read-quote-status.component';
@@ -88,6 +89,7 @@ const routes: Routes = [
   { path: 'paymenttypes', component: ReadPaymentTypeComponent},
   { path: 'quotestatuses', component: ReadQuoteStatusComponent},
   { path: 'bookingstatus', component: ReadBookingStatusComponent},
+  { path: 'addbookingslot', component: CreateSlotComponent},
 ];
 
 @NgModule({
