@@ -45,7 +45,7 @@ export class ReadServicetypeComponent implements OnInit {
   }
    
   editServiceTypes(obj){
-   this.serviceTypeService.postServiceType(obj).subscribe((res)=>{
+   this.serviceTypeService.patchServiceType(obj).subscribe((res)=>{
      this.readServiceTypes();
    })
   }

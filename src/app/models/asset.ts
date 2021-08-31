@@ -3,3 +3,11 @@ export class Equipment {
   EquipmentName: string;
   EquipmentAvailable: boolean;
 }
+
+export class Vehicle {
+  VehicleId: number;
+  VehicleNumberPlate: string;
+  VehicleMake: string;
+  VehicleModel: string;
+  VehicleAvailable: boolean;
+}

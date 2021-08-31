@@ -19,7 +19,7 @@
         <table class="table table-hover align-middle">
           <thead>
             <tr>
-              <th class="col">Asset Type</th>
+              <th class="col">Asset ID</th>
               <th class="col">Registration Number</th>
               <th class="col">Asset Make</th>
               <th class="col">Asset Model</th>
@@ -31,15 +31,28 @@
 
           <tbody>
              <tr *ngFor="let item of equipmentList" >
-              <td>Equipment</td>
               <td>{{item.EquipmentId}}</td>
+              <td>N/A</td>
               <td>{{item.EquipmentName}}</td>
-              <td>GFS Skip Bin</td>
+              <td>N/A</td>
               <td>{{item.EquipmentAvailable}}</td>
               <td class="icon-hover" (click)="routerEditAsset()">
                 <mat-icon>edit</mat-icon>
               </td>
-              <td class="icon-hover" (click)="onDelete(item.EquipmentId)">
+              <td class="icon-hover" (click)="onDeleteEquip(item.EquipmentId)">
+                <mat-icon>delete</mat-icon>
+              </td>
+            </tr>
+            <tr *ngFor="let item of vehicleList" >
+              <td>{{item.VehicleId}}</td>
+              <td>{{item.VehicleNumberPlate}}</td>
+              <td>{{item.VehicleMake}}</td>
+              <td>{{item.VehicleModel}}</td>
+              <td>{{item.VehicleAvailable}}</td>
+              <td class="icon-hover" (click)="routerEditAsset()">
+                <mat-icon>edit</mat-icon>
+              </td>
+              <td class="icon-hover" (click)="onDeleteVehicle(item.VehicleId)">
                 <mat-icon>delete</mat-icon>
               </td>
             </tr>
