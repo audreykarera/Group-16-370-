@@ -4,6 +4,7 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SharedComponent } from 'src/app/component/shared components/shared/shared.component';
 import { DialogInterface } from 'src/app/Interfaces/dialog.interface';
 import { ServiceTypeService } from 'src/app/shared/services/service-type.service';
+import { NotificationsService } from 'src/app/shared/services/notifications.service';
 
 @Component({
   selector: 'app-edit-servicetype',
@@ -15,17 +16,28 @@ export class EditServicetypeComponent implements OnInit {
   constructor(public dialog: MatDialog,
     private serviceTypeService: ServiceTypeService,
     @Inject(MAT_DIALOG_DATA)
-    public data: any) { }
+    public data: any,
+    private notificationService: NotificationsService) { }
 
   ngOnInit(): void {
     console.log(this.data);
     this.refreshForm();
   }
+ 
+  Close(){
+    this.dialog.closeAll();
+  }
+  
 
   updateServiceTypes() {
     this.serviceTypeService.patchServiceType(this.serviceType).subscribe((res) => {
       this.serviceType = res as ServiceType;
-    })
+    });
+    this.Close();
+    this.notificationService.successToaster("Successfully saved supplied", "Error");
+    setTimeout(()=>{
+      window.location.reload();
+    }, 1000);
   }
 
   refreshForm() {
@@ -34,42 +46,5 @@ export class EditServicetypeComponent implements OnInit {
       ServiceTypeName: '',
       ServiceTypeDescription: '',
     }
-  }
-
-
-  openConfirmDialog() {
-    const dialogInterface: DialogInterface = {
-      dialogHeader: 'Confirmation Message',
-      dialogContent: 'Are you sure you want to save changes made?',
-      cancelButtonLabel: 'No',
-      confirmButtonLabel: 'Yes',
-      callbackMethod: () => {
-
-      },
-    };
-    this.dialog.open(SharedComponent, {
-      width: '300px',
-      data: dialogInterface,
-    });
-  }
-
-  /**
-     * This method invokes the Cancel Dialog
-     */
-  openCancelDialog() {
-    const dialogInterface: DialogInterface = {
-      dialogHeader: 'Confirmation Message',
-      dialogContent: 'Are you sure you want cancel changes made ?',
-      cancelButtonLabel: 'No',
-      confirmButtonLabel: 'Yes',
-      callbackMethod: () => {
-
-      },
-    };
-    this.dialog.open(SharedComponent, {
-      width: '300px',
-      data: dialogInterface,
-    });
-
   }
 }

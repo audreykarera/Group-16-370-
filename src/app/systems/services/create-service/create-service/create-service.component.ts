@@ -1,3 +1,5 @@
+import { NotificationsService } from './../../../../shared/services/notifications.service';
+import { Router } from '@angular/router';
 import { Service } from './../../../../models/service';
 import { ServiceTypeService } from 'src/app/shared/services/service-type.service';
 
@@ -19,30 +21,29 @@ export class CreateServiceComponent implements OnInit {
   service:Service;
   serviceTypeList: ServiceType[];
   
-
-
-  //  services: service[] = [
-  //   {value: 'complaints-0', viewValue: 'Collection'},
-  //   {value: 'users-1', viewValue: 'Delivery'},
-  //   {value: 'collection-2', viewValue: 'Removal'}, 
-  // ];
-  // formGroup!: FormGroup;
   constructor(private _service:ServiceService,
+    private notificationService:NotificationsService,
     public dialog: MatDialog,
     public serviceService:ServiceService,
-    public serviceTypeService:ServiceTypeService){ }
+    public serviceTypeService:ServiceTypeService,
+    public router: Router){ }
 
   ngOnInit(): void {
     this.refreshForm();
-    this.readServiceTypes();
     
   }
+  
+  Close(){
+    this.dialog.closeAll();
+  }
 
-  // onSave(){
-  //   this.serviceService.postService(this.service).subscribe((res)=>{
-  //     this.service = res as Service;
-  //   })
-  // }
+  onSave(){
+    this.serviceService.postService(this.service).subscribe((res)=>{
+      this.service = res as Service;
+    });
+    this.Close();
+    this.notificationService.successToaster("Successfully save Service","Error");
+  }
 
  
   readServiceTypes(){
