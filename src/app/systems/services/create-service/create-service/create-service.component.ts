@@ -1,10 +1,13 @@
-import { Service } from './../../../../models/service';
+import { ServiceTypeService } from 'src/app/shared/services/service-type.service';
+
 import { ServiceService } from 'src/app/shared/services/service.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { SharedComponent } from 'src/app/component/shared components/shared/shared.component';
 import { DialogInterface } from 'src/app/interfaces/dialog.interface';
+import { ServiceType } from 'src/app/models/serviceType';
+import { Service } from 'src/app/models/service';
 
 @Component({
   selector: 'app-create-service',
@@ -13,6 +16,8 @@ import { DialogInterface } from 'src/app/interfaces/dialog.interface';
 })
 export class CreateServiceComponent implements OnInit {
   service:Service;
+  serviceTypeList: ServiceType[];
+  types$;
 
   //  services: service[] = [
   //   {value: 'complaints-0', viewValue: 'Collection'},
@@ -22,10 +27,19 @@ export class CreateServiceComponent implements OnInit {
   // formGroup!: FormGroup;
   constructor(
     public dialog: MatDialog,
-    public serviceService:ServiceService) { }
+    public serviceService:ServiceService,
+    public serviceTypeService:ServiceTypeService){ }
 
   ngOnInit(): void {
     this.refreshForm();
+    this.types$=this. readServiceTypes();
+  }
+
+ 
+  readServiceTypes(){
+    this.serviceTypeService.getServiceTypes().subscribe((res)=>{
+      this.serviceTypeList =res as ServiceType[];
+    })
   }
 
   // onSave(){

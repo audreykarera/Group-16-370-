@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -17,10 +18,10 @@
                   
                         <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Service Type Name</label>
                         <input class="form-control form-control-sm" type="text" placeholder="{{data.serviceTypeName}}"
-                            aria-label=".form-control-sm example" >
+                            aria-label=".form-control-sm example" [(ngModel)]="serviceType.ServiceTypeName">
                         <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Service Type Description</label>
                         <input class="form-control form-control-sm" type="text" placeholder="{{data.serviceTypeDescription}}"
-                            aria-label=".form-control-sm example" >
+                            aria-label=".form-control-sm example" [(ngModel)]="serviceType.ServiceTypeDescription" >
                             <br>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                             <button class="btn btn-outline-success me-md-2" (click)="updateServiceTypes()" type="button">Save</button>
