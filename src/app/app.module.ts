@@ -1,6 +1,7 @@
+
 //Modules
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms'; 
+import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { ToastrModule } from 'ngx-toastr';
@@ -109,13 +110,12 @@ import { AddEmployeeTypeComponent } from './systems/employee-settings/add-employ
 import { AddTitleComponent } from './systems/employee-settings/add-title/add-title/add-title.component';
 import { AddEmploymentStatusComponent } from './systems/employee-settings/add-employment-status/add-employment-status/add-employment-status.component';
 import { EditTitleComponent } from './systems/employee-settings/edit-title/edit-title/edit-title.component';
-import { ReadPaymentTypeComponent } from './systems/payment type/read-payment-type/read-payment-type/read-payment-type.component';
-import { CreatePaymentTypeComponent } from './systems/payment type/create-payment-type/create-payment-type/create-payment-type.component';
-import { EditPaymentTypeComponent } from './systems/payment type/edit-payment-type/edit-payment-type/edit-payment-type.component';
-import { CreateQuoteStatusComponent } from './systems/quote status/create-quote-status/create-quote-status/create-quote-status.component';
-import { ReadQuoteStatusComponent } from './systems/quote status/read-quote-status/read-quote-status/read-quote-status.component';
-import { EditQuoteStatusComponent } from './systems/quote status/edit-quote-status/edit-quote-status/edit-quote-status.component';
-
+import { ReadPaymentTypeComponent } from './systems/payment-type/read-payment-type/read-payment-type/read-payment-type.component';
+import { EditPaymentTypeComponent } from './systems/payment-type/edit-payment-type/edit-payment-type/edit-payment-type.component';
+import { CreatePaymentTypeComponent } from './systems/payment-type/create-payment-type/create-payment-type/create-payment-type.component';
+import { CreateQuoteStatusComponent } from './systems/quote-status/create-quote-status/create-quote-status/create-quote-status.component';
+import { ReadQuoteStatusComponent } from './systems/quote-status/read-quote-status/read-quote-status/read-quote-status.component';
+import { EditQuoteStatusComponent } from './systems/quote-status/edit-quote-status/edit-quote-status/edit-quote-status.component';
 
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
@@ -222,7 +222,13 @@ const angularMaterials = [
     AddTitleComponent,
     AddEmploymentStatusComponent,
     EditTitleComponent,
-    FilterPipe
+    FilterPipe,
+    ReadPaymentTypeComponent,
+    EditPaymentTypeComponent,
+    CreatePaymentTypeComponent,
+    CreateQuoteStatusComponent,
+    ReadQuoteStatusComponent,
+    EditQuoteStatusComponent
   ],
 
   imports: [
@@ -231,11 +237,11 @@ const angularMaterials = [
     AppRoutingModule,
     BrowserAnimationsModule,
     NgxChartsModule,
-    ScheduleModule, 
+    ScheduleModule,
     RecurrenceEditorModule,
-    HttpClientModule, 
-    FormsModule, 
-    ReactiveFormsModule, 
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     ToastrModule.forRoot()
   ],
   providers: [],

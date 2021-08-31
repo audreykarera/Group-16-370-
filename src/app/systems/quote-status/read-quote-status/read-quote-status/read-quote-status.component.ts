@@ -1,3 +1,4 @@
+import { CreateQuoteStatusComponent } from './../../create-quote-status/create-quote-status/create-quote-status.component';
 import { CreateQuoteComponent } from './../../../quotes/create-quote/create-quote/create-quote.component';
 import { EditQuoteStatusComponent } from './../../edit-quote-status/edit-quote-status/edit-quote-status.component';
 import { Component, OnInit } from '@angular/core';
@@ -9,7 +10,6 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
   styleUrls: ['./read-quote-status.component.scss']
 })
 export class ReadQuoteStatusComponent implements OnInit {
-
   constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -19,7 +19,7 @@ export class ReadQuoteStatusComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     const dialogReference = this.dialog.open(
-      CreateQuoteComponent, 
+      CreateQuoteStatusComponent, 
       dialogConfig
     );
   }
