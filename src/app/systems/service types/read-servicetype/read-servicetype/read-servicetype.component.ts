@@ -50,6 +50,9 @@ export class ReadServicetypeComponent implements OnInit {
       this.readServiceTypes();
     }, (err: HttpErrorResponse)=>{
       this.notificationService.failToaster("Unable to delete service type", "Error");
+      setTimeout(()=>{
+        window.location.reload();
+      },10000);  
     });
   }
    

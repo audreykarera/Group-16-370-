@@ -35,6 +35,9 @@ apiUrl="http://localhost:60000/api/service/";
     deleteService(id) {
       return this.http.delete(this.apiUrl + 'deleteservice' + id);
     }
+    getServiceByName(name){
+      return this.http.get(this.apiUrl + 'getservicebyname' + name); 
+    }
   
 
 }

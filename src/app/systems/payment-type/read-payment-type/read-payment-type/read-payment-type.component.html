@@ -25,14 +25,14 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>Administrator</td>
+            <tr *ngFor="let item of paymentTypeList | appFilter:searchText">
+              <td>{{item.paymentTypeId}}</td>
+              <td>{{item.paymentTypeName}}</td>
               <td class="icon-hover">
-                <mat-icon (click)="routerEditPaymentType()">edit</mat-icon>
+                <mat-icon (click)="routerEditPaymentType(item.paymentTypeId, item.paymentTypeName)">edit</mat-icon>
               </td>
               <td class="icon-hover">
-                <mat-icon>delete</mat-icon>
+                <mat-icon (click)="onDelete(item.paymentTypeId)">delete</mat-icon>
               </td>
             </tr>
           </tbody>

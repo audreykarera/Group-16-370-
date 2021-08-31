@@ -1,3 +1,4 @@
+
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SharedComponent } from 'src/app/component/shared components/shared/shared.component';
@@ -29,6 +30,14 @@ export class EditServiceComponent implements OnInit {
 
   Close(){
     this.dialog.closeAll();
+  }
+
+  updateService(){
+    this.serviceService.patchService(this.serviceList).subscribe((res)=>{
+      this.serviceList = res as Service;
+    });
+    this.Close();
+    this.notificationService.successToaster("Successfully save Service","Error");
   }
 
   readService(){

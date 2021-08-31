@@ -45,6 +45,9 @@ export class ReadSuppliersComponent implements OnInit {
       this.readSuppliers();
     }, (err: HttpErrorResponse)=>{
       this.notificationService.failToaster("Unable to delete supplier", "Error");
+      setTimeout(()=>{
+        window.location.reload();
+      },10000);  
     });
   }
 

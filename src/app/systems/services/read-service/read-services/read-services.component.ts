@@ -101,22 +101,5 @@ export class ReadServicesComponent implements OnInit {
      }
     );
 
-}
-
-openDeleteDialog() {
-  const dialogInterface: DialogInterface = {
-    dialogHeader: 'Confirmation Message',
-    dialogContent: 'Are you sure you want to delete this?',
-    cancelButtonLabel: 'No',
-    confirmButtonLabel: 'Yes',
-    callbackMethod: () => {
-
-    },
-  };
-  this.dialog.open(SharedComponent, {
-    width: '300px',
-    data: dialogInterface,
-  });
-}
-
+  }
 }

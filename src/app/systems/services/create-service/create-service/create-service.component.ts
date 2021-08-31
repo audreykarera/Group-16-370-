@@ -32,18 +32,18 @@ export class CreateServiceComponent implements OnInit {
     this.refreshForm();
     
   }
-
+  
   Close(){
     this.dialog.closeAll();
   }
 
-  // onSave(){
-  //   this.serviceService.postService(this.service).subscribe((res)=>{
-  //     this.service = res as Service;
-  //   });
-  //   this.Close();
-  //   this.notificationService.successToaster("Successfully save Service","Error");
-  // }
+  onSave(){
+    this.serviceService.postService(this.service).subscribe((res)=>{
+      this.service = res as Service;
+    });
+    this.Close();
+    this.notificationService.successToaster("Successfully save Service","Error");
+  }
 
  
   readServiceTypes(){

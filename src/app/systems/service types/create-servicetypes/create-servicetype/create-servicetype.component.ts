@@ -34,7 +34,7 @@ export class CreateServicetypeComponent implements OnInit {
           this.serviceType = res as ServiceType;
         });
         this.Close();
-        this.notificationService.successToaster("Successfully save service type","Error");
+        this.notificationService.successToaster("Successfully saved service type","Success Message");
         setTimeout(()=>{
           window.location.reload();
         }, 1000);
