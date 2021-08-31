@@ -11,30 +11,31 @@ import { ServiceTypeService } from 'src/app/shared/services/service-type.service
   styleUrls: ['./edit-servicetype.component.scss']
 })
 export class EditServicetypeComponent implements OnInit {
-
- serviceType:ServiceType;
-
+  serviceType: ServiceType;
   constructor(public dialog: MatDialog,
-    private serviceTypeService:ServiceTypeService,
+    private serviceTypeService: ServiceTypeService,
     @Inject(MAT_DIALOG_DATA)
     public data: any) { }
-  
+
   ngOnInit(): void {
-    
     console.log(this.data);
+    this.refreshForm();
   }
 
-  readServiceTypes(){
-    this.serviceTypeService.getServiceTypes().subscribe((res)=>{
-      this.serviceType=res as ServiceType;
+  updateServiceTypes() {
+    this.serviceTypeService.patchServiceType(this.serviceType).subscribe((res) => {
+      this.serviceType = res as ServiceType;
     })
   }
 
-  updateServiceTypes(){
-    this.serviceTypeService.patchServiceType(this.serviceType).subscribe((res)=>{
-      this.serviceType=res as ServiceType;
-    })
+  refreshForm() {
+    this.serviceType = {
+      ServiceTypeId: 0,
+      ServiceTypeName: '',
+      ServiceTypeDescription: '',
+    }
   }
+
 
   openConfirmDialog() {
     const dialogInterface: DialogInterface = {
@@ -43,7 +44,7 @@ export class EditServicetypeComponent implements OnInit {
       cancelButtonLabel: 'No',
       confirmButtonLabel: 'Yes',
       callbackMethod: () => {
-       
+
       },
     };
     this.dialog.open(SharedComponent, {
@@ -51,7 +52,7 @@ export class EditServicetypeComponent implements OnInit {
       data: dialogInterface,
     });
   }
-  
+
   /**
      * This method invokes the Cancel Dialog
      */
@@ -62,7 +63,7 @@ export class EditServicetypeComponent implements OnInit {
       cancelButtonLabel: 'No',
       confirmButtonLabel: 'Yes',
       callbackMethod: () => {
-       
+
       },
     };
     this.dialog.open(SharedComponent, {
@@ -70,5 +71,5 @@ export class EditServicetypeComponent implements OnInit {
       data: dialogInterface,
     });
 
-}
+  }
 }

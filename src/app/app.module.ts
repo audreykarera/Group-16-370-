@@ -104,6 +104,9 @@ import { ClientViewInvoicesComponent } from './systems/invoices/client-view-invo
 import { RequestQuoteComponent } from './systems/quotes/request quote/request-quote/request-quote.component';
 
 import { AddEmployeeTypeComponent } from './systems/employee-settings/add-employee-type/add-employee-type/add-employee-type.component';
+import { AddTitleComponent } from './systems/employee-settings/add-title/add-title/add-title.component';
+import { AddEmploymentStatusComponent } from './systems/employee-settings/add-employment-status/add-employment-status/add-employment-status.component';
+import { EditTitleComponent } from './systems/employee-settings/edit-title/edit-title/edit-title.component';
 
 
 
@@ -208,6 +211,9 @@ const angularMaterials = [
     RequestQuoteComponent,
     AddEmployeeTypeComponent,
     AddEmployeeTypeComponent,
+    AddTitleComponent,
+    AddEmploymentStatusComponent,
+    EditTitleComponent,
   ],
 
   imports: [

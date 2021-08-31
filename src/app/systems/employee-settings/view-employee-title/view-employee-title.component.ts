@@ -1,12 +1,12 @@
-import { EmployeeTitleService } from './../../../shared/employee title service/employee-title.service';
-import { AddEmployeeTitleComponent } from './../add-employee-title/add-employee-title.component';
-import { DeleteEmployeeTitleComponent } from './../delete-employee-title/delete-employee-title.component';
-import { EditEmployeeTitleComponent } from './../edit-employee-title/edit-employee-title.component';
+import { EditTitleComponent } from './../edit-title/edit-title/edit-title.component';
+import { AddTitleComponent } from './../add-title/add-title/add-title.component';
+import { TitleService } from './../../../shared/services/title.service';
+
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { HttpErrorResponse } from '@angular/common/http';
-import { EmployeeTitle } from 'src/app/models/employeeTitle';
 import { Observable } from 'rxjs';
+import { Title } from 'src/app/models/titles';
 
 @Component({
   selector: 'app-view-employee-title',
@@ -14,49 +14,47 @@ import { Observable } from 'rxjs';
   styleUrls: ['./view-employee-title.component.scss']
 })
 export class ViewEmployeeTitleComponent implements OnInit {
-
-  titles: EmployeeTitle[] = [];
-  titles$: Observable<EmployeeTitle[]> = this.serviceEmployeeTitle.getTitles();
+  titleList: Title[]; 
+  title: Title; 
 
 
   constructor(
-    public serviceEmployeeTitle: EmployeeTitleService,
+    public titleService: TitleService,
     public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
-    this.readTitle();
+    this.readTitles();
   }
-  readTitle(){
-    this.titles$.subscribe(data=>{
-      this.titles=data;
-      console.log(this.titles);
-    }, (err:HttpErrorResponse)=>{
-      console.log(err);
-    })
-  } 
+  
+  readTitles(){
+    console.log(this.titleList);
+    this.titleService.getTitles().subscribe((res)=>{
+      this.titleList = res as Title[];
+      console.log(this.titleList);
+    });
+  }
+    onDelete(id){
+      this.titleService.deleteTitle(id).subscribe((res)=>{
+        console.log(id);
+        this.readTitles();
+      });
+  }
 
   routerEditEmployeeTitles() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false; 
     const dialogReference = this.dialog.open(
-      EditEmployeeTitleComponent,
+      EditTitleComponent,
       dialogConfig
     );
-  }
-  routerDeleteEmployeeTitles() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = false; 
-    const dialogReference = this.dialog.open(
-      DeleteEmployeeTitleComponent,
-      dialogConfig
-    );
+
   }
   routerAddEmployeeTitles() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false; 
     const dialogReference = this.dialog.open(
-      AddEmployeeTitleComponent,
+      AddTitleComponent,
       dialogConfig
     );
   }
