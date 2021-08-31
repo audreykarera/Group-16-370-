@@ -1,4 +1,6 @@
 
+import { Equipment } from './../../../../models/asset';
+
 import { Observable } from 'rxjs';
 
 import { DeleteAssetComponent } from './../../delete-asset/delete-asset/delete-asset.component';
@@ -6,9 +8,9 @@ import { UpdateAssetComponent } from './../update-asset/update-asset/update-asse
 import { CreateAssetComponent } from './../create-asset/create-asset/create-asset.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
+import { AssetService } from 'src/app/shared/services/asset.service';
 
-import { AssetService } from 'src/app/shared/services/apiServices/asset.service';
-import { Vehicle } from 'src/app/models/asset';
+
 
 @Component({
   selector: 'app-read-asset',
@@ -17,35 +19,37 @@ import { Vehicle } from 'src/app/models/asset';
 })
 export class ReadAssetComponent implements OnInit {
 
-  // vehicle: Vehicle;
-  // vehicleList: Vehicle[];
-   vehicles: Vehicle[] = [];
-   vehicles$: Observable<Vehicle[]> = this.assetService.getVehicle();
+  equipmentList: Equipment[];
+  equipment: Equipment;
+
 
   constructor(
-    public dialog: MatDialog,
-    private assetService: AssetService
+     public dialog: MatDialog, private equipmentService: AssetService
   ) { }
 
   ngOnInit(): void {
-     this.vehicles$.subscribe((res) =>{
-       console.log(res);
-     });
-    // this.readVehicles();
+    this.readEquipment();
   }
 
-  // readVehicles(){
-  //   this.assetService.getVehicle().subscribe((res) =>{
-  //     this.vehicleList = res as Vehicle[];
-  //   })
-  // }
+  readEquipment(){
+    this.equipmentService.getEquipment().subscribe((res) =>{
+      this.equipmentList = res as Equipment[];
+    })
+  }
 
-  // onDelete(id){
-  //   this.assetService.deleteVehicle(id).subscribe((res)=>{
-  //     console.log(id);
-  //     this.readVehicles();
-  //   });
-  // }
+  onDelete(id){
+    this.equipmentService.deleteEquipment(id).subscribe((res)=>{
+      console.log(id);
+      this.readEquipment();
+    });
+  }
+
+  editSupplier(obj){
+    this.equipmentService.postEquipment(obj).subscribe((res)=>{
+      this.readEquipment();
+    })
+  }
+
 
   routerAddAsset() {
     const dialogConfig = new MatDialogConfig();
