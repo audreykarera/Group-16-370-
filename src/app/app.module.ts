@@ -1,7 +1,7 @@
 
 //Modules
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms'; 
+import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { ToastrModule } from 'ngx-toastr';
@@ -237,11 +237,11 @@ const angularMaterials = [
     AppRoutingModule,
     BrowserAnimationsModule,
     NgxChartsModule,
-    ScheduleModule, 
+    ScheduleModule,
     RecurrenceEditorModule,
-    HttpClientModule, 
-    FormsModule, 
-    ReactiveFormsModule, 
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     ToastrModule.forRoot()
   ],
   providers: [],
