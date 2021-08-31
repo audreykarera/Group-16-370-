@@ -55,7 +55,7 @@ import { EditPackagesComponent } from './systems/packages/edit-packages/edit-pac
 import { DeletePackageComponent } from './systems/packages/delete-packages/delete-package/delete-package.component';
 import { CreateServicetypeComponent } from './systems/service types/create-servicetypes/create-servicetype/create-servicetype.component';
 import { EditServicetypeComponent } from './systems/service types/edit-servicetype/edit-servicetype/edit-servicetype.component';
-//import { ReadServicetypeComponent } from './systems/service types/read-servicetype/read-servicetype/read-servicetype.component';
+import { ReadServicetypeComponent } from './systems/service types/read-servicetype/read-servicetype/read-servicetype.component';
 import { SharedComponent } from './component/shared components/shared/shared.component';
 import { AddCollectionNoteComponent } from './systems/collection note/add-collection-note/add-collection-note/add-collection-note.component';
 import { ViewCollectionNoteComponent } from './systems/collection note/add-collection-note/view-collection-note/view-collection-note/view-collection-note.component';
@@ -163,7 +163,7 @@ const angularMaterials = [
     DeletePackageComponent,
     CreateServicetypeComponent,
     EditServicetypeComponent,
-    //ReadServicetypeComponent,
+    ReadServicetypeComponent,
     SharedComponent,
     AddCollectionNoteComponent,
     ViewCollectionNoteComponent,
