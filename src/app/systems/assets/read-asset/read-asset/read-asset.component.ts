@@ -43,13 +43,7 @@ export class ReadAssetComponent implements OnInit {
     });
   }
 
-  readVehicle(){
-    this.vehicleService.getVehicle().subscribe((res) =>{
-      this.vehicleList = res as Vehicle[];
-    });
-  }
-
-  onDelete(id){
+  onDeleteEquip(id){
     this.equipmentService.deleteEquipment(id).subscribe((res)=>{
       console.log(id);
       this.readEquipment();
@@ -62,10 +56,23 @@ export class ReadAssetComponent implements OnInit {
     });
   }
 
+  readVehicle(){
+    this.vehicleService.getVehicle().subscribe((res) =>{
+      this.vehicleList = res as Vehicle[];
+    });
+  }
+
   editVehicle(obj){
     this.vehicleService.postVehicle(obj).subscribe((res) =>{
       this.readVehicle();
     })
+  }
+
+  onDeleteVehicle(id){
+    this.vehicleService.deleteVehicle(id).subscribe((res)=>{
+      console.log(id);
+      this.readVehicle();
+    });
   }
 
 
