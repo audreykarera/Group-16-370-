@@ -115,6 +115,10 @@ import { EditPaymentTypeComponent } from './systems/payment type/edit-payment-ty
 import { CreateQuoteStatusComponent } from './systems/quote status/create-quote-status/create-quote-status/create-quote-status.component';
 import { ReadQuoteStatusComponent } from './systems/quote status/read-quote-status/read-quote-status/read-quote-status.component';
 import { EditQuoteStatusComponent } from './systems/quote status/edit-quote-status/edit-quote-status/edit-quote-status.component';
+import { BookingStatusComponent } from './systems/booking-status/booking-status.component';
+import { ReadBookingStatusComponent } from './systems/booking-status/read-booking-status/read-booking-status/read-booking-status.component';
+import { EditBookingStatusComponent } from './systems/booking-status/edit-booking-status/edit-booking-status/edit-booking-status.component';
+import { CreateBookingStatusComponent } from './systems/booking-status/create-booking-status/create-booking-status/create-booking-status.component';
 
 
 
@@ -222,7 +226,11 @@ const angularMaterials = [
     AddTitleComponent,
     AddEmploymentStatusComponent,
     EditTitleComponent,
-    FilterPipe
+    FilterPipe,
+    BookingStatusComponent,
+    ReadBookingStatusComponent,
+    EditBookingStatusComponent,
+    CreateBookingStatusComponent
   ],
 
   imports: [
