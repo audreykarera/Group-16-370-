@@ -41,12 +41,19 @@ export class ViewEmployeeTitleComponent implements OnInit {
       });
   }
 
-  routerEditEmployeeTitles() {
+  routerEditEmployeeTitles(titleId: number, titleDescription: string) {
+    console.log(titleId, titleDescription);
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false; 
     const dialogReference = this.dialog.open(
       EditTitleComponent,
-      dialogConfig
+      {
+        disableClose: true,
+        data: {
+          titleId, 
+          titleDescription
+        }
+      }
     );
 
   }

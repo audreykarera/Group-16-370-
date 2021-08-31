@@ -41,12 +41,19 @@ export class ViewEmployeeTypeComponent implements OnInit {
       });
   }
 
-  routerEditEmployeeTypes() {
+  routerEditEmployeeTypes(employeeTypeId: number, employeeTypeName: string) {
+    console.log(employeeTypeId, employeeTypeName);
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false; 
     const dialogReference = this.dialog.open(
       EditEmployeeTypeComponent,
-      dialogConfig
+      {
+        disableClose: true,
+        data: {
+          employeeTypeId, 
+          employeeTypeName
+        }
+      }
     );
   
   }

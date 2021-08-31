@@ -42,12 +42,20 @@ export class ViewEmploymentStatusesComponent implements OnInit {
       });
     }
 
-  routerEditEmploymentStatuses() {
+  routerEditEmploymentStatuses(employmentStatusId: number, employmentStatusName: string) {
+    console.log(employmentStatusId, employmentStatusName);
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false; 
     const dialogReference = this.dialog.open(
       EditEmploymentStatusesComponent,
-      dialogConfig
+      {
+        disableClose: true,
+        data: {
+          employmentStatusId, 
+          employmentStatusName
+        }
+      }
+     
     );
 
     }

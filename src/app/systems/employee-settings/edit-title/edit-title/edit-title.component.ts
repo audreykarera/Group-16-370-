@@ -22,13 +22,13 @@ export class EditTitleComponent implements OnInit {
     console.log(this.data);
   }
 
-  readServiceTypes(){
+  readTitles(){
     this.titleService.getTitles().subscribe((res)=>{
       this.title=res as Title;
     })
   }
 
-  updateServiceTypes(){
+  updateTitle(){
     this.titleService.patchTitle(this.title).subscribe((res)=>{
       this.title=res as Title;
     })
