@@ -1,5 +1,5 @@
 
-import { Equipment } from './../../../../models/asset';
+import { Equipment, Vehicle } from './../../../../models/asset';
 
 import { Observable } from 'rxjs';
 
@@ -9,6 +9,8 @@ import { CreateAssetComponent } from './../create-asset/create-asset/create-asse
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import { AssetService } from 'src/app/shared/services/asset.service';
+import { DialogInterface } from 'src/app/interfaces/dialog.interface';
+import { SharedComponent } from 'src/app/component/shared components/shared/shared.component';
 
 
 
@@ -19,22 +21,32 @@ import { AssetService } from 'src/app/shared/services/asset.service';
 })
 export class ReadAssetComponent implements OnInit {
 
+  vehicleList: Vehicle[];
+  vehicle: Vehicle;
   equipmentList: Equipment[];
   equipment: Equipment;
 
-
   constructor(
-     public dialog: MatDialog, private equipmentService: AssetService
+    public dialog: MatDialog,
+    private equipmentService: AssetService,
+    private vehicleService: AssetService
   ) { }
 
   ngOnInit(): void {
     this.readEquipment();
+    this.readVehicle();
   }
 
   readEquipment(){
     this.equipmentService.getEquipment().subscribe((res) =>{
       this.equipmentList = res as Equipment[];
-    })
+    });
+  }
+
+  readVehicle(){
+    this.vehicleService.getVehicle().subscribe((res) =>{
+      this.vehicleList = res as Vehicle[];
+    });
   }
 
   onDelete(id){
@@ -44,9 +56,15 @@ export class ReadAssetComponent implements OnInit {
     });
   }
 
-  editSupplier(obj){
+  editEquipment(obj){
     this.equipmentService.postEquipment(obj).subscribe((res)=>{
       this.readEquipment();
+    });
+  }
+
+  editVehicle(obj){
+    this.vehicleService.postVehicle(obj).subscribe((res) =>{
+      this.readVehicle();
     })
   }
 
@@ -69,13 +87,22 @@ export class ReadAssetComponent implements OnInit {
     );
   }
 
-  routerDeleteAsset() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = false; //This must be set to true when the close button works
-    const dialogReference = this.dialog.open(
-      DeleteAssetComponent,
-      dialogConfig
-    );
+
+
+  openDeleteDialog() {
+    const dialogInterface: DialogInterface = {
+      dialogHeader: 'Confirmation Message',
+      dialogContent: 'Are you sure you want to delete this?',
+      cancelButtonLabel: 'No',
+      confirmButtonLabel: 'Yes',
+      callbackMethod: () => {
+
+      },
+    };
+    this.dialog.open(SharedComponent, {
+      width: '300px',
+      data: dialogInterface,
+    });
   }
 
 }
