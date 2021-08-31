@@ -1,6 +1,3 @@
-import { EditBookingStatusComponent } from './../../edit-booking-status/edit-booking-status/edit-booking-status.component';
-import { CreateBookingComponent } from './../../../bookings/create-booking/create-booking/create-booking.component';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -10,28 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReadBookingStatusComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
-
-  routerAddBookingStatus() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    const dialogReference = this.dialog.open(
-      CreateBookingComponent,
-      dialogConfig
-    );
-  }
-
-  routerEditBookingStatus() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    const dialogReference = this.dialog.open(
-      EditBookingStatusComponent,
-      dialogConfig
-    );
-  }
-
 
 }

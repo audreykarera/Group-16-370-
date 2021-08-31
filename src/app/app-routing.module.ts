@@ -1,4 +1,5 @@
 import { ReadBookingStatusComponent } from './systems/booking-status/read-booking-status/read-booking-status/read-booking-status.component';
+
 import { ReadQuoteStatusComponent } from './systems/quote-status/read-quote-status/read-quote-status/read-quote-status.component';
 import { ReadPaymentTypeComponent } from './systems/payment-type/read-payment-type/read-payment-type/read-payment-type.component';
 import { ReadExtracollectionComponent } from './systems/extra collection/read-extracollection/read-extracollection/read-extracollection.component';
@@ -85,8 +86,8 @@ const routes: Routes = [
   { path: 'extracollection', component: ReadExtracollectionComponent},
   { path: 'editsupplier', component: EditSuppliersComponent},
   { path: 'paymenttypes', component: ReadPaymentTypeComponent},
-  { path: 'bookingstatus', component: ReadBookingStatusComponent},
   { path: 'quotestatuses', component: ReadQuoteStatusComponent},
+  { path: 'bookingstatus', component: ReadBookingStatusComponent},
 ];
 
 @NgModule({
