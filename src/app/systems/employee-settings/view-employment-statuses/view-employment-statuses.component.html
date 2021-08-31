@@ -7,15 +7,15 @@
         <div class="table-responsive">
         <table class="table table-hover align-middle">
           <tbody>
-            <tr *ngFor="let item of employmentstatuses">
+            <tr *ngFor="let item of employmentStatusList">
             <td class="col-5"><span>{{item.employmentStatusName}}</span></td>
                 <td class="icon-hover">
                 <mat-icon (click) ="routerEditEmploymentStatuses()">edit</mat-icon>
                 </td>
                 <td class="icon-hover">
-                <mat-icon (click) = "routerDeleteEmploymentStatuses()">delete</mat-icon>
+                <mat-icon (click) ="onDelete(item.employmentStatusId)">delete</mat-icon>
                 </td>
             </tr>
-            
-        <button type="button" class="btn btn-primary" (click) ="routerAddEmploymentStatuses()">Add </button>
+            <br>
+        <button type="button" class="btn btn-success" (click) ="routerAddEmploymentStatuses()">Add </button>
 

@@ -1,3 +1,4 @@
+
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
@@ -10,16 +11,25 @@ export class EmployeeTypeService {
     private http: HttpClient
   ) { }
 
-  getEmploymentStatuses(){
+  getEmployeeType(){
     return this.http.get(this.apiUrl + 'getemployeetypes/');
   }
   
-  getEmploymentStatus(id){
+  getEmployeeTypes(id){
     return this.http.get(this.apiUrl + 'getemployeetype/{id}' +id)
   }
 
-  postEmploymentStatus(obj){
+  patchEmployeeType(obj){
+    return this.http.patch(this.apiUrl + 'updateemployeetype/',obj);
+  }
+
+  postEmployeeType(obj){
     return this.http.post(this.apiUrl + 'createemployeetype/', obj);
   }
+
+  deleteEmployeeType(id){
+    return this.http.delete(this.apiUrl +'deleteemployeetype'+ id);
+  }
+  
 
 }

@@ -51,8 +51,8 @@ export class ReadPackagesComponent implements OnInit {
     }, (err:HttpErrorResponse)=>{
       console.log(err);
     })
-  } 
-
+  
+  }
   routerAddPackage() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;

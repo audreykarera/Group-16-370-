@@ -1,6 +1,6 @@
 <div class="modal-content">
   <div class="modal-header">
-    <h4 class="modal-title">Employee Types</h4>
+    <h4 class="modal-title">Employee Types  </h4>
     <button type="button" class="close" data-dismiss="modal">&times;</button>
   </div>
   <div class="modal-body">
@@ -13,7 +13,8 @@
               <mat-icon (click)="routerEditEmployeeTypes()">edit</mat-icon>
             </td>
             <td class="icon-hover">
-              <mat-icon (click)="routerDeleteEmployeeTypes()">delete</mat-icon>
+              <mat-icon (click) ="onDelete(item.employeeTypeId)">delete</mat-icon>
             </td>
           </tr>
-          <button type="button" class="btn btn-primary" (click)="routerAddEmployeeTypes()">Add</button>
+          <br>
+          <button type="button" class="btn btn-success" (click)="routerAddEmployeeTypes()">Add</button>
