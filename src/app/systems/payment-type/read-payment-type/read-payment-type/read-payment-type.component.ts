@@ -1,5 +1,5 @@
-import { EditPaymentTypeComponent } from './../../edit-payment-type/edit-payment-type/edit-payment-type.component';
 import { CreatePaymentTypeComponent } from './../../create-payment-type/create-payment-type/create-payment-type.component';
+import { EditPaymentTypeComponent } from './../../edit-payment-type/edit-payment-type/edit-payment-type.component';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
