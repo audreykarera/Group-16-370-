@@ -1,3 +1,5 @@
+import { PackageService } from './../../../../shared/package service/package.service';
+import { Package } from './../../../../models/package';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { SharedComponent } from 'src/app/component/shared components/shared/shared.component';
@@ -10,9 +12,20 @@ import { DialogInterface } from 'src/app/interfaces/dialog.interface';
 })
 export class EditPackagesComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
-  
+  packageList: Package[];
+
+  constructor(
+    public dialog: MatDialog,
+     private packageService: PackageService) { }
+
   ngOnInit(): void {
+    this.readPackage();
+  }
+
+  readPackage(){
+    this.packageService.getPackages().subscribe((res)=>{
+      this.packageList =res as Package[];
+    })
   }
   openConfirmDialog() {
     const dialogInterface: DialogInterface = {

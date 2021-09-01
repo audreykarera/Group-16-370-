@@ -10,7 +10,7 @@
             <tr *ngFor="let item of employmentStatusList">
             <td class="col-5"><span>{{item.employmentStatusName}}</span></td>
                 <td class="icon-hover">
-                <mat-icon (click) ="routerEditEmploymentStatuses()">edit</mat-icon>
+                <mat-icon (click) ="routerEditEmploymentStatuses(item.employmentStatusId, item.employmentStatusName)">edit</mat-icon>
                 </td>
                 <td class="icon-hover">
                 <mat-icon (click) ="onDelete(item.employmentStatusId)">delete</mat-icon>

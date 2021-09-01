@@ -78,7 +78,7 @@
       <a mat-list-item routerLinkActive="list-item-active" routerLink="/assets">
         <mat-icon>
           <mat-icon>directions_car</mat-icon>
-        </mat-icon> Assets
+        </mat-icon> Assets <mat-icon>keyboard_arrow_down</mat-icon>
       </a>
     </span> -->
     <span *ngIf="Admin">
@@ -112,6 +112,9 @@
         <button mat-menu-item routerLinkActive="list-item-active" routerLink="/packages">Packages</button>
         <button mat-menu-item routerLinkActive="list-item-active" routerLink="/extracollection">Extra
           collection</button>
+          <button mat-menu-item routerLinkActive="list-item-active" routerLink="/paymenttypes">Payment Types</button>
+          <button mat-menu-item routerLinkActive="list-item-active" routerLink="/bookingstatus">Booking Statuses</button>
+          <button mat-menu-item routerLinkActive="list-item-active" routerLink="/quotestatuses">Quote Statuses</button>
         <button mat-menu-item routerLinkActive="list-item-active" routerLink="/user-settings">User Settings</button>
         <button mat-menu-item routerLinkActive="list-item-active" routerLink="/employee-settings">Employee
           Settings</button>
@@ -167,10 +170,10 @@
       </a>
     </span>
     <span *ngIf="Client">
-      <a mat-list-item routerLinkActive="list-item-active" routerLink="/lodge-complaint">
+      <a mat-list-item routerLinkActive="list-item-active" routerLink="/estimate-costing">
         <mat-icon>
-          <mat-icon>error_outline</mat-icon>
-        </mat-icon> Lodge Complaint
+          <mat-icon>request_quote</mat-icon>
+        </mat-icon> Generate Estimate Costing
       </a>
     </span>
     <span *ngIf="Client">
@@ -181,6 +184,13 @@
       </a>
     </span>
     <span *ngIf="Client">
+      <a mat-list-item routerLinkActive="list-item-active" routerLink="/make-booking">
+        <mat-icon>
+          <mat-icon>calendar_today</mat-icon>
+        </mat-icon> Make Booking
+      </a>
+    </span>
+    <span *ngIf="Client">
       <a mat-list-item routerLinkActive="list-item-active" routerLink="/mybookings">
         <mat-icon>
           <mat-icon>calendar_today</mat-icon>
@@ -188,17 +198,17 @@
       </a>
     </span>
     <span *ngIf="Client">
-      <a mat-list-item routerLinkActive="list-item-active" routerLink="/clientviewinvoices">
-        <mat-icon>
-          <mat-icon>receipt_long</mat-icon>
-        </mat-icon> View Invoices
-      </a>
-    </span>
-    <span *ngIf="Client">
       <a mat-list-item routerLinkActive="list-item-active" routerLink="/requestedquotes">
         <mat-icon>
           <mat-icon>request_quote</mat-icon>
         </mat-icon> My Quotes
+      </a>
+    </span>
+    <span *ngIf="Client">
+      <a mat-list-item routerLinkActive="list-item-active" routerLink="/clientviewinvoices">
+        <mat-icon>
+          <mat-icon>receipt_long</mat-icon>
+        </mat-icon> View Invoices
       </a>
     </span>
   </span>

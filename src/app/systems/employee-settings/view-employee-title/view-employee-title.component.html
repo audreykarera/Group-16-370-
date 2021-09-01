@@ -10,7 +10,7 @@
             <tr *ngFor="let item of titleList" >
             <td class="col-5"><span>{{item.titleDescription}}</span></td>
                 <td class="icon-hover">
-                <mat-icon (click) ="routerEditEmployeeTitles()" >edit</mat-icon>
+                <mat-icon (click) ="routerEditEmployeeTitles(item.titleId, item.titleDescription)" >edit</mat-icon>
                 </td>
                 <td class="icon-hover">
                 <mat-icon (click) ="onDelete(item.titleId)">delete</mat-icon>

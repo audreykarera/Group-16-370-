@@ -1,3 +1,9 @@
+
+import { CreateSlotComponent } from './systems/schedule/create-slot/create-slot/create-slot.component';
+import { ReadBookingStatusComponent } from './systems/booking-status/read-booking-status/read-booking-status/read-booking-status.component';
+
+import { ReadQuoteStatusComponent } from './systems/quote-status/read-quote-status/read-quote-status/read-quote-status.component';
+import { ReadPaymentTypeComponent } from './systems/payment-type/read-payment-type/read-payment-type/read-payment-type.component';
 import { ReadExtracollectionComponent } from './systems/extra collection/read-extracollection/read-extracollection/read-extracollection.component';
 import { CreateBookingComponent } from './systems/bookings/create-booking/create-booking/create-booking.component';
 

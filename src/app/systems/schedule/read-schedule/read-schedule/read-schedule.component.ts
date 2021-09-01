@@ -1,4 +1,7 @@
+import { EditSlotComponent } from './../../edit-slot/edit-slot.component';
+import { CreateSlotComponent } from './../../create-slot/create-slot/create-slot.component';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CalendarOptions } from '@fullcalendar/angular';
 
 @Component({
@@ -8,7 +11,7 @@ import { CalendarOptions } from '@fullcalendar/angular';
 })
 export class ReadScheduleComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
@@ -25,5 +28,22 @@ export class ReadScheduleComponent implements OnInit {
 
   handleDateClick(arg: { dateStr: string; }) {
     alert('date click! ' + arg.dateStr)
+  }
+
+  routerAddBookingSlot() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    const dialogReference = this.dialog.open(
+      CreateSlotComponent,
+      dialogConfig
+    );
+  }
+  routerEditBookingSlot() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    const dialogReference = this.dialog.open(
+      EditSlotComponent,
+      dialogConfig
+    );
   }
 }

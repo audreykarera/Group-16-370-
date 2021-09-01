@@ -6,6 +6,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { EmployeeTypeService } from 'src/app/shared/services/employee-type.service';
 import { AddEmployeeTypeComponent } from '../add-employee-type/add-employee-type/add-employee-type.component';
+import { NotificationsService } from 'src/app/shared/services/notifications.service';
 
 
 @Component({
@@ -20,32 +21,48 @@ export class ViewEmployeeTypeComponent implements OnInit {
 
   constructor(
     public employeeTypeService: EmployeeTypeService,
+    private notificationsService: NotificationsService,
     public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
     this.readEmployeeTypes();
   }
-
-  readEmployeeTypes() {
+  Close(){
+    this.dialog.closeAll();
+  }
+  
+  readEmployeeTypes(){
+    console.log(this.employeeTypeList);
     this.employeeTypeService.getEmployeeType().subscribe((res) => {
       this.employeeTypeList = res as EmployeeType[];
       console.log(this.employeeTypeList);
     });
   }
-  onDelete(id) {
-    this.employeeTypeService.deleteEmployeeType(id).subscribe((res) => {
-      console.log(id);
-      this.readEmployeeTypes();
-    });
+    onDelete(id){
+      this.employeeTypeService.deleteEmployeeType(id).subscribe((res)=>{
+        console.log(id);
+        this.readEmployeeTypes();
+      });this.Close();
+      this.notificationsService.successToaster("Employee Type deleted", "Success");
+      setTimeout(()=>{
+        window.location.reload();
+      }, 1000);
   }
 
-  routerEditEmployeeTypes() {
+  routerEditEmployeeTypes(employeeTypeId: number, employeeTypeName: string) {
+    console.log(employeeTypeId, employeeTypeName);
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     const dialogReference = this.dialog.open(
       EditEmployeeTypeComponent,
-      dialogConfig
+      {
+        disableClose: true,
+        data: {
+          employeeTypeId, 
+          employeeTypeName
+        }
+      }
     );
 
   }

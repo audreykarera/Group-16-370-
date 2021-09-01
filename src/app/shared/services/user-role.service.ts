@@ -6,29 +6,29 @@ import { Injectable } from '@angular/core';
 })
 export class UserRoleService {
   apiUrl = 'http://localhost:60000/api/userrole/';
-
   constructor(
     private http: HttpClient
   ) { }
 
-    getUserRoles(){
-      return this.http.get(this.apiUrl + 'getuserroles/')
-    }
+  getUserRoles(){
+    return this.http.get(this.apiUrl + 'getuserroles/');
+  }
 
-    getUserRoleId(id){
-      return this.http.get(this.apiUrl + 'getuserrole' + id); 
-    }
+  patchUserRole(obj){
+    return this.http.patch(this.apiUrl + 'updateuserrole/',obj);
+  }
 
-    patchUserRole(obj){
-      return this.http.patch(this.apiUrl + 'updateuserrole/', obj)
-    }
+  
+  getUserRole(id){
+    return this.http.get(this.apiUrl + 'getuserrole/{id}' +id)
+  }
 
-    postUserRole(obj){
-      return this.http.post(this.apiUrl + 'createuserrole/', obj)
-    }
+  postUserRole(obj){
+    return this.http.post(this.apiUrl + 'createuserrole/', obj);
+  }
 
-    deleteUserRole(id){
-      return this.http.delete(this.apiUrl + 'deleteuserrole' + id)
-    }
-
+  deleteUserRole(id){
+    return this.http.delete(this.apiUrl +'deleteuserrole'+ id);
+  }
 }
+  

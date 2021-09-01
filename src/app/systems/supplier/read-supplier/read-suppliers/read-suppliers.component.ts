@@ -26,6 +26,7 @@ export class ReadSuppliersComponent implements OnInit {
   ngOnInit(): void {
     this.readSuppliers();
   }
+  
 
   
 

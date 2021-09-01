@@ -10,7 +10,7 @@
           <tr *ngFor="let item of employeeTypeList">
             <td class="col-5"><span>{{item.employeeTypeName}}</span></td>
             <td class="icon-hover">
-              <mat-icon (click)="routerEditEmployeeTypes()">edit</mat-icon>
+              <mat-icon (click)="routerEditEmployeeTypes(item.employeeTypeId, item.employeeTypeName)">edit</mat-icon>
             </td>
             <td class="icon-hover">
               <mat-icon (click) ="onDelete(item.employeeTypeId)">delete</mat-icon>

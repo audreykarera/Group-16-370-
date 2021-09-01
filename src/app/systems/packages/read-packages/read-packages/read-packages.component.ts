@@ -62,12 +62,22 @@ export class ReadPackagesComponent implements OnInit {
     );
   }
 
-  routerEditPackage() {
+  routerEditPackage(packageId: number, packageName: string, packageDetails: string, packageRate: PackageRate[]) {
+    console.log(packageId, packageName, packageDetails, packageRate)
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     const dialogReference = this.dialog.open(
       EditPackagesComponent, 
-      dialogConfig
+      {
+        disableClose:false,
+        data:{
+          packageId,
+          packageName,
+          packageDetails,
+          packageRate
+        }
+      }
+    
     );
 
 }
