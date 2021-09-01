@@ -33,6 +33,7 @@ export class ReadSuppliersComponent implements OnInit {
   readSuppliers(){
     this.supplierService.getSuppliers().subscribe((res)=>{
       this.supplierList = res as Supplier[];
+      console.log(this.supplierList)
     },(err: HttpErrorResponse)=>{
       this.notificationService.failToaster("Unable to display suppliers", "Error");
       console.log(err);
@@ -41,14 +42,10 @@ export class ReadSuppliersComponent implements OnInit {
 
   onDelete(id){
     this.supplierService.deleteSupplier(id).subscribe((res)=>{
-      console.log(id);
-      this.readSuppliers();
-    }, (err: HttpErrorResponse)=>{
-      this.notificationService.failToaster("Unable to delete supplier", "Error");
-      setTimeout(()=>{
-        window.location.reload();
-      },10000);  
     });
+    setTimeout(()=>{
+      window.location.reload();
+    }, 10);
   }
 
 //Used to go to the add model

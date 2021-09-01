@@ -22,8 +22,8 @@ export class SupplierService {
     return this.http.get(this.apiUrl + 'getsupplier' + id);
   }
 //Update supplier
-  patchSupplier(id){
-    return this.http.patch(this.apiUrl + 'updatesupplier/',id);
+  patchSupplier(obj){
+    return this.http.patch(this.apiUrl + 'updatesupplier',obj);
   }
 //Create supplier
   postSupplier(obj){

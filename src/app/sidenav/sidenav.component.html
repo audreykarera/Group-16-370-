@@ -74,16 +74,24 @@
         <button mat-menu-item routerLinkActive="list-item-active" routerLink="/collectionnote">Collection Notes</button>
       </mat-menu>
     </span>
-    <span *ngIf="Admin">
-      <a mat-list-item [matMenuTriggerFor]="assets" >
+    <!-- <span *ngIf="Admin">
+      <a mat-list-item routerLinkActive="list-item-active" routerLink="/assets">
         <mat-icon>
           <mat-icon>directions_car</mat-icon>
         </mat-icon> Assets <mat-icon>keyboard_arrow_down</mat-icon>
       </a>
-      <mat-menu #assets="matMenu" xPosition="before">
-        <button mat-menu-item routerLinkActive="list-item-active" routerLink="/assets">Equipment</button>
-        <button mat-menu-item routerLinkActive="list-item-active" routerLink="/vehicles">Vehicles</button>
-      </mat-menu>
+    </span> -->
+    <span *ngIf="Admin">
+      <a mat-list-item routerLinkActive="list-item-active" routerLink="/vehicle">
+        <mat-icon>
+          <mat-icon>directions_car</mat-icon>
+        </mat-icon> Vehicle
+      </a>
+    </span>
+    <span *ngIf="Admin">
+      <a mat-list-item routerLinkActive="list-item-active" routerLink="/equipment">
+        <mat-icon>fitness_center</mat-icon> Equipment
+      </a>
     </span>
     <span *ngIf="Admin">
       <a mat-list-item routerLinkActive="list-item-active" routerLink="/read-complaints">

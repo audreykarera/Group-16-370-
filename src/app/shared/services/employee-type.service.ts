@@ -16,7 +16,7 @@ export class EmployeeTypeService {
   }
   
   getEmployeeTypes(id){
-    return this.http.get(this.apiUrl + 'getemployeetype/{id}' +id)
+    return this.http.get(this.apiUrl + 'getemployeetype/' +id)
   }
 
   patchEmployeeType(obj){

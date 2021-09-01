@@ -1,4 +1,4 @@
-import { ResetPasswordComponent } from './../reset-password/reset-password/reset-password.component';
+//import { ResetPasswordComponent } from './../reset-password/reset-password/reset-password.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 
@@ -14,13 +14,13 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  routerResetPassword(){
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = false; //This must be set to true when the close button works
-    const dialogReference = this.dialog.open(
-      ResetPasswordComponent,
-      dialogConfig
-    );
-  }
+  // routerResetPassword(){
+  //   const dialogConfig = new MatDialogConfig();
+  //   dialogConfig.disableClose = false; //This must be set to true when the close button works
+  //   const dialogReference = this.dialog.open(
+  //     //ResetPasswordComponent,
+  //     dialogConfig
+  //   );
+  // }
 
 }

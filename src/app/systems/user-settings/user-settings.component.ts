@@ -14,6 +14,8 @@ import { CreateUserRoleComponent } from './create-user-role/create-user-role.com
   styleUrls: ['./user-settings.component.scss']
 })
 export class UserSettingsComponent implements OnInit {
+  userRoleList: UserRole[];
+  userRole: UserRole;
 
 
   constructor(
@@ -27,31 +29,21 @@ export class UserSettingsComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     const dialogReference = this.dialog.open(
-      CreateUserRoleComponent, 
+      CreateUserRoleComponent,
       dialogConfig
     );
   }
-  routeredituserrole() {
+  routeredituserrole(userRoleId: number, userRoleName: string) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     const dialogReference = this.dialog.open(
-      EditUserRoleComponent, 
-      dialogConfig
+      EditUserRoleComponent,
+      {
+        data: {
+          userRoleId,
+          userRoleName
+        }
+      }
     );
-  }
-  openDeleteDialog() {
-    const dialogInterface: DialogInterface = {
-      dialogHeader: 'Confirmation Message',
-      dialogContent: 'Are you sure you want to delete this?',
-      cancelButtonLabel: 'No',
-      confirmButtonLabel: 'Yes',
-      callbackMethod: () => {
-       
-      },
-    };
-    this.dialog.open(SharedComponent, {
-      width: '300px',
-      data: dialogInterface,
-    });
   }
 }

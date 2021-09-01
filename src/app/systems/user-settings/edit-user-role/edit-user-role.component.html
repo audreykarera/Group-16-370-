@@ -1,8 +1,25 @@
-<label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Edit User Role</label>
-<input class="form-control form-control-sm" type="text" placeholder="administrator"
-aria-label=".form-control-sm example" readonly>
-<br>
-<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <button class="btn btn-outline-success me-md-2" (click)="openConfirmDialog()" type="button">Save</button>
-        <button class="btn btn-outline-danger" (click)="openCancelDialog()" type="button">Cancel</button>
-</div>
+<body>
+        <div class="modal-body" style="width: 20rem; height: 15rem;">
+                <h3>Add User Role</h3>
+                <div class="form-group">
+                        <div class="container">
+                                <div class="row">
+                                        <div class="col">
+                                                <label class="col-form-label col-form-label-sm mt-2"
+                                                        for="inputSmall">User Role Name</label>
+                                                <input class="form-control form-control-sm" type="text"
+                                                        placeholder="{{data.UserRoleName}}"
+                                                        aria-label=".form-control-sm example" [(ngModel)]="userRole.UserRoleName">
+                                                <br>
+                                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                                        <button class="btn btn-outline-success me-md-2"
+                                                                (click)="onSave()" type="button">Save</button>
+                                                        <button class="btn btn-outline-danger" (click)="Close()"
+                                                                type="button">Cancel</button>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+        </div>
+</body>

@@ -71,11 +71,6 @@ import { ReadQuoteComponent } from './systems/quotes/read-quote/read-quote/read-
 import { CreateInvoiceComponent } from './systems/invoices/create-invoice/create-invoice/create-invoice.component';
 import { ReadInvoiceComponent } from './systems/invoices/read-invoice/read-invoice/read-invoice.component';
 import { EmployeeSettingsComponent } from './systems/employee-settings/employee-settings.component';
-import { ReadAssetComponent } from './systems/assets/read-asset/read-equipment/read-asset.component';
-import { ReadRequestedquoteComponent } from './systems/requested quote/read-requestedquote/read-requestedquote/read-requestedquote.component';
-import { CreateAssetComponent } from './systems/assets/read-asset/create-asset/create-asset/create-asset.component';
-import { UpdateAssetComponent } from './systems/assets/read-asset/update-asset/update-asset/update-asset.component';
-import { DeleteAssetComponent } from './systems/assets/delete-asset/delete-asset/delete-asset.component';
 import { ReadComplaintsComponent } from './systems/complaints/read-complaints/read-complaints/read-complaints.component';
 import { ViewComplaintsComponent } from './systems/complaints/view-complaints/view-complaints/view-complaints.component';
 import { ViewEmployeeTitleComponent } from './systems/employee-settings/view-employee-title/view-employee-title.component';
@@ -119,10 +114,12 @@ import { EditPackageRateComponent } from './systems/package rates/edit-package-r
 import { CreatePackageRateComponent } from './systems/package rates/create-package-price/create-package-rate/create-package-rate.component';
 import { CreateSlotComponent } from './systems/schedule/create-slot/create-slot/create-slot.component';
 import { ResetPasswordComponent } from './employee-side/user-login/reset-password/reset-password/reset-password.component';
-import { CreateVehicleComponent } from './systems/assets/read-asset/create-vehicles/create-vehicle/create-vehicle.component';
-import { ReadVehiclesComponent } from './systems/assets/read-asset/read-vehicles/read-vehicles/read-vehicles.component';
-import { UpdateVehiclesComponent } from './systems/assets/read-asset/update-vehicles/update-vehicles/update-vehicles.component';
-import { EditSlotComponent } from './systems/schedule/edit-slot/edit-slot.component';
+import { VehicleComponent } from './systems/vehicles/vehicle/vehicle.component';
+import { CreateVehicleComponent } from './systems/vehicles/create-vehicle/create-vehicle.component';
+import { VehicleSearchPipe } from './shared/vehicle-search.pipe';
+import { EquipmentComponent } from './systems/equipment/equipment/equipment/equipment.component';
+import { CreateEquipmentComponent } from './systems/equipment/create-equipment/create-equipment/create-equipment.component';
+
 
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
@@ -191,11 +188,6 @@ const angularMaterials = [
     CreateInvoiceComponent,
     ReadInvoiceComponent,
     EmployeeSettingsComponent,
-    ReadAssetComponent,
-    ReadRequestedquoteComponent,
-    CreateAssetComponent,
-    UpdateAssetComponent,
-    DeleteAssetComponent,
     ReadComplaintsComponent,
     ViewComplaintsComponent,
     ViewEmployeeTitleComponent,
@@ -240,10 +232,11 @@ const angularMaterials = [
     ReadBookingStatusComponent,
     CreateSlotComponent,
     ResetPasswordComponent,
-    CreateVehicleComponent,
-    ReadVehiclesComponent,
-    UpdateVehiclesComponent,
-    EditSlotComponent
+    VehicleComponent,
+    VehicleSearchPipe,
+    EquipmentComponent,
+    CreateEquipmentComponent,
+    CreateVehicleComponent
   ],
 
   imports: [

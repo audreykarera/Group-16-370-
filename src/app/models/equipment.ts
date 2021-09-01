@@ -1,7 +1,5 @@
 export class Equipment {
-  EquipmentId: number;
-  EquipmentName: string;
-  EquipmentAvailable: boolean;
-}
-
-
+    EquipmentId: number;
+    EquipmentName: string;
+    EquipmentAvailable: boolean;
+  }

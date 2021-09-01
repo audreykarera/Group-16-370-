@@ -4,31 +4,30 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class AssetService {
-
-  equipmentUrl = 'http://localhost:60000/api/equipment/';
+export class EquipmentService {
+  apiUrl = 'http://localhost:60000/api/equipment/';
 
   constructor(
     private http: HttpClient
   ) { }
 
-  getEquipment(){
-    return this.http.get(this.equipmentUrl + 'getequipment/');
+  getEquipments(){
+    return this.http.get(this.apiUrl + 'getequipment/'); 
   }
 
-  getEquipmentId(id){
-    return this.http.get(this.equipmentUrl + 'getequipment' + id);
+  getEquipment(id){
+    return this.http.get(this.apiUrl + 'getequipment' + id);
   }
+
   patchEquipment(obj){
-    return this.http.patch(this.equipmentUrl + 'updateequipment/',obj);
+    return this.http.patch(this.apiUrl + 'updateequipment/',obj);
   }
 
-  postEquipment(obj){
-    return this.http.post(this.equipmentUrl + 'createequipment/', obj);
+  postVehicle(obj){
+    return this.http.post(this.apiUrl + 'createequipment/', obj);
   }
 
   deleteEquipment(id){
-    return this.http.delete(this.equipmentUrl + 'deleteequipment' + id);
+    return this.http.delete(this.apiUrl + 'deleteequipment' + id);
   }
-
 }

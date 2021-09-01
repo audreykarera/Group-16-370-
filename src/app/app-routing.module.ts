@@ -1,5 +1,4 @@
 import { ReadPackageRatesComponent } from './systems/package rates/read-package-rates/read-package-rates/read-package-rates.component';
-import { ReadVehiclesComponent } from './systems/assets/read-asset/read-vehicles/read-vehicles/read-vehicles.component';
 import { CreateSlotComponent } from './systems/schedule/create-slot/create-slot/create-slot.component';
 import { ReadBookingStatusComponent } from './systems/booking-status/read-booking-status/read-booking-status/read-booking-status.component';
 
@@ -26,8 +25,6 @@ import { ScheduleEmployeeComponent } from './employee-side/schedule-employee/sch
 import { ReadQuoteComponent } from './systems/quotes/read-quote/read-quote/read-quote.component';
 import { ReadComplaintsComponent } from './systems/complaints/read-complaints/read-complaints/read-complaints.component';
 
-import { ReadAssetComponent } from './systems/assets/read-asset/read-equipment/read-asset.component';
-
 import { ReadRequestedquoteComponent } from './systems/requested quote/read-requestedquote/read-requestedquote/read-requestedquote.component';
 
 import { EmployeeSettingsComponent } from './systems/employee-settings/employee-settings.component';
@@ -48,6 +45,8 @@ import { ReadBookingComponent } from './systems/bookings/read-booking/read-booki
 import { ClientViewInvoicesComponent } from './systems/invoices/client-view-invoices/client-view-invoices.component';
 import { RequestQuoteComponent } from './systems/quotes/request quote/request-quote/request-quote.component';
 import { EditSuppliersComponent } from './systems/supplier/edit-supplier/edit-suppliers/edit-suppliers.component';
+import { VehicleComponent } from './systems/vehicles/vehicle/vehicle.component';
+import { EquipmentComponent } from './systems/equipment/equipment/equipment/equipment.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -64,8 +63,6 @@ const routes: Routes = [
   { path: 'invoices', component: ReadInvoiceComponent },
   { path: 'employee-settings', component: EmployeeSettingsComponent },
   { path: 'requestedquotes', component: ReadRequestedquoteComponent },
-  { path: 'assets', component: ReadAssetComponent },
-  { path: 'vehicles', component: ReadVehiclesComponent},
   { path: 'read-complaints', component: ReadComplaintsComponent},
   { path: 'read-quote', component: ReadQuoteComponent},
   { path: 'Employee Schedule', component: ScheduleEmployeeComponent},
@@ -88,10 +85,8 @@ const routes: Routes = [
   { path: 'create-booking', component: CreateBookingComponent},
   { path: 'packagerates', component: ReadPackageRatesComponent},
   { path: 'editsupplier', component: EditSuppliersComponent},
-  { path: 'paymenttypes', component: ReadPaymentTypeComponent},
-  { path: 'quotestatuses', component: ReadQuoteStatusComponent},
-  { path: 'bookingstatus', component: ReadBookingStatusComponent},
-  { path: 'addbookingslot', component: CreateSlotComponent},
+  { path: 'vehicle', component:VehicleComponent},
+  {path: 'equipment', component: EquipmentComponent}
 ];
 
 @NgModule({
