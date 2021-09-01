@@ -53,12 +53,19 @@ export class ReadQuoteStatusComponent implements OnInit {
       dialogConfig
     );
   }
-  routerEditQuoteStatus() {
+  routerEditQuoteStatus(quoteStatusId: number, quoteStatusName: string) {
+    console.log(quoteStatusId, quoteStatusName );
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     const dialogReference = this.dialog.open(
       EditQuoteStatusComponent, 
-      dialogConfig
+      {
+        disableClose:true,
+        data:{
+          quoteStatusId,
+          quoteStatusName
+        }
+      }
     );
 
 }

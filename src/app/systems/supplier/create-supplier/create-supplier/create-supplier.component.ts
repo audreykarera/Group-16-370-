@@ -43,6 +43,8 @@ export class CreateSupplierComponent implements OnInit {
     }, 1000);
   }
 
+  
+
   //This method rfreshes the form verytime something is done. That is why it is called in the OnInit
   refreshForm(){
     this.supplier = {

@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { BookingStatus } from 'src/app/models/bookingstatus';
+import { BookingStatusService } from 'src/app/shared/services/booking-status.service';
+import { NotificationsService } from 'src/app/shared/services/notifications.service';
 
 @Component({
   selector: 'app-create-booking-status',
@@ -7,9 +12,39 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateBookingStatusComponent implements OnInit {
 
-  constructor() { }
+  bookingStatus: BookingStatus;
+  bookingStatusList: BookingStatus[];
 
-  ngOnInit(): void {
+  constructor(private bookingStatusService: BookingStatusService,
+    public dialog:MatDialog,
+    private notificationService:NotificationsService,
+    public router:Router) { }
+
+    ngOnInit(): void {
+      this.refreshForm();
+    }
+  
+    Close(){
+      this.dialog.closeAll();
+    }
+  
+    onSave(){
+      this.bookingStatusService.postBookingStatus(this.bookingStatus).subscribe((res)=>{
+        this.bookingStatus = res as BookingStatus; 
+      });
+      this.Close();
+      this.notificationService.successToaster("Successfully saved Booking Status", "Success Message");
+      setTimeout(()=>{
+        window.location.reload();
+      }, 1000);
+    }
+  
+    //This method rfreshes the form verytime something is done. That is why it is called in the OnInit
+    refreshForm(){
+      this.bookingStatus = {
+        BookingStatusId: 0,
+        BookingStatusName: ''
+    }
+
   }
-
 }

@@ -1,4 +1,4 @@
-import { PackageService } from './../../../../shared/package service/package.service';
+import { PackageService } from '../../../../shared/services/package.service';
 import { Package } from './../../../../models/package';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -20,6 +20,9 @@ export class EditPackagesComponent implements OnInit {
 
   ngOnInit(): void {
     this.readPackage();
+  }
+  Close(){
+    this.dialog.closeAll();
   }
 
   readPackage(){

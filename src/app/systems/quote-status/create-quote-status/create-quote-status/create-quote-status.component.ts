@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { QuoteStatus } from 'src/app/models/quotestatus';
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
 import { QuoteStatusService } from 'src/app/shared/services/quote-status.service';
@@ -11,12 +12,14 @@ import { QuoteStatusService } from 'src/app/shared/services/quote-status.service
 })
 export class CreateQuoteStatusComponent implements OnInit {
 
-  quoteStatus: QuoteStatus
+  quoteStatus: QuoteStatus;
+  quoteStatusList: QuoteStatus[];
 
   constructor(
     private quoteStatusService: QuoteStatusService, 
     private notificationsService: NotificationsService,
     public dialog: MatDialog,
+    public router:Router
   ) { }
 
   ngOnInit(): void {

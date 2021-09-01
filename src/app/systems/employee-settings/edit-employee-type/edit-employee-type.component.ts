@@ -21,6 +21,9 @@ export class EditEmployeeTypeComponent implements OnInit {
     
     console.log(this.data);
   }
+  Close(){
+    this.dialog.closeAll();
+  }
 
   readEmployeeType(){
     this.employeeTypeService.getEmployeeType().subscribe((res)=>{

@@ -55,7 +55,6 @@ import { EditServiceComponent } from './systems/services/edit-service/edit-servi
 import { CreatePackageComponent } from './systems/packages/create-packages/create-package/create-package.component';
 import { ReadPackagesComponent } from './systems/packages/read-packages/read-packages/read-packages.component';
 import { EditPackagesComponent } from './systems/packages/edit-packages/edit-packages/edit-packages.component';
-import { DeletePackageComponent } from './systems/packages/delete-packages/delete-package/delete-package.component';
 import { CreateServicetypeComponent } from './systems/service types/create-servicetypes/create-servicetype/create-servicetype.component';
 import { EditServicetypeComponent } from './systems/service types/edit-servicetype/edit-servicetype/edit-servicetype.component';
 import { ReadServicetypeComponent } from './systems/service types/read-servicetype/read-servicetype/read-servicetype.component';
@@ -71,9 +70,6 @@ import { CreateQuoteComponent } from './systems/quotes/create-quote/create-quote
 import { ReadQuoteComponent } from './systems/quotes/read-quote/read-quote/read-quote.component';
 import { CreateInvoiceComponent } from './systems/invoices/create-invoice/create-invoice/create-invoice.component';
 import { ReadInvoiceComponent } from './systems/invoices/read-invoice/read-invoice/read-invoice.component';
-import { CreateExtracollectionComponent } from './systems/extra collection/create-extracollection/create-extracollection/create-extracollection.component';
-import { ReadExtracollectionComponent } from './systems/extra collection/read-extracollection/read-extracollection/read-extracollection.component';
-import { EditExtracollectionComponent } from './systems/extra collection/edit-extracollection/edit-extracollection/edit-extracollection.component';
 import { EmployeeSettingsComponent } from './systems/employee-settings/employee-settings.component';
 import { ReadAssetComponent } from './systems/assets/read-asset/read-asset/read-asset.component';
 import { ReadRequestedquoteComponent } from './systems/requested quote/read-requestedquote/read-requestedquote/read-requestedquote.component';
@@ -117,6 +113,10 @@ import { ReadQuoteStatusComponent } from './systems/quote-status/read-quote-stat
 import { EditQuoteStatusComponent } from './systems/quote-status/edit-quote-status/edit-quote-status/edit-quote-status.component';
 import { CreateQuoteStatusComponent } from './systems/quote-status/create-quote-status/create-quote-status/create-quote-status.component';
 import { ReadBookingStatusComponent } from './systems/booking-status/read-booking-status/read-booking-status/read-booking-status.component';
+import { CreateBookingStatusComponent } from './systems/booking-status/create-booking-status/create-booking-status/create-booking-status.component';
+import { ReadPackageRatesComponent } from './systems/package rates/read-package-rates/read-package-rates/read-package-rates.component';
+import { EditPackageRateComponent } from './systems/package rates/edit-package-rate/edit-package-rate/edit-package-rate.component';
+import { CreatePackageRateComponent } from './systems/package rates/create-package-price/create-package-rate/create-package-rate.component';
 
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
@@ -169,7 +169,6 @@ const angularMaterials = [
     CreatePackageComponent,
     ReadPackagesComponent,
     EditPackagesComponent,
-    DeletePackageComponent,
     CreateServicetypeComponent,
     EditServicetypeComponent,
     ReadServicetypeComponent,
@@ -185,9 +184,6 @@ const angularMaterials = [
     ReadQuoteComponent,
     CreateInvoiceComponent,
     ReadInvoiceComponent,
-    CreateExtracollectionComponent,
-    ReadExtracollectionComponent,
-    EditExtracollectionComponent,
     EmployeeSettingsComponent,
     ReadAssetComponent,
     ReadRequestedquoteComponent,
@@ -230,7 +226,13 @@ const angularMaterials = [
     ReadQuoteStatusComponent,
     EditQuoteStatusComponent,
     CreateQuoteStatusComponent,
-    ReadBookingStatusComponent
+    ReadBookingStatusComponent,
+    CreateBookingStatusComponent,
+    ReadPackageRatesComponent,
+    EditPackageRateComponent,
+    CreatePackageRateComponent
+    
+    
   ],
 
   imports: [

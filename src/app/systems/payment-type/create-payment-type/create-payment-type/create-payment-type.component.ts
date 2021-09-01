@@ -28,7 +28,6 @@ export class CreatePaymentTypeComponent implements OnInit {
       this.dialog.closeAll();
     }
   
-  
     onSave(){
       this.paymentTypeService.postPaymentType(this.paymentType).subscribe((res)=>{
         this.paymentType = res as PaymentType; 
