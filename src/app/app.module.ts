@@ -74,11 +74,6 @@ import { CreateExtracollectionComponent } from './systems/extra collection/creat
 import { ReadExtracollectionComponent } from './systems/extra collection/read-extracollection/read-extracollection/read-extracollection.component';
 import { EditExtracollectionComponent } from './systems/extra collection/edit-extracollection/edit-extracollection/edit-extracollection.component';
 import { EmployeeSettingsComponent } from './systems/employee-settings/employee-settings.component';
-import { ReadAssetComponent } from './systems/assets/read-asset/read-asset/read-asset.component';
-import { ReadRequestedquoteComponent } from './systems/requested quote/read-requestedquote/read-requestedquote/read-requestedquote.component';
-import { CreateAssetComponent } from './systems/assets/read-asset/create-asset/create-asset/create-asset.component';
-import { UpdateAssetComponent } from './systems/assets/read-asset/update-asset/update-asset/update-asset.component';
-import { DeleteAssetComponent } from './systems/assets/delete-asset/delete-asset/delete-asset.component';
 import { ReadComplaintsComponent } from './systems/complaints/read-complaints/read-complaints/read-complaints.component';
 import { ViewComplaintsComponent } from './systems/complaints/view-complaints/view-complaints/view-complaints.component';
 import { ViewEmployeeTitleComponent } from './systems/employee-settings/view-employee-title/view-employee-title.component';
@@ -109,6 +104,11 @@ import { AddEmployeeTypeComponent } from './systems/employee-settings/add-employ
 import { AddTitleComponent } from './systems/employee-settings/add-title/add-title/add-title.component';
 import { AddEmploymentStatusComponent } from './systems/employee-settings/add-employment-status/add-employment-status/add-employment-status.component';
 import { EditTitleComponent } from './systems/employee-settings/edit-title/edit-title/edit-title.component';
+import { VehicleComponent } from './systems/vehicles/vehicle/vehicle.component';
+import { CreateVehicleComponent } from './systems/vehicles/create-vehicle/create-vehicle.component';
+import { VehicleSearchPipe } from './shared/vehicle-search.pipe';
+import { EquipmentComponent } from './systems/equipment/equipment/equipment/equipment.component';
+import { CreateEquipmentComponent } from './systems/equipment/create-equipment/create-equipment/create-equipment.component';
 
 
 
@@ -182,11 +182,6 @@ const angularMaterials = [
     ReadExtracollectionComponent,
     EditExtracollectionComponent,
     EmployeeSettingsComponent,
-    ReadAssetComponent,
-    ReadRequestedquoteComponent,
-    CreateAssetComponent,
-    UpdateAssetComponent,
-    DeleteAssetComponent,
     ReadComplaintsComponent,
     ViewComplaintsComponent,
     ViewEmployeeTitleComponent,
@@ -216,7 +211,12 @@ const angularMaterials = [
     AddTitleComponent,
     AddEmploymentStatusComponent,
     EditTitleComponent,
-    FilterPipe
+    FilterPipe,
+    VehicleComponent,
+    CreateVehicleComponent,
+    VehicleSearchPipe,
+    EquipmentComponent,
+    CreateEquipmentComponent
   ],
 
   imports: [

@@ -20,8 +20,6 @@ import { ScheduleEmployeeComponent } from './employee-side/schedule-employee/sch
 import { ReadQuoteComponent } from './systems/quotes/read-quote/read-quote/read-quote.component';
 import { ReadComplaintsComponent } from './systems/complaints/read-complaints/read-complaints/read-complaints.component';
 
-import { ReadAssetComponent } from './systems/assets/read-asset/read-asset/read-asset.component';
-
 import { ReadRequestedquoteComponent } from './systems/requested quote/read-requestedquote/read-requestedquote/read-requestedquote.component';
 
 import { EmployeeSettingsComponent } from './systems/employee-settings/employee-settings.component';
@@ -42,6 +40,8 @@ import { ReadBookingComponent } from './systems/bookings/read-booking/read-booki
 import { ClientViewInvoicesComponent } from './systems/invoices/client-view-invoices/client-view-invoices.component';
 import { RequestQuoteComponent } from './systems/quotes/request quote/request-quote/request-quote.component';
 import { EditSuppliersComponent } from './systems/supplier/edit-supplier/edit-suppliers/edit-suppliers.component';
+import { VehicleComponent } from './systems/vehicles/vehicle/vehicle.component';
+import { EquipmentComponent } from './systems/equipment/equipment/equipment/equipment.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -58,7 +58,6 @@ const routes: Routes = [
   { path: 'invoices', component: ReadInvoiceComponent },
   { path: 'employee-settings', component: EmployeeSettingsComponent },
   { path: 'requestedquotes', component: ReadRequestedquoteComponent },
-  { path: 'assets', component: ReadAssetComponent },
   { path: 'read-complaints', component: ReadComplaintsComponent},
   { path: 'read-quote', component: ReadQuoteComponent},
   { path: 'Employee Schedule', component: ScheduleEmployeeComponent},
@@ -81,6 +80,8 @@ const routes: Routes = [
   { path: 'create-booking', component: CreateBookingComponent},
   { path: 'extracollection', component: ReadExtracollectionComponent},
   { path: 'editsupplier', component: EditSuppliersComponent},
+  { path: 'vehicle', component:VehicleComponent},
+  {path: 'equipment', component: EquipmentComponent}
 ];
 
 @NgModule({

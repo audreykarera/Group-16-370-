@@ -24,38 +24,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Mr Rowan Gauld</td>
-              <td>rowang@gmail.com</td>
-              <td>082 345 6789</td>
+            <tr *ngFor="let item of employeeList">
+              <td>{{item.title.titleDescription}}  {{item.employeeFirstName}}  {{item.employeeMiddleName}}  {{item.employeeSurname}}</td>
+              <td>{{item.employeeEmailAddress}}</td>
+              <td>{{item.employeeCellPhoneNumber}}</td>
               <td class="icon-hover">
                 <mat-icon (click)="routerViewEmployee()">remove_red_eye</mat-icon>
               </td>
-            </tr>
-            <tr>
-              <td>Mr Rowan Gauld</td>
-              <td>rowang@gmail.com</td>
-              <td>082 345 6789</td>
-              <td class="icon-hover">
-                <mat-icon (click)="routerViewEmployee()">remove_red_eye</mat-icon>
-              </td>
-            </tr>
-            <tr>
-              <td>Mr Rowan Gauld</td>
-              <td>rowang@gmail.com</td>
-              <td>082 345 6789</td>
-              <td class="icon-hover">
-                <mat-icon (click)="routerViewEmployee()">remove_red_eye</mat-icon>
-              </td>
-            </tr>
-            <tr>
-              <td>Mr Rowan Gauld</td>
-              <td>rowang@gmail.com</td>
-              <td>082 345 6789</td>
-              <td class="icon-hover">
-                <mat-icon (click)="routerViewEmployee()">remove_red_eye</mat-icon>
-              </td>
-            </tr>
           </tbody>
         </table>
       </div>

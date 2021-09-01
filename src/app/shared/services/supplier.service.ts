@@ -23,7 +23,7 @@ export class SupplierService {
   }
 //Update supplier
   patchSupplier(obj){
-    return this.http.patch(this.apiUrl + 'updatesupplier/',obj);
+    return this.http.patch(this.apiUrl + 'updatesupplier',obj);
   }
 //Create supplier
   postSupplier(obj){

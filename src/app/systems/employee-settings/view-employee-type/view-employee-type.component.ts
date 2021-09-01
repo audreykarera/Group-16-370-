@@ -28,7 +28,6 @@ export class ViewEmployeeTypeComponent implements OnInit {
   }
 
   readEmployeeTypes() {
-    console.log(this.employeeTypeList);
     this.employeeTypeService.getEmployeeType().subscribe((res) => {
       this.employeeTypeList = res as EmployeeType[];
       console.log(this.employeeTypeList);
