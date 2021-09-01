@@ -71,7 +71,7 @@ import { ReadQuoteComponent } from './systems/quotes/read-quote/read-quote/read-
 import { CreateInvoiceComponent } from './systems/invoices/create-invoice/create-invoice/create-invoice.component';
 import { ReadInvoiceComponent } from './systems/invoices/read-invoice/read-invoice/read-invoice.component';
 import { EmployeeSettingsComponent } from './systems/employee-settings/employee-settings.component';
-import { ReadAssetComponent } from './systems/assets/read-asset/read-asset/read-asset.component';
+import { ReadAssetComponent } from './systems/assets/read-asset/read-equipment/read-asset.component';
 import { ReadRequestedquoteComponent } from './systems/requested quote/read-requestedquote/read-requestedquote/read-requestedquote.component';
 import { CreateAssetComponent } from './systems/assets/read-asset/create-asset/create-asset/create-asset.component';
 import { UpdateAssetComponent } from './systems/assets/read-asset/update-asset/update-asset/update-asset.component';
@@ -117,6 +117,12 @@ import { CreateBookingStatusComponent } from './systems/booking-status/create-bo
 import { ReadPackageRatesComponent } from './systems/package rates/read-package-rates/read-package-rates/read-package-rates.component';
 import { EditPackageRateComponent } from './systems/package rates/edit-package-rate/edit-package-rate/edit-package-rate.component';
 import { CreatePackageRateComponent } from './systems/package rates/create-package-price/create-package-rate/create-package-rate.component';
+import { CreateSlotComponent } from './systems/schedule/create-slot/create-slot/create-slot.component';
+import { ResetPasswordComponent } from './employee-side/user-login/reset-password/reset-password/reset-password.component';
+import { CreateVehicleComponent } from './systems/assets/read-asset/create-vehicles/create-vehicle/create-vehicle.component';
+import { ReadVehiclesComponent } from './systems/assets/read-asset/read-vehicles/read-vehicles/read-vehicles.component';
+import { UpdateVehiclesComponent } from './systems/assets/read-asset/update-vehicles/update-vehicles/update-vehicles.component';
+import { EditSlotComponent } from './systems/schedule/edit-slot/edit-slot.component';
 
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
@@ -230,9 +236,14 @@ const angularMaterials = [
     CreateBookingStatusComponent,
     ReadPackageRatesComponent,
     EditPackageRateComponent,
-    CreatePackageRateComponent
-    
-    
+    CreatePackageRateComponent,
+    ReadBookingStatusComponent,
+    CreateSlotComponent,
+    ResetPasswordComponent,
+    CreateVehicleComponent,
+    ReadVehiclesComponent,
+    UpdateVehiclesComponent,
+    EditSlotComponent
   ],
 
   imports: [

@@ -75,11 +75,15 @@
       </mat-menu>
     </span>
     <span *ngIf="Admin">
-      <a mat-list-item routerLinkActive="list-item-active" routerLink="/assets">
+      <a mat-list-item [matMenuTriggerFor]="assets" >
         <mat-icon>
           <mat-icon>directions_car</mat-icon>
-        </mat-icon> Assets
+        </mat-icon> Assets <mat-icon>keyboard_arrow_down</mat-icon>
       </a>
+      <mat-menu #assets="matMenu" xPosition="before">
+        <button mat-menu-item routerLinkActive="list-item-active" routerLink="/assets">Equipment</button>
+        <button mat-menu-item routerLinkActive="list-item-active" routerLink="/vehicles">Vehicles</button>
+      </mat-menu>
     </span>
     <span *ngIf="Admin">
       <a mat-list-item routerLinkActive="list-item-active" routerLink="/read-complaints">

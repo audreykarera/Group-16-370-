@@ -1,4 +1,6 @@
 import { ReadPackageRatesComponent } from './systems/package rates/read-package-rates/read-package-rates/read-package-rates.component';
+import { ReadVehiclesComponent } from './systems/assets/read-asset/read-vehicles/read-vehicles/read-vehicles.component';
+import { CreateSlotComponent } from './systems/schedule/create-slot/create-slot/create-slot.component';
 import { ReadBookingStatusComponent } from './systems/booking-status/read-booking-status/read-booking-status/read-booking-status.component';
 
 import { ReadQuoteStatusComponent } from './systems/quote-status/read-quote-status/read-quote-status/read-quote-status.component';
@@ -24,7 +26,7 @@ import { ScheduleEmployeeComponent } from './employee-side/schedule-employee/sch
 import { ReadQuoteComponent } from './systems/quotes/read-quote/read-quote/read-quote.component';
 import { ReadComplaintsComponent } from './systems/complaints/read-complaints/read-complaints/read-complaints.component';
 
-import { ReadAssetComponent } from './systems/assets/read-asset/read-asset/read-asset.component';
+import { ReadAssetComponent } from './systems/assets/read-asset/read-equipment/read-asset.component';
 
 import { ReadRequestedquoteComponent } from './systems/requested quote/read-requestedquote/read-requestedquote/read-requestedquote.component';
 
@@ -63,6 +65,7 @@ const routes: Routes = [
   { path: 'employee-settings', component: EmployeeSettingsComponent },
   { path: 'requestedquotes', component: ReadRequestedquoteComponent },
   { path: 'assets', component: ReadAssetComponent },
+  { path: 'vehicles', component: ReadVehiclesComponent},
   { path: 'read-complaints', component: ReadComplaintsComponent},
   { path: 'read-quote', component: ReadQuoteComponent},
   { path: 'Employee Schedule', component: ScheduleEmployeeComponent},
@@ -88,6 +91,7 @@ const routes: Routes = [
   { path: 'paymenttypes', component: ReadPaymentTypeComponent},
   { path: 'quotestatuses', component: ReadQuoteStatusComponent},
   { path: 'bookingstatus', component: ReadBookingStatusComponent},
+  { path: 'addbookingslot', component: CreateSlotComponent},
 ];
 
 @NgModule({

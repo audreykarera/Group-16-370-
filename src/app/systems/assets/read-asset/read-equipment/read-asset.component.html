@@ -1,5 +1,5 @@
 <div class="container-fluid page">
-  <div class="d-flex page__box p-3 mt-2">List of Assets</div>
+  <div class="d-flex page__box p-3 mt-2">List of Equipment</div>
   <div class="page__content shadow p-3">
     <div class="page__content-data">
 
@@ -19,10 +19,8 @@
         <table class="table table-hover align-middle">
           <thead>
             <tr>
-              <th class="col">Asset ID</th>
-              <th class="col">Registration Number</th>
-              <th class="col">Asset Make</th>
-              <th class="col">Asset Model</th>
+              <th class="col">Equipment ID</th>
+              <th class="col">Equipment Name</th>
               <th class="col">Asset Availability</th>
               <th class="col-1">Edit</th>
               <th class="col-1">Delete</th>
@@ -32,27 +30,12 @@
           <tbody>
              <tr *ngFor="let item of equipmentList" >
               <td>{{item.EquipmentId}}</td>
-              <td>N/A</td>
               <td>{{item.EquipmentName}}</td>
-              <td>N/A</td>
               <td>{{item.EquipmentAvailable}}</td>
               <td class="icon-hover" (click)="routerEditAsset()">
                 <mat-icon>edit</mat-icon>
               </td>
               <td class="icon-hover" (click)="onDeleteEquip(item.EquipmentId)">
-                <mat-icon>delete</mat-icon>
-              </td>
-            </tr>
-            <tr *ngFor="let item of vehicleList" >
-              <td>{{item.VehicleId}}</td>
-              <td>{{item.VehicleNumberPlate}}</td>
-              <td>{{item.VehicleMake}}</td>
-              <td>{{item.VehicleModel}}</td>
-              <td>{{item.VehicleAvailable}}</td>
-              <td class="icon-hover" (click)="routerEditAsset()">
-                <mat-icon>edit</mat-icon>
-              </td>
-              <td class="icon-hover" (click)="onDeleteVehicle(item.VehicleId)">
                 <mat-icon>delete</mat-icon>
               </td>
             </tr>
