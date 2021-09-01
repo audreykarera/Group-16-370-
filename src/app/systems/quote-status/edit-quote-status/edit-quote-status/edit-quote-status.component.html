@@ -16,13 +16,13 @@
                 <div class="row">
                     <div class="col">
                         <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Edit Quote Status</label>
-                        <input class="form-control form-control-sm" type="text" placeholder="Quote Status"
-                            aria-label=".form-control-sm example">
+                        <input class="form-control form-control-sm" type="text" placeholder="{{data.quoteStatusName}}"
+                            aria-label=".form-control-sm example" [(ngModel)]="quoteStatus.QuoteStatusName">
                         <br>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                             <button class="btn btn-outline-success me-md-2"
                                 type="button">Save</button>
-                            <button class="btn btn-outline-danger" 
+                            <button class="btn btn-outline-danger" (click)="Close()"
                                 type="button">Cancel</button>
                         </div>
                     </div>

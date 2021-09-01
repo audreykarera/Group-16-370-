@@ -22,6 +22,9 @@ export class EditEmploymentStatusesComponent implements OnInit {
     
     console.log(this.data);
   }
+  Close(){
+    this.dialog.closeAll();
+  }
 
   readEmploymentStatus(){
     this.employmentStatusService.getEmploymentStatuses().subscribe((res)=>{

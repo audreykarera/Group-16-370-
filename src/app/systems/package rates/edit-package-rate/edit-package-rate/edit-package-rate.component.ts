@@ -1,19 +1,18 @@
-import { QuoteStatusService } from './../../../../shared/services/quote-status.service';
-import { QuoteStatus } from 'src/app/models/quotestatus';
+import { PackageRateService } from './../../../../shared/services/package-rate.service';
+import { PackageRate } from './../../../../models/packageRate';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
 
 @Component({
-  selector: 'app-edit-quote-status',
-  templateUrl: './edit-quote-status.component.html',
-  styleUrls: ['./edit-quote-status.component.scss']
+  selector: 'app-edit-package-rate',
+  templateUrl: './edit-package-rate.component.html',
+  styleUrls: ['./edit-package-rate.component.scss']
 })
-export class EditQuoteStatusComponent implements OnInit {
+export class EditPackageRateComponent implements OnInit {
 
-  quoteStatus:QuoteStatus;
-
-  constructor(private quoteStatusService: QuoteStatusService,
+  packageRate: PackageRate;
+  constructor(private packageRateService: PackageRateService,
     public dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA)
     public data:any,
@@ -29,8 +28,8 @@ export class EditQuoteStatusComponent implements OnInit {
     }
 
     onSave(){
-      this.quoteStatusService.patchQuoteStatus(this.quoteStatus).subscribe((res)=>{
-        this.quoteStatus = res as QuoteStatus; 
+      this.packageRateService.patchPackageRate(this.packageRateService).subscribe((res)=>{
+        this.packageRate = res as PackageRate; 
       });
       this.Close();
       this.notificationService.successToaster("Successfully saved Payment Type", "Error");
@@ -40,9 +39,10 @@ export class EditQuoteStatusComponent implements OnInit {
     }
   
     refreshForm(){
-      this.quoteStatus = {
-        QouteStatusId: 0,
-        QuoteStatusName: ''
+      this.packageRate = {
+        PackageRateId: 0,
+        PackageRatePrice: '',
+        PackagePriceDate: ''
       }
   }
 }

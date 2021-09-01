@@ -25,14 +25,14 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>Booked</td>
+            <tr  *ngFor="let item of bookingStatusList | appFilter:searchText">
+              <td>{{item.bookingStatusId}}</td>
+              <td>{{item.bookingStatusName}}</td>
               <td class="icon-hover">
-                <mat-icon (click)="routerEditBookingStatus()">edit</mat-icon>
+                <mat-icon (click)="routerEditBookingStatus(item.bookingStatusId, item.bookingStatusName)">edit</mat-icon>
               </td>
               <td class="icon-hover">
-                <mat-icon>delete</mat-icon>
+                <mat-icon (click)="onDelete(item.bookingStatusId)">delete</mat-icon>
               </td>
             </tr>
           </tbody>
@@ -50,5 +50,6 @@
     </div>
   </div>
 </div>
+
 
 

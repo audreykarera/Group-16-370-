@@ -51,9 +51,9 @@ export class EditServiceComponent implements OnInit {
       ServiceId:0,
       ServiceName:'',
       ServiceDescription: '',
-      ServiceType:[],
-      ServicePrice:[],
-      Location:[],
+       ServiceType:[],
+       ServicePrice:[],
+       Location:[],
     }
   }
   

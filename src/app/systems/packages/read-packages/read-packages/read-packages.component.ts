@@ -1,6 +1,6 @@
-import { PackageRateService } from './../../../../shared/package rate service/package-rate.service';
+
 import { PackageRate } from './../../../../models/packageRate';
-import { PackageService } from './../../../../shared/package service/package.service';
+import { PackageService } from '../../../../shared/services/package.service';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { EditPackagesComponent } from './../../edit-packages/edit-packages/edit-packages.component';
 import { CreatePackageComponent } from './../../create-packages/create-package/create-package.component';
@@ -11,6 +11,8 @@ import { SharedComponent } from 'src/app/component/shared components/shared/shar
 import { Observable } from 'rxjs';
 import { Package } from 'src/app/models/package';
 import { DialogInterface } from 'src/app/interfaces/dialog.interface';
+import { PackageRateService } from 'src/app/shared/services/package-rate.service';
+import { NotificationsService } from 'src/app/shared/services/notifications.service';
 
 
 
@@ -20,39 +22,39 @@ import { DialogInterface } from 'src/app/interfaces/dialog.interface';
   styleUrls: ['./read-packages.component.scss']
 })
 export class ReadPackagesComponent implements OnInit {
-  PackageService: any;
-  packages: Package[] = [];
-  packages$: Observable<Package[]> = this.servicePackage.getPackages();
-  packagerates: PackageRate[] = [];
-  packagerates$: Observable<PackageRate[]> = this.servicePackageRate.getPackageRates();
-
+  
+  packageList: Package;
+  packageRateList: PackageRate[];
+  searchText = '';
 
   constructor(
-    public servicePackage: PackageService,
-    public servicePackageRate: PackageRateService,
-    public dialog: MatDialog
+    private servicePackage: PackageService,
+    private servicePackageRate: PackageRateService,
+    public dialog: MatDialog,
+    private notificationService: NotificationsService
   ) { }
 
+ 
   ngOnInit(): void {
     this.readPackage();
   }
+
   readPackage(){
-    this.packages$.subscribe(data=>{
-      this.packages=data;
-      console.log(this.packages);
-    }, (err:HttpErrorResponse)=>{
+    this.servicePackage.getPackages().subscribe((res)=>{
+      this.packageList =res as Package;
+    },(err: HttpErrorResponse)=>{
+      this.notificationService.failToaster("Unable to display service types", "Error");
       console.log(err);
     })
-  } 
-  readPackageRates(){
-    this.packagerates$.subscribe(data=>{
-      this.packagerates=data;
-      console.log(this.packagerates);
-    }, (err:HttpErrorResponse)=>{
-      console.log(err);
-    })
-  
   }
+
+  readServiceType(){
+    this.servicePackageRate.getPackageRate().subscribe((res)=>{
+      this.packageRateList=res as PackageRate[];
+    })
+  }
+  
+
   routerAddPackage() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;

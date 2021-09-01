@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DeletePackageComponent } from './delete-package.component';
+import { CreatePackageRateComponent } from './create-package-rate.component';
 
-describe('DeletePackageComponent', () => {
-  let component: DeletePackageComponent;
-  let fixture: ComponentFixture<DeletePackageComponent>;
+describe('CreatePackageRateComponent', () => {
+  let component: CreatePackageRateComponent;
+  let fixture: ComponentFixture<CreatePackageRateComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DeletePackageComponent ]
+      declarations: [ CreatePackageRateComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DeletePackageComponent);
+    fixture = TestBed.createComponent(CreatePackageRateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

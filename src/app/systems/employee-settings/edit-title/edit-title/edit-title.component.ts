@@ -21,6 +21,9 @@ export class EditTitleComponent implements OnInit {
     
     console.log(this.data);
   }
+  Close(){
+    this.dialog.closeAll();
+  }
 
   readTitles(){
     this.titleService.getTitles().subscribe((res)=>{

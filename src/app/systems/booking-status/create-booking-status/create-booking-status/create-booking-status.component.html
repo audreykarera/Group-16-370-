@@ -17,12 +17,12 @@
                     <div class="col">
                         <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Enter new Booking Status</label>
                         <input class="form-control form-control-sm" type="text" placeholder="Booking Status"
-                            aria-label=".form-control-sm example">
+                            aria-label=".form-control-sm example" [(ngModel)]="bookingStatus.BookingStatusName">
                         <br>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button class="btn btn-outline-success me-md-2"
+                            <button class="btn btn-outline-success me-md-2" (click)="onSave()"
                                 type="button">Save</button>
-                            <button class="btn btn-outline-danger"
+                            <button class="btn btn-outline-danger" (click)="Close()"
                                 type="button">Cancel</button>
                         </div>
                     </div>
@@ -33,5 +33,3 @@
 </body>
 
 </html>
-
-

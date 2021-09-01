@@ -55,7 +55,6 @@ import { EditServiceComponent } from './systems/services/edit-service/edit-servi
 import { CreatePackageComponent } from './systems/packages/create-packages/create-package/create-package.component';
 import { ReadPackagesComponent } from './systems/packages/read-packages/read-packages/read-packages.component';
 import { EditPackagesComponent } from './systems/packages/edit-packages/edit-packages/edit-packages.component';
-import { DeletePackageComponent } from './systems/packages/delete-packages/delete-package/delete-package.component';
 import { CreateServicetypeComponent } from './systems/service types/create-servicetypes/create-servicetype/create-servicetype.component';
 import { EditServicetypeComponent } from './systems/service types/edit-servicetype/edit-servicetype/edit-servicetype.component';
 import { ReadServicetypeComponent } from './systems/service types/read-servicetype/read-servicetype/read-servicetype.component';
@@ -71,9 +70,6 @@ import { CreateQuoteComponent } from './systems/quotes/create-quote/create-quote
 import { ReadQuoteComponent } from './systems/quotes/read-quote/read-quote/read-quote.component';
 import { CreateInvoiceComponent } from './systems/invoices/create-invoice/create-invoice/create-invoice.component';
 import { ReadInvoiceComponent } from './systems/invoices/read-invoice/read-invoice/read-invoice.component';
-import { CreateExtracollectionComponent } from './systems/extra collection/create-extracollection/create-extracollection/create-extracollection.component';
-import { ReadExtracollectionComponent } from './systems/extra collection/read-extracollection/read-extracollection/read-extracollection.component';
-import { EditExtracollectionComponent } from './systems/extra collection/edit-extracollection/edit-extracollection/edit-extracollection.component';
 import { EmployeeSettingsComponent } from './systems/employee-settings/employee-settings.component';
 import { ReadComplaintsComponent } from './systems/complaints/read-complaints/read-complaints/read-complaints.component';
 import { ViewComplaintsComponent } from './systems/complaints/view-complaints/view-complaints/view-complaints.component';
@@ -105,6 +101,19 @@ import { AddEmployeeTypeComponent } from './systems/employee-settings/add-employ
 import { AddTitleComponent } from './systems/employee-settings/add-title/add-title/add-title.component';
 import { AddEmploymentStatusComponent } from './systems/employee-settings/add-employment-status/add-employment-status/add-employment-status.component';
 import { EditTitleComponent } from './systems/employee-settings/edit-title/edit-title/edit-title.component';
+import { ReadPaymentTypeComponent } from './systems/payment-type/read-payment-type/read-payment-type/read-payment-type.component';
+import { EditPaymentTypeComponent } from './systems/payment-type/edit-payment-type/edit-payment-type/edit-payment-type.component';
+import { CreatePaymentTypeComponent } from './systems/payment-type/create-payment-type/create-payment-type/create-payment-type.component';
+import { ReadQuoteStatusComponent } from './systems/quote-status/read-quote-status/read-quote-status/read-quote-status.component';
+import { EditQuoteStatusComponent } from './systems/quote-status/edit-quote-status/edit-quote-status/edit-quote-status.component';
+import { CreateQuoteStatusComponent } from './systems/quote-status/create-quote-status/create-quote-status/create-quote-status.component';
+import { ReadBookingStatusComponent } from './systems/booking-status/read-booking-status/read-booking-status/read-booking-status.component';
+import { CreateBookingStatusComponent } from './systems/booking-status/create-booking-status/create-booking-status/create-booking-status.component';
+import { ReadPackageRatesComponent } from './systems/package rates/read-package-rates/read-package-rates/read-package-rates.component';
+import { EditPackageRateComponent } from './systems/package rates/edit-package-rate/edit-package-rate/edit-package-rate.component';
+import { CreatePackageRateComponent } from './systems/package rates/create-package-price/create-package-rate/create-package-rate.component';
+import { CreateSlotComponent } from './systems/schedule/create-slot/create-slot/create-slot.component';
+import { ResetPasswordComponent } from './employee-side/user-login/reset-password/reset-password/reset-password.component';
 import { VehicleComponent } from './systems/vehicles/vehicle/vehicle.component';
 import { CreateVehicleComponent } from './systems/vehicles/create-vehicle/create-vehicle.component';
 import { VehicleSearchPipe } from './shared/vehicle-search.pipe';
@@ -163,7 +172,6 @@ const angularMaterials = [
     CreatePackageComponent,
     ReadPackagesComponent,
     EditPackagesComponent,
-    DeletePackageComponent,
     CreateServicetypeComponent,
     EditServicetypeComponent,
     ReadServicetypeComponent,
@@ -179,9 +187,6 @@ const angularMaterials = [
     ReadQuoteComponent,
     CreateInvoiceComponent,
     ReadInvoiceComponent,
-    CreateExtracollectionComponent,
-    ReadExtracollectionComponent,
-    EditExtracollectionComponent,
     EmployeeSettingsComponent,
     ReadComplaintsComponent,
     ViewComplaintsComponent,
@@ -213,11 +218,25 @@ const angularMaterials = [
     AddEmploymentStatusComponent,
     EditTitleComponent,
     FilterPipe,
+    ReadPaymentTypeComponent,
+    EditPaymentTypeComponent,
+    CreatePaymentTypeComponent,
+    ReadQuoteStatusComponent,
+    EditQuoteStatusComponent,
+    CreateQuoteStatusComponent,
+    ReadBookingStatusComponent,
+    CreateBookingStatusComponent,
+    ReadPackageRatesComponent,
+    EditPackageRateComponent,
+    CreatePackageRateComponent,
+    ReadBookingStatusComponent,
+    CreateSlotComponent,
+    ResetPasswordComponent,
     VehicleComponent,
-    CreateVehicleComponent,
     VehicleSearchPipe,
     EquipmentComponent,
-    CreateEquipmentComponent
+    CreateEquipmentComponent,
+    CreateVehicleComponent
   ],
 
   imports: [

@@ -1,13 +1,13 @@
-import { Package } from './../../models/package';
 import { TestBed } from '@angular/core/testing';
 
+import { PackageRateService } from './package-rate.service';
 
-describe('CityService', () => {
-  let service: Package;
+describe('PackageRateService', () => {
+  let service: PackageRateService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(Package);
+    service = TestBed.inject(PackageRateService);
   });
 
   it('should be created', () => {
