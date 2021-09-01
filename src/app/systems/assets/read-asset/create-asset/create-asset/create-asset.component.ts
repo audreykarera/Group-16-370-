@@ -1,12 +1,12 @@
 
-import { Equipment } from './../../../../../models/asset';
+import { Equipment } from '../../../../../models/equipment';
 
 
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { SharedComponent } from 'src/app/component/shared components/shared/shared.component';
 import { DialogInterface } from 'src/app/interfaces/dialog.interface';
-import { AssetService } from 'src/app/shared/services/asset.service';
+import { AssetService } from 'src/app/shared/services/equipment.service';
 
 
 @Component({

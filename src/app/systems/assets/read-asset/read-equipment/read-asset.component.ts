@@ -1,14 +1,14 @@
 
-import { Equipment, Vehicle } from './../../../../models/asset';
+import { Equipment } from '../../../../models/equipment';
 
 import { Observable } from 'rxjs';
 
-import { DeleteAssetComponent } from './../../delete-asset/delete-asset/delete-asset.component';
-import { UpdateAssetComponent } from './../update-asset/update-asset/update-asset.component';
-import { CreateAssetComponent } from './../create-asset/create-asset/create-asset.component';
+import { DeleteAssetComponent } from '../../delete-asset/delete-asset/delete-asset.component';
+import { UpdateAssetComponent } from '../update-asset/update-asset/update-asset.component';
+import { CreateAssetComponent } from '../create-asset/create-asset/create-asset.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
-import { AssetService } from 'src/app/shared/services/asset.service';
+import { AssetService } from 'src/app/shared/services/equipment.service';
 import { DialogInterface } from 'src/app/interfaces/dialog.interface';
 import { SharedComponent } from 'src/app/component/shared components/shared/shared.component';
 
@@ -21,20 +21,18 @@ import { SharedComponent } from 'src/app/component/shared components/shared/shar
 })
 export class ReadAssetComponent implements OnInit {
 
-  vehicleList: Vehicle[];
-  vehicle: Vehicle;
+
   equipmentList: Equipment[];
   equipment: Equipment;
 
   constructor(
     public dialog: MatDialog,
     private equipmentService: AssetService,
-    private vehicleService: AssetService
+
   ) { }
 
   ngOnInit(): void {
     this.readEquipment();
-    this.readVehicle();
   }
 
   readEquipment(){
@@ -56,24 +54,24 @@ export class ReadAssetComponent implements OnInit {
     });
   }
 
-  readVehicle(){
-    this.vehicleService.getVehicle().subscribe((res) =>{
-      this.vehicleList = res as Vehicle[];
-    });
-  }
+  // readVehicle(){
+  //   this.vehicleService.getVehicle().subscribe((res) =>{
+  //     this.vehicleList = res as Vehicle[];
+  //   });
+  // }
 
-  editVehicle(obj){
-    this.vehicleService.postVehicle(obj).subscribe((res) =>{
-      this.readVehicle();
-    })
-  }
+  // editVehicle(obj){
+  //   this.vehicleService.postVehicle(obj).subscribe((res) =>{
+  //     this.readVehicle();
+  //   })
+  // }
 
-  onDeleteVehicle(id){
-    this.vehicleService.deleteVehicle(id).subscribe((res)=>{
-      console.log(id);
-      this.readVehicle();
-    });
-  }
+  // onDeleteVehicle(id){
+  //   this.vehicleService.deleteVehicle(id).subscribe((res)=>{
+  //     console.log(id);
+  //     this.readVehicle();
+  //   });
+  // }
 
 
   routerAddAsset() {

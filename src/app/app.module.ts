@@ -75,7 +75,7 @@ import { CreateExtracollectionComponent } from './systems/extra collection/creat
 import { ReadExtracollectionComponent } from './systems/extra collection/read-extracollection/read-extracollection/read-extracollection.component';
 import { EditExtracollectionComponent } from './systems/extra collection/edit-extracollection/edit-extracollection/edit-extracollection.component';
 import { EmployeeSettingsComponent } from './systems/employee-settings/employee-settings.component';
-import { ReadAssetComponent } from './systems/assets/read-asset/read-asset/read-asset.component';
+import { ReadAssetComponent } from './systems/assets/read-asset/read-equipment/read-asset.component';
 import { ReadRequestedquoteComponent } from './systems/requested quote/read-requestedquote/read-requestedquote/read-requestedquote.component';
 import { CreateAssetComponent } from './systems/assets/read-asset/create-asset/create-asset/create-asset.component';
 import { UpdateAssetComponent } from './systems/assets/read-asset/update-asset/update-asset/update-asset.component';
@@ -118,6 +118,10 @@ import { ReadQuoteStatusComponent } from './systems/quote-status/read-quote-stat
 import { EditQuoteStatusComponent } from './systems/quote-status/edit-quote-status/edit-quote-status/edit-quote-status.component';
 import { ReadBookingStatusComponent } from './systems/booking-status/read-booking-status/read-booking-status/read-booking-status.component';
 import { CreateSlotComponent } from './systems/schedule/create-slot/create-slot/create-slot.component';
+import { ResetPasswordComponent } from './employee-side/user-login/reset-password/reset-password/reset-password.component';
+import { CreateVehicleComponent } from './systems/assets/read-asset/create-vehicles/create-vehicle/create-vehicle.component';
+import { ReadVehiclesComponent } from './systems/assets/read-asset/read-vehicles/read-vehicles/read-vehicles.component';
+import { UpdateVehiclesComponent } from './systems/assets/read-asset/update-vehicles/update-vehicles/update-vehicles.component';
 
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
@@ -232,7 +236,11 @@ const angularMaterials = [
     ReadQuoteStatusComponent,
     EditQuoteStatusComponent,
     ReadBookingStatusComponent,
-    CreateSlotComponent
+    CreateSlotComponent,
+    ResetPasswordComponent,
+    CreateVehicleComponent,
+    ReadVehiclesComponent,
+    UpdateVehiclesComponent
   ],
 
   imports: [
