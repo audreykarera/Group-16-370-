@@ -122,6 +122,7 @@ import { ResetPasswordComponent } from './employee-side/user-login/reset-passwor
 import { CreateVehicleComponent } from './systems/assets/read-asset/create-vehicles/create-vehicle/create-vehicle.component';
 import { ReadVehiclesComponent } from './systems/assets/read-asset/read-vehicles/read-vehicles/read-vehicles.component';
 import { UpdateVehiclesComponent } from './systems/assets/read-asset/update-vehicles/update-vehicles/update-vehicles.component';
+import { EditSlotComponent } from './systems/schedule/edit-slot/edit-slot.component';
 
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
@@ -240,7 +241,8 @@ const angularMaterials = [
     ResetPasswordComponent,
     CreateVehicleComponent,
     ReadVehiclesComponent,
-    UpdateVehiclesComponent
+    UpdateVehiclesComponent,
+    EditSlotComponent
   ],
 
   imports: [
