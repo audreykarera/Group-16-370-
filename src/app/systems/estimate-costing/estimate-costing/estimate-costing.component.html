@@ -1,177 +1,131 @@
-<div style="margin-bottom: 1rem;">
-  <mat-toolbar>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-       <!-- <img src="assets/img/GFS logo.png" alt="" style="width: 05rem; height: 03rem;"> -->
-      <mat-icon></mat-icon>
-    </button>
+<div style="margin-top: 20px;">
+  <div class="row">
+    <div class="col">
+      <div class="img-fluid">
+        <img src="assets/img/GFS logo.png" alt="GFS Logo" class="rounded mx-auto d-block">
+      </div>
+      <div class="">
 
-    <div class="row">
-      <div class="col navbar-hover">
-        <div class="menu-items">
-          <button mat-button>Home</button>
-        </div>
-      </div>
-      <div class="col navbar-hover">
-        <div class="menu-items">
-          <button mat-button>Services</button>
-        </div>
-      </div>
-      <div class="col navbar-hover">
-        <div class="menu-items">
-          <button mat-button [matMenuTriggerFor]="menu">Bookings</button>
-          <mat-menu #menu="matMenu">
-            <button mat-menu-item>Make a Booking</button>
-            <button mat-menu-item>View Bookings</button>
-          </mat-menu>
-        </div>
-      </div>
-      <div class="col navbar-hover">
-        <div class="menu-items">
-          <button mat-button [matMenuTriggerFor]="menu2">Pricing</button>
-          <mat-menu #menu2="matMenu">
-            <button mat-menu-item>Estimate Cost</button>
-            <button mat-menu-item>Request a Quote</button>
-          </mat-menu>
-        </div>
-      </div>
-      <div class="col navbar-hover">
-        <div class="menu-items">About Us</div>
       </div>
     </div>
 
+    <div class="col">
+      <mat-card style="width: 35rem; height: 45rem;">
+        <mat-card-header>
+          <div class="text-center">
+            <mat-card-title>Generate Estimate Costing</mat-card-title>
+            <mat-card-subtitle>Fill in the service and location details and then click "Generate"</mat-card-subtitle>
+          </div>
+        </mat-card-header>
+        <mat-card-content>
+        <mat-form-field appearance="fill" class="m-2">
+                          <mat-label>Service</mat-label>
+                          <mat-select (onSelectionChange)="get($event)">
+                              <mat-option *ngFor="let item of services" (click)="get(item)" [value]="item.value">
+                                  {{item.viewValue}}
+                              </mat-option>
+                          </mat-select>
+          </mat-form-field>
+           <span *ngIf="isSelected">
+                          <span *ngIf="CollectionandDisposal">
+                              <mat-form-field appearance="fill" class="m-2">
+                                  <mat-label>Service Type</mat-label>
+                                  <mat-select>
+                                      <mat-option *ngFor="let item of recyclables" (click)="get(item)" [value]="item.value">
+                                          {{item.viewValue}}
+                                      </mat-option>
+                                  </mat-select>
+                              </mat-form-field>
+                          </span>
+                           <span *ngIf="SkipService">
+                              <mat-form-field appearance="fill" class="m-2">
+                                  <mat-label>Service Type</mat-label>
+                                  <mat-select>
+                                      <mat-option *ngFor="let item of packages" (click)="get(item)" [value]="item.value">
+                                          {{item.viewValue}}
+                                      </mat-option>
+                                  </mat-select>
+                              </mat-form-field>
+                          </span>
+                           <span *ngIf="Delivery">
+                              <mat-form-field appearance="fill" class="m-2">
+                                  <mat-label>Service Type</mat-label>
+                                  <mat-select>
+                                      <mat-option *ngFor="let item of deliverables" (click)="get(item)" [value]="item.value">
+                                          {{item.viewValue}}
+                                      </mat-option>
+                                  </mat-select>
+                              </mat-form-field>
+                          </span>
+                          <span *ngIf="Santisation">
+                              <mat-form-field appearance="fill" class="m-2">
+                                  <mat-label>Service Type</mat-label>
+                                  <mat-select>
+                                      <mat-option *ngFor="let item of  santisables" (click)="get(item)" [value]="item.value">
+                                          {{item.viewValue}}
+                                      </mat-option>
+                                  </mat-select>
+                              </mat-form-field>
+                          </span>
+                          <span *ngIf="Removal">
+                              <mat-form-field appearance="fill" class="m-2">
+                                  <mat-label>Service Type</mat-label>
+                                  <mat-select>
+                                      <mat-option *ngFor="let item of removables" (click)="get(item)" [value]="item.value">
+                                          {{item.viewValue}}
+                                      </mat-option>
+                                  </mat-select>
+                              </mat-form-field>
+                          </span>
+          </span>
+          <div class="position-relative">
+            <mat-icon class="position-absolute top-0 end-0 icon-hover">add_circle</mat-icon>
+          </div>
+          <label class="col-form-label col-form-label-sm mt-2 float-right" for="inputSmall">Province</label>
+          <select class="form-select form-select-sm" aria-label=".form-select-sm example" type="text">
+            <option selected></option>
+            <option value="1">Gauteng</option>
+            <option value="2">Kwa-Zulu-Natal</option>
 
-    <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon favorite-icon" >
-      <mat-icon class="navbar-hover">account_circle</mat-icon>
-    </button>
-
-  </mat-toolbar>
-</div>
-
-<div class="row">
-  <div class="col">
-    <div class="img-fluid">
-      <img src="assets/img/GFS logo.png" alt="GFS Logo" class="rounded mx-auto d-block">
-    </div>
-    <div class="">
-
+          </select>
+          <div class="text-center">
+            <div class="col-form-label col-form-label-sm mt-2 float-right">
+              <mat-form-field appearance="fill">
+                <mat-label>City</mat-label>
+                <input matInput placeholder="Ex. 'Pretoria' ">
+                <mat-icon matSuffix>apartment</mat-icon>
+                <mat-hint>Enter the name of your City</mat-hint>
+              </mat-form-field>
+            </div>
+            <div class="col-form-label col-form-label-sm mt-2 float-right">
+              <mat-form-field appearance="fill">
+                <mat-label>Suburb</mat-label>
+                <input matInput placeholder="Ex. 'The Reeds' ">
+                <mat-icon matSuffix>location_city</mat-icon>
+                <mat-hint>Enter the name of your Suburb</mat-hint>
+              </mat-form-field>
+            </div>
+            <div class="col-form-label col-form-label-sm mt-2 float-right">
+              <mat-form-field appearance="fill">
+                <mat-label>Street</mat-label>
+                <input matInput placeholder="Ex. '512 Brittlewood Ave' ">
+                <mat-icon matSuffix>add_road</mat-icon>
+                <mat-hint>Enter the name of your Street</mat-hint>
+              </mat-form-field>
+            </div>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+            <button class="btn btn-outline-success me-md-2" type="button" (click)="routerGenerateEstimate()">Generate</button>
+            <button class="btn btn-outline-primary" type="button" routerLinkActive="list-item-active" routerLink="/request-quote">Request Quote</button>
+          </div>
+        </mat-card-actions>
+      </mat-card>
     </div>
   </div>
 
-  <div class="col">
-    <mat-card style="width: 35rem; height: 45rem;">
-      <mat-card-header>
-        <div class="text-center">
-          <mat-card-title>Generate Estimate Costing</mat-card-title>
-          <mat-card-subtitle>Fill in the service and location details and then click "Generate"</mat-card-subtitle>
-        </div>
-      </mat-card-header>
-      <mat-card-content>
-      <mat-form-field appearance="fill" class="m-2">
-                        <mat-label>Service</mat-label>
-                        <mat-select (onSelectionChange)="get($event)">
-                            <mat-option *ngFor="let item of services" (click)="get(item)" [value]="item.value">
-                                {{item.viewValue}}
-                            </mat-option>
-                        </mat-select>
-        </mat-form-field>
-         <span *ngIf="isSelected">
-                        <span *ngIf="CollectionandDisposal">
-                            <mat-form-field appearance="fill" class="m-2">
-                                <mat-label>Service Type</mat-label>
-                                <mat-select>
-                                    <mat-option *ngFor="let item of recyclables" (click)="get(item)" [value]="item.value">
-                                        {{item.viewValue}}
-                                    </mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </span>
-                         <span *ngIf="SkipService">
-                            <mat-form-field appearance="fill" class="m-2">
-                                <mat-label>Service Type</mat-label>
-                                <mat-select>
-                                    <mat-option *ngFor="let item of packages" (click)="get(item)" [value]="item.value">
-                                        {{item.viewValue}}
-                                    </mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </span>
-                         <span *ngIf="Delivery">
-                            <mat-form-field appearance="fill" class="m-2">
-                                <mat-label>Service Type</mat-label>
-                                <mat-select>
-                                    <mat-option *ngFor="let item of deliverables" (click)="get(item)" [value]="item.value">
-                                        {{item.viewValue}}
-                                    </mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </span>
-                        <span *ngIf="Santisation">
-                            <mat-form-field appearance="fill" class="m-2">
-                                <mat-label>Service Type</mat-label>
-                                <mat-select>
-                                    <mat-option *ngFor="let item of  santisables" (click)="get(item)" [value]="item.value">
-                                        {{item.viewValue}}
-                                    </mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </span>
-                        <span *ngIf="Removal">
-                            <mat-form-field appearance="fill" class="m-2">
-                                <mat-label>Service Type</mat-label>
-                                <mat-select>
-                                    <mat-option *ngFor="let item of removables" (click)="get(item)" [value]="item.value">
-                                        {{item.viewValue}}
-                                    </mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </span>
-        </span>    
-        <div class="position-relative">
-          <mat-icon class="position-absolute top-0 end-0 icon-hover">add_circle</mat-icon>
-        </div>
-        <label class="col-form-label col-form-label-sm mt-2 float-right" for="inputSmall">Province</label>
-        <select class="form-select form-select-sm" aria-label=".form-select-sm example" type="text">
-          <option selected></option>
-          <option value="1">Gauteng</option>
-          <option value="2">Kwa-Zulu-Natal</option>
 
-        </select>
-        <div class="text-center">
-          <div class="col-form-label col-form-label-sm mt-2 float-right">
-            <mat-form-field appearance="fill">
-              <mat-label>City</mat-label>
-              <input matInput placeholder="Ex. 'Pretoria' ">
-              <mat-icon matSuffix>apartment</mat-icon>
-              <mat-hint>Enter the name of your City</mat-hint>
-            </mat-form-field>
-          </div>
-          <div class="col-form-label col-form-label-sm mt-2 float-right">
-            <mat-form-field appearance="fill">
-              <mat-label>Suburb</mat-label>
-              <input matInput placeholder="Ex. 'The Reeds' ">
-              <mat-icon matSuffix>location_city</mat-icon>
-              <mat-hint>Enter the name of your Suburb</mat-hint>
-            </mat-form-field>
-          </div>
-          <div class="col-form-label col-form-label-sm mt-2 float-right">
-            <mat-form-field appearance="fill">
-              <mat-label>Street</mat-label>
-              <input matInput placeholder="Ex. '512 Brittlewood Ave' ">
-              <mat-icon matSuffix>add_road</mat-icon>
-              <mat-hint>Enter the name of your Street</mat-hint>
-            </mat-form-field>
-          </div>
-        </div>
-      </mat-card-content>
-      <mat-card-actions>
-        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-          <button class="btn btn-outline-success me-md-2" type="button" (click)="routerGenerateEstimate()">Generate</button>
-          <button class="btn btn-outline-primary" type="button" routerLinkActive="list-item-active" routerLink="/request-quote">Request Quote</button>
-        </div>
-      </mat-card-actions>
-    </mat-card>
-  </div>
+
 </div>
-
 
