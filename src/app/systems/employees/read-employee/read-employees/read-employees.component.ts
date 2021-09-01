@@ -23,7 +23,7 @@ export class ReadEmployeesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-   
+   this.readEmployees()
   }
 
   readEmployees(){
@@ -44,12 +44,19 @@ export class ReadEmployeesComponent implements OnInit {
     );
   }
 
-  routerViewEmployee() {
+  routerViewEmployee(employeeId: number, employeeFirstName: string) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     const dialogReference = this.dialog.open(
       ViewEmployeeComponent, 
-      dialogConfig
+      {
+        disableClose: true,
+        
+        data: {
+          employeeId, 
+          employeeFirstName
+        }
+      }
     );
   }
 

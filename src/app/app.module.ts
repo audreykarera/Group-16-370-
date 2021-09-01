@@ -1,6 +1,6 @@
 
 //Modules
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -231,7 +231,9 @@ const angularMaterials = [
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(), 
+    MatIconModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent],

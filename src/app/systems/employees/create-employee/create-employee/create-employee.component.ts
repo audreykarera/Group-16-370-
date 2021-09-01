@@ -52,9 +52,9 @@ export class CreateEmployeeComponent implements OnInit {
 
   ngOnInit(): void {
     this.readUserRoles();
-    this.resetObject();
     this.readTitles();
     this.readEmployeeType();
+    this.resetObject();
   }
 
   readUserRoles() {
@@ -73,6 +73,7 @@ export class CreateEmployeeComponent implements OnInit {
   readTitles(){
     this.titleService.getTitles().subscribe((res)=>{
       this.titleList = res as EmployeeTitle[];
+      console.log(this.titleList);
     }); 
   }
 
@@ -85,7 +86,6 @@ export class CreateEmployeeComponent implements OnInit {
 
 
   resetObject() {
-    this.employeeList = [];
     this.employee = {
       EmployeeId: 0,
       EmployeeFirstName: '',
@@ -173,7 +173,7 @@ export class CreateEmployeeComponent implements OnInit {
   //       ])
   //     ), 
   //     Title:new FormControl(
-  //       this.employee.Title,
+  //       this.employee.TitleId,
   //       Validators.required
   //     ),
   //     // EmploymentStatus: new FormControl(
@@ -181,11 +181,11 @@ export class CreateEmployeeComponent implements OnInit {
   //     //   Validators.required
   //     // ),
   //     EmployeeType: new FormControl(
-  //       this.employee.EmployeeType,
+  //       this.employee.EmployeeTypeId,
   //       Validators.required
   //     ), 
   //     UserRole: new FormControl(
-  //       this.employee.UserRole,
+  //       this.employee.UserRoleId,
   //       Validators.required
   //     ),
   //     EmployeeIdNumber: new FormControl(
@@ -197,7 +197,7 @@ export class CreateEmployeeComponent implements OnInit {
   //       ])
   //     ), 
   //     EmployeeUserName: new FormControl(
-  //       this.employee.EmployeeUserName,
+  //       this.employee.Username,
   //       Validators.compose([
   //       Validators.required, 
   //       Validators.maxLength(15),

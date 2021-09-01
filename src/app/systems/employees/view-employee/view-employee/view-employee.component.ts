@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Employee } from 'src/app/models/employee';
 
 @Component({
   selector: 'app-view-employee',
@@ -6,10 +8,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./view-employee.component.scss']
 })
 export class ViewEmployeeComponent implements OnInit {
+  employee: Employee;
 
-  constructor() { }
+  constructor(
+    @Inject(MAT_DIALOG_DATA)
+    public data:any
+  ) { }
 
   ngOnInit(): void {
+    console.log(this.data);
+    this.refreshForm();
+  }
+
+  refreshForm(){
+    this.employee = {
+      EmployeeId: 0,
+      EmployeeFirstName: '',
+    }
   }
 
 }

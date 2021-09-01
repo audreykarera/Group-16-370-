@@ -9,20 +9,19 @@ import { Employee } from 'src/app/models/employee';
 })
 export class EmployeeService {
   apiUrl = 'http://localhost:60000/api/employee/';
-  httpOptions ={
-    headers: new HttpHeaders({
-      ContentType: 'application/json'
-    })
-  }; 
 
   constructor(
     private http: HttpClient
   ) { }
 
   //Get all employee 
-  getEmployees(): Observable<Employee[]>{
-    return this.http.get<Employee[]>(`${this.apiUrl}getemployee`)
-    .pipe(map(res=>res));
+  // getEmployees(): Observable<Employee[]>{
+  //   return this.http.get<Employee[]>(`${this.apiUrl}getemployee`)
+  //   .pipe(map(res=>res));
+  // }
+
+  getEmployees(){
+    return this.http.get(this.apiUrl + 'getemployees/'); 
   }
 
   //Get employee by id
@@ -33,13 +32,12 @@ export class EmployeeService {
 
   //
   patchEmployee(obj){
-    return this.http.patch(this.apiUrl + 'updateemployee/', obj)
+    return this.http.patch(this.apiUrl + 'updateemployee/', obj);
   }
 
 //Post employee
-  postEmployee(employee: Employee):Observable<number>{
-    return this.http.post<number>(`${this.apiUrl}createemployee`, employee)
-    .pipe(map(res=>res));
+  postEmployee(obj){
+    return this.http.post(this.apiUrl + 'createemployee/', obj);
   }
 
   delete(id){

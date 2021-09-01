@@ -1,4 +1,4 @@
-import { Title } from "@angular/platform-browser";
+import { EmployeeTitle } from "./employeeTitle";
 import { EmployeeType } from "./employeetype";
 import { EmploymentStatus } from "./employmentstatus";
 import { UserRole } from "./userRole";
@@ -17,11 +17,9 @@ export class Employee {
     EmployeePassword?: string;
     Username?: string;
     TitleId?: number;
-    Title?: Title; 
     EmploymentStatusId?:number;
-    EmploymentStatus?: EmploymentStatus;
     EmployeeTypeId?:number;
-    EmployeeType?: EmployeeType;
     UserRoleId?: number; 
-    UserRole?: UserRole;
 }
+
+const employee: Employee = {};
