@@ -1,3 +1,4 @@
+import { EditSlotComponent } from './../../edit-slot/edit-slot.component';
 import { CreateSlotComponent } from './../../create-slot/create-slot/create-slot.component';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
@@ -34,6 +35,14 @@ export class ReadScheduleComponent implements OnInit {
     dialogConfig.disableClose = true;
     const dialogReference = this.dialog.open(
       CreateSlotComponent,
+      dialogConfig
+    );
+  }
+  routerEditBookingSlot() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    const dialogReference = this.dialog.open(
+      EditSlotComponent,
       dialogConfig
     );
   }

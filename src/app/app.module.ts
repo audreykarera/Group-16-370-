@@ -118,6 +118,7 @@ import { ReadQuoteStatusComponent } from './systems/quote-status/read-quote-stat
 import { EditQuoteStatusComponent } from './systems/quote-status/edit-quote-status/edit-quote-status/edit-quote-status.component';
 import { ReadBookingStatusComponent } from './systems/booking-status/read-booking-status/read-booking-status/read-booking-status.component';
 import { CreateSlotComponent } from './systems/schedule/create-slot/create-slot/create-slot.component';
+import { EditSlotComponent } from './systems/schedule/edit-slot/edit-slot.component';
 
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
@@ -232,7 +233,8 @@ const angularMaterials = [
     ReadQuoteStatusComponent,
     EditQuoteStatusComponent,
     ReadBookingStatusComponent,
-    CreateSlotComponent
+    CreateSlotComponent,
+    EditSlotComponent
   ],
 
   imports: [
