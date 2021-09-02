@@ -44,7 +44,9 @@ export class ReadEmployeesComponent implements OnInit {
     );
   }
 
-  routerViewEmployee(employeeId: number, employeeFirstName: string) {
+  routerViewEmployee(employeeId: number, employeeFirstName: string, employeeSurname: string, employeeMiddleName: string,
+    employeeEmailAddress: string, employeeCellPhoneNumber: string, employeeEmergencyContactFirstName: string, 
+    employeeEmergencyContactSurname: string, employeeEmergencyContactNumber: string, ) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     const dialogReference = this.dialog.open(
@@ -54,7 +56,14 @@ export class ReadEmployeesComponent implements OnInit {
         
         data: {
           employeeId, 
-          employeeFirstName
+          employeeFirstName,
+          employeeSurname, 
+          employeeMiddleName, 
+          employeeEmailAddress, 
+          employeeCellPhoneNumber, 
+          employeeEmergencyContactFirstName, 
+          employeeEmergencyContactSurname, 
+          employeeEmergencyContactNumber
         }
       }
     );

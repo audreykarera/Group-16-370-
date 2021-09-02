@@ -10,47 +10,47 @@
 
 <body>
     <div class="modal-body" style="width: 40rem; height: 43rem;">
-        <h3>*Employee Name*</h3>
+        <h3>{{data.employeeSurname}} {{data.employeeEmailAddress}}</h3>
         <div class="form-group">
             <div class="container">
                 <div class="row">
                     <div class="col">
                         <br>
                         <div class="row justify-content-center">
-                            <img src="./assets/RowanUser.jpg" alt="" class="user-image" />
+                            <img  alt="" class="user-image" />
                         </div>
                         <br>
                         <label class="col-form-label col-form-label-sm mt-3" for="inputSmall">Title</label>
                         <input class="form-control form-control-sm" type="text" placeholder="{{data.employeeFirstName}}"
                             aria-label=".form-control-sm example" [(ngModel)]="employee.EmployeeFirstName" readonly>
                         <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">First Name</label>
-                        <input class="form-control form-control-sm" type="text" placeholder=""
-                            aria-label=".form-control-sm example" readonly>
+                        <input class="form-control form-control-sm" type="text" placeholder="{{data.employeeSurname}}"
+                            aria-label=".form-control-sm example" [(ngModel)]="employee.employeeSurname" readonly>
                         <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Middle Name</label>
                         <input class="form-control form-control-sm" type="text" placeholder=""
                             aria-label=".form-control-sm example" readonly>
                         <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Surname</label>
-                        <input class="form-control form-control-sm" type="text" placeholder=""
-                            aria-label=".form-control-sm example" readonly>
+                        <input class="form-control form-control-sm" type="text" placeholder="{{data.employeeEmailAddress}}"
+                            aria-label=".form-control-sm example"  [(ngModel)]="employee.employeeEmailAddress" readonly>
                         <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Email Address</label>
-                        <input class="form-control form-control-sm" type="text" placeholder=""
-                            aria-label=".form-control-sm example" readonly>
+                        <input class="form-control form-control-sm" type="text" placeholder="{{data.employeeCellPhoneNumber}}"
+                            aria-label=".form-control-sm example"  [(ngModel)]="employee.employeeCellPhoneNumber" readonly>
                     </div>
                     <div class="col">
                         <label class="col-form-label col-form-label-sm mt-1" for="inputSmall">Cellphone Number</label>
-                        <input class="form-control form-control-sm" type="text" placeholder=""
-                            aria-label=".form-control-sm example" readonly>
+                        <input class="form-control form-control-sm" type="text" placeholder="{{data.employeeEmergencyContactFirstName}}"
+                            aria-label=".form-control-sm example"  [(ngModel)]="employee.employeeEmergencyContactFirstName" readonly>
                         <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Contact Person First
                             Name</label>
-                        <input class="form-control form-control-sm" type="text" placeholder=""
-                            aria-label=".form-control-sm example" readonly>
+                        <input class="form-control form-control-sm" type="text" placeholder="{{data.employeeEmergencyContactSurname}}"
+                            aria-label=".form-control-sm example"  [(ngModel)]="employee.employeeEmergencyContactSurname" readonly>
                         <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Contact Person
                             Surname</label>
-                        <input class="form-control form-control-sm" type="text" placeholder=""
-                            aria-label=".form-control-sm example" readonly>
+                        <input class="form-control form-control-sm" type="text" placeholder="{{data.employeeEmergencyContactNumber}}"
+                            aria-label=".form-control-sm example"  [(ngModel)]="employee.employeeEmergencyContactNumber" readonly>
                         <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Contact Person
                             CellphoneNumber</label>
-                        <input class="form-control form-control-sm" type="text" placeholder=""
+                        <input class="form-control form-control-sm" type="text" placeholder="0825673214"
                             aria-label=".form-control-sm example" readonly>
                         <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Employee Type</label>
                         <input class="form-control form-control-sm" type="text" placeholder=""
