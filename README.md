@@ -31,6 +31,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## To install the correct libraries: 
 ## npm install
 ## npm install bootstrap
-## ng add @angular/material
+## ng add @angular/material (theme = deep purple)
 ## npm install --save @fullcalendar/angular @fullcalendar/daygrid
 ## npm i @fullcalendar/interaction
+## npm install ngx-toastr
