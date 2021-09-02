@@ -1,7 +1,6 @@
 import { ReadPackageRatesComponent } from './systems/package rates/read-package-rates/read-package-rates/read-package-rates.component';
 import { CreateSlotComponent } from './systems/schedule/create-slot/create-slot/create-slot.component';
 import { ReadBookingStatusComponent } from './systems/booking-status/read-booking-status/read-booking-status/read-booking-status.component';
-
 import { ReadQuoteStatusComponent } from './systems/quote-status/read-quote-status/read-quote-status/read-quote-status.component';
 import { ReadPaymentTypeComponent } from './systems/payment-type/read-payment-type/read-payment-type/read-payment-type.component';
 import { CreateBookingComponent } from './systems/bookings/create-booking/create-booking/create-booking.component';
@@ -86,7 +85,11 @@ const routes: Routes = [
   { path: 'packagerates', component: ReadPackageRatesComponent},
   { path: 'editsupplier', component: EditSuppliersComponent},
   { path: 'vehicle', component:VehicleComponent},
-  {path: 'equipment', component: EquipmentComponent}
+  {path: 'equipment', component: EquipmentComponent},
+  {path: 'paymenttypes', component: ReadPaymentTypeComponent},
+  {path: 'bookingstatus', component: ReadBookingStatusComponent}, 
+  {path: 'quotestatuses', component: ReadQuoteStatusComponent}, 
+  
 ];
 
 @NgModule({

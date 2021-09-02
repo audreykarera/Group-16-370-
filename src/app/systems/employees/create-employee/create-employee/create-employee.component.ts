@@ -57,6 +57,10 @@ export class CreateEmployeeComponent implements OnInit {
     this.resetObject();
   }
 
+  Close(){
+    this.dialog.closeAll();
+  }
+
   readUserRoles() {
     this.userRoleService.getUserRoles().subscribe((res) => {
       this.userRoleList = res as UserRole[];

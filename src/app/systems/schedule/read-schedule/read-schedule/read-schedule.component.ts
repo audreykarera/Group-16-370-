@@ -26,17 +26,14 @@ export class ReadScheduleComponent implements OnInit {
     ]
   };
 
-  handleDateClick(arg: { dateStr: string; }) {
-    alert('date click! ' + arg.dateStr)
-  }
-
-  routerAddBookingSlot() {
+  handleDateClick() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     const dialogReference = this.dialog.open(
       CreateSlotComponent,
       dialogConfig
     );
+    
   }
   routerEditBookingSlot() {
     const dialogConfig = new MatDialogConfig();

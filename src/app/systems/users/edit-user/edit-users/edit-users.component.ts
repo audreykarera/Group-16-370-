@@ -14,6 +14,10 @@ export class EditUsersComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  Close(){
+    this.dialog.closeAll();
+  }
   openConfirmDialog() {
     const dialogInterface: DialogInterface = {
       dialogHeader: 'Confirmation Message',
