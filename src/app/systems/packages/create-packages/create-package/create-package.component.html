@@ -8,21 +8,25 @@
 </head>
 
 <body>
-    <div class="modal-body" style="width: 20rem; height: 20rem;">
+    <div class="modal-body" style="width: 20rem; height: auto">
         <h3>Add Skip Package</h3>
         <div class="form-group">
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Package Name</label>
-                        <input class="form-control form-control-sm" type="text" placeholder="Package Name"
-                            aria-label=".form-control-sm example">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                         <mat-label>Package Name</mat-label>
+                         <input matInput placeholder="">
+                        </mat-form-field>
                         <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Package Price Rate</label>
-                        <input class="form-control form-control-sm" type="text" placeholder="Package Price Rate"
-                            aria-label=".form-control-sm example">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                         <input matInput placeholder="">
+                        </mat-form-field>
                         <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Package Details</label>
-                        <input class="form-control form-control-sm" type="text" placeholder="Package Details"
-                            aria-label=".form-control-sm example">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                          <mat-label>Insert package details</mat-label>
+                          <textarea matInput placeholder="Ex. What the package includes..."></textarea>
+                        </mat-form-field>
                             <br>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                             <button class="btn btn-outline-success me-md-2"  (click)="openConfirmDialog()" type="button">Save</button>

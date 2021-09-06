@@ -75,6 +75,18 @@
       </mat-menu>
     </span>
     <span *ngIf="Admin">
+      <a mat-list-item [matMenuTriggerFor]="employee">
+        <mat-icon>
+          <mat-icon> insert_drive_file</mat-icon>
+        </mat-icon>Employee Settings<mat-icon>keyboard_arrow_down</mat-icon>
+      </a>
+      <mat-menu #employee="matMenu" xPosition="before">
+        <button mat-menu-item routerLinkActive="list-item-active" routerLink="/employmentstatuses">Employment Statuses</button>
+        <button mat-menu-item routerLinkActive="list-item-active" routerLink="/titles">Titles</button>
+        <button mat-menu-item routerLinkActive="list-item-active" routerLink="/collectionnote">Employee Types</button>
+      </mat-menu>
+    </span>
+    <span *ngIf="Admin">
       <a mat-list-item routerLinkActive="list-item-active" routerLink="/vehicle">
         <mat-icon>
           <mat-icon>directions_car</mat-icon>
@@ -103,14 +115,13 @@
         <button mat-menu-item routerLinkActive="list-item-active" routerLink="/services">Services</button>
         <button mat-menu-item routerLinkActive="list-item-active" routerLink="/servicetypes">Service Type</button>
         <button mat-menu-item routerLinkActive="list-item-active" routerLink="/packages">Packages</button>
-        <button mat-menu-item routerLinkActive="list-item-active" routerLink="/packagerates">Package Rates
-          </button>
-          <button mat-menu-item routerLinkActive="list-item-active" routerLink="/paymenttypes">Payment Types</button>
-          <button mat-menu-item routerLinkActive="list-item-active" routerLink="/bookingstatus">Booking Statuses</button>
-          <button mat-menu-item routerLinkActive="list-item-active" routerLink="/quotestatuses">Quote Statuses</button>
+        <button mat-menu-item routerLinkActive="list-item-active" routerLink="/packagerates">Package Rates</button>
+        <button mat-menu-item routerLinkActive="list-item-active" routerLink="/paymenttypes">Payment Types</button>
+        <button mat-menu-item routerLinkActive="list-item-active" routerLink="/bookingstatus">Booking Statuses</button>
+        <button mat-menu-item routerLinkActive="list-item-active" routerLink="/quotestatuses">Quote Statuses</button>
+        <button mat-menu-item routerLinkActive="list-item-active" routerLink="/extra-collection">Extra Collection</button>
         <button mat-menu-item routerLinkActive="list-item-active" routerLink="/user-settings">User Settings</button>
-        <button mat-menu-item routerLinkActive="list-item-active" routerLink="/employee-settings">Employee
-          Settings</button>
+        
       </mat-menu>
     </span>
     <span *ngIf="Employee">

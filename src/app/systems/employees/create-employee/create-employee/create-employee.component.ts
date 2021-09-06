@@ -81,6 +81,10 @@ export class CreateEmployeeComponent implements OnInit {
     }); 
   }
 
+  onFileSelected(event){
+    console.log(event); 
+  }
+
   onSubmit(){
     this.employeeService.postEmployee(this.employee).subscribe((res)=>{
       this.employee = res as Employee; 

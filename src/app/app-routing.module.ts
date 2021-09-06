@@ -1,3 +1,6 @@
+import { ReadExtraCollectionComponent } from './systems/extra-collection/read-extra-collection/read-extra-collection.component';
+import { ViewEmploymentStatusesComponent } from './systems/employee-settings/view-employment-statuses/view-employment-statuses.component';
+import { ViewEmployeeTitleComponent } from './systems/employee-settings/view-employee-title/view-employee-title.component';
 import { ReadPackageRatesComponent } from './systems/package rates/read-package-rates/read-package-rates/read-package-rates.component';
 import { CreateSlotComponent } from './systems/schedule/create-slot/create-slot/create-slot.component';
 import { ReadBookingStatusComponent } from './systems/booking-status/read-booking-status/read-booking-status/read-booking-status.component';
@@ -89,6 +92,9 @@ const routes: Routes = [
   {path: 'paymenttypes', component: ReadPaymentTypeComponent},
   {path: 'bookingstatus', component: ReadBookingStatusComponent}, 
   {path: 'quotestatuses', component: ReadQuoteStatusComponent}, 
+  {path: 'titles', component: ViewEmployeeTitleComponent},
+  {path: 'employmentstatuses', component: ViewEmploymentStatusesComponent},
+  {path: 'extra-collection', component: ReadExtraCollectionComponent},
   
 ];
 

@@ -1,23 +1,55 @@
-<div class="modal-content" >
-      <div class="modal-header">
-      <h4 class="modal-title">Employee Titles</h4>
-        <button (click)=" Close()" type="button" class="close" data-dismiss="modal">&times;</button>
+
+<div class="container-fluid page">
+  <div class="d-flex page__box p-3 mt-2">Titles</div>
+  <div class="page__content shadow p-3">
+    <div class="page__content-data">
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </div>
-      <div class="modal-body">
-        <div class="table-responsive">
+      <br>
+      <br>
+        <div class="position-relative">
+          <div class="position-absolute top-0 end-0 icon-hover">
+            <mat-icon style="font-size: xx-large" (click)="routerAddEmployeeTitles()" >add</mat-icon>
+          </div>
+        </div>
+        <br>
+      <div class="table-responsive">
         <table class="table table-hover align-middle">
-          <tbody>
-            <tr *ngFor="let item of titleList" >
-            <td class="col-5"><span>{{item.titleDescription}}</span></td>
-                <td class="icon-hover">
-                <mat-icon (click) ="routerEditEmployeeTitles(item.titleId, item.titleDescription)" >edit</mat-icon>
-                </td>
-                <td class="icon-hover">
-                <mat-icon (click) ="onDelete(item.titleId)">delete</mat-icon>
-                </td>
+          <thead>
+            <tr>
+              <th class="col-2">Title Id</th>
+              <th class="col-5">Title Description</th>
+              <th class="col-2">Edit</th>
+              <th class="col-2">Delete</th>
             </tr>
-            <br>
-            
-        <button type="button" class="btn btn-success"(click) ="routerAddEmployeeTitles()">Add </button>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of titleList">
+              <td><span>{{item.titleId}}</span></td>
+              <td><span>{{item.titleDescription}}</span></td>
+              <td class="icon-hover">
+                 <mat-icon (click) ="routerEditEmployeeTitles(item.titleId, item.titleDescription)" >edit</mat-icon>
+              </td>
+              <td class="icon-hover">
+                <mat-icon (click) ="onDelete(item.titleId)">delete</mat-icon>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-end">
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">4</a></li>
+          <li class="page-item"><a class="page-link" href="#">5</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
 
 

@@ -119,6 +119,8 @@ import { CreateVehicleComponent } from './systems/vehicles/create-vehicle/create
 import { VehicleSearchPipe } from './shared/vehicle-search.pipe';
 import { EquipmentComponent } from './systems/equipment/equipment/equipment/equipment.component';
 import { CreateEquipmentComponent } from './systems/equipment/create-equipment/create-equipment/create-equipment.component';
+import { ReadExtraCollectionComponent } from './systems/extra-collection/read-extra-collection/read-extra-collection.component';
+import { EditExtraCollectionComponent } from './systems/extra-collection/edit-extra-collection/edit-extra-collection/edit-extra-collection.component';
 
 
 
@@ -236,7 +238,9 @@ const angularMaterials = [
     VehicleSearchPipe,
     EquipmentComponent,
     CreateEquipmentComponent,
-    CreateVehicleComponent
+    CreateVehicleComponent,
+    ReadExtraCollectionComponent,
+    EditExtraCollectionComponent
   ],
 
   imports: [
