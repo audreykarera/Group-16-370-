@@ -15,9 +15,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Enter new Quote Status</label>
-                        <input class="form-control form-control-sm" type="text" placeholder="Quote Status"
-                            aria-label=".form-control-sm example" [(ngModel)]="quoteStatus.QuoteStatusName">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                         <mat-label>Enter New Quote Status</mat-label>
+                         <input matInput placeholder="Confirmed">
+                        </mat-form-field>
+                    
+                      
                         <br>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                             <button class="btn btn-outline-success me-md-2" (click)="onSave()"
