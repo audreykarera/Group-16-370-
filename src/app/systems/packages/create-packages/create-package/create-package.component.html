@@ -8,25 +8,26 @@
 </head>
 
 <body>
-    <div class="modal-body" style="width: 20rem; height: auto">
+    <div class="modal-body" style="width: 19rem; height: auto">
         <h3>Add Skip Package</h3>
         <div class="form-group">
             <div class="container">
                 <div class="row">
                     <div class="col">
+                    <form class="text-center">
                         <mat-form-field class="example-full-width" appearance="fill">
                          <mat-label>Package Name</mat-label>
                          <input matInput placeholder="">
                         </mat-form-field>
-                        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Package Price Rate</label>
                         <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Package Price Rate</mat-label>
                          <input matInput placeholder="">
                         </mat-form-field>
-                        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Package Details</label>
                         <mat-form-field class="example-full-width" appearance="fill">
-                          <mat-label>Insert package details</mat-label>
+                          <mat-label>Package details</mat-label>
                           <textarea matInput placeholder="Ex. What the package includes..."></textarea>
                         </mat-form-field>
+                    </form>    
                             <br>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                             <button class="btn btn-outline-success me-md-2"  (click)="openConfirmDialog()" type="button">Save</button>
