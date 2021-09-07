@@ -1,3 +1,4 @@
+import { EditEquipmentComponent } from './../../edit-equipment/edit-equipment/edit-equipment.component';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Equipment } from 'src/app/models/equipment';
@@ -10,10 +11,10 @@ import { CreateEquipmentComponent } from '../../create-equipment/create-equipmen
   styleUrls: ['./equipment.component.scss']
 })
 export class EquipmentComponent implements OnInit {
-  equipmentList: Equipment[]; 
-  equipment: Equipment; 
+  equipmentList: Equipment[];
+  equipment: Equipment;
 
-  constructor( private equipmentService: EquipmentService, 
+  constructor( private equipmentService: EquipmentService,
     public dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -38,7 +39,16 @@ export class EquipmentComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     const dialogReference = this.dialog.open(
-      CreateEquipmentComponent, 
+      CreateEquipmentComponent,
+      dialogConfig
+    );
+  }
+
+  routerEditEquipment(){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    const dialogReference = this.dialog.open(
+      EditEquipmentComponent,
       dialogConfig
     );
   }

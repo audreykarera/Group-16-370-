@@ -121,6 +121,8 @@ import { EquipmentComponent } from './systems/equipment/equipment/equipment/equi
 import { CreateEquipmentComponent } from './systems/equipment/create-equipment/create-equipment/create-equipment.component';
 import { ReadExtraCollectionComponent } from './systems/extra-collection/read-extra-collection/read-extra-collection.component';
 import { EditExtraCollectionComponent } from './systems/extra-collection/edit-extra-collection/edit-extra-collection/edit-extra-collection.component';
+import { EditEquipmentComponent } from './systems/equipment/edit-equipment/edit-equipment/edit-equipment.component';
+import { EditVehicleComponent } from './systems/vehicles/edit-vehicle/edit-vehicle/edit-vehicle.component';
 
 
 
@@ -240,7 +242,9 @@ const angularMaterials = [
     CreateEquipmentComponent,
     CreateVehicleComponent,
     ReadExtraCollectionComponent,
-    EditExtraCollectionComponent
+    EditExtraCollectionComponent,
+    EditEquipmentComponent,
+    EditVehicleComponent
   ],
 
   imports: [

@@ -1,3 +1,4 @@
+import { EditVehicleComponent } from './../edit-vehicle/edit-vehicle/edit-vehicle.component';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Vehicle } from 'src/app/models/vehicle';
@@ -10,12 +11,12 @@ import { CreateVehicleComponent } from '../create-vehicle/create-vehicle.compone
   styleUrls: ['./vehicle.component.scss']
 })
 export class VehicleComponent implements OnInit {
-  vehicleList: Vehicle[]; 
-  vehicle: Vehicle; 
+  vehicleList: Vehicle[];
+  vehicle: Vehicle;
   seachedValue: string = '';
 
   constructor(
-    private vehicleService: VehicleService, 
+    private vehicleService: VehicleService,
     public dialog: MatDialog
   ) { }
 
@@ -25,7 +26,7 @@ export class VehicleComponent implements OnInit {
 
   readVehicle(){
     this.vehicleService.getVehicles().subscribe((res)=>{
-      this.vehicleList = res as Vehicle[]; 
+      this.vehicleList = res as Vehicle[];
       console.log(this.vehicleList);
     })
   }
@@ -42,7 +43,16 @@ export class VehicleComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     const dialogReference = this.dialog.open(
-      CreateVehicleComponent, 
+      CreateVehicleComponent,
+      dialogConfig
+    );
+  }
+
+  routerEditVehicle(){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    const dialogReference = this.dialog.open(
+      EditVehicleComponent,
       dialogConfig
     );
   }
