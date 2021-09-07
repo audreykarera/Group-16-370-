@@ -30,7 +30,7 @@
                             <td>{{item.equipmentName}}</td>
                             <td>{{item.equipmentAvailable}}</td>
                             <td class="icon-hover">
-                                <mat-icon>edit</mat-icon>
+                                <mat-icon (click)="routerEditEquipment()">edit</mat-icon>
                             </td>
                             <td class="icon-hover">
                                 <mat-icon (click)="onDelete(item.equipmentId)">delete</mat-icon>

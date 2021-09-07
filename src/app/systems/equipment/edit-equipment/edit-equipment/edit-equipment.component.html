@@ -5,12 +5,12 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Create Vehicle</title>
+  <title>Update Equipment</title>
 </head>
 
 <body>
   <div class="modal-body" style="width: 25rem; height: auto;">
-    <h3>Add Vehicle</h3>
+    <h3>Edit Equipment</h3>
     <div class="form-group">
       <div class="container">
         <div class="row">
@@ -21,22 +21,14 @@
                   <br>
                   <form class="text-center">
                     <mat-form-field appearance="fill">
-                      <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Vehicle Number Plate</mat-label>
-                      <input matInput placeholder="Placeholder">
-                    </mat-form-field>
-                    <mat-form-field appearance="fill">
-                      <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Vehicle Make</mat-label>
-                      <input matInput placeholder="Placeholder">
-                    </mat-form-field>
-                    <mat-form-field appearance="fill">
-                      <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Vehicle Model</mat-label>
-                      <input matInput placeholder="Placeholder">
+                      <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Equipment Name</mat-label>
+                      <input matInput placeholder="Equipment Name">
                     </mat-form-field>
                   </form>
                     <br>
                   <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                     <button class="btn btn-outline-success me-md-2"
-                      type="button" (click)="onSave()">Save</button>
+                      type="button">Save</button>
                     <button class="btn btn-outline-danger" (click)="Close()" type="button">Cancel</button>
                   </div>
                 </div>
@@ -50,3 +42,4 @@
 </body>
 
 </html>
+
