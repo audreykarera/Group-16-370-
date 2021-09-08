@@ -27,7 +27,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 
 export class VehicleComponent implements OnInit {
 
-  displayedColumns: string[] = [ 'numberPlate', 'make', 'model', 'availability'];
+  displayedColumns: string[] = [ 'numberPlate', 'make', 'model', 'availability','edit','delete'];
   dataSource = ELEMENT_DATA;
 
   vehicleList: Vehicle[];

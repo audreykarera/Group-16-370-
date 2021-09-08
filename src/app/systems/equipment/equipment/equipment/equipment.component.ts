@@ -12,7 +12,7 @@ export interface EquipmentTable {
 
 const ELEMENT_DATA: EquipmentTable[] = [
   {name:'GFS Skip', availability: true},
-  {name:'Spill Kit', availability: true}
+  {name:'Spill Kit', availability: false}
 ];
 
 @Component({
@@ -22,7 +22,7 @@ const ELEMENT_DATA: EquipmentTable[] = [
 })
 export class EquipmentComponent implements OnInit {
 
-  displayedColumns: string[] = ['name', 'availability'];
+  displayedColumns: string[] = ['name', 'availability','edit','delete'];
   dataSource = ELEMENT_DATA;
 
   equipmentList: Equipment[];
