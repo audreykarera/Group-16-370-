@@ -8,16 +8,29 @@ import { SharedComponent } from 'src/app/component/shared components/shared/shar
 import { UserRoleService } from 'src/app/shared/services/user-role.service';
 import { CreateUserRoleComponent } from './create-user-role/create-user-role.component';
 
+export interface PeriodicElement {
+  name: string;
+  position: number;
+} 
+
+const ELEMENT_DATA: PeriodicElement[] = [
+  {position: 1, name: 'Hydrogen'},
+  {position: 2, name: 'Helium'}
+];
+
+
 @Component({
   selector: 'app-user-settings',
   templateUrl: './user-settings.component.html',
   styleUrls: ['./user-settings.component.scss']
 })
 export class UserSettingsComponent implements OnInit {
-  userRoleList: UserRole[];
-  userRole: UserRole;
+  // userRoleList: UserRole[];
+  // userRole: UserRole;
 
-
+  displayedColumns: string[] = ['position', 'name', 'edit', 'delete'];
+  dataSource = ELEMENT_DATA;
+  
   constructor(
     public dialog: MatDialog) { }
 

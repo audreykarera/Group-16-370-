@@ -123,6 +123,7 @@ import { ReadExtraCollectionComponent } from './systems/extra-collection/read-ex
 import { EditExtraCollectionComponent } from './systems/extra-collection/edit-extra-collection/edit-extra-collection/edit-extra-collection.component';
 import { EditEquipmentComponent } from './systems/equipment/edit-equipment/edit-equipment/edit-equipment.component';
 import { EditVehicleComponent } from './systems/vehicles/edit-vehicle/edit-vehicle/edit-vehicle.component';
+import { EditEmploymentStatusComponent } from './systems/employee-settings/edit-employment-status/edit-employment-status/edit-employment-status.component';
 
 
 
@@ -244,7 +245,8 @@ const angularMaterials = [
     ReadExtraCollectionComponent,
     EditExtraCollectionComponent,
     EditEquipmentComponent,
-    EditVehicleComponent
+    EditVehicleComponent,
+    EditEmploymentStatusComponent
   ],
 
   imports: [

@@ -8,6 +8,15 @@ import { EmployeeTypeService } from 'src/app/shared/services/employee-type.servi
 import { AddEmployeeTypeComponent } from '../add-employee-type/add-employee-type/add-employee-type.component';
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
 
+export interface PeriodicElement {
+  name: string;
+  position: number;
+} 
+
+const ELEMENT_DATA: PeriodicElement[] = [
+  {position: 1, name: 'Hydrogen'},
+  {position: 2, name: 'Helium'}
+];
 
 @Component({
   selector: 'app-view-employee-type',
@@ -15,8 +24,12 @@ import { NotificationsService } from 'src/app/shared/services/notifications.serv
   styleUrls: ['./view-employee-type.component.scss']
 })
 export class ViewEmployeeTypeComponent implements OnInit {
-  employeeTypeList: EmployeeType[];
-  employeeType: EmployeeType;
+  // employeeTypeList: EmployeeType[];
+  // employeeType: EmployeeType;
+
+  displayedColumns: string[] = ['position', 'name', 'edit', 'delete'];
+  dataSource = ELEMENT_DATA;
+
 
 
   constructor(
@@ -26,29 +39,29 @@ export class ViewEmployeeTypeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.readEmployeeTypes();
+    //this.readEmployeeTypes();
   }
   Close(){
     this.dialog.closeAll();
   }
   
-  readEmployeeTypes(){
-    console.log(this.employeeTypeList);
-    this.employeeTypeService.getEmployeeType().subscribe((res) => {
-      this.employeeTypeList = res as EmployeeType[];
-      console.log(this.employeeTypeList);
-    });
-  }
-    onDelete(id){
-      this.employeeTypeService.deleteEmployeeType(id).subscribe((res)=>{
-        console.log(id);
-        this.readEmployeeTypes();
-      });this.Close();
-      this.notificationsService.successToaster("Employee Type deleted", "Success");
-      setTimeout(()=>{
-        window.location.reload();
-      }, 1000);
-  }
+  // readEmployeeTypes(){
+  //   console.log(this.employeeTypeList);
+  //   this.employeeTypeService.getEmployeeType().subscribe((res) => {
+  //     this.employeeTypeList = res as EmployeeType[];
+  //     console.log(this.employeeTypeList);
+  //   });
+  // }
+  //   onDelete(id){
+  //     this.employeeTypeService.deleteEmployeeType(id).subscribe((res)=>{
+  //       console.log(id);
+  //       this.readEmployeeTypes();
+  //     });this.Close();
+  //     this.notificationsService.successToaster("Employee Type deleted", "Success");
+  //     setTimeout(()=>{
+  //       window.location.reload();
+  //     }, 1000);
+  // }
 
   routerEditEmployeeTypes(employeeTypeId: number, employeeTypeName: string) {
     console.log(employeeTypeId, employeeTypeName);

@@ -1,3 +1,4 @@
+import { ViewEmployeeTypeComponent } from './systems/employee-settings/view-employee-type/view-employee-type.component';
 import { ReadExtraCollectionComponent } from './systems/extra-collection/read-extra-collection/read-extra-collection.component';
 import { ViewEmploymentStatusesComponent } from './systems/employee-settings/view-employment-statuses/view-employment-statuses.component';
 import { ViewEmployeeTitleComponent } from './systems/employee-settings/view-employee-title/view-employee-title.component';
@@ -95,6 +96,7 @@ const routes: Routes = [
   {path: 'titles', component: ViewEmployeeTitleComponent},
   {path: 'employmentstatuses', component: ViewEmploymentStatusesComponent},
   {path: 'extra-collection', component: ReadExtraCollectionComponent},
+  {path: 'employeetypes', component: ViewEmployeeTypeComponent},
   
 ];
 

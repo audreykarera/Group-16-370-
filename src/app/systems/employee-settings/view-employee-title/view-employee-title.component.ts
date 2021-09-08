@@ -9,6 +9,16 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Title } from 'src/app/models/titles';
 
+export interface PeriodicElement {
+  name: string;
+  position: number;
+} 
+
+const ELEMENT_DATA: PeriodicElement[] = [
+  {position: 1, name: 'Hydrogen'},
+  {position: 2, name: 'Helium'}
+];
+
 @Component({
   selector: 'app-view-employee-title',
   templateUrl: './view-employee-title.component.html',
@@ -19,33 +29,32 @@ export class ViewEmployeeTitleComponent implements OnInit {
   title: Title; 
 
 
+  displayedColumns: string[] = ['position', 'name', 'edit', 'delete'];
+  dataSource = ELEMENT_DATA;
+
+
   constructor(
-    public titleService: TitleService,
-    public dialog: MatDialog,
-    notificationsService: NotificationsService
-  ) { }
+    public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.readTitles();
+    //this.readTitles();
   }
   Close(){
     this.dialog.closeAll();
   }
-  
-  
-  readTitles(){
-    console.log(this.titleList);
-    this.titleService.getTitles().subscribe((res)=>{
-      this.titleList = res as Title[];
-      console.log(this.titleList);
-    });
-  }
-    onDelete(id){
-      this.titleService.deleteTitle(id).subscribe((res)=>{
-        console.log(id);
-        this.readTitles();
-      });
-  }
+  // readTitles(){
+  //   console.log(this.titleList);
+  //   this.titleService.getTitles().subscribe((res)=>{
+  //     this.titleList = res as Title[];
+  //     console.log(this.titleList);
+  //   });
+  // }
+  //   onDelete(id){
+  //     this.titleService.deleteTitle(id).subscribe((res)=>{
+  //       console.log(id);
+  //       this.readTitles();
+  //     });
+  // }
 
   routerEditEmployeeTitles(titleId: number, titleDescription: string) {
     console.log(titleId, titleDescription);

@@ -7,41 +7,57 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { PaymentTypeService } from 'src/app/shared/services/payment-type.service';
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
 
+export interface PeriodicElement {
+  name: string;
+  position: number;
+} 
+
+const ELEMENT_DATA: PeriodicElement[] = [
+  {position: 1, name: 'Hydrogen'},
+  {position: 2, name: 'Helium'}
+];
+
+
 @Component({
   selector: 'app-read-payment-type',
   templateUrl: './read-payment-type.component.html',
   styleUrls: ['./read-payment-type.component.scss']
 })
 export class ReadPaymentTypeComponent implements OnInit {
-  paymentTypeList:PaymentType[];
-  paymentType:PaymentType;
-  searchText='';
+  // paymentTypeList:PaymentType[];
+  // paymentType:PaymentType;
+  // searchText='';
 
-  constructor(public dialog: MatDialog,
-    private paymentTypeService:PaymentTypeService,
-    private notificationService: NotificationsService) { }
+  displayedColumns: string[] = ['position', 'name', 'edit', 'delete'];
+  dataSource = ELEMENT_DATA;
+
+
+  constructor(public dialog: MatDialog,){}
+    // private paymentTypeService:PaymentTypeService,
+    // private notificationService: NotificationsService) 
+   
 
   ngOnInit(): void {
-    this.readPaymentTypes();
+    //this.readPaymentTypes();
   }
 
-  readPaymentTypes(){
-    this.paymentTypeService.getPaymentTypes().subscribe((res)=>{
-      this.paymentTypeList=res as PaymentType[];
-    }, (err:HttpErrorResponse)=>{
-      this.notificationService.failToaster("Unable to display Payment Types", "Error");
-      console.log(err);
-    })
-  }
+  // readPaymentTypes(){
+  //   this.paymentTypeService.getPaymentTypes().subscribe((res)=>{
+  //     this.paymentTypeList=res as PaymentType[];
+  //   }, (err:HttpErrorResponse)=>{
+  //     this.notificationService.failToaster("Unable to display Payment Types", "Error");
+  //     console.log(err);
+  //   })
+  // }
 
-  onDelete(id){
-    this.paymentTypeService.deletePaymentType(id).subscribe((res)=>{
-      console.log(id);
-      this.readPaymentTypes();
-    }, (err: HttpErrorResponse)=>{
-      this.notificationService.failToaster("Unable to delete payment type", "Error");
-    });
-  }
+  // onDelete(id){
+  //   this.paymentTypeService.deletePaymentType(id).subscribe((res)=>{
+  //     console.log(id);
+  //     this.readPaymentTypes();
+  //   }, (err: HttpErrorResponse)=>{
+  //     this.notificationService.failToaster("Unable to delete payment type", "Error");
+  //   });
+  // }
 
   routerAddPaymentType() {
     const dialogConfig = new MatDialogConfig();

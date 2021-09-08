@@ -13,32 +13,8 @@
           </div>
         </div>
         <br>
-        <div class="table-responsive">
-          <table class="table table-hover align-middle">
-            <thead>
-              <tr>
-                <th class="col">Package Name</th>
-                <th class="col">Package Price Rate</th>
-                <th class="col">Package Details</th>
-                <th class="col-1">Edit</th>
-                <th class="col-1">Delete</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let item of packageList " >
-                <td><span>{{item.packageName}}</span></td>
-                <td><span>R{{item.packageRate.packageRatePrice}}</span></td>
-                <td><span>{{item.packageDetails}}</span></td>
-                <td class="icon-hover">
-                  <mat-icon (click)="routerEditPackage(item.packageId, item.packageName, item.packageRate.packageRatePrice, item.packageDetails)">edit</mat-icon>
-                </td>
-                <td class="icon-hover">
-                  <mat-icon (click)="openDeleteDialog()">delete</mat-icon>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        
+
         <nav aria-label="Page navigation example">
           <ul class="pagination justify-content-end">
             <li class="page-item"><a class="page-link" href="#">1</a></li>

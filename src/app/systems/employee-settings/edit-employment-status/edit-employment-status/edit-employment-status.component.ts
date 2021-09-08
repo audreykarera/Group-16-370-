@@ -2,11 +2,11 @@ import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-edit-extra-collection',
-  templateUrl: './edit-extra-collection.component.html',
-  styleUrls: ['./edit-extra-collection.component.scss']
+  selector: 'app-edit-employment-status',
+  templateUrl: './edit-employment-status.component.html',
+  styleUrls: ['./edit-employment-status.component.scss']
 })
-export class EditExtraCollectionComponent implements OnInit {
+export class EditEmploymentStatusComponent implements OnInit {
 
   constructor(public dialog: MatDialog) { }
 
