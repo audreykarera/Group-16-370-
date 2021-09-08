@@ -5,12 +5,31 @@ import { Vehicle } from 'src/app/models/vehicle';
 import { VehicleService } from 'src/app/shared/services/vehicle.service';
 import { CreateVehicleComponent } from '../create-vehicle/create-vehicle.component';
 
+export interface PeriodicElement {
+  numberPlate: string;
+  make: string;
+  model: string;
+  availability: boolean;
+}
+
+const ELEMENT_DATA: PeriodicElement[] = [
+  {numberPlate: 'FGB345-GP', make: 'KIA', model: 'K2700', availability: true},
+  {numberPlate: 'YGD678-GP', make: 'Ford', model: 'Ranger', availability: true},
+];
+
 @Component({
   selector: 'app-vehicle',
   templateUrl: './vehicle.component.html',
   styleUrls: ['./vehicle.component.scss']
 })
+
+
+
 export class VehicleComponent implements OnInit {
+
+  displayedColumns: string[] = [ 'numberPlate', 'make', 'model', 'availability'];
+  dataSource = ELEMENT_DATA;
+
   vehicleList: Vehicle[];
   vehicle: Vehicle;
   seachedValue: string = '';
