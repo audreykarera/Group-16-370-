@@ -22,14 +22,14 @@ export class EditBookingStatusComponent implements OnInit {
       console.log(this.data);
       this.refreshForm();
     }
-  
+
     Close(){
       this.dialog.closeAll();
     }
 
     onSave(){
       this.bookingStatusService.patchBookingStatus(this.bookingStatus).subscribe((res)=>{
-        this.bookingStatus = res as BookingStatus; 
+        this.bookingStatus = res as BookingStatus;
       });
       this.Close();
       this.notificationService.successToaster("Successfully saved Payment Type", "Success Message");
@@ -37,7 +37,7 @@ export class EditBookingStatusComponent implements OnInit {
         window.location.reload();
       }, 1000);
     }
-  
+
     refreshForm(){
       this.bookingStatus = {
         BookingStatusId: 0,

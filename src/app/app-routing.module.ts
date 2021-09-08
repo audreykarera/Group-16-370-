@@ -1,3 +1,4 @@
+import { ReadSlotStatusComponent } from './systems/schedule/read-slot-status/read-slot-status/read-slot-status.component';
 import { ViewEmployeeTypeComponent } from './systems/employee-settings/view-employee-type/view-employee-type.component';
 import { ReadExtraCollectionComponent } from './systems/extra-collection/read-extra-collection/read-extra-collection.component';
 import { ViewEmploymentStatusesComponent } from './systems/employee-settings/view-employment-statuses/view-employment-statuses.component';
@@ -91,13 +92,13 @@ const routes: Routes = [
   { path: 'vehicle', component:VehicleComponent},
   {path: 'equipment', component: EquipmentComponent},
   {path: 'paymenttypes', component: ReadPaymentTypeComponent},
-  {path: 'bookingstatus', component: ReadBookingStatusComponent}, 
-  {path: 'quotestatuses', component: ReadQuoteStatusComponent}, 
+  {path: 'bookingstatus', component: ReadBookingStatusComponent},
+  {path: 'quotestatuses', component: ReadQuoteStatusComponent},
   {path: 'titles', component: ViewEmployeeTitleComponent},
   {path: 'employmentstatuses', component: ViewEmploymentStatusesComponent},
   {path: 'extra-collection', component: ReadExtraCollectionComponent},
   {path: 'employeetypes', component: ViewEmployeeTypeComponent},
-  
+  {path: 'read-slot-status', component: ReadSlotStatusComponent},
 ];
 
 @NgModule({
