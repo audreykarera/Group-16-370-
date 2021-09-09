@@ -1,0 +1,124 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="modal-body" style="width: 60rem; height: 31rem;">
+        <h3>Edit Employee</h3>
+        <div class="form-group">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                      <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Your Photo</label>
+                        <input class="form-control form-control-sm" id="formFileSm" type="file" />
+                        <br>
+                      <form>
+                        <mat-form-field appearance="fill">
+                          <mat-label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Select</mat-label>
+                          <mat-select>
+                            <mat-option value="one">Mr</mat-option>
+                            <mat-option value="two">Mrs</mat-option>
+                            <mat-option value="two">Dr</mat-option>
+                            <mat-option value="two">Miss</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </form>
+                      <form>
+                        <mat-form-field appearance="fill">
+                          <mat-label>First Name</mat-label>
+                          <input matInput placeholder="First name">
+                        </mat-form-field>
+                      </form>
+                      <form>
+                        <mat-form-field appearance="fill">
+                          <mat-label>Middle Name</mat-label>
+                          <input matInput placeholder="Middle name">
+                        </mat-form-field>
+                      </form>
+                      <form>
+                        <mat-form-field appearance="fill">
+                          <mat-label>Surname</mat-label>
+                          <input matInput placeholder="Surname">
+                        </mat-form-field>
+                      </form>
+                    </div>
+
+                    <div class="col">
+                      <form>
+                        <mat-form-field appearance="fill">
+                          <mat-label>Email Address</mat-label>
+                          <input matInput placeholder="Your Email Address">
+                        </mat-form-field>
+                      </form>
+                      <form>
+                        <mat-form-field appearance="fill">
+                          <mat-label>Cellphone Number</mat-label>
+                          <input matInput placeholder="Cellphone Number">
+                        </mat-form-field>
+                      </form>
+                      <form>
+                        <mat-form-field appearance="fill">
+                          <mat-label>Emergency Contact Name</mat-label>
+                          <input matInput placeholder="Name">
+                        </mat-form-field>
+                      </form>
+                      <form>
+                        <mat-form-field appearance="fill">
+                          <mat-label>Emergency Contact Surname</mat-label>
+                          <input matInput placeholder="Surname">
+                        </mat-form-field>
+                      </form>
+                      <form>
+                        <mat-form-field appearance="fill">
+                          <mat-label>Emergency Contact Number</mat-label>
+                          <input matInput placeholder="Cellphone Number">
+                        </mat-form-field>
+                      </form>
+
+                    </div>
+                    <div class="col">
+                      <form>
+                        <mat-form-field appearance="fill">
+                          <mat-label>Username</mat-label>
+                          <input matInput placeholder="Username">
+                        </mat-form-field>
+                      </form>
+                      <form>
+                        <mat-form-field appearance="fill">
+                          <mat-label>Password</mat-label>
+                          <input matInput placeholder="Password">
+                        </mat-form-field>
+                      </form>
+                      <form>
+                        <mat-form-field appearance="fill">
+                          <mat-label>New Password</mat-label>
+                          <input matInput placeholder="New Password">
+                        </mat-form-field>
+                      </form>
+                      <form>
+                        <mat-form-field appearance="fill">
+                          <mat-label>Confirm Password</mat-label>
+                          <input matInput placeholder="Confirm Password">
+                        </mat-form-field>
+                      </form>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button class="btn btn-outline-success me-md-2" (click)="openConfirmDialog()" type="button">Save</button>
+                            <button class="btn btn-outline-danger" (click)="openCancelDialog()" type="button">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

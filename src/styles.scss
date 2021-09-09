@@ -59,7 +59,7 @@ input[type="datetime"]:focus,
 input[type="datetime-local"]:focus,
 input[type="date"]:focus,
 input[type="month"]:focus,
-input[type="time"]:focus,
+//input[type="time"]:focus,
 input[type="week"]:focus,
 input[type="number"]:focus,
 input[type="email"]:focus,
@@ -85,8 +85,12 @@ input[type="color"]:focus,
 
 ::ng-deep.mat-form-field-ripple {
  /*change color of underline when focused*/
- background-color: #28a745 !important;;
+ background-color: #28a745 !important;
 }
+
+// .mat-form-field-appearance-outline .mat-form-field-outline {
+//    color: #28a745 !important;
+//  }
 
 
 mat-datepicker-toggle {

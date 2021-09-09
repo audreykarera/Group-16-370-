@@ -11,48 +11,69 @@
             <br>
 
             <h5>Client Details</h5>
-            <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Client Name:</label>
-            <input class="form-control form-control-sm" type="text" placeholder="Manesha"
-              aria-label=".form-control-sm example">
-
-            <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Client Cellphone Number:</label>
-            <input class="form-control form-control-sm" type="text" placeholder="071 872 1911"
-              aria-label=".form-control-sm example">
-            <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Client Location</label>
-            <input class="form-control form-control-sm" type="text" placeholder="28 Farmer's Folly"
-              aria-label=".form-control-sm example">
+            <form>
+              <mat-form-field appearance="fill">
+                <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Client Name</mat-label>
+                <input matInput placeholder="Manesha">
+              </mat-form-field>
+            </form>
+            <form>
+              <mat-form-field appearance="fill">
+                <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Client Cellphone Number
+                </mat-label>
+                <input matInput placeholder="071 872 1911">
+              </mat-form-field>
+            </form>
+            <form>
+              <mat-form-field appearance="fill">
+                <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Client Location</mat-label>
+                <input matInput placeholder="28 Farmer's Folly">
+              </mat-form-field>
+            </form>
           </div>
 
           <div class="col">
             <br>
             <h5>Employee Details</h5>
-            <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Employee Name:</label>
-            <input class="form-control form-control-sm" type="text" placeholder="Rowan Gauld"
-              aria-label=".form-control-sm example">
-
-            <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Employee Cellphone Number:</label>
-            <input class="form-control form-control-sm" type="text" placeholder="083 560 6982"
-              aria-label=".form-control-sm example">
-
-            <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Employee ID Number:</label>
-            <input class="form-control form-control-sm" type="text" placeholder="3481"
-              aria-label=".form-control-sm example">
+            <form>
+              <mat-form-field appearance="fill">
+                <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Employee Name</mat-label>
+                <input matInput placeholder="Rowan">
+              </mat-form-field>
+            </form>
+            <form>
+              <mat-form-field appearance="fill">
+                <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Employee Cellphone Number
+                </mat-label>
+                <input matInput placeholder="03 560 6982">
+              </mat-form-field>
+            </form>
+            <form>
+              <mat-form-field appearance="fill">
+                <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Employee ID Number</mat-label>
+                <input matInput placeholder="3841">
+              </mat-form-field>
+            </form>
           </div>
 
           <div class="col">
             <br>
             <h5>Collection Details</h5>
             <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Date:</label><br>
-            <mat-form-field appearance="fill">
-              <mat-label>Select a date</mat-label>
-              <input matInput [matDatepicker]="picker">
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-            <br>
-            <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Time In:</label>
-            <input type="time" id="inputMDEx1" class="form-control form-control-sm">
-
+            <form>
+              <mat-form-field appearance="fill">
+                <mat-label>Select a date</mat-label>
+                <input matInput [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </form>
+            <form>
+              <mat-form-field appearance="fill">
+                <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Time In</mat-label>
+                <input matInput type="time">
+              </mat-form-field>
+            </form>
           </div>
 
         </div>

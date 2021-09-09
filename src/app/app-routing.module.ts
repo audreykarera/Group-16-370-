@@ -19,11 +19,10 @@ import { UserSettingsComponent } from './systems/user-settings/user-settings.com
 import { ReadScheduleComponent } from './systems/schedule/read-schedule/read-schedule/read-schedule.component';
 import { EditClientComponent } from './systems/clients/edit-client/edit-client/edit-client.component';
 import { EmployeeSideCollectionNoteComponent } from './systems/collection note/employee-side-collection-note/employee-side-collection-note.component';
-import { EmployeeSideBookingsComponent } from './systems/bookings/employee-side-bookings/employee-side-bookings.component';
 import { LoginComponent } from './employee-side/user-login/login/login.component';
 import { LodgeComplaintComponent } from './systems/complaints/lodge-complaint/lodge-complaint/lodge-complaint.component';
 import { RegisterClientsComponent } from './systems/clients/register-clients/register-clients/register-clients.component';
-import { EditEmployeeComponent } from './employee-side/edit-employee/edit-employee.component';
+
 import { NavbarComponent } from './client-side/client-homepage/navbar/navbar.component';
 import { ScheduleEmployeeComponent } from './employee-side/schedule-employee/schedule-employee.component';
 import { ReadQuoteComponent } from './systems/quotes/read-quote/read-quote/read-quote.component';
@@ -51,6 +50,8 @@ import { RequestQuoteComponent } from './systems/quotes/request quote/request-qu
 import { EditSuppliersComponent } from './systems/supplier/edit-supplier/edit-suppliers/edit-suppliers.component';
 import { VehicleComponent } from './systems/vehicles/vehicle/vehicle.component';
 import { EquipmentComponent } from './systems/equipment/equipment/equipment/equipment.component';
+import { EmployeeSideBookingsComponent } from './systems/bookings/employee-side-bookings/employee-side-bookings/employee-side-bookings.component';
+import { EditEmployeeComponent } from './employee-side/edit-employee/edit-employee/edit-employee.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
