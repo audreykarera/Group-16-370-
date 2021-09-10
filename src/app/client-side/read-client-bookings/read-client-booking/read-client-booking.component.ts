@@ -24,6 +24,12 @@ const ELEMENT_DATA: ClientBookingsTable[] = [
 export class ReadClientBookingComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'service', 'date', 'view'];
   dataSource = ELEMENT_DATA;
+  dataSource1 = new MatTableDataSource(ELEMENT_DATA);
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource1.filter = filterValue.trim().toLowerCase();
+  }
   
   constructor(public dialog: MatDialog) { }
 
