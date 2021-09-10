@@ -21,7 +21,7 @@ const ELEMENT_DATA: EmployeeBookingsTable[] = [
 })
 export class EmployeeSideBookingsComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'name', 'employee', 'service', 'serviceType', 'date', 'time'];
+  displayedColumns: string[] = ['id', 'employee', 'service', 'serviceType', 'date', 'time'];
   dataSource = ELEMENT_DATA;
 
   constructor() { }

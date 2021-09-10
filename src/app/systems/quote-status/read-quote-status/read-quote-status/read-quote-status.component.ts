@@ -5,6 +5,18 @@ import { EditQuoteStatusComponent } from './../../edit-quote-status/edit-quote-s
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
+import { MatTableDataSource } from '@angular/material/table';
+
+export interface QuoteStatusTable {
+  id: number;
+  quoteStatus: string;
+}
+
+const ELEMENT_DATA: QuoteStatusTable[] = [
+  {id: 1, quoteStatus: 'Sent'},
+  {id: 2, quoteStatus: 'Not Sent'}
+
+];
 
 @Component({
   selector: 'app-read-quote-status',
@@ -13,8 +25,16 @@ import { NotificationsService } from 'src/app/shared/services/notifications.serv
 })
 export class ReadQuoteStatusComponent implements OnInit {
 
-  quoteStatusList: QuoteStatus[]; 
-  quoteStatus: QuoteStatus; 
+  displayedColumns: string[] = ['id', 'quoteStatus', 'edit', 'delete'];
+  dataSource = new MatTableDataSource(ELEMENT_DATA);
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  quoteStatusList: QuoteStatus[];
+  quoteStatus: QuoteStatus;
 
 
   constructor(
@@ -29,8 +49,8 @@ export class ReadQuoteStatusComponent implements OnInit {
   Close(){
     this.dialog.closeAll();
   }
-  
-  
+
+
   readQuoteStatuses(){
     console.log(this.quoteStatus);
     this.quoteStatusService.getQuoteStatuses().subscribe((res)=>{
@@ -49,7 +69,7 @@ export class ReadQuoteStatusComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     const dialogReference = this.dialog.open(
-      CreateQuoteStatusComponent, 
+      CreateQuoteStatusComponent,
       dialogConfig
     );
   }
@@ -58,7 +78,7 @@ export class ReadQuoteStatusComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     const dialogReference = this.dialog.open(
-      EditQuoteStatusComponent, 
+      EditQuoteStatusComponent,
       {
         disableClose:true,
         data:{
