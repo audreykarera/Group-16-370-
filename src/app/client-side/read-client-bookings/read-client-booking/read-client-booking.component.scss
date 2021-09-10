@@ -1,10 +1,5 @@
 @import "src/styles.scss";
 
-.myCard {
-  height: auto;
-  width: auto;
-  margin: 1rem;
-}
 
 .heading {
   font-family:'Montserrat', sans-serif;
@@ -14,4 +9,8 @@
 
 .thick{
   font-weight:bold;
+}
+
+table {
+  width: 100%;
 }
