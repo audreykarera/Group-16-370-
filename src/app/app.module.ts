@@ -130,6 +130,7 @@ import { EditSlotStatusComponent } from './systems/schedule/edit-slot-status/edi
 import { EditBookingStatusComponent } from './systems/booking-status/edit-booking-status/edit-booking-status/edit-booking-status.component';
 import { EmployeeSideBookingsComponent } from './systems/bookings/employee-side-bookings/employee-side-bookings/employee-side-bookings.component';
 import { EditEmployeeComponent } from './employee-side/edit-employee/edit-employee/edit-employee.component';
+import { EditEmployeeTypeComponent } from './systems/employee-settings/edit-employee-type/edit-employee-type/edit-employee-type.component';
 
 
 
@@ -258,7 +259,8 @@ const angularMaterials = [
     EditSlotStatusComponent,
     EditBookingStatusComponent,
     EmployeeSideBookingsComponent,
-    EditEmployeeComponent
+    EditEmployeeComponent,
+    EditEmployeeTypeComponent
   ],
 
   imports: [

@@ -1,5 +1,6 @@
+
 import { EmployeeType } from './../../../models/employeeType';
-import { EditEmployeeTypeComponent } from './../edit-employee-type/edit-employee-type.component';
+
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -7,6 +8,7 @@ import { Observable } from 'rxjs';
 import { EmployeeTypeService } from 'src/app/shared/services/employee-type.service';
 import { AddEmployeeTypeComponent } from '../add-employee-type/add-employee-type/add-employee-type.component';
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
+import { EditEmployeeTypeComponent } from '../edit-employee-type/edit-employee-type/edit-employee-type.component';
 
 export interface PeriodicElement {
   name: string;

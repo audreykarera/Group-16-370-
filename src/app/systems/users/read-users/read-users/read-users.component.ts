@@ -6,6 +6,17 @@ import { EditUsersComponent } from '../../edit-user/edit-users/edit-users.compon
 import { Observable } from 'rxjs';
 import { SharedComponent } from 'src/app/component/shared components/shared/shared.component';
 
+export interface PeriodicElement {
+  usersname: string;
+  username: string;
+  email: string;
+  role: string;
+  loginstatus: string;
+} 
+
+const ELEMENT_DATA: PeriodicElement[] = [
+  {usersname: 'Aubrey Sir', username: 'aubreysir24', email: 'aubreysir@gmail.com', role:'admin', loginstatus: 'online'},
+];
 
 @Component({
   selector: 'app-read-users',
@@ -13,6 +24,9 @@ import { SharedComponent } from 'src/app/component/shared components/shared/shar
   styleUrls: ['./read-users.component.scss']
 })
 export class ReadUsersComponent implements OnInit {
+
+  displayedColumns: string[] = ['usersname', 'username', 'email','role','loginstatus', 'edit'];
+  dataSource = ELEMENT_DATA;
 
   constructor(
     public dialog: MatDialog
