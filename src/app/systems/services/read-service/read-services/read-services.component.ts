@@ -16,6 +16,17 @@ import { Service } from 'src/app/models/service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ServicePrice } from 'src/app/models/servicePrice';
 
+export interface PeriodicElement {
+  servicename: string;
+  startingprice: number;
+  description: string;
+  servicetype: string;
+} 
+
+const ELEMENT_DATA: PeriodicElement[] = [
+  {servicename: 'Collection & Disposal', startingprice: 850, description: 'We will come and collect and dispose of your waste safely', servicetype: 'Oil'},
+];
+
 @Component({
   selector: 'app-read-services',
   templateUrl: './read-services.component.html',
@@ -23,12 +34,15 @@ import { ServicePrice } from 'src/app/models/servicePrice';
 })
 export class ReadServicesComponent implements OnInit {
  
-  serviceList: Service;
-  serviceTypeList: ServiceType[];
-  servicePriceList: ServicePrice[];
-  locationList: Location[];
-  searchText = '';
+  // serviceList: Service;
+  // serviceTypeList: ServiceType[];
+  // servicePriceList: ServicePrice[];
+  // locationList: Location[];
+  // searchText = '';
   
+
+  displayedColumns: string[] = ['servicename', 'startingprice', 'description', 'servicetype', 'edit', 'delete'];
+  dataSource = ELEMENT_DATA;
 
   constructor(
     public router: Router,
@@ -41,38 +55,39 @@ export class ReadServicesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.readService();
+    //this.readService();
   }
 
-  readService(){
-    this.serviceService.getServices().subscribe((res)=>{
-      this.serviceList =res as Service;
-    },(err: HttpErrorResponse)=>{
-      this.notificationService.failToaster("Unable to display service types", "Error");
-      console.log(err);
-    })
-  }
+  // readService(){
+  //   this.serviceService.getServices().subscribe((res)=>{
+  //     this.serviceList =res as Service;
+  //   },(err: HttpErrorResponse)=>{
+  //     this.notificationService.failToaster("Unable to display service types", "Error");
+  //     console.log(err);
+  //   })
+  // }
 
-  readServiceType(){
-    this.serviceServiceType.getServiceTypes().subscribe((res)=>{
-      this.serviceTypeList=res as ServiceType[];
-    })
-  }
+  // readServiceType(){
+  //   this.serviceServiceType.getServiceTypes().subscribe((res)=>{
+  //     this.serviceTypeList=res as ServiceType[];
+  //   })
+  // }
   
-  deleteService(id){
-    this.serviceServiceType.deleteServiceType(id).subscribe((res)=>{
-      console.log(id);
-      this.readService();
-    }, (err: HttpErrorResponse)=>{
-      this.notificationService.failToaster("Unable to delete service type", "Error");
-    });
-  }
+  // deleteService(id){
+  //   this.serviceServiceType.deleteServiceType(id).subscribe((res)=>{
+  //     console.log(id);
+  //     this.readService();
+  //   }, (err: HttpErrorResponse)=>{
+  //     this.notificationService.failToaster("Unable to delete service type", "Error");
+  //   });
+  // }
 
-    editService(obj){
-      this.serviceService.patchService(obj).subscribe((res)=>{
-        this.readService();
-      })
-    }
+  //   editService(obj){
+  //     this.serviceService.patchService(obj).subscribe((res)=>{
+  //       this.readService();
+  //     })
+  //   }
+
   routerAddSerice() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;

@@ -8,6 +8,17 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { PackageRateService } from 'src/app/shared/services/package-rate.service';
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
 
+export interface PeriodicElement {
+  name: string;
+  position: number;
+} 
+
+const ELEMENT_DATA: PeriodicElement[] = [
+  {position: 1, name: 'Hydrogen'},
+  {position: 2, name: 'Helium'}
+];
+
+
 @Component({
   selector: 'app-read-package-rates',
   templateUrl: './read-package-rates.component.html',
@@ -15,35 +26,39 @@ import { NotificationsService } from 'src/app/shared/services/notifications.serv
 })
 export class ReadPackageRatesComponent implements OnInit {
 
-  packageRateList: PackageRate[];
-  packageRate: PackageRate;
-  searchText='';
+  // packageRateList: PackageRate[];
+  // packageRate: PackageRate;
+  // searchText='';
 
-  constructor(public dialog: MatDialog,
-    private packageRateService: PackageRateService,
-    private notificationService: NotificationsService) { }
+  displayedColumns: string[] = ['position', 'name', 'edit', 'delete'];
+  dataSource = ELEMENT_DATA;
+
+
+  constructor(public dialog: MatDialog) {}
+    // private packageRateService: PackageRateService,
+    // private notificationService: NotificationsService
 
   ngOnInit(): void {
-    this.readPackageRates();
+    //this.readPackageRates();
   }
 
-  readPackageRates(){
-    this.packageRateService.getPackageRate().subscribe((res)=>{
-      this.packageRateList=res as PackageRate[];
-    }, (err:HttpErrorResponse)=>{
-      this.notificationService.failToaster("Unable to display Payment Types", "Error");
-      console.log(err);
-    })
-  }
+  // readPackageRates(){
+  //   this.packageRateService.getPackageRate().subscribe((res)=>{
+  //     this.packageRateList=res as PackageRate[];
+  //   }, (err:HttpErrorResponse)=>{
+  //     this.notificationService.failToaster("Unable to display Payment Types", "Error");
+  //     console.log(err);
+  //   })
+  // }
 
-  onDelete(id){
-    this.packageRateService.deletePackageRate(id).subscribe((res)=>{
-      console.log(id);
-      this.readPackageRates();
-    }, (err: HttpErrorResponse)=>{
-      this.notificationService.failToaster("Pacckage Rate Deleted ", "Success");
-    });
-  }
+  // onDelete(id){
+  //   this.packageRateService.deletePackageRate(id).subscribe((res)=>{
+  //     console.log(id);
+  //     this.readPackageRates();
+  //   }, (err: HttpErrorResponse)=>{
+  //     this.notificationService.failToaster("Pacckage Rate Deleted ", "Success");
+  //   });
+  // }
 
   routerAddPackageRate() {
     const dialogConfig = new MatDialogConfig();

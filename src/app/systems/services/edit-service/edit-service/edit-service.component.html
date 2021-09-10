@@ -8,40 +8,38 @@
 </head>
 
 <body>
-    <div class="modal-body" style="width: 25rem; height: 25rem;">
+    <div class="modal-body" style="width: 15rem; height: auto;">
         <h3>Edit Service</h3>
         <div class="form-group">
             <div class="container">
                 <div class="row">
-                    <div class="col" *ngFor="let item of serviceList">
-                        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Service Name</label>
-                        <input class="form-control form-control-sm" type="text" placeholder="{{item.serviceName}}"
-                            aria-label=".form-control-sm example">
-                        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Service Description</label>
-                        <input class="form-control form-control-sm" type="text" placeholder="{{item.serviceDescription}}"
-                            aria-label=".form-control-sm example">
-                        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Service Type</label>
-                         <input class="form-control form-control-sm" type="text" placeholder="{{item.serviceType.serviceTypeName}}"
-                            aria-label=".form-control-sm example">
-                         <!--><select ng-options="item.serviceType.serviceTypeName for item in ServiceType"class="form-select form-select-sm" aria-label=".form-select-sm example" type="text">
-                            <option selected></option>
-                             <option value="" label="Select a Service Type"></option>
-                            <option value="2">plastic</option>
-                            <option value="3">oil</option>
-                            <option value="3">compost and fertilizer</option>
-                          </select> -->
-                           <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Starting Price</label>
-                        <input class="form-control form-control-sm" type="text" placeholder="R{{item.servicePrice.servicePriceAmount}}"
-                            aria-label=".form-control-sm example">
-                          
-                          <br>
+                    <div class="col">
+                       <mat-form-field class="example-full-width" appearance="fill">
+                         <mat-label>Service Name</mat-label>
+                         <input matInput placeholder="Collection and Disposal">
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                          <mat-label>Service Description</mat-label>
+                          <textarea matInput placeholder="Ex. What the package includes..."></textarea>
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                         <mat-label>Service Type</mat-label>
+                         <input matInput placeholder="Domestic Rubbish">
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                         <mat-label>Starting Price</mat-label>
+                         <input matInput placeholder="R450">
+                        </mat-form-field>
+                        
+                            <br>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button class="btn btn-outline-success me-md-2" (click)="updateService()" type="button" type="button">Save</button>
-                            <button class="btn btn-outline-danger" (click)="Close()" type="button" type="button">Cancel</button>
-                        </div>
+                            <button mat-stroked-button >Save</button>
+                        <button mat-raised-button (click)="Close()" color="warn">Cancel</button> </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </body>
+
+</html>

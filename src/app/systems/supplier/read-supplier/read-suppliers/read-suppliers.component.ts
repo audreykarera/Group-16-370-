@@ -7,15 +7,29 @@ import { SupplierService } from 'src/app/shared/services/supplier.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
 
+export interface PeriodicElement {
+  suppliername: string;
+  email: string;
+  cellnumber: string;
+} 
+
+const ELEMENT_DATA: PeriodicElement[] = [
+  {suppliername: 'John Smith', email: 'johnsmith@gmail.com', cellnumber: '0826734216'},
+];
+
 @Component({
   selector: 'app-read-suppliers',
   templateUrl: './read-suppliers.component.html',
   styleUrls: ['./read-suppliers.component.scss']
 })
 export class ReadSuppliersComponent implements OnInit {
-  supplierList: Supplier[];
-  supplier: Supplier;
-  searchText = '';
+  // supplierList: Supplier[];
+  // supplier: Supplier;
+  // searchText = '';
+
+  displayedColumns: string[] = ['suppliername', 'email', 'cellnumber', 'edit', 'delete'];
+  dataSource = ELEMENT_DATA;
+
 
   constructor(private supplierService: SupplierService,
     public dialog: MatDialog,
@@ -24,29 +38,29 @@ export class ReadSuppliersComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.readSuppliers();
+    //this.readSuppliers();
   }
   
 
   
 
-  readSuppliers(){
-    this.supplierService.getSuppliers().subscribe((res)=>{
-      this.supplierList = res as Supplier[];
-      console.log(this.supplierList)
-    },(err: HttpErrorResponse)=>{
-      this.notificationService.failToaster("Unable to display suppliers", "Error");
-      console.log(err);
-    })
-  }
+  // readSuppliers(){
+  //   this.supplierService.getSuppliers().subscribe((res)=>{
+  //     this.supplierList = res as Supplier[];
+  //     console.log(this.supplierList)
+  //   },(err: HttpErrorResponse)=>{
+  //     this.notificationService.failToaster("Unable to display suppliers", "Error");
+  //     console.log(err);
+  //   })
+  // }
 
-  onDelete(id){
-    this.supplierService.deleteSupplier(id).subscribe((res)=>{
-    });
-    setTimeout(()=>{
-      window.location.reload();
-    }, 10);
-  }
+  // onDelete(id){
+  //   this.supplierService.deleteSupplier(id).subscribe((res)=>{
+  //   });
+  //   setTimeout(()=>{
+  //     window.location.reload();
+  //   }, 10);
+  // }
 
 //Used to go to the add model
   routerAddSupplier() {

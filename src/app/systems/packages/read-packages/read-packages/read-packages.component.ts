@@ -14,7 +14,15 @@ import { DialogInterface } from 'src/app/interfaces/dialog.interface';
 import { PackageRateService } from 'src/app/shared/services/package-rate.service';
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
 
+export interface PeriodicElement {
+  packagename: string;
+  pricerate: number;
+  description: string;
+} 
 
+const ELEMENT_DATA: PeriodicElement[] = [
+  {packagename: 'FULL WEEK', pricerate: 850, description: 'The skip is on your property for the whole week'},
+];
 
 @Component({
   selector: 'app-read-packages',
@@ -23,36 +31,39 @@ import { NotificationsService } from 'src/app/shared/services/notifications.serv
 })
 export class ReadPackagesComponent implements OnInit {
   
-  packageList: Package;
-  packageRateList: PackageRate[];
-  searchText = '';
+  // packageList: Package;
+  // packageRateList: PackageRate[];
+  // searchText = '';
+
+  displayedColumns: string[] = ['packagename', 'pricerate', 'description', 'edit', 'delete'];
+  dataSource = ELEMENT_DATA;
 
   constructor(
-    private servicePackage: PackageService,
-    private servicePackageRate: PackageRateService,
-    public dialog: MatDialog,
-    private notificationService: NotificationsService
+    // private servicePackage: PackageService,
+    // private servicePackageRate: PackageRateService,
+    public dialog: MatDialog
+    //private notificationService: NotificationsService
   ) { }
 
  
   ngOnInit(): void {
-    this.readPackage();
+    //this.readPackage();
   }
 
-  readPackage(){
-    this.servicePackage.getPackages().subscribe((res)=>{
-      this.packageList =res as Package;
-    },(err: HttpErrorResponse)=>{
-      this.notificationService.failToaster("Unable to display service types", "Error");
-      console.log(err);
-    })
-  }
+  // readPackage(){
+  //   this.servicePackage.getPackages().subscribe((res)=>{
+  //     this.packageList =res as Package;
+  //   },(err: HttpErrorResponse)=>{
+  //     this.notificationService.failToaster("Unable to display service types", "Error");
+  //     console.log(err);
+  //   })
+  // }
 
-  readServiceType(){
-    this.servicePackageRate.getPackageRate().subscribe((res)=>{
-      this.packageRateList=res as PackageRate[];
-    })
-  }
+  // readServiceType(){
+  //   this.servicePackageRate.getPackageRate().subscribe((res)=>{
+  //     this.packageRateList=res as PackageRate[];
+  //   })
+  // }
   
 
   routerAddPackage() {

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "employee-side-bookings.component.scss"
+    ],
+    "names": [],
+    "file": "employee-side-bookings.component.css"
+}

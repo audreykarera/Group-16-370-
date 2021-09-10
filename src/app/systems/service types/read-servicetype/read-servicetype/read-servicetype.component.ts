@@ -10,6 +10,14 @@ import { ServiceTypeService } from 'src/app/shared/services/service-type.service
 import { ServiceType } from 'src/app/models/serviceType';
 import { HttpErrorResponse } from '@angular/common/http';
 
+export interface PeriodicElement {
+  servicetypename: string;
+  servicetypedescription: string;
+} 
+
+const ELEMENT_DATA: PeriodicElement[] = [
+  {servicetypedescription: 'any type of plastic', servicetypename: 'Plastic'},
+];
 
 
 @Component({
@@ -19,9 +27,12 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class ReadServicetypeComponent implements OnInit {
 
-  servicetypes: ServiceType;
-  serviceTypeList: ServiceType[];
-  searchText = '';
+  // servicetypes: ServiceType;
+  // serviceTypeList: ServiceType[];
+  // searchText = '';
+
+  displayedColumns: string[] = ['servicetypename', 'servicetypedescription', 'edit', 'delete'];
+  dataSource = ELEMENT_DATA;
 
   constructor(
     public router: Router,
@@ -32,35 +43,35 @@ export class ReadServicetypeComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.readServiceTypes();
+    //this.readServiceTypes();
   }
 
-  readServiceTypes(){
-    this.serviceTypeService.getServiceTypes().subscribe((res)=>{
-      this.serviceTypeList =res as ServiceType[];
-    },(err: HttpErrorResponse)=>{
-      this.notificationService.failToaster("Unable to display service types", "Error");
-      console.log(err);
-    })
-  }
+  // readServiceTypes(){
+  //   this.serviceTypeService.getServiceTypes().subscribe((res)=>{
+  //     this.serviceTypeList =res as ServiceType[];
+  //   },(err: HttpErrorResponse)=>{
+  //     this.notificationService.failToaster("Unable to display service types", "Error");
+  //     console.log(err);
+  //   })
+  // }
 
-  onDelete(id){
-    this.serviceTypeService.deleteServiceType(id).subscribe((res)=>{
-      console.log(id);
-      this.readServiceTypes();
-    }, (err: HttpErrorResponse)=>{
-      this.notificationService.failToaster("Unable to delete service type", "Error");
-      setTimeout(()=>{
-        window.location.reload();
-      },10000);  
-    });
-  }
+  // onDelete(id){
+  //   this.serviceTypeService.deleteServiceType(id).subscribe((res)=>{
+  //     console.log(id);
+  //     this.readServiceTypes();
+  //   }, (err: HttpErrorResponse)=>{
+  //     this.notificationService.failToaster("Unable to delete service type", "Error");
+  //     setTimeout(()=>{
+  //       window.location.reload();
+  //     },10000);  
+  //   });
+  // }
    
-  editServiceTypes(obj){
-   this.serviceTypeService.patchServiceType(obj).subscribe((res)=>{
-     this.readServiceTypes();
-   })
-  }
+  // editServiceTypes(obj){
+  //  this.serviceTypeService.patchServiceType(obj).subscribe((res)=>{
+  //    this.readServiceTypes();
+  //  })
+  // }
   
   routerAddServiceType() {
     const dialogConfig = new MatDialogConfig();

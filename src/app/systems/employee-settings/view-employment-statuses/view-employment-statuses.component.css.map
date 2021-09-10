@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,KAAK,CAAC;EACF,KAAK,EAAE,IAAI;CACZ",
+    "sources": [
+        "view-employment-statuses.component.scss"
+    ],
+    "names": [],
+    "file": "view-employment-statuses.component.css"
+}
