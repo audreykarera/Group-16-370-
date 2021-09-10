@@ -5,12 +5,26 @@ import { Equipment } from 'src/app/models/equipment';
 import { EquipmentService } from 'src/app/shared/services/equipment.service';
 import { CreateEquipmentComponent } from '../../create-equipment/create-equipment/create-equipment.component';
 
+export interface EquipmentTable {
+  name: string;
+  availability: boolean;
+}
+
+const ELEMENT_DATA: EquipmentTable[] = [
+  {name:'GFS Skip', availability: true},
+  {name:'Spill Kit', availability: false}
+];
+
 @Component({
   selector: 'app-equipment',
   templateUrl: './equipment.component.html',
   styleUrls: ['./equipment.component.scss']
 })
 export class EquipmentComponent implements OnInit {
+
+  displayedColumns: string[] = ['name', 'availability','edit','delete'];
+  dataSource = ELEMENT_DATA;
+
   equipmentList: Equipment[];
   equipment: Equipment;
 

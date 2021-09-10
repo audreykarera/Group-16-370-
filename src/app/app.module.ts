@@ -124,6 +124,12 @@ import { EditExtraCollectionComponent } from './systems/extra-collection/edit-ex
 import { EditEquipmentComponent } from './systems/equipment/edit-equipment/edit-equipment/edit-equipment.component';
 import { EditVehicleComponent } from './systems/vehicles/edit-vehicle/edit-vehicle/edit-vehicle.component';
 import { EditEmploymentStatusComponent } from './systems/employee-settings/edit-employment-status/edit-employment-status/edit-employment-status.component';
+import { ReadSlotStatusComponent } from './systems/schedule/read-slot-status/read-slot-status/read-slot-status.component';
+import { CreateSlotStatusComponent } from './systems/schedule/create-slot-status/create-slot-status/create-slot-status.component';
+import { EditSlotStatusComponent } from './systems/schedule/edit-slot-status/edit-slot-status/edit-slot-status.component';
+import { EditBookingStatusComponent } from './systems/booking-status/edit-booking-status/edit-booking-status/edit-booking-status.component';
+import { EmployeeSideBookingsComponent } from './systems/bookings/employee-side-bookings/employee-side-bookings/employee-side-bookings.component';
+import { EditEmployeeComponent } from './employee-side/edit-employee/edit-employee/edit-employee.component';
 
 
 
@@ -246,7 +252,13 @@ const angularMaterials = [
     EditExtraCollectionComponent,
     EditEquipmentComponent,
     EditVehicleComponent,
-    EditEmploymentStatusComponent
+    EditEmploymentStatusComponent,
+    ReadSlotStatusComponent,
+    CreateSlotStatusComponent,
+    EditSlotStatusComponent,
+    EditBookingStatusComponent,
+    EmployeeSideBookingsComponent,
+    EditEmployeeComponent
   ],
 
   imports: [

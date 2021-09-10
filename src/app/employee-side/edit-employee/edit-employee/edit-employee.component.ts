@@ -11,7 +11,7 @@ import { DialogInterface } from 'src/app/Interfaces/dialog.interface';
 export class EditEmployeeComponent implements OnInit {
 
   constructor(public dialog: MatDialog) { }
-  
+
   ngOnInit(): void {
   }
   openConfirmDialog() {
@@ -21,7 +21,7 @@ export class EditEmployeeComponent implements OnInit {
       cancelButtonLabel: 'No',
       confirmButtonLabel: 'Yes',
       callbackMethod: () => {
-       
+
       },
     };
     this.dialog.open(SharedComponent, {
@@ -29,7 +29,7 @@ export class EditEmployeeComponent implements OnInit {
       data: dialogInterface,
     });
   }
-  
+
   /**
      * This method invokes the Cancel Dialog
      */
@@ -40,7 +40,7 @@ export class EditEmployeeComponent implements OnInit {
       cancelButtonLabel: 'No',
       confirmButtonLabel: 'Yes',
       callbackMethod: () => {
-       
+
       },
     };
     this.dialog.open(SharedComponent, {

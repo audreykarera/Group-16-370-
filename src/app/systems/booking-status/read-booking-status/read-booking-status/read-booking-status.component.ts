@@ -7,12 +7,26 @@ import { BookingStatus } from 'src/app/models/bookingstatus';
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
+export interface BookingStatusTable{
+  id: number;
+  name: string;
+}
+
+const ELEMENT_DATA: BookingStatusTable[] = [
+  {id: 1, name: 'Booked'},
+  {id: 2, name: 'Pending'}
+];
+
 @Component({
   selector: 'app-read-booking-status',
   templateUrl: './read-booking-status.component.html',
   styleUrls: ['./read-booking-status.component.scss']
 })
 export class ReadBookingStatusComponent implements OnInit {
+
+
+  displayedColumns: string[] = ['id','name','edit','delete'];
+  dataSource = ELEMENT_DATA;
 
   bookingStatusList: BookingStatus[];
   bookingStatus:BookingStatus;
@@ -48,7 +62,7 @@ export class ReadBookingStatusComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     const dialogReference = this.dialog.open(
-      CreateBookingStatusComponent, 
+      CreateBookingStatusComponent,
       dialogConfig
     );
   }
@@ -57,7 +71,7 @@ export class ReadBookingStatusComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     const dialogReference = this.dialog.open(
-      EditBookingStatusComponent, 
+      EditBookingStatusComponent,
       {
         disableClose:true,
         data:{
