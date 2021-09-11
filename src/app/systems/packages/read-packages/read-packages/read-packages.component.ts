@@ -13,14 +13,15 @@ import { Package } from 'src/app/models/package';
 import { DialogInterface } from 'src/app/interfaces/dialog.interface';
 import { PackageRateService } from 'src/app/shared/services/package-rate.service';
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
+import { MatTableDataSource } from '@angular/material/table';
 
-export interface PeriodicElement {
+export interface PackageTable {
   packagename: string;
   pricerate: number;
   description: string;
 } 
 
-const ELEMENT_DATA: PeriodicElement[] = [
+const ELEMENT_DATA: PackageTable[] = [
   {packagename: 'FULL WEEK', pricerate: 850, description: 'The skip is on your property for the whole week'},
 ];
 
@@ -36,7 +37,12 @@ export class ReadPackagesComponent implements OnInit {
   // searchText = '';
 
   displayedColumns: string[] = ['packagename', 'pricerate', 'description', 'edit', 'delete'];
-  dataSource = ELEMENT_DATA;
+  dataSource = new MatTableDataSource (ELEMENT_DATA);
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 
   constructor(
     // private servicePackage: PackageService,

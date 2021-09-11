@@ -18,9 +18,9 @@
                          <mat-label>Service Name</mat-label>
                          <input matInput placeholder="Collection and Disposal">
                         </mat-form-field>
-                       <mat-form-field class="example-full-width" appearance="fill">
-                          <mat-label>Service Description</mat-label>
-                          <textarea matInput placeholder="Ex. What the package includes..."></textarea>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                         <mat-label>Service Description</mat-label>
+                         <input matInput placeholder="Safely collect and dispose of..">
                         </mat-form-field>
                         <mat-form-field class="example-full-width" appearance="fill">
                          <mat-label>Service Type</mat-label>
@@ -28,12 +28,13 @@
                         </mat-form-field>
                         <mat-form-field class="example-full-width" appearance="fill">
                          <mat-label>Starting Price</mat-label>
-                         <input matInput placeholder="R450">
+                          <input matInput class="example-right-align" placeholder="0">
+                          <span matPrefix>R&nbsp;</span>
                         </mat-form-field>
                         
                             <br>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <button mat-stroked-button (click)="onSave()">Save</button>
+                        <button mat-stroked-button >Save</button>
                         <button mat-raised-button (click)="Close()" color="warn">Cancel</button>
                         </div>
                     </div>

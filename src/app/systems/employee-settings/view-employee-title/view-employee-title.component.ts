@@ -9,14 +9,14 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Title } from 'src/app/models/titles';
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
+export interface Titletable {
+  titlename: string;
+  titleid: number;
 } 
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen'},
-  {position: 2, name: 'Helium'}
+const ELEMENT_DATA: Titletable[] = [
+  {titleid: 1, titlename: 'Mr.'},
+  
 ];
 
 @Component({
@@ -29,7 +29,7 @@ export class ViewEmployeeTitleComponent implements OnInit {
   title: Title; 
 
 
-  displayedColumns: string[] = ['position', 'name', 'edit', 'delete'];
+  displayedColumns: string[] = ['titleid', 'titlename', 'edit', 'delete'];
   dataSource = ELEMENT_DATA;
 
 

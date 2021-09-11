@@ -8,13 +8,13 @@ import { PaymentTypeService } from 'src/app/shared/services/payment-type.service
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
 
 export interface PeriodicElement {
-  name: string;
-  position: number;
+  paymenttype: string;
+  paymenttypeid: number;
 } 
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen'},
-  {position: 2, name: 'Helium'}
+  {paymenttypeid: 1, paymenttype: 'Cash'}
+
 ];
 
 
@@ -28,7 +28,7 @@ export class ReadPaymentTypeComponent implements OnInit {
   // paymentType:PaymentType;
   // searchText='';
 
-  displayedColumns: string[] = ['position', 'name', 'edit', 'delete'];
+  displayedColumns: string[] = ['paymenttypeid', 'paymenttype', 'edit', 'delete'];
   dataSource = ELEMENT_DATA;
 
 

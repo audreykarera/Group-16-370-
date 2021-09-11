@@ -2,14 +2,15 @@ import { CreateInvoiceComponent } from './../../create-invoice/create-invoice/cr
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { MatTableDataSource } from '@angular/material/table';
 
-export interface PeriodicElement {
+export interface InvoicesTable {
   serviceId: number;
   clientname: string
   date: string;
 } 
 
-const ELEMENT_DATA: PeriodicElement[] = [
+const ELEMENT_DATA: InvoicesTable[] = [
   {serviceId: 9, clientname: 'Audrey Sir', date: '29 May 2021'}
 ];
 
@@ -21,7 +22,12 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class ReadInvoiceComponent implements OnInit {
 
   displayedColumns: string[] = ['serviceId', 'clientname', 'date', 'generate', 'send invoice'];
-  dataSource = ELEMENT_DATA;
+  dataSource = new MatTableDataSource (ELEMENT_DATA);
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 
   constructor(
     public router: Router,

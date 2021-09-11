@@ -8,14 +8,14 @@ import { SharedComponent } from 'src/app/component/shared components/shared/shar
 import { UserRoleService } from 'src/app/shared/services/user-role.service';
 import { CreateUserRoleComponent } from './create-user-role/create-user-role.component';
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
+export interface UserSettingsTable {
+  userid: number;
+  userrole: string;
 } 
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen'},
-  {position: 2, name: 'Helium'}
+const ELEMENT_DATA: UserSettingsTable[] = [
+  {userid: 1, userrole: 'Admin'},
+  
 ];
 
 
@@ -28,7 +28,7 @@ export class UserSettingsComponent implements OnInit {
   // userRoleList: UserRole[];
   // userRole: UserRole;
 
-  displayedColumns: string[] = ['position', 'name', 'edit', 'delete'];
+  displayedColumns: string[] = ['userid', 'userrole', 'edit', 'delete'];
   dataSource = ELEMENT_DATA;
   
   constructor(

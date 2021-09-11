@@ -10,14 +10,14 @@ import { AddEmployeeTypeComponent } from '../add-employee-type/add-employee-type
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
 import { EditEmployeeTypeComponent } from '../edit-employee-type/edit-employee-type/edit-employee-type.component';
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
+export interface EmployeeTypeTable {
+  typename: string;
+  employeetypeid: number;
 } 
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen'},
-  {position: 2, name: 'Helium'}
+const ELEMENT_DATA: EmployeeTypeTable[] = [
+  {employeetypeid: 1, typename: 'Driver'},
+
 ];
 
 @Component({
@@ -29,7 +29,7 @@ export class ViewEmployeeTypeComponent implements OnInit {
   // employeeTypeList: EmployeeType[];
   // employeeType: EmployeeType;
 
-  displayedColumns: string[] = ['position', 'name', 'edit', 'delete'];
+  displayedColumns: string[] = ['employeetypeid', 'typename', 'edit', 'delete'];
   dataSource = ELEMENT_DATA;
 
 

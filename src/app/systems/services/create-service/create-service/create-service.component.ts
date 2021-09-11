@@ -11,6 +11,10 @@ import { SharedComponent } from 'src/app/component/shared components/shared/shar
 import { DialogInterface } from 'src/app/interfaces/dialog.interface';
 import { ServiceType } from 'src/app/models/serviceType';
 
+interface Food {
+  value: string;
+  viewValue: string;
+}
 
 @Component({
   selector: 'app-create-service',
@@ -18,6 +22,12 @@ import { ServiceType } from 'src/app/models/serviceType';
   styleUrls: ['./create-service.component.scss']
 })
 export class CreateServiceComponent implements OnInit {
+
+  foods: Food[] = [
+    {value: 'steak-0', viewValue: 'Steak'},
+    {value: 'pizza-1', viewValue: 'Pizza'},
+    {value: 'tacos-2', viewValue: 'Tacos'}
+  ];
   service:Service;
   serviceTypeList: ServiceType[];
   

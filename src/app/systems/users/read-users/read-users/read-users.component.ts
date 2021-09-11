@@ -5,8 +5,9 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { EditUsersComponent } from '../../edit-user/edit-users/edit-users.component';
 import { Observable } from 'rxjs';
 import { SharedComponent } from 'src/app/component/shared components/shared/shared.component';
+import { MatTableDataSource } from '@angular/material/table';
 
-export interface PeriodicElement {
+export interface UsersTable {
   usersname: string;
   username: string;
   email: string;
@@ -14,7 +15,7 @@ export interface PeriodicElement {
   loginstatus: string;
 } 
 
-const ELEMENT_DATA: PeriodicElement[] = [
+const ELEMENT_DATA: UsersTable[] = [
   {usersname: 'Aubrey Sir', username: 'aubreysir24', email: 'aubreysir@gmail.com', role:'admin', loginstatus: 'online'},
 ];
 
@@ -26,7 +27,12 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class ReadUsersComponent implements OnInit {
 
   displayedColumns: string[] = ['usersname', 'username', 'email','role','loginstatus', 'edit'];
-  dataSource = ELEMENT_DATA;
+  dataSource = new MatTableDataSource (ELEMENT_DATA);
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 
   constructor(
     public dialog: MatDialog

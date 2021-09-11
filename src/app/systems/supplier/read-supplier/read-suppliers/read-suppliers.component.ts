@@ -6,14 +6,15 @@ import { Supplier } from 'src/app/models/supplier';
 import { SupplierService } from 'src/app/shared/services/supplier.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
+import { MatTableDataSource } from '@angular/material/table';
 
-export interface PeriodicElement {
+export interface SupplierTable {
   suppliername: string;
   email: string;
   cellnumber: string;
 } 
 
-const ELEMENT_DATA: PeriodicElement[] = [
+const ELEMENT_DATA: SupplierTable[] = [
   {suppliername: 'John Smith', email: 'johnsmith@gmail.com', cellnumber: '0826734216'},
 ];
 
@@ -28,7 +29,12 @@ export class ReadSuppliersComponent implements OnInit {
   // searchText = '';
 
   displayedColumns: string[] = ['suppliername', 'email', 'cellnumber', 'edit', 'delete'];
-  dataSource = ELEMENT_DATA;
+  dataSource = new MatTableDataSource (ELEMENT_DATA);
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 
 
   constructor(private supplierService: SupplierService,

@@ -2,10 +2,10 @@
     <div class="d-flex page__box p-3 mt-2">Services Rendered</div>
     <div class="page__content shadow p-3">
       <div class="page__content-data">
-        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </div>
+       <mat-form-field appearance="standard">
+          <mat-label>Filter</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+        </mat-form-field>
         <br>
         <br>
         <br>

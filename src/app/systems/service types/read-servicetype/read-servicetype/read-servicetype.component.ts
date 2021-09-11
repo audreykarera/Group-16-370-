@@ -9,13 +9,14 @@ import { SharedComponent } from 'src/app/component/shared components/shared/shar
 import { ServiceTypeService } from 'src/app/shared/services/service-type.service';
 import { ServiceType } from 'src/app/models/serviceType';
 import { HttpErrorResponse } from '@angular/common/http';
+import { MatTableDataSource } from '@angular/material/table';
 
-export interface PeriodicElement {
+export interface ServiceTypesTable {
   servicetypename: string;
   servicetypedescription: string;
 } 
 
-const ELEMENT_DATA: PeriodicElement[] = [
+const ELEMENT_DATA: ServiceTypesTable[] = [
   {servicetypedescription: 'any type of plastic', servicetypename: 'Plastic'},
 ];
 
@@ -32,7 +33,12 @@ export class ReadServicetypeComponent implements OnInit {
   // searchText = '';
 
   displayedColumns: string[] = ['servicetypename', 'servicetypedescription', 'edit', 'delete'];
-  dataSource = ELEMENT_DATA;
+  dataSource = new MatTableDataSource (ELEMENT_DATA);
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 
   constructor(
     public router: Router,
