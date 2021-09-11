@@ -2,6 +2,7 @@ import { CreateSlotStatusComponent } from './../../create-slot-status/create-slo
 import { EditSlotStatusComponent } from './../../edit-slot-status/edit-slot-status/edit-slot-status.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 
 export interface SlotStatusTable {
   id: number;
@@ -21,7 +22,13 @@ const ELEMENT_DATA: SlotStatusTable[] = [
 export class ReadSlotStatusComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'name', 'edit', 'delete'];
-  dataSource = ELEMENT_DATA;
+  dataSource = new MatTableDataSource(ELEMENT_DATA);
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
 
   constructor(public dialog: MatDialog) { }
 

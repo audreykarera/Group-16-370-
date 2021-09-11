@@ -1,27 +1,38 @@
 <div class="container-fluid page">
-  <div class="d-flex page__box p-3 mt-2">Slot Statuses</div>
+  <div class="d-flex page__box p-3 mt-2">Equipment</div>
   <div class="page__content shadow p-3">
     <div class="page__content-data">
       <div class="position-relative">
         <div class="position-absolute top-0 end-0 icon-hover">
-          <mat-icon style="font-size: xx-large" (click)="routerAddSlotStatus()">add</mat-icon>
+          <mat-icon style="font-size: xx-large" (click)="routerAddCollectionNote()">add</mat-icon>
         </div>
       </div>
       <br>
+
       <mat-form-field appearance="standard">
         <mat-label>Filter</mat-label>
         <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
       </mat-form-field>
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-        <ng-container matColumnDef="id">
-          <th mat-header-cell *matHeaderCellDef>Slot Status ID</th>
-          <td mat-cell *matCellDef="let element">{{element.id}}</td>
+        <ng-container matColumnDef="collectionNoteNum">
+          <th mat-header-cell *matHeaderCellDef>Collection Note Number</th>
+          <td mat-cell *matCellDef="let element">{{element.collectionNoteNum}}</td>
         </ng-container>
 
-        <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef>Slot Status Name</th>
-          <td mat-cell *matCellDef="let element">{{element.name}}</td>
+        <ng-container matColumnDef="service">
+          <th mat-header-cell *matHeaderCellDef>Service</th>
+          <td mat-cell *matCellDef="let element">{{element.service}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="servicetype">
+          <th mat-header-cell *matHeaderCellDef>Service Type</th>
+          <td mat-cell *matCellDef="let element">{{element.servicetype}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef>Date</th>
+          <td mat-cell *matCellDef="let element">{{element.date}}</td>
         </ng-container>
 
         <ng-container matColumnDef="edit">
@@ -30,21 +41,20 @@
           </tr>
           <tr>
             <td mat-cell *matCellDef="let row">
-              <button mat-icon-button (click)="routerEditSlotStatus()">
+              <button mat-icon-button (click)="routerEditCollectionNote()">
                 <mat-icon>edit</mat-icon>
               </button>
             </td>
           </tr>
         </ng-container>
-
-        <ng-container matColumnDef="delete">
+        <ng-container matColumnDef="view">
           <tr>
-            <th mat-header-cell *matHeaderCellDef>Delete</th>
+            <th mat-header-cell *matHeaderCellDef>View</th>
           </tr>
           <tr>
             <td mat-cell *matCellDef="let row">
-              <button mat-icon-button>
-                <mat-icon>delete</mat-icon>
+              <button mat-icon-button (click)="routerViewCollectionNote()">
+                <mat-icon>remove_red_eye</mat-icon>
               </button>
             </td>
           </tr>
@@ -71,3 +81,4 @@
     </div>
   </div>
 </div>
+

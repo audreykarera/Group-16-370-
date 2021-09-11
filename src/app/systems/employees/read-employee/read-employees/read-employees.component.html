@@ -2,18 +2,70 @@
   <div class="d-flex page__box p-3 mt-2">Employees</div>
   <div class="page__content shadow p-3">
     <div class="page__content-data">
-      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </div>
-      <br>
       <div class="position-relative">
         <div class="position-absolute top-0 end-0 icon-hover">
           <mat-icon style="font-size: xx-large" (click)="routerAddEmployee()">add</mat-icon>
         </div>
       </div>
       <br>
-      <div class="table-responsive">
+
+      <mat-form-field appearance="standard">
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+      </mat-form-field>
+
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="empName">
+          <th mat-header-cell *matHeaderCellDef>Employee Name</th>
+          <td mat-cell *matCellDef="let element">{{element.empName}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="emailAddress">
+          <th mat-header-cell *matHeaderCellDef>Employee Email Address</th>
+          <td mat-cell *matCellDef="let element">{{element.emailAddress}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="cellNumber">
+          <th mat-header-cell *matHeaderCellDef>Employee Cellphone Number</th>
+          <td mat-cell *matCellDef="let element">{{element.cellNumber}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="view">
+          <tr>
+            <th mat-header-cell *matHeaderCellDef>View</th>
+          </tr>
+          <tr>
+            <td mat-cell *matCellDef="let row">
+              <button mat-icon-button (click)="routerViewEmployee()">
+                <mat-icon>remove_red_eye</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </ng-container>
+
+        <ng-container matColumnDef="delete">
+          <tr>
+            <th mat-header-cell *matHeaderCellDef>Delete</th>
+          </tr>
+          <tr>
+            <td mat-cell *matCellDef="let row">
+              <button mat-icon-button>
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+        </tr>
+      </table>
+      <br>
+      <!-- <div class="table-responsive">
         <table class="table table-hover align-middle">
           <thead>
             <tr>
@@ -29,14 +81,14 @@
               <td>{{item.employeeEmailAddress}}</td>
               <td>{{item.employeeCellPhoneNumber}}</td>
               <td class="icon-hover">
-                <mat-icon (click)="routerViewEmployee(item.employeeId, item.title.titleDescription ,item.employeeFirstName, item.employeeMiddleName, 
+                <mat-icon (click)="routerViewEmployee(item.employeeId, item.title.titleDescription ,item.employeeFirstName, item.employeeMiddleName,
                 item.employeeSurname, item.employeeEmailAddress, item.employeeCellPhoneNumber, item.employeeEmergencyContactFirstName, item.employeeEmergencyContactSurname,
-                item.employeeCellPhoneNumber, item.employeeType.employeeTypeName, item.employeeIdNumber, 
+                item.employeeCellPhoneNumber, item.employeeType.employeeTypeName, item.employeeIdNumber,
                 item.username)">remove_red_eye</mat-icon>
               </td>
           </tbody>
         </table>
-      </div>
+      </div> -->
       <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-end">
           <li class="page-item"><a class="page-link" href="#">1</a></li>

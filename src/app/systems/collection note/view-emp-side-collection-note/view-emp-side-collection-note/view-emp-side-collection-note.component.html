@@ -14,20 +14,20 @@
             <form>
               <mat-form-field appearance="fill">
                 <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Client Name</mat-label>
-                <input matInput placeholder="Manesha">
+                <input matInput placeholder="Manesha" readonly>
               </mat-form-field>
             </form>
             <form>
               <mat-form-field appearance="fill">
                 <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Client Cellphone Number
                 </mat-label>
-                <input matInput placeholder="071 872 1911">
+                <input matInput placeholder="071 872 1911" readonly>
               </mat-form-field>
             </form>
             <form>
               <mat-form-field appearance="fill">
                 <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Client Location</mat-label>
-                <input matInput placeholder="28 Farmer's Folly">
+                <input matInput placeholder="28 Farmer's Folly" readonly>
               </mat-form-field>
             </form>
           </div>
@@ -38,20 +38,20 @@
             <form>
               <mat-form-field appearance="fill">
                 <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Employee Name</mat-label>
-                <input matInput placeholder="Rowan">
+                <input matInput placeholder="Rowan" readonly>
               </mat-form-field>
             </form>
             <form>
               <mat-form-field appearance="fill">
                 <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Employee Cellphone Number
                 </mat-label>
-                <input matInput placeholder="03 560 6982">
+                <input matInput placeholder="03 560 6982" readonly>
               </mat-form-field>
             </form>
             <form>
               <mat-form-field appearance="fill">
                 <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Employee ID Number</mat-label>
-                <input matInput placeholder="3841">
+                <input matInput placeholder="3841" readonly>
               </mat-form-field>
             </form>
           </div>
@@ -63,7 +63,7 @@
             <form>
               <mat-form-field appearance="fill">
                 <mat-label>Select a date</mat-label>
-                <input matInput [matDatepicker]="picker">
+                <input matInput [matDatepicker]="picker" readonly>
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>
@@ -71,7 +71,7 @@
             <form>
               <mat-form-field appearance="fill">
                 <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Time In</mat-label>
-                <input matInput type="time">
+                <input matInput type="time" readonly>
               </mat-form-field>
             </form>
           </div>
@@ -89,3 +89,4 @@
 </body>
 
 </html>
+

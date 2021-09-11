@@ -130,6 +130,9 @@ import { EditSlotStatusComponent } from './systems/schedule/edit-slot-status/edi
 import { EditBookingStatusComponent } from './systems/booking-status/edit-booking-status/edit-booking-status/edit-booking-status.component';
 import { EmployeeSideBookingsComponent } from './systems/bookings/employee-side-bookings/employee-side-bookings/employee-side-bookings.component';
 import { EditEmployeeComponent } from './employee-side/edit-employee/edit-employee/edit-employee.component';
+import { ReadEmpSideCollectionNoteComponent } from './systems/collection note/read-emp-side-collection-note/read-emp-side-collection-note/read-emp-side-collection-note.component';
+import { EditEmpSideCollectionNoteComponent } from './systems/collection note/edit-emp-side-collection-note/edit-emp-side-collection-note/edit-emp-side-collection-note.component';
+import { ViewEmpSideCollectionNoteComponent } from './systems/collection note/view-emp-side-collection-note/view-emp-side-collection-note/view-emp-side-collection-note.component';
 
 
 
@@ -258,7 +261,10 @@ const angularMaterials = [
     EditSlotStatusComponent,
     EditBookingStatusComponent,
     EmployeeSideBookingsComponent,
-    EditEmployeeComponent
+    EditEmployeeComponent,
+    ReadEmpSideCollectionNoteComponent,
+    EditEmpSideCollectionNoteComponent,
+    ViewEmpSideCollectionNoteComponent
   ],
 
   imports: [
