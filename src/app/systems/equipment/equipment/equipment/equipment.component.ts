@@ -4,6 +4,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Equipment } from 'src/app/models/equipment';
 import { EquipmentService } from 'src/app/shared/services/equipment.service';
 import { CreateEquipmentComponent } from '../../create-equipment/create-equipment/create-equipment.component';
+import { MatTableDataSource } from '@angular/material/table';
 
 export interface EquipmentTable {
   name: string;
@@ -23,7 +24,13 @@ const ELEMENT_DATA: EquipmentTable[] = [
 export class EquipmentComponent implements OnInit {
 
   displayedColumns: string[] = ['name', 'availability','edit','delete'];
-  dataSource = ELEMENT_DATA;
+  dataSource = new MatTableDataSource(ELEMENT_DATA);
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
 
   equipmentList: Equipment[];
   equipment: Equipment;

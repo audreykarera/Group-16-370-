@@ -6,6 +6,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { BookingStatus } from 'src/app/models/bookingstatus';
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { MatTableDataSource } from '@angular/material/table';
 
 export interface BookingStatusTable{
   id: number;
@@ -26,7 +27,14 @@ export class ReadBookingStatusComponent implements OnInit {
 
 
   displayedColumns: string[] = ['id','name','edit','delete'];
-  dataSource = ELEMENT_DATA;
+  dataSource = new MatTableDataSource(ELEMENT_DATA);
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+
 
   bookingStatusList: BookingStatus[];
   bookingStatus:BookingStatus;

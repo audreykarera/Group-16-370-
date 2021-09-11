@@ -129,6 +129,9 @@ import { EditSlotStatusComponent } from './systems/schedule/edit-slot-status/edi
 import { EditBookingStatusComponent } from './systems/booking-status/edit-booking-status/edit-booking-status/edit-booking-status.component';
 import { EmployeeSideBookingsComponent } from './systems/bookings/employee-side-bookings/employee-side-bookings/employee-side-bookings.component';
 import { EditEmployeeComponent } from './employee-side/edit-employee/edit-employee/edit-employee.component';
+import { ReadEmpSideCollectionNoteComponent } from './systems/collection note/read-emp-side-collection-note/read-emp-side-collection-note/read-emp-side-collection-note.component';
+import { EditEmpSideCollectionNoteComponent } from './systems/collection note/edit-emp-side-collection-note/edit-emp-side-collection-note/edit-emp-side-collection-note.component';
+import { ViewEmpSideCollectionNoteComponent } from './systems/collection note/view-emp-side-collection-note/view-emp-side-collection-note/view-emp-side-collection-note.component';
 import { EditEmployeeTypeComponent } from './systems/employee-settings/edit-employee-type/edit-employee-type/edit-employee-type.component';
 import { ReadClientBookingComponent } from './client-side/read-client-bookings/read-client-booking/read-client-booking.component';
 import { ReadRequestedquoteComponent } from './systems/requested quote/read-requestedquote/read-requestedquote/read-requestedquote.component';
@@ -261,6 +264,9 @@ const angularMaterials = [
     EditBookingStatusComponent,
     EmployeeSideBookingsComponent,
     EditEmployeeComponent,
+    ReadEmpSideCollectionNoteComponent,
+    EditEmpSideCollectionNoteComponent,
+    ViewEmpSideCollectionNoteComponent,
     EditEmployeeTypeComponent,
     ReadRequestedquoteComponent
   ],
@@ -276,9 +282,9 @@ const angularMaterials = [
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    ToastrModule.forRoot(), 
+    ToastrModule.forRoot(),
     MatIconModule
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,5 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 
 export interface EmployeeBookingsTable {
   id: number;
@@ -22,7 +23,13 @@ const ELEMENT_DATA: EmployeeBookingsTable[] = [
 export class EmployeeSideBookingsComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'employee', 'service', 'serviceType', 'date', 'time'];
-  dataSource = ELEMENT_DATA;
+  dataSource = new MatTableDataSource(ELEMENT_DATA);
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+  }
 
   constructor() { }
 

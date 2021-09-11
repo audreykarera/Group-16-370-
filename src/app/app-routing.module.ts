@@ -1,3 +1,4 @@
+import { ReadEmpSideCollectionNoteComponent } from './systems/collection note/read-emp-side-collection-note/read-emp-side-collection-note/read-emp-side-collection-note.component';
 import { ReadSlotStatusComponent } from './systems/schedule/read-slot-status/read-slot-status/read-slot-status.component';
 import { ViewEmployeeTypeComponent } from './systems/employee-settings/view-employee-type/view-employee-type.component';
 import { ReadExtraCollectionComponent } from './systems/extra-collection/read-extra-collection/read-extra-collection.component';
@@ -78,7 +79,7 @@ const routes: Routes = [
   { path: 'lodge-complaint', component: LodgeComplaintComponent},
   { path: 'login', component: LoginComponent},
   { path: 'employeesidebookings', component: EmployeeSideBookingsComponent},
-  { path: 'employeesidecollectionnote', component: EmployeeSideCollectionNoteComponent },
+  { path: 'employeesidecollectionnote', component: ReadEmpSideCollectionNoteComponent },
   { path: 'schedule', component: ReadScheduleComponent},
   { path: 'estimate-costing', component: EstimateCostingComponent},
   { path: 'user-settings', component: UserSettingsComponent},

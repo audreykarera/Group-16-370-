@@ -4,6 +4,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Vehicle } from 'src/app/models/vehicle';
 import { VehicleService } from 'src/app/shared/services/vehicle.service';
 import { CreateVehicleComponent } from '../create-vehicle/create-vehicle.component';
+import { MatTableDataSource } from '@angular/material/table';
 
 export interface PeriodicElement {
   numberPlate: string;
@@ -28,7 +29,14 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class VehicleComponent implements OnInit {
 
   displayedColumns: string[] = [ 'numberPlate', 'make', 'model', 'availability','edit','delete'];
-  dataSource = ELEMENT_DATA;
+  dataSource = new MatTableDataSource(ELEMENT_DATA);
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+
 
   vehicleList: Vehicle[];
   vehicle: Vehicle;

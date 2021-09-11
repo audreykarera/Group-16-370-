@@ -11,9 +11,14 @@ import { DialogInterface } from 'src/app/Interfaces/dialog.interface';
 export class EmployeeSideCollectionNoteComponent implements OnInit {
 
   constructor(public dialog: MatDialog) { }
-  
+
   ngOnInit(): void {
   }
+
+  Close(){
+    this.dialog.closeAll();
+  }
+
   openConfirmDialog() {
     const dialogInterface: DialogInterface = {
       dialogHeader: 'Confirmation Message',
@@ -21,7 +26,7 @@ export class EmployeeSideCollectionNoteComponent implements OnInit {
       cancelButtonLabel: 'No',
       confirmButtonLabel: 'Yes',
       callbackMethod: () => {
-       
+
       },
     };
     this.dialog.open(SharedComponent, {
@@ -29,7 +34,7 @@ export class EmployeeSideCollectionNoteComponent implements OnInit {
       data: dialogInterface,
     });
   }
-  
+
   /**
      * This method invokes the Cancel Dialog
      */
@@ -40,13 +45,15 @@ export class EmployeeSideCollectionNoteComponent implements OnInit {
       cancelButtonLabel: 'No',
       confirmButtonLabel: 'Yes',
       callbackMethod: () => {
-       
+
       },
     };
     this.dialog.open(SharedComponent, {
       width: '300px',
       data: dialogInterface,
     });
+
+
 
 }
 }
