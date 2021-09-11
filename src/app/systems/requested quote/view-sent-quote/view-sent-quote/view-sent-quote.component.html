@@ -119,8 +119,8 @@
           </div>
           <br>
           <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button class="btn btn-outline-success me-md-2" type="button" routerLinkActive="list-item-active" routerLink="/make-booking">Make a Booking</button>
-            <button class="btn btn-outline-danger me-md-2" type="button">Close</button>
+            <button mat-raised-button routerLinkActive="list-item-active" routerLink="/make-booking" color="primary">Make a Booking</button>
+            <button mat-raised-button (click)="Close()" color="warn">Close</button>
 
         </div>
         </div>
