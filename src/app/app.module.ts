@@ -131,6 +131,7 @@ import { EmployeeSideBookingsComponent } from './systems/bookings/employee-side-
 import { EditEmployeeComponent } from './employee-side/edit-employee/edit-employee/edit-employee.component';
 import { EditEmployeeTypeComponent } from './systems/employee-settings/edit-employee-type/edit-employee-type/edit-employee-type.component';
 import { ReadClientBookingComponent } from './client-side/read-client-bookings/read-client-booking/read-client-booking.component';
+import { ReadRequestedquoteComponent } from './systems/requested quote/read-requestedquote/read-requestedquote/read-requestedquote.component';
 
 
 
@@ -260,7 +261,8 @@ const angularMaterials = [
     EditBookingStatusComponent,
     EmployeeSideBookingsComponent,
     EditEmployeeComponent,
-    EditEmployeeTypeComponent
+    EditEmployeeTypeComponent,
+    ReadRequestedquoteComponent
   ],
 
   imports: [
