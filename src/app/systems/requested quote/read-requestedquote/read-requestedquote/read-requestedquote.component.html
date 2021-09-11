@@ -2,15 +2,14 @@
   <div class="d-flex page__box p-3 mt-2">Client Quotes</div>
   <div class="page__content shadow p-3">
     <div class="page__content-data">
-      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </div>
       <br>
 
-      
+      <mat-form-field appearance="standard">
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="filter" #input>
+      </mat-form-field>
     
-      <table mat-table class="ReadRequestedquoteComponent" [dataSource]="dataSource">
+      <table mat-table [dataSource]="dataSource" class="ReadRequestedquoteComponent">
 
       <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef> Service ID </th>
@@ -18,20 +17,15 @@
       </ng-container>
 
       <ng-container matColumnDef="servicename">
-        <th mat-header-cell *matHeaderCellDef> Service Name </th>
-        <td mat-cell *matCellDef="let element"> {{element.servicename}} </td>
-        </ng-container>
+      <th mat-header-cell *matHeaderCellDef> Service Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.servicename}} </td>
+      </ng-container>
 
         <ng-container matColumnDef="service">
           <th mat-header-cell *matHeaderCellDef> Service</th>
           <td mat-cell *matCellDef="let element"> {{element.service}} </td>
           </ng-container>
   
-          <ng-container matColumnDef="service">
-            <th mat-header-cell *matHeaderCellDef> Service</th>
-            <td mat-cell *matCellDef="let element"> {{element.service}} </td>
-            </ng-container>
-
             <ng-container matColumnDef="date">
               <th mat-header-cell *matHeaderCellDef> Date</th>
               <td mat-cell *matCellDef="let element"> {{element.date}} </td>
@@ -45,16 +39,11 @@
                   </td>
                 </tr>
               </ng-container>
-  
-
-
               <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-<tr class="mat-row" *matNoDataRow>
-<td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
-</tr>
-              
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> 
+              <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+              </tr>
             </table>
             </div>
             <br>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatTableDataSource } from '@angular/material/table';
 import { ViewSentQuoteComponent } from '../../view-sent-quote/view-sent-quote/view-sent-quote.component';
 
 export interface ClientViewInvoices {
@@ -20,6 +21,13 @@ const ELEMENT_DATA: ClientViewInvoices[] = [
 export class ReadRequestedquoteComponent implements OnInit {
   displayedColumns: string[] = ['id', 'servicename', 'service', 'date', 'view'];
   dataSource = ELEMENT_DATA;
+  dataSource1 = new MatTableDataSource(ELEMENT_DATA);
+
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource1.filter = filterValue.trim().toLowerCase();
+  }
 
 
 
