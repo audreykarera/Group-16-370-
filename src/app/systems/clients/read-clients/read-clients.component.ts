@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatTableDataSource } from '@angular/material/table';
 import { Observable } from 'rxjs';
 import { ViewClientsComponent } from '../view-clients/view-clients/view-clients.component';
 
-export interface PeriodicElement {
+export interface ClientsTable {
   companyname: string;
   clientname: string;
   cellnumber: string;
   email: string;
 } 
 
-const ELEMENT_DATA: PeriodicElement[] = [
+const ELEMENT_DATA: ClientsTable[] = [
   {companyname: 'Coco-Cola', clientname: 'Micheal Scott', cellnumber: '0834472143', email: 'michealscott@cocacola.com' },
 ];
 
@@ -22,7 +23,13 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class ReadClientsComponent implements OnInit {
 
   displayedColumns: string[] = ['companyname', 'clientname', 'cellnumber', 'email', 'view',];
-  dataSource = ELEMENT_DATA;
+  dataSource = new MatTableDataSource (ELEMENT_DATA);
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
 
   constructor(
     public dialog: MatDialog

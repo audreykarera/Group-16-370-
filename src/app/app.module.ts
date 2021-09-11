@@ -90,7 +90,6 @@ import { UserSettingsComponent } from './systems/user-settings/user-settings.com
 import { CreateUserRoleComponent } from './systems/user-settings/create-user-role/create-user-role.component';
 import { EditUserRoleComponent } from './systems/user-settings/edit-user-role/edit-user-role.component';
 import { DeleteUserRoleComponent } from './systems/user-settings/delete-user-role/delete-user-role.component';
-import { ReadClientBookingComponent } from './client-side/read-client-bookings/read-client-booking/read-client-booking.component';
 import { BookingSlotsComponent } from './client-side/booking slots/booking-slots/booking-slots.component';
 import { EstimateCostingComponent } from './systems/estimate-costing/estimate-costing/estimate-costing.component';
 import { ViewSentQuoteComponent } from './systems/requested quote/view-sent-quote/view-sent-quote/view-sent-quote.component';
@@ -133,6 +132,9 @@ import { EditEmployeeComponent } from './employee-side/edit-employee/edit-employ
 import { ReadEmpSideCollectionNoteComponent } from './systems/collection note/read-emp-side-collection-note/read-emp-side-collection-note/read-emp-side-collection-note.component';
 import { EditEmpSideCollectionNoteComponent } from './systems/collection note/edit-emp-side-collection-note/edit-emp-side-collection-note/edit-emp-side-collection-note.component';
 import { ViewEmpSideCollectionNoteComponent } from './systems/collection note/view-emp-side-collection-note/view-emp-side-collection-note/view-emp-side-collection-note.component';
+import { EditEmployeeTypeComponent } from './systems/employee-settings/edit-employee-type/edit-employee-type/edit-employee-type.component';
+import { ReadClientBookingComponent } from './client-side/read-client-bookings/read-client-booking/read-client-booking.component';
+import { ReadRequestedquoteComponent } from './systems/requested quote/read-requestedquote/read-requestedquote/read-requestedquote.component';
 
 
 
@@ -264,7 +266,9 @@ const angularMaterials = [
     EditEmployeeComponent,
     ReadEmpSideCollectionNoteComponent,
     EditEmpSideCollectionNoteComponent,
-    ViewEmpSideCollectionNoteComponent
+    ViewEmpSideCollectionNoteComponent,
+    EditEmployeeTypeComponent,
+    ReadRequestedquoteComponent
   ],
 
   imports: [
@@ -278,9 +282,9 @@ const angularMaterials = [
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    ToastrModule.forRoot(), 
+    ToastrModule.forRoot(),
     MatIconModule
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent],

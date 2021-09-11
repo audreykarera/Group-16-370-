@@ -8,14 +8,14 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { PackageRateService } from 'src/app/shared/services/package-rate.service';
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
+export interface PackageRateTable {
+  rateprice: number;
+  dateofprice: string;
 } 
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen'},
-  {position: 2, name: 'Helium'}
+const ELEMENT_DATA: PackageRateTable[] = [
+  {rateprice: 650, dateofprice: '09/11/2021'},
+  
 ];
 
 
@@ -30,7 +30,7 @@ export class ReadPackageRatesComponent implements OnInit {
   // packageRate: PackageRate;
   // searchText='';
 
-  displayedColumns: string[] = ['position', 'name', 'edit', 'delete'];
+  displayedColumns: string[] = ['rateprice', 'dateofprice', 'edit', 'delete'];
   dataSource = ELEMENT_DATA;
 
 

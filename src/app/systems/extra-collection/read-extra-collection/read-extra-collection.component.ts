@@ -2,13 +2,13 @@ import { EditExtraCollectionComponent } from './../edit-extra-collection/edit-ex
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
+export interface ExtraCollection {
+  extracollectionid: number;
+  price: number;
 } 
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen'}
+const ELEMENT_DATA: ExtraCollection[] = [
+  {extracollectionid: 1, price: 400}
 ];
 
 @Component({
@@ -18,7 +18,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class ReadExtraCollectionComponent implements OnInit {
 
-  displayedColumns: string[] = ['position', 'name', 'edit'];
+  displayedColumns: string[] = ['extracollectionid', 'price', 'edit'];
   dataSource = ELEMENT_DATA;
 
   constructor(public dialog: MatDialog) { }

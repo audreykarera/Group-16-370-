@@ -8,14 +8,14 @@ import { Observable } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
+export interface EmploymentStatusTable {
+  employementstatusname: string;
+  employementstatusid: number;
 } 
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen'},
-  {position: 2, name: 'Helium'}
+const ELEMENT_DATA: EmploymentStatusTable[] = [
+  {employementstatusid: 1, employementstatusname: 'Retrenched'},
+  
 ];
 
 @Component({
@@ -29,7 +29,7 @@ export class ViewEmploymentStatusesComponent implements OnInit {
   // employmentStatus: EmploymentStatus; 
 
   
-  displayedColumns: string[] = ['position', 'name', 'edit', 'delete'];
+  displayedColumns: string[] = ['employementstatusid', 'employementstatusname', 'edit', 'delete'];
   dataSource = ELEMENT_DATA;
 
 

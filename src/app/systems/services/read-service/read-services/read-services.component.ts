@@ -15,15 +15,16 @@ import { DialogInterface } from 'src/app/Interfaces/dialog.interface';
 import { Service } from 'src/app/models/service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ServicePrice } from 'src/app/models/servicePrice';
+import { MatTableDataSource } from '@angular/material/table';
 
-export interface PeriodicElement {
+export interface ServiceTable {
   servicename: string;
   startingprice: number;
   description: string;
   servicetype: string;
 } 
 
-const ELEMENT_DATA: PeriodicElement[] = [
+const ELEMENT_DATA: ServiceTable[] = [
   {servicename: 'Collection & Disposal', startingprice: 850, description: 'We will come and collect and dispose of your waste safely', servicetype: 'Oil'},
 ];
 
@@ -42,7 +43,12 @@ export class ReadServicesComponent implements OnInit {
   
 
   displayedColumns: string[] = ['servicename', 'startingprice', 'description', 'servicetype', 'edit', 'delete'];
-  dataSource = ELEMENT_DATA;
+  dataSource = new MatTableDataSource (ELEMENT_DATA);
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 
   constructor(
     public router: Router,
