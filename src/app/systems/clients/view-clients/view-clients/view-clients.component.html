@@ -9,42 +9,55 @@
 </head>
 
 <body>
-    <div class="modal-body" style="width: 40rem; height: 25rem;">
+    <div class="modal-body" style="width: 40rem; height: auto;">
         <h3>*Client Name*</h3>
         <div class="form-group">
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Company Name</label>
-                        <input class="form-control form-control-sm" type="text" placeholder=""
-                            aria-label=".form-control-sm example" readonly>
-                        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Client Name</label>
-                        <input class="form-control form-control-sm" type="text" placeholder=""
-                            aria-label=".form-control-sm example" readonly>
-                        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Client Email Address</label>
-                        <input class="form-control form-control-sm" type="text" placeholder=""
-                            aria-label=".form-control-sm example" readonly>
-                        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Client Cellphone Number</label>
-                        <input class="form-control form-control-sm" type="text" placeholder=""
-                            aria-label=".form-control-sm example" readonly>
+                        <form>
+                          <mat-form-field appearance="fill">
+                            <mat-label>Company Name</mat-label>
+                            <input matInput placeholder="Coco-Cola" readonly>
+                          </mat-form-field>
+                          <mat-form-field appearance="fill">
+                            <mat-label>Client Name</mat-label>
+                            <input matInput placeholder="Audrey Sir" readonly>
+                          </mat-form-field>
+                          <mat-form-field appearance="fill">
+                            <mat-label>Email Address</mat-label>
+                            <input matInput placeholder="audreysir@gmail.com" readonly>
+                          </mat-form-field>
+                          <mat-form-field appearance="fill">
+                            <mat-label>Client Cellphone number</mat-label>
+                            <input matInput placeholder="0714563278" readonly>
+                          </mat-form-field>
+                        </form>
                     </div>
                     <div class="col">
-                        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Client Province</label>
-                        <input class="form-control form-control-sm" type="text" placeholder=""
-                            aria-label=".form-control-sm example" readonly>
-                        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Client City</label>
-                        <input class="form-control form-control-sm" type="text" placeholder=""
-                            aria-label=".form-control-sm example" readonly>
-                        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Client Suburb</label>
-                        <input class="form-control form-control-sm" type="text" placeholder=""
-                            aria-label=".form-control-sm example" readonly>
-                        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Client Street</label>
-                        <input class="form-control form-control-sm" type="text" placeholder=""
-                            aria-label=".form-control-sm example" readonly>
-                        <br>
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <form>
+                          <mat-form-field appearance="fill">
+                            <mat-label>Client Province</mat-label>
+                            <input matInput placeholder="Gauteng" readonly>
+                          </mat-form-field>
+                          <mat-form-field appearance="fill">
+                            <mat-label>Client City</mat-label>
+                            <input matInput placeholder="Pretoria" readonly>
+                          </mat-form-field>
+                          <mat-form-field appearance="fill">
+                            <mat-label>Client Suburb</mat-label>
+                            <input matInput placeholder="Centurion" readonly>
+                          </mat-form-field>
+                          <mat-form-field appearance="fill">
+                            <mat-label>Client Street</mat-label>
+                            <input matInput placeholder="10 Queen Street" readonly>
+                          </mat-form-field>
+                          <mat-form-field appearance="fill">
+                            <mat-label>Email Address</mat-label>
+                            <input matInput placeholder="" readonly>
+                          </mat-form-field>
+                        </form>
                             <button mat-raised-button (click)="Close()" color="warn">Cancel</button>
-                        </div>
                     </div>
                 </div>
             </div>
