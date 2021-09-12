@@ -128,8 +128,8 @@
   </mat-card-content>
   <mat-card-actions>
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-      <button class="btn btn-outline-success me-md-2" (click)="openConfirmDialog()" type="button">Edit</button>
-      <button class="btn btn-outline-danger" (click)="openCancelDialog()" type="button">Cancel</button>
+      <button mat-stroked-button (click)="openConfirmDialog()" >Save</button>
+      <button mat-raised-button (click)="openCancelDialog()" color="warn">Cancel</button>   
   </div>
   </mat-card-actions>
 </mat-card>

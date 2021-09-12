@@ -122,8 +122,8 @@
         </mat-card-content>
         <mat-card-actions>
           <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-            <button class="btn btn-outline-success me-md-2" type="button" (click)="routerGenerateEstimate()">Generate</button>
-            <button class="btn btn-outline-primary" type="button" routerLinkActive="list-item-active" routerLink="/request-quote">Request Quote</button>
+            <button mat-stroked-button (click)="routerGenerateEstimate()">Generate</button>
+            <button mat-raised-button routerLinkActive="list-item-active" routerLink="/request-quote">Request Quote</button>  
           </div>
         </mat-card-actions>
       </mat-card>
