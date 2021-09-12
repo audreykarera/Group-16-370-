@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { Employee } from 'src/app/models/employee';
 
 @Component({
@@ -12,7 +12,8 @@ export class ViewEmployeeComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA)
-    public data:any
+    public data:any,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -25,6 +26,10 @@ export class ViewEmployeeComponent implements OnInit {
       EmployeeId: 0,
       EmployeeFirstName: '',
     }
+  }
+
+  Close(){
+    this.dialog.closeAll();
   }
 
 }

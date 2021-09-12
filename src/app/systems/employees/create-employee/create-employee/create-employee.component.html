@@ -15,7 +15,7 @@
 </mat-select> -->
 
 <body>
-    <div class="modal-body" style="width: 60rem; height: 31rem;">
+    <div class="modal-body" style="width: 60rem; height: 38rem;">
         <h3>Add Employee</h3>
         <div class="form-group">
             <div class="container">
@@ -23,88 +23,94 @@
                     <div class="col">
                         <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Your Photo</label>
                         <input class="form-control form-control-sm" id="formFileSm" type="file" (change)="onFileSelected($event)"/>
-                        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Your Title</label>
-                        <select class="form-select form-select-sm" aria-label=".form-select-sm example" type="text">
-                            <option selected ngDefaultControl [(ngModel)]="employee.TitleId" ></option>
-                            <option *ngFor="let item of titleList" [value]="item.titleId">{{item.titleDescription}}
-                            </option>
-                        </select>
-                        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">First Name</label>
-                        <input class="form-control form-control-sm" type="text" placeholder="Your First Name"
-                            aria-label=".form-control-sm example" [(ngModel)]="employee.EmployeeFirstName">
-                        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Middle Name</label>
-                        <input class="form-control form-control-sm" type="text" placeholder="Your Middle Name"
-                            aria-label=".form-control-sm example" [(ngModel)]="employee.EmployeeMiddleName">
-                        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Surname</label>
-                        <input class="form-control form-control-sm" type="text" placeholder="Your Surname"
-                            aria-label=".form-control-sm example" [(ngModel)]="employee.EmployeeSurname">
+                        <br>
+                        <form>
+                          <mat-form-field appearance="fill">
+                            <mat-label>Your Title</mat-label>
+                            <mat-select>
+                              <mat-option value="one">Mr</mat-option>
+                              <mat-option value="two">Mrs</mat-option>
+                              <mat-option value="three">Ms</mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                          <mat-form-field appearance="fill">
+                            <mat-label>First Name</mat-label>
+                            <input matInput placeholder="Your First Name" >
+                          </mat-form-field>
+                          <mat-form-field appearance="fill">
+                            <mat-label>Middle Name</mat-label>
+                            <input matInput placeholder="Your Middle Name" >
+                          </mat-form-field>
+                          <mat-form-field appearance="fill">
+                            <mat-label>Surname</mat-label>
+                            <input matInput placeholder="Your Surname" >
+                          </mat-form-field>
+                        </form>
+
                     </div>
                     <div class="col">
-                        <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Email Address</label>
-                        <input class="form-control form-control-sm" type="text" placeholder="Your Email Address"
-                            aria-label=".form-control-sm example" [(ngModel)]="employee.EmployeeEmailAddress">
-                        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Cellphone
-                            Number</label>
-                        <input class="form-control form-control-sm" type="text" placeholder="Your Cellphone Number"
-                            aria-label=".form-control-sm example" [(ngModel)]="employee.EmployeeCellPhoneNumber">
-                        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Contact Person First
-                            Name</label>
-                        <input class="form-control form-control-sm" type="text" placeholder="Contact Person First Name"
-                            aria-label=".form-control-sm example" [(ngModel)]="employee.EmployeeEmergencyContactFirstName">
-                        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Contact Person
-                            Surname</label>
-                        <input class="form-control form-control-sm" type="text" placeholder="Contact Person Surname"
-                            aria-label=".form-control-sm example" [(ngModel)]="employee.EmployeeEmergencyContactSurname">
-                        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Contact Person
-                            Cellphone
-                            Number</label>
-                        <input class="form-control form-control-sm" type="text"
-                            placeholder="Contact Person Cellphone Number" aria-label=".form-control-sm example"
-                            [(ngModel)]="employee.EmployeeEmergencyContactNumber">
+                      <form>
+                        <mat-form-field appearance="fill">
+                          <mat-label>Email Address</mat-label>
+                          <input matInput placeholder="Your Email Address" >
+                        </mat-form-field>
+                      </form>
+                      <mat-form-field appearance="fill">
+                        <mat-label>Cellphone Number</mat-label>
+                        <input matInput placeholder="Your Cellphone Number" >
+                      </mat-form-field>
+                      <mat-form-field appearance="fill">
+                        <mat-label>Emergency Contact First Name</mat-label>
+                        <input matInput placeholder="Emergency Contact First Name" >
+                      </mat-form-field>
+                      <mat-form-field appearance="fill">
+                        <mat-label>Emergency Contact Surname</mat-label>
+                        <input matInput placeholder="Emergency Contact Surname" >
+                      </mat-form-field>
+                      <mat-form-field appearance="fill">
+                        <mat-label>Emergency Contact Cellphone Number</mat-label>
+                        <input matInput placeholder="Emergency Contact Cellphone Number" >
+                      </mat-form-field>
                     </div>
                     <div class="col">
-                        <label class="col-form-label col-form-label-sm mt-4 mr-4" for="inputSmall">Employee
-                            Type</label>
-                        <label class="col-form-label col-form-label-sm mt-4 float-right" for="inputSmall">User
-                            Roles</label>
-                        <div class="input-group">
-
-                            <!-- declaration for first field -->
-                            <select class="form-select form-select-sm" aria-label=".form-select-sm example" type="text">
-                                <option selected ngDefaultControl [(ngModel)]="employee.EmployeeTypeId"></option>
-                                <option *ngFor="let item of typeList" [value]="item.employeeTypeId">
-                                    {{item.employeeTypeName}}
-                                </option>
-                            </select>
-
-                            <!-- reducong the gap between them to zero -->
-                            <span class="input-group-btn" style="width:1px;"></span>
-
-                            <!-- declaration for second field -->
-                            <select class="form-select form-select-sm" aria-label=".form-select-sm example" type="text">
-                                <option selected ngDefaultControl [(ngModel)]="employee.UserRoleId"></option>
-                                <option *ngFor="let item of userRoleList" [value]="item.userRoleId">
-                                    {{item.userRoleName}}
-                                </option>
-                            </select>
-                        </div>
-                        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">ID Number</label>
-                        <input class="form-control form-control-sm" type="text" placeholder="ID Number"
-                            aria-label=".form-control-sm example" [(ngModel)]="employee.EmployeeIdNumber">
-                        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Username</label>
-                        <input class="form-control form-control-sm" type="text" placeholder="Username"
-                            aria-label=".form-control-sm example" [(ngModel)]="employee.Username">
-                        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Password</label>
-                        <input class="form-control form-control-sm" type="text" placeholder="Password"
-                            aria-label=".form-control-sm example" [(ngModel)]="employee.EmployeePassword">
-                        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Confirm
-                            Password</label>
-                        <input class="form-control form-control-sm" type="text" placeholder="Confirm Password"
-                            aria-label=".form-control-sm example">
+                      <form>
+                        <mat-form-field appearance="fill">
+                        <mat-label>Employee Type</mat-label>
+                        <mat-select>
+                          <mat-option value="one">Owner</mat-option>
+                          <mat-option value="two">Office Admin</mat-option>
+                          <mat-option value="three">Operations Manager</mat-option>
+                          <mat-option value="three">Worker</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      <mat-form-field appearance="fill">
+                        <mat-label>User Role</mat-label>
+                        <mat-select>
+                          <mat-option value="two">System Admin</mat-option>
+                          <mat-option value="three">Employee</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      <mat-form-field appearance="fill">
+                        <mat-label>ID Number</mat-label>
+                        <input matInput placeholder="Your ID Number" >
+                      </mat-form-field>
+                      <mat-form-field appearance="fill">
+                        <mat-label>Username</mat-label>
+                        <input matInput placeholder="Your Username" >
+                      </mat-form-field>
+                      <mat-form-field appearance="fill">
+                        <mat-label>Password</mat-label>
+                        <input matInput placeholder="Your Password" >
+                      </mat-form-field>
+                      <mat-form-field appearance="fill">
+                        <mat-label>Confirm Password</mat-label>
+                        <input matInput placeholder="Confirm Password" >
+                      </mat-form-field>
+                      </form>
                         <br>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button class="btn btn-outline-success me-md-2" type="submit" (click)="onSubmit()">Save</button>
-                            <button class="btn btn-outline-danger" (click)="Close()" type="button">Cancel</button>
+                            <button mat-raised-button (click)="onSubmit()">Save</button>
+                            <button mat-raised-button (click)="Close()" color="warn">Cancel</button>
                         </div>
                     </div>
                 </div>
