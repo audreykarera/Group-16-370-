@@ -8,12 +8,14 @@ export interface ClientBookingsTable {
   id: number;
   name: string;
   service: string;
+  servicetype: string;
   date: string;
+  time: string; 
 }
 
 const ELEMENT_DATA: ClientBookingsTable[] = [
-  {id: 1, name: 'Manesha Govender', service: 'Collection & Disposal of tires', date: '10/09/2021'},
-  {id: 2, name: 'Nerisha Ramjee ', service: 'Collection & Disposal of tires', date: '10/09/2021'},
+  {id: 1, name: 'Manesha Govender', service: 'Collection & Disposal',servicetype:'tires', date: '10/09/2021',time:'10:00-12:00'},
+  {id: 2, name: 'Nerisha Ramjee ', service: 'Collection & Disposal',servicetype:'tires' ,date: '10/09/2021', time:'10:00-12:00'},
 ];
 
 @Component({
@@ -22,7 +24,7 @@ const ELEMENT_DATA: ClientBookingsTable[] = [
   styleUrls: ['./read-client-booking.component.scss']
 })
 export class ReadClientBookingComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name', 'service', 'date', 'view'];
+  displayedColumns: string[] = ['id', 'name', 'service','servicetype', 'date','time'];
   dataSource = ELEMENT_DATA;
   dataSource1 = new MatTableDataSource(ELEMENT_DATA);
 
