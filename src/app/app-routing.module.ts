@@ -13,7 +13,6 @@ import { CreateBookingComponent } from './systems/bookings/create-booking/create
 
 import { EstimateCostingComponent } from './systems/estimate-costing/estimate-costing/estimate-costing.component';
 import { BookingSlotsComponent } from './client-side/booking slots/booking-slots/booking-slots.component';
-import { ReadClientBookingComponent } from './client-side/read-client-bookings/read-client-booking/read-client-booking.component';
 
 import { UserSettingsComponent } from './systems/user-settings/user-settings.component';
 
@@ -53,6 +52,7 @@ import { VehicleComponent } from './systems/vehicles/vehicle/vehicle.component';
 import { EquipmentComponent } from './systems/equipment/equipment/equipment/equipment.component';
 import { EmployeeSideBookingsComponent } from './systems/bookings/employee-side-bookings/employee-side-bookings/employee-side-bookings.component';
 import { EditEmployeeComponent } from './employee-side/edit-employee/edit-employee/edit-employee.component';
+import { ReadClientBookingComponent } from './client-side/read-client-bookings/read-client-booking/read-client-booking/read-client-booking.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },

@@ -1,8 +1,8 @@
-import { Service } from './../../../models/service';
-import { BookingDetailsComponent } from './../../booking details/booking-details/booking-details.component';
+import { BookingDetailsComponent } from 'src/app/client-side/booking details/booking-details/booking-details.component';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import {Component, OnInit} from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+
 
 export interface ClientBookingsTable {
   id: number;
@@ -19,7 +19,7 @@ const ELEMENT_DATA: ClientBookingsTable[] = [
 @Component({
   selector: 'app-read-client-booking',
   templateUrl: './read-client-booking.component.html',
-  styleUrls: ['./read-client-booking.component.scss'],
+  styleUrls: ['./read-client-booking.component.scss']
 })
 export class ReadClientBookingComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'service', 'date', 'view'];
@@ -30,7 +30,7 @@ export class ReadClientBookingComponent implements OnInit {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource1.filter = filterValue.trim().toLowerCase();
   }
-  
+
   constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
