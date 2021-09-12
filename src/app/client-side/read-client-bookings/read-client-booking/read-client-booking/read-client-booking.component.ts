@@ -1,3 +1,5 @@
+import { ViewClientBookingComponent } from './../../../view-client-booking/view-client-booking/view-client-booking.component';
+import { CreateBookingComponent } from './../../../../systems/bookings/create-booking/create-booking/create-booking.component';
 import { BookingDetailsComponent } from 'src/app/client-side/booking details/booking-details/booking-details.component';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
@@ -24,7 +26,7 @@ const ELEMENT_DATA: ClientBookingsTable[] = [
   styleUrls: ['./read-client-booking.component.scss']
 })
 export class ReadClientBookingComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name', 'service','servicetype', 'date','time'];
+  displayedColumns: string[] = ['id', 'name', 'service','servicetype', 'date','time','view', 'cancel'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   applyFilter(event: Event) {
@@ -36,13 +38,21 @@ export class ReadClientBookingComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  routerBookingDetails(){
+  routerRequestBooking(){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     const dialogReference = this.dialog.open(
-      BookingDetailsComponent,
+      CreateBookingComponent,
       dialogConfig
     );
+  }
 
-}
+  routerViewBooking(){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    const dialogReference = this.dialog.open(
+      ViewClientBookingComponent,
+      dialogConfig
+    );
+  }
 }
