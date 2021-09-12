@@ -16,7 +16,7 @@
                 <th mat-header-cell *matHeaderCellDef> Package Price Rate</th>
                 <td mat-cell *matCellDef="let element"> {{element.rateprice}} </td>
              </ng-container>`  `
-             `  <ng-container ?,MNJHBGFVDCAZ q1234tColumnDef="dateofprice">
+             `  <ng-container matColumnDef="dateofprice">
                <th mat-header-cell *matHeaderCellDef>Date of Price Rate </th>
                <td mat-cell *matCellDef="let element"> {{element.dateofprice}} </td>
               </ng-container>
@@ -24,7 +24,7 @@
                 <tr><th mat-header-cell *matHeaderCellDef> Edit </th></tr>
                 <tr>
                   <td mat-cell *matCellDef="let row" style="width:20%">
-                     <button mat-icon-button color="primary" (click)="routerEditPackageRate()" title="Edit Package Price Rate"><mat-icon>edit</mat-icon></button>
+                     <button mat-icon-button (click)="routerEditPackageRate()" title="Edit Package Price Rate"><mat-icon>edit</mat-icon></button>
                   </td>  
                 </tr>
               </ng-container>    

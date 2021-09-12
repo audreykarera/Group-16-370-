@@ -1,28 +1,30 @@
-import { Service } from './../../../models/service';
-import { BookingDetailsComponent } from './../../booking details/booking-details/booking-details.component';
+import { BookingDetailsComponent } from 'src/app/client-side/booking details/booking-details/booking-details.component';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import {Component, OnInit} from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+
 
 export interface ClientBookingsTable {
   id: number;
   name: string;
   service: string;
+  servicetype: string;
   date: string;
+  time: string;
 }
 
 const ELEMENT_DATA: ClientBookingsTable[] = [
-  {id: 1, name: 'Manesha Govender', service: 'Collection & Disposal of tires', date: '10/09/2021'},
-  {id: 2, name: 'Nerisha Ramjee ', service: 'Collection & Disposal of tires', date: '10/09/2021'},
+  {id: 1, name: 'Manesha Govender', service: 'Collection & Disposal',servicetype:'tires', date: '10/09/2021',time:'10:00-12:00'},
+  {id: 2, name: 'Nerisha Ramjee ', service: 'Collection & Disposal',servicetype:'tires' ,date: '10/09/2021', time:'10:00-12:00'},
 ];
 
 @Component({
   selector: 'app-read-client-booking',
   templateUrl: './read-client-booking.component.html',
-  styleUrls: ['./read-client-booking.component.scss'],
+  styleUrls: ['./read-client-booking.component.scss']
 })
 export class ReadClientBookingComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name', 'service', 'date', 'view'];
+  displayedColumns: string[] = ['id', 'name', 'service','servicetype', 'date','time'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   applyFilter(event: Event) {

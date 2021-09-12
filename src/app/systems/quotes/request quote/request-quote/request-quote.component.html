@@ -75,26 +75,43 @@
         </span>
       </div>
     </div>
+    <form class="col">
+            <mat-form-field appearance="fill">
+              <mat-label>Province</mat-label>
+              <mat-select>
+                <mat-option value="one">Gauteng</mat-option>
+                <mat-option value="two">KZN</mat-option>
+              </mat-select>
+              <mat-icon matSuffix>travel_explore</mat-icon>
+              <mat-hint>Enter the name of your Province</mat-hint>
+            </mat-form-field>
+          </form>
     <div class="col">
-        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Additional service details</label>
-        <textarea class="form-control form-control-sm" type="textarea" aria-label=".form-control-sm example"
-              placeholder=""></textarea>
-        <label class="col-form-label col-form-label-sm mt-2 float-right" for="inputSmall">Province</label>
-        <select class="form-select form-select-sm" aria-label=".form-select-sm example" type="text">
-          <option selected>Click for options</option>
-          <option value="1">Gauteng</option>
-          <option value="2">Kwa-Zulu-Natal</option>
-        </select>
-        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Insert City</label>
-        <input class="form-control form-control-sm" type="text" placeholder="Name of the City"
-          aria-label=".form-control-sm example">
-        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Insert Suburb</label>
-        <input class="form-control form-control-sm" type="text" placeholder="Name of the Suburb"
-          aria-label=".form-control-sm example">
-        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Insert Street</label>
-        <input class="form-control form-control-sm" type="text" placeholder="Name of the Street"
-          aria-label=".form-control-sm example">
-      </div>
+            <div class="col-form-label col-form-label-sm mt-2 ">
+              <mat-form-field appearance="fill">
+                <mat-label>City</mat-label>
+                <input matInput placeholder="Ex. 'Pretoria' ">
+                <mat-icon matSuffix>apartment</mat-icon>
+                <mat-hint>Enter the name of your City</mat-hint>
+              </mat-form-field>
+            </div>
+            <div class="col-form-label col-form-label-sm mt-2 float-right">
+              <mat-form-field appearance="fill">
+                <mat-label>Suburb</mat-label>
+                <input matInput placeholder="Ex. 'The Reeds' ">
+                <mat-icon matSuffix>location_city</mat-icon>
+                <mat-hint>Enter the name of your Suburb</mat-hint>
+              </mat-form-field>
+            </div>
+            <div class="col-form-label col-form-label-sm mt-2 float-right">
+              <mat-form-field appearance="fill">
+                <mat-label>Street</mat-label>
+                <input matInput placeholder="Ex. '512 Brittlewood Ave' ">
+                <mat-icon matSuffix>add_road</mat-icon>
+                <mat-hint>Enter the name of your Street</mat-hint>
+              </mat-form-field>
+            </div>
+          </div>
    </mat-card-content>
 <mat-card-actions>
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
