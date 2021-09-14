@@ -1,3 +1,4 @@
+import { AddCollectionNoteComponent } from './../../add-collection-note/add-collection-note/add-collection-note.component';
 import { ViewEmpSideCollectionNoteComponent } from './../../view-emp-side-collection-note/view-emp-side-collection-note/view-emp-side-collection-note.component';
 import { EditEmpSideCollectionNoteComponent } from './../../edit-emp-side-collection-note/edit-emp-side-collection-note/edit-emp-side-collection-note.component';
 import { EmployeeSideCollectionNoteComponent } from './../../employee-side-collection-note/employee-side-collection-note.component';
@@ -37,30 +38,42 @@ export class ReadEmpSideCollectionNoteComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  routerAddCollectionNote() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    const dialogReference = this.dialog.open(
-      EmployeeSideCollectionNoteComponent,
-      dialogConfig
-    );
+  openAddDialog(){
+    this.dialog.open(EmployeeSideCollectionNoteComponent,{height:'auto',width:'auto'});
   }
-  routerEditCollectionNote() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    const dialogReference = this.dialog.open(
-      EditEmpSideCollectionNoteComponent,
-      dialogConfig
-    );
+
+  openEditDialog(){
+    this.dialog.open(EditEmpSideCollectionNoteComponent,{height:'auto',width:'auto'});
   }
-  routerViewCollectionNote() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    const dialogReference = this.dialog.open(
-      ViewEmpSideCollectionNoteComponent,
-      dialogConfig
-    );
+
+  openViewDialog(){
+    this.dialog.open(ViewEmpSideCollectionNoteComponent,{height:'auto',width:'auto'});
   }
+
+  // routerAddCollectionNote() {
+  //   const dialogConfig = new MatDialogConfig();
+  //   dialogConfig.disableClose = true;
+  //   const dialogReference = this.dialog.open(
+  //     EmployeeSideCollectionNoteComponent,
+  //     dialogConfig
+  //   );
+  // }
+  // routerEditCollectionNote() {
+  //   const dialogConfig = new MatDialogConfig();
+  //   dialogConfig.disableClose = true;
+  //   const dialogReference = this.dialog.open(
+  //     EditEmpSideCollectionNoteComponent,
+  //     dialogConfig
+  //   );
+  // }
+  // routerViewCollectionNote() {
+  //   const dialogConfig = new MatDialogConfig();
+  //   dialogConfig.disableClose = true;
+  //   const dialogReference = this.dialog.open(
+  //     ViewEmpSideCollectionNoteComponent,
+  //     dialogConfig
+  //   );
+  // }
 
 
 

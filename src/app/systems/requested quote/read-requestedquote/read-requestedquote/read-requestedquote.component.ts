@@ -35,11 +35,10 @@ export class ReadRequestedquoteComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  routerViewQuote() {
-    const dialogConfig = new MatDialogConfig();
-     dialogConfig.disableClose = false;
-     const dialogReference = this.dialog.open(ViewSentQuoteComponent,dialogConfig);
-   }
+  
+   openViewDialog(){
+    this.dialog.open(ViewSentQuoteComponent);
+  }
  
 
 }

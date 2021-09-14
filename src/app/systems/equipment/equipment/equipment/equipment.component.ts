@@ -1,10 +1,11 @@
 import { EditEquipmentComponent } from './../../edit-equipment/edit-equipment/edit-equipment.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Equipment } from 'src/app/models/equipment';
 import { EquipmentService } from 'src/app/shared/services/equipment.service';
 import { CreateEquipmentComponent } from '../../create-equipment/create-equipment/create-equipment.component';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 export interface EquipmentTable {
   name: string;
@@ -23,6 +24,12 @@ const ELEMENT_DATA: EquipmentTable[] = [
 })
 export class EquipmentComponent implements OnInit {
 
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  // ngAfterViewInit(){
+  //   this.dataSource.paginator = this.paginator;
+  // }
+
   displayedColumns: string[] = ['name', 'availability','edit','delete'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
@@ -40,6 +47,7 @@ export class EquipmentComponent implements OnInit {
 
   ngOnInit(): void {
     this.readEquipment()
+    // this.dataSource.paginator = this.paginator;
   }
 
   readEquipment(){
@@ -56,22 +64,22 @@ export class EquipmentComponent implements OnInit {
     }, 10);
   }
 
-  routerAddequipment() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    const dialogReference = this.dialog.open(
-      CreateEquipmentComponent,
-      dialogConfig
-    );
+
+  openAddDialog(){
+    this.dialog.open(CreateEquipmentComponent,{height:'auto',width:'auto'});
   }
 
-  routerEditEquipment(){
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    const dialogReference = this.dialog.open(
-      EditEquipmentComponent,
-      dialogConfig
-    );
+  openEditDialog(){
+    this.dialog.open(EditEquipmentComponent);
   }
+
+  // routerEditEquipment(){
+  //   const dialogConfig = new MatDialogConfig();
+  //   dialogConfig.disableClose = true;
+  //   const dialogReference = this.dialog.open(
+  //     EditEquipmentComponent,
+  //     dialogConfig
+  //   );
+  // }
 
 }

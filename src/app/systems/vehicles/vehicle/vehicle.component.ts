@@ -66,22 +66,30 @@ export class VehicleComponent implements OnInit {
     }, 10);
   }
 
-  routerAddvehicle() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    const dialogReference = this.dialog.open(
-      CreateVehicleComponent,
-      dialogConfig
-    );
+  // routerAddvehicle() {
+  //   const dialogConfig = new MatDialogConfig();
+  //   dialogConfig.disableClose = true;
+  //   const dialogReference = this.dialog.open(
+  //     CreateVehicleComponent,
+  //     dialogConfig
+  //   );
+  // }
+
+  openAddDialog(){
+    this.dialog.open(CreateVehicleComponent,{height:'auto',width:'auto'});
   }
 
-  routerEditVehicle(){
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    const dialogReference = this.dialog.open(
-      EditVehicleComponent,
-      dialogConfig
-    );
+  openEditDialog(){
+    this.dialog.open(EditVehicleComponent,{height:'auto',width:'auto'});
   }
+
+  // routerEditVehicle(){
+  //   const dialogConfig = new MatDialogConfig();
+  //   dialogConfig.disableClose = true;
+  //   const dialogReference = this.dialog.open(
+  //     EditVehicleComponent,
+  //     dialogConfig
+  //   );
+  // }
 
 }

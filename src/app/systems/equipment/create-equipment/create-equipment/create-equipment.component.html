@@ -1,43 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
+<h1 mat-dialog-title>Add Equipment</h1>
+<div mat-dialog-content>
+  <form class="text-center">
+    <mat-form-field appearance="fill">
+      <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Equipment Name</mat-label>
+      <input matInput placeholder="Equipment Name">
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button >Save</button>
+  <button mat-raised-button mat-dialog-close color="warn">Close</button>
+</div>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Create Equipment</title>
-</head>
 
-<body>
-  <div class="modal-body" style="width: 25rem; height: auto;">
-    <h3>Add Equipment</h3>
-    <div class="form-group">
-      <div class="container">
-        <div class="row">
-          <div class="col">
-            <div>
-              <div>
-                <div>
-                  <br>
-                  <form class="text-center">
-                    <mat-form-field appearance="fill">
-                      <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Equipment Name</mat-label>
-                      <input matInput placeholder="Equipment Name">
-                    </mat-form-field>
-                  </form>
-                    <br>
-                  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <button mat-stroked-button (click)="onSave()">Save</button>
-                        <button mat-raised-button (click)="Close()" color="warn">Cancel</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</body>
-
-</html>
