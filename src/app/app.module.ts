@@ -138,6 +138,7 @@ import { ReadRequestedquoteComponent } from './systems/requested quote/read-requ
 import { PrintClientInvoicesComponent } from './systems/invoices/print-client-invoices/print-client-invoices/print-client-invoices.component';
 import { ReadClientBookingComponent } from './client-side/read-client-bookings/read-client-booking/read-client-booking/read-client-booking.component';
 import { ViewClientBookingComponent } from './client-side/view-client-booking/view-client-booking/view-client-booking.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 
@@ -164,6 +165,7 @@ const angularMaterials = [
   MatCardModule,
   FullCalendarModule,
   MatButtonModule,
+  MatPaginatorModule,
 ]
 
 @NgModule({

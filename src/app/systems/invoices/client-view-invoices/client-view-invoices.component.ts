@@ -1,7 +1,8 @@
 import { PrintClientInvoicesComponent } from './../print-client-invoices/print-client-invoices/print-client-invoices.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
 
 export interface ClientViewInvoices {
   id: number;
@@ -20,7 +21,14 @@ const ELEMENT_DATA: ClientViewInvoices[] = [
 export class ClientViewInvoicesComponent implements OnInit {
   displayedColumns: string[] = ['id', 'servicename', 'date', 'print'];
   dataSource = ELEMENT_DATA;
-  dataSource1 = new MatTableDataSource(ELEMENT_DATA);
+  dataSource1 = new MatTableDataSource<ClientViewInvoices>(ELEMENT_DATA);
+  
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  ngAfterViewInit() {
+    this.dataSource1.paginator = this.paginator;
+  }
+
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
