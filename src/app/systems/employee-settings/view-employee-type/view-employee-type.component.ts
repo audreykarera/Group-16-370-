@@ -1,14 +1,13 @@
-
 import { EmployeeType } from './../../../models/employeeType';
-
-import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { Component,Inject, OnInit } from '@angular/core';
+import { MatDialog,MatDialogRef, MatDialogConfig } from '@angular/material/dialog';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { EmployeeTypeService } from 'src/app/shared/services/employee-type.service';
 import { AddEmployeeTypeComponent } from '../add-employee-type/add-employee-type/add-employee-type.component';
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
 import { EditEmployeeTypeComponent } from '../edit-employee-type/edit-employee-type/edit-employee-type.component';
+import { MatTableDataSource } from '@angular/material/table';
 
 export interface EmployeeTypeTable {
   typename: string;
@@ -30,7 +29,13 @@ export class ViewEmployeeTypeComponent implements OnInit {
   // employeeType: EmployeeType;
 
   displayedColumns: string[] = ['employeetypeid', 'typename', 'edit', 'delete'];
-  dataSource = ELEMENT_DATA;
+  dataSource = new MatTableDataSource (ELEMENT_DATA);
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
 
 
 
@@ -70,6 +75,7 @@ export class ViewEmployeeTypeComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     const dialogReference = this.dialog.open(
+      
       EditEmployeeTypeComponent,
       {
         disableClose: true,
@@ -84,9 +90,12 @@ export class ViewEmployeeTypeComponent implements OnInit {
   routerAddEmployeeTypes() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
+    width: 'auto';
+    length: 'auto';
     const dialogReference = this.dialog.open(
       AddEmployeeTypeComponent,
       dialogConfig
     );
   }
 }
+

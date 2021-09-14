@@ -8,6 +8,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Title } from 'src/app/models/titles';
+import { MatTableDataSource } from '@angular/material/table';
 
 export interface Titletable {
   titlename: string;
@@ -30,7 +31,13 @@ export class ViewEmployeeTitleComponent implements OnInit {
 
 
   displayedColumns: string[] = ['titleid', 'titlename', 'edit', 'delete'];
-  dataSource = ELEMENT_DATA;
+  dataSource = new MatTableDataSource (ELEMENT_DATA);
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
 
 
   constructor(
