@@ -1,4 +1,116 @@
-<!DOCTYPE html>
+<h1 mat-dialog-title>Edit Equipment</h1>
+<div mat-dialog-content>
+  <div class="row">
+    <div class="col">
+      <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Your Photo</label>
+      <input class="form-control form-control-sm" id="formFileSm" type="file" (change)="onFileSelected($event)" />
+      <br>
+      <div>
+        <form>
+          <mat-form-field appearance="fill">
+            <mat-label>Your Title</mat-label>
+            <mat-select>
+              <mat-option value="one">Mr</mat-option>
+              <mat-option value="two">Mrs</mat-option>
+              <mat-option value="three">Ms</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill">
+            <mat-label>First Name</mat-label>
+            <input matInput placeholder="Your First Name">
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill">
+            <mat-label>Middle Name</mat-label>
+            <input matInput placeholder="Your Middle Name">
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill">
+            <mat-label>Surname</mat-label>
+            <input matInput placeholder="Your Surname">
+          </mat-form-field>
+        </form>
+      </div>
+
+    </div>
+    <div class="col">
+      <form>
+        <mat-form-field appearance="fill">
+          <mat-label>Email Address</mat-label>
+          <input matInput placeholder="Your Email Address">
+        </mat-form-field>
+
+        <br>
+        <mat-form-field appearance="fill">
+          <mat-label>Cellphone Number</mat-label>
+          <input matInput placeholder="Your Cellphone Number">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+          <mat-label>Emergency Contact First Name</mat-label>
+          <input matInput placeholder="Emergency Contact First Name">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+          <mat-label>Emergency Contact Surname</mat-label>
+          <input matInput placeholder="Emergency Contact Surname">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+          <mat-label>Emergency Contact Cellphone Number</mat-label>
+          <input matInput placeholder="Emergency Contact Cellphone Number">
+        </mat-form-field>
+      </form>
+    </div>
+    <div class="col">
+      <form>
+        <mat-form-field appearance="fill">
+          <mat-label>Employee Type</mat-label>
+          <mat-select>
+            <mat-option value="one">Owner</mat-option>
+            <mat-option value="two">Office Admin</mat-option>
+            <mat-option value="three">Operations Manager</mat-option>
+            <mat-option value="three">Worker</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+          <mat-label>User Role</mat-label>
+          <mat-select>
+            <mat-option value="two">System Admin</mat-option>
+            <mat-option value="three">Employee</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+          <mat-label>ID Number</mat-label>
+          <input matInput placeholder="Your ID Number">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+          <mat-label>Username</mat-label>
+          <input matInput placeholder="Your Username">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input matInput placeholder="Your Password">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+          <mat-label>Confirm Password</mat-label>
+          <input matInput placeholder="Confirm Password">
+        </mat-form-field>
+      </form>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-raised-button>Save</button>
+      <button mat-raised-button mat-dialog-close color="warn">Close</button>
+    </div>
+
+
+    <!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -8,11 +120,11 @@
     <title>Document</title>
 </head>
 
-<!-- <mat-select formControlName="Title">
+ <mat-select formControlName="Title">
     <mat-option *ngFor="let item of titleList" [value]="item.titleId">
         {{item.titleDescription}}
     </mat-option>
-</mat-select> -->
+</mat-select>
 
 <body>
     <div class="modal-body" style="width: 60rem; height: 38rem;">
@@ -119,4 +231,4 @@
     </div>
 </body>
 
-</html>
+</html> -->

@@ -65,28 +65,37 @@ export class ReadQuoteStatusComponent implements OnInit {
       });
     }
 
-  routerAddQuoteStatus() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    const dialogReference = this.dialog.open(
-      CreateQuoteStatusComponent,
-      dialogConfig
-    );
-  }
-  routerEditQuoteStatus(quoteStatusId: number, quoteStatusName: string) {
-    console.log(quoteStatusId, quoteStatusName );
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    const dialogReference = this.dialog.open(
-      EditQuoteStatusComponent,
-      {
-        disableClose:true,
-        data:{
-          quoteStatusId,
-          quoteStatusName
-        }
-      }
-    );
+    openAddDialog(){
+      this.dialog.open(CreateQuoteStatusComponent,{height:'auto',width:'auto'});
+    }
 
-}
+    openEditDialog(){
+      this.dialog.open(EditQuoteStatusComponent,{height:'auto',width:'auto'});
+    }
+
+  // routerAddQuoteStatus() {
+  //   const dialogConfig = new MatDialogConfig();
+  //   dialogConfig.disableClose = true;
+  //   const dialogReference = this.dialog.open(
+  //     CreateQuoteStatusComponent,
+  //     dialogConfig
+  //   );
+  // }
+  // routerEditQuoteStatus(quoteStatusId: number, quoteStatusName: string) {
+  //   console.log(quoteStatusId, quoteStatusName );
+  //   const dialogConfig = new MatDialogConfig();
+  //   dialogConfig.disableClose = true;
+  //   const dialogReference = this.dialog.open(
+  //     EditQuoteStatusComponent,
+  //     {
+  //       disableClose:true,
+  //       data:{
+  //         quoteStatusId,
+  //         quoteStatusName
+  //       }
+  //     }
+  //   );
+  // }
+
+
 }

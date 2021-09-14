@@ -38,21 +38,30 @@ export class ReadClientBookingComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  routerRequestBooking(){
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = false;
-    const dialogReference = this.dialog.open(
-      CreateBookingComponent,
-      dialogConfig
-    );
+
+  // routerRequestBooking(){
+  //   const dialogConfig = new MatDialogConfig();
+  //   dialogConfig.disableClose = false;
+  //   const dialogReference = this.dialog.open(
+  //     CreateBookingComponent,
+  //     dialogConfig
+  //   );
+  // }
+
+  openAddDialog(){
+    this.dialog.open(CreateBookingComponent,{height:'auto',width:'400px'});
   }
 
-  routerViewBooking(){
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = false;
-    const dialogReference = this.dialog.open(
-      ViewClientBookingComponent,
-      dialogConfig
-    );
+  openViewDialog(){
+    this.dialog.open(ViewClientBookingComponent,{height:'auto',width:'400px'});
   }
+
+  // routerViewBooking(){
+  //   const dialogConfig = new MatDialogConfig();
+  //   dialogConfig.disableClose = false;
+  //   const dialogReference = this.dialog.open(
+  //     ViewClientBookingComponent,
+  //     dialogConfig
+  //   );
+  // }
 }

@@ -66,29 +66,38 @@ export class ReadBookingStatusComponent implements OnInit {
     });
   }
 
-  routerAddBookingStatus() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    const dialogReference = this.dialog.open(
-      CreateBookingStatusComponent,
-      dialogConfig
-    );
+  openAddDialog(){
+    this.dialog.open(CreateBookingStatusComponent,{height:'auto',width:'auto'});
   }
-  routerEditBookingStatus(bookingStatusId:number, bookingStatusName:string) {
-    console.log(bookingStatusId, bookingStatusName);
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    const dialogReference = this.dialog.open(
-      EditBookingStatusComponent,
-      {
-        disableClose:true,
-        data:{
-          bookingStatusId,
-          bookingStatusName
-        }
-      }
-    );
 
-}
+  openEditDialog(){
+    this.dialog.open(EditBookingStatusComponent,{height:'auto',width:'auto'});
+  }
+
+  // routerAddBookingStatus() {
+  //   const dialogConfig = new MatDialogConfig();
+  //   dialogConfig.disableClose = true;
+  //   const dialogReference = this.dialog.open(
+  //     CreateBookingStatusComponent,
+  //     dialogConfig
+  //   );
+  // }
+  // routerEditBookingStatus(bookingStatusId:number, bookingStatusName:string) {
+  //   console.log(bookingStatusId, bookingStatusName);
+  //   const dialogConfig = new MatDialogConfig();
+  //   dialogConfig.disableClose = true;
+  //   const dialogReference = this.dialog.open(
+  //     EditBookingStatusComponent,
+  //     {
+  //       disableClose:true,
+  //       data:{
+  //         bookingStatusId,
+  //         bookingStatusName
+  //       }
+  //     }
+  //   );
+  // }
+
+
 }
 

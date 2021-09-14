@@ -56,38 +56,46 @@ export class ReadEmployeesComponent implements OnInit {
     })
   }
 
-  routerAddEmployee() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    const dialogReference = this.dialog.open(
-      CreateEmployeeComponent,
-      dialogConfig
-    );
+  openAddDialog(){
+    this.dialog.open(CreateEmployeeComponent,{height:'auto',width:'auto'});
   }
 
-  routerViewEmployee(employeeId: number, employeeFirstName: string, employeeSurname: string, employeeMiddleName: string,
-    employeeEmailAddress: string, employeeCellPhoneNumber: string, employeeEmergencyContactFirstName: string,
-    employeeEmergencyContactSurname: string, employeeEmergencyContactNumber: string, ) {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    const dialogReference = this.dialog.open(
-      ViewEmployeeComponent,
-      {
-        disableClose: true,
-
-        data: {
-          employeeId,
-          employeeFirstName,
-          employeeSurname,
-          employeeMiddleName,
-          employeeEmailAddress,
-          employeeCellPhoneNumber,
-          employeeEmergencyContactFirstName,
-          employeeEmergencyContactSurname,
-          employeeEmergencyContactNumber
-        }
-      }
-    );
+  openViewDialog(){
+    this.dialog.open(ViewEmployeeComponent,{height:'auto',width:'auto'});
   }
+
+  // routerAddEmployee() {
+  //   const dialogConfig = new MatDialogConfig();
+  //   dialogConfig.disableClose = true;
+  //   const dialogReference = this.dialog.open(
+  //     CreateEmployeeComponent,
+  //     dialogConfig
+  //   );
+  // }
+
+  // routerViewEmployee(employeeId: number, employeeFirstName: string, employeeSurname: string, employeeMiddleName: string,
+  //   employeeEmailAddress: string, employeeCellPhoneNumber: string, employeeEmergencyContactFirstName: string,
+  //   employeeEmergencyContactSurname: string, employeeEmergencyContactNumber: string, ) {
+  //   const dialogConfig = new MatDialogConfig();
+  //   dialogConfig.disableClose = true;
+  //   const dialogReference = this.dialog.open(
+  //     ViewEmployeeComponent,
+  //     {
+  //       disableClose: true,
+
+  //       data: {
+  //         employeeId,
+  //         employeeFirstName,
+  //         employeeSurname,
+  //         employeeMiddleName,
+  //         employeeEmailAddress,
+  //         employeeCellPhoneNumber,
+  //         employeeEmergencyContactFirstName,
+  //         employeeEmergencyContactSurname,
+  //         employeeEmergencyContactNumber
+  //       }
+  //     }
+  //   );
+  // }
 
 }
