@@ -74,7 +74,7 @@ import { ReadInvoiceComponent } from './systems/invoices/read-invoice/read-invoi
 import { EmployeeSettingsComponent } from './systems/employee-settings/employee-settings.component';
 import { ReadComplaintsComponent } from './systems/complaints/read-complaints/read-complaints/read-complaints.component';
 import { ViewComplaintsComponent } from './systems/complaints/view-complaints/view-complaints/view-complaints.component';
-import { ViewEmployeeTitleComponent } from './systems/employee-settings/view-employee-title/view-employee-title.component';
+
 import { ViewEmployeeTypeComponent } from './systems/employee-settings/view-employee-type/view-employee-type.component';
 import { ViewEmploymentStatusesComponent } from './systems/employee-settings/view-employment-statuses/view-employment-statuses.component';
 import { ScheduleEmployeeComponent } from './employee-side/schedule-employee/schedule-employee.component';
@@ -141,6 +141,7 @@ import { ViewClientBookingComponent } from './client-side/view-client-booking/vi
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { EditSuppliersComponent } from './systems/supplier/edit-supplier/edit-suppliers/edit-suppliers.component';
 import { CreateSupplierComponent } from './systems/supplier/create-supplier/create-supplier/create-supplier.component';
+import { ViewEmployeeTitleComponent } from './systems/employee-settings/view-employee-title/view-employee-title.component';
 
 
 
