@@ -1,35 +1,46 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Title } from 'src/app/Interfaces/Index';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TitleService {
-  apiUrl = 'http://localhost:60000/api/title/';
+  apiUrl = 'http://localhost:60000/api/title';
   constructor(
     private http: HttpClient
   ) { }
 
-  getTitles(){
-    return this.http.get(this.apiUrl + 'gettitles/');
+  getTitles(): Observable<Title[]> {
+    return this.http.get<Title[]>(`${this.apiUrl}`)
+      .pipe(map(res => res));
   }
 
-  patchTitle(obj){
-    return this.http.patch(this.apiUrl + 'updatetitle/',obj);
+  getTitle(id: number): Observable<Title[]> {
+    return this.http.get<Title[]>(`${this.apiUrl}/${id}`)
+      .pipe(map(res => res));
   }
 
-  
-  getTitle(id){
-    return this.http.get(this.apiUrl + 'gettitle/{id}' +id)
+  UpdateTitle(title: Title) {
+    return this.http.put(`${this.apiUrl}/${title.TitleId}`, title)
+      .pipe(map(res => res));
   }
 
-  postTitle(obj){
-    return this.http.post(this.apiUrl + 'createtitle/', obj);
+  CreateTitle(title: Title): Observable<any> {
+    return this.http.post(`${this.apiUrl}`, title)
+      .pipe(map(res => res));
   }
 
-  deleteTitle(id){
-    return this.http.delete(this.apiUrl +'deletetitle'+ id);
+  DeleteTitle(id: number) {
+    return this.http.delete(`${this.apiUrl}/${id}`)
+      .pipe(map(res => res));
   }
-  
+
+  // DeleteTitle(id){
+  //   return this.http.delete(`${this.apiUrl}/`+ id);
+  // }
+
 
 }

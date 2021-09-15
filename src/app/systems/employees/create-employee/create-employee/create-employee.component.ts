@@ -52,7 +52,7 @@ export class CreateEmployeeComponent implements OnInit {
 
   ngOnInit(): void {
     this.readUserRoles();
-    this.readTitles();
+    // this.readTitles();
     this.readEmployeeType();
     this.resetObject();
   }
@@ -74,12 +74,12 @@ export class CreateEmployeeComponent implements OnInit {
     })
   }
 
-  readTitles(){
-    this.titleService.getTitles().subscribe((res)=>{
-      this.titleList = res as EmployeeTitle[];
-      console.log(this.titleList);
-    }); 
-  }
+  // readTitles(){
+  //   this.titleService.getTitles().subscribe((res)=>{
+  //     this.titleList = res as EmployeeTitle[];
+  //     console.log(this.titleList);
+  //   }); 
+  // }
 
   onFileSelected(event){
     console.log(event); 
