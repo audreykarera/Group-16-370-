@@ -39,11 +39,6 @@ export class ReadPackagesComponent implements OnInit {
 
   displayedColumns: string[] = ['packagename', 'pricerate', 'description', 'edit', 'delete'];
   dataSource = new MatTableDataSource (ELEMENT_DATA);
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

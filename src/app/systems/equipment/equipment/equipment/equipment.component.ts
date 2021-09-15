@@ -30,11 +30,7 @@ export class EquipmentComponent implements OnInit {
 
   displayedColumns: string[] = ['name', 'availability', 'edit', 'delete'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
-  @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-  }
 
 
   applyFilter(event: Event) {

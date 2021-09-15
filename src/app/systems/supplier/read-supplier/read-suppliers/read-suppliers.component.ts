@@ -31,11 +31,11 @@ export class ReadSuppliersComponent implements OnInit {
 
   displayedColumns: string[] = ['suppliername', 'email', 'cellnumber', 'edit', 'delete'];
   dataSource = new MatTableDataSource (ELEMENT_DATA);
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  // @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-  }
+  // ngAfterViewInit() {
+  //   this.dataSource.paginator = this.paginator;
+  // }
 
 
   applyFilter(event: Event) {

@@ -45,11 +45,11 @@ export class ReadServicesComponent implements OnInit {
 
   displayedColumns: string[] = ['servicename', 'startingprice', 'description', 'servicetype', 'edit', 'delete'];
   dataSource = new MatTableDataSource (ELEMENT_DATA);
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  // @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-  }
+  // ngAfterViewInit() {
+  //   this.dataSource.paginator = this.paginator;
+  // }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

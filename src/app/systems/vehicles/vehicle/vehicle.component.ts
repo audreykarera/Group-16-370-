@@ -31,11 +31,11 @@ export class VehicleComponent implements OnInit {
 
   displayedColumns: string[] = [ 'numberPlate', 'make', 'model', 'availability','edit','delete'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  // @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-  }
+  // ngAfterViewInit() {
+  //   this.dataSource.paginator = this.paginator;
+  // }
 
 
   applyFilter(event: Event) {

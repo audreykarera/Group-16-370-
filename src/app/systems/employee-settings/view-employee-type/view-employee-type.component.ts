@@ -31,11 +31,6 @@ export class ViewEmployeeTypeComponent implements OnInit {
 
   displayedColumns: string[] = ['employeetypeid', 'typename', 'edit', 'delete'];
   dataSource = new MatTableDataSource (ELEMENT_DATA);
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
