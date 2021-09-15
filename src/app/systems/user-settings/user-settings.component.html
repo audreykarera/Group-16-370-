@@ -3,6 +3,10 @@
   <div class="d-flex page__box p-3 mt-2">User Roles</div>
   <div class="page__content shadow p-3">
     <div class="page__content-data">
+    <mat-form-field appearance="standard">
+          <mat-label>Filter</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+        </mat-form-field>
       <div class="position-relative">
         <div class="position-absolute top-0 end-0 icon-hover">
           <mat-icon (click)="routercreateuserrole()" style="font-size: xx-large">add</mat-icon>
@@ -42,16 +46,11 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
         <br>
-        
-         <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-end">
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item"><a class="page-link" href="#">4</a></li>
-          <li class="page-item"><a class="page-link" href="#">5</a></li>
-        </ul>
-      </nav>
+             <mat-paginator [length]="100"
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              aria-label="Select page">
+</mat-paginator>
      </div>
    </div>
 </div>

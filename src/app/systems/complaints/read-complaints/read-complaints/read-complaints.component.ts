@@ -1,7 +1,8 @@
 import { ViewComplaintsComponent } from './../../view-complaints/view-complaints/view-complaints.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 export interface ComplaintsTable {
   complaintid: number;
@@ -22,6 +23,11 @@ export class ReadComplaintsComponent implements OnInit {
 
   displayedColumns: string[] = ['complaintid', 'clientname', 'date', 'view'];
   dataSource = new MatTableDataSource (ELEMENT_DATA);
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

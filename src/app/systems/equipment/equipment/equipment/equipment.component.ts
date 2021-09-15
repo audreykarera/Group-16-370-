@@ -13,8 +13,8 @@ export interface EquipmentTable {
 }
 
 const ELEMENT_DATA: EquipmentTable[] = [
-  {name:'GFS Skip', availability: true},
-  {name:'Spill Kit', availability: false}
+  { name: 'GFS Skip', availability: true },
+  { name: 'Spill Kit', availability: false }
 ];
 
 @Component({
@@ -24,14 +24,18 @@ const ELEMENT_DATA: EquipmentTable[] = [
 })
 export class EquipmentComponent implements OnInit {
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-
   // ngAfterViewInit(){
   //   this.dataSource.paginator = this.paginator;
   // }
 
-  displayedColumns: string[] = ['name', 'availability','edit','delete'];
+  displayedColumns: string[] = ['name', 'availability', 'edit', 'delete'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
+
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -42,44 +46,58 @@ export class EquipmentComponent implements OnInit {
   equipmentList: Equipment[];
   equipment: Equipment;
 
-  constructor( private equipmentService: EquipmentService,
+  constructor(private equipmentService: EquipmentService,
     public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.readEquipment()
-    // this.dataSource.paginator = this.paginator;
   }
 
-  readEquipment(){
-    this.equipmentService.getEquipments().subscribe((res)=>{
+  readEquipment() {
+    this.equipmentService.getEquipments().subscribe((res) => {
       this.equipmentList = res as Equipment[];
     });
   }
 
-  onDelete(id){
-    this.equipmentService.deleteEquipment(id).subscribe((res)=>{
+  onDelete(id) {
+    this.equipmentService.deleteEquipment(id).subscribe((res) => {
     });
-    setTimeout(()=>{
+    setTimeout(() => {
       window.location.reload();
     }, 10);
   }
 
 
-  openAddDialog(){
-    this.dialog.open(CreateEquipmentComponent,{height:'auto',width:'auto'});
-  }
-
-  openEditDialog(){
-    this.dialog.open(EditEquipmentComponent);
-  }
-
-  // routerEditEquipment(){
-  //   const dialogConfig = new MatDialogConfig();
-  //   dialogConfig.disableClose = true;
-  //   const dialogReference = this.dialog.open(
-  //     EditEquipmentComponent,
-  //     dialogConfig
-  //   );
+  // openAddDialog(){
+  //   this.dialog.open(CreateEquipmentComponent,{height:'auto',width:'auto'});
   // }
+
+  // openEditDialog(){
+  //   this.dialog.open(EditEquipmentComponent);
+  // }
+
+  routerEditEquipment() {
+    const dialog = new MatDialogConfig();
+    dialog.disableClose = true;
+    dialog.width = 'auto';
+    dialog.height = 'auto';
+    dialog.data = {add: 'yes'};
+    const dialogReference = this.dialog.open(
+      EditEquipmentComponent,
+      dialog
+    );
+  }
+
+  routerAddEquipment() {
+    const dialog = new MatDialogConfig();
+    dialog.disableClose = true;
+    dialog.width = 'auto';
+    dialog.height = 'auto';
+    dialog.data = {add: 'yes'};
+    const dialogReference = this.dialog.open(
+      CreateEquipmentComponent,
+      dialog
+    );
+  }
 
 }

@@ -2,10 +2,11 @@ import { CreateQuoteStatusComponent } from './../../create-quote-status/create-q
 import { QuoteStatus } from './../../../../models/quotestatus';
 import { QuoteStatusService } from './../../../../shared/services/quote-status.service';
 import { EditQuoteStatusComponent } from './../../edit-quote-status/edit-quote-status/edit-quote-status.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 export interface QuoteStatusTable {
   id: number;
@@ -27,6 +28,11 @@ export class ReadQuoteStatusComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'quoteStatus', 'edit', 'delete'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -73,29 +79,28 @@ export class ReadQuoteStatusComponent implements OnInit {
       this.dialog.open(EditQuoteStatusComponent,{height:'auto',width:'auto'});
     }
 
-  // routerAddQuoteStatus() {
-  //   const dialogConfig = new MatDialogConfig();
-  //   dialogConfig.disableClose = true;
-  //   const dialogReference = this.dialog.open(
-  //     CreateQuoteStatusComponent,
-  //     dialogConfig
-  //   );
-  // }
-  // routerEditQuoteStatus(quoteStatusId: number, quoteStatusName: string) {
-  //   console.log(quoteStatusId, quoteStatusName );
-  //   const dialogConfig = new MatDialogConfig();
-  //   dialogConfig.disableClose = true;
-  //   const dialogReference = this.dialog.open(
-  //     EditQuoteStatusComponent,
-  //     {
-  //       disableClose:true,
-  //       data:{
-  //         quoteStatusId,
-  //         quoteStatusName
-  //       }
-  //     }
-  //   );
-  // }
+  routerAddQuoteStatus() {
+    const dialog = new MatDialogConfig
+    dialog.disableClose = true;
+    dialog.width = 'auto';
+    dialog.height = 'auto';
+    dialog.data = {add: 'yes'}
+    const dialogReference = this.dialog.open(
+      CreateQuoteStatusComponent,
+      dialog
+    )
+   }
+  routerEditQuoteStatus() {
+    const dialog = new MatDialogConfig
+    dialog.disableClose = true;
+    dialog.width = 'auto';
+    dialog.height = 'auto';
+    dialog.data = {add: 'yes'}
+    const dialogReference = this.dialog.open(
+      EditQuoteStatusComponent,
+      dialog
+    )
+   }
 
 
 }

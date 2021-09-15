@@ -4,12 +4,13 @@ import { AddTitleComponent } from './../add-title/add-title/add-title.component'
 import { TitleService } from './../../../shared/services/title.service';
 import { map } from 'rxjs/operators';
 import { Title } from 'src/app/Interfaces/Index';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
 import { id } from '@swimlane/ngx-charts';
+import { MatPaginator } from '@angular/material/paginator';
 
 
 
@@ -27,6 +28,11 @@ export class ViewEmployeeTitleComponent implements OnInit {
 
   displayedColumns: string[] = ['titlename', 'edit', 'delete'];
   dataSource = new MatTableDataSource(this.titleList);
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

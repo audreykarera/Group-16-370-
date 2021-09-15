@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CreateEmployeeComponent } from '../../create-employee/create-employee/create-employee.component';
 import { ViewEmployeeComponent } from '../../view-employee/view-employee/view-employee.component';
@@ -7,6 +7,7 @@ import { Employee } from 'src/app/models/employee';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 export interface EmployeeTable {
   empName: string;
@@ -28,6 +29,11 @@ export class ReadEmployeesComponent implements OnInit {
 
   displayedColumns: string[] = ['empName', 'emailAddress', 'cellNumber', 'view'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

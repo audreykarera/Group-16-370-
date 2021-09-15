@@ -35,30 +35,26 @@ export class ReadSlotStatusComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  openAddDialog(){
-    this.dialog.open(CreateSlotStatusComponent,{height:'auto',width:'auto'});
+  routerAddSlotStatus() {
+    const dialog = new MatDialogConfig();
+    dialog.disableClose = true;
+    dialog.width ='auto';
+    dialog.height ='auto';
+    const dialogReference = this.dialog.open(
+      CreateSlotStatusComponent,
+      dialog
+    );
   }
 
-  openEditDialog(){
-    this.dialog.open(EditSlotStatusComponent,{height:'auto',width:'auto'});
+  routerEditSlotStatus() {
+    const dialog = new MatDialogConfig();
+    dialog.disableClose = true;
+    dialog.width ='auto';
+    dialog.height ='auto';
+    const dialogReference = this.dialog.open(
+      EditSlotStatusComponent,
+      dialog
+    );
   }
-
-  // routerAddSlotStatus() {
-  //   const dialogConfig = new MatDialogConfig();
-  //   dialogConfig.disableClose = true;
-  //   const dialogReference = this.dialog.open(
-  //     CreateSlotStatusComponent,
-  //     dialogConfig
-  //   );
-  // }
-
-  // routerEditSlotStatus() {
-  //   const dialogConfig = new MatDialogConfig();
-  //   dialogConfig.disableClose = true;
-  //   const dialogReference = this.dialog.open(
-  //     EditSlotStatusComponent,
-  //     dialogConfig
-  //   );
-  // }
 
 }

@@ -44,11 +44,11 @@ import { ReadClientsComponent } from './systems/clients/read-clients/read-client
 import { ReadSuppliersComponent } from './systems/supplier/read-supplier/read-suppliers/read-suppliers.component';
 import { ReadUsersComponent } from './systems/users/read-users/read-users/read-users.component';
 import { GenerateReportComponent } from './systems/reports/generate-report/generate-report/generate-report.component';
-import { CreateSupplierComponent } from './systems/supplier/create-supplier/create-supplier/create-supplier.component';
+
 import { ViewEmployeeComponent } from './systems/employees/view-employee/view-employee/view-employee.component';
 import { EditUsersComponent } from './systems/users/edit-user/edit-users/edit-users.component';
 import { ViewClientsComponent } from './systems/clients/view-clients/view-clients/view-clients.component';
-import { EditSuppliersComponent } from './systems/supplier/edit-supplier/edit-suppliers/edit-suppliers.component';
+
 import { ReadServicesComponent } from './systems/services/read-service/read-services/read-services.component';
 import { CreateServiceComponent } from './systems/services/create-service/create-service/create-service.component';
 import { DeleteServiceComponent } from './systems/services/delete-service/delete-service/delete-service.component';
@@ -139,6 +139,8 @@ import { PrintClientInvoicesComponent } from './systems/invoices/print-client-in
 import { ReadClientBookingComponent } from './client-side/read-client-bookings/read-client-booking/read-client-booking/read-client-booking.component';
 import { ViewClientBookingComponent } from './client-side/view-client-booking/view-client-booking/view-client-booking.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { EditSuppliersComponent } from './systems/supplier/edit-supplier/edit-suppliers/edit-suppliers.component';
+import { CreateSupplierComponent } from './systems/supplier/create-supplier/create-supplier/create-supplier.component';
 
 
 

@@ -2,11 +2,13 @@ import { CreatePackageRateComponent } from './../../create-package-price/create-
 
 import { PackageRate } from './../../../../models/packageRate';
 import { EditPackageRateComponent } from './../../edit-package-rate/edit-package-rate/edit-package-rate.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { HttpErrorResponse } from '@angular/common/http';
 import { PackageRateService } from 'src/app/shared/services/package-rate.service';
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 export interface PackageRateTable {
   rateprice: number;
@@ -31,7 +33,16 @@ export class ReadPackageRatesComponent implements OnInit {
   // searchText='';
 
   displayedColumns: string[] = ['rateprice', 'dateofprice', 'edit', 'delete'];
-  dataSource = ELEMENT_DATA;
+  dataSource = new MatTableDataSource (ELEMENT_DATA);
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 
 
   constructor(public dialog: MatDialog) {}
@@ -61,28 +72,23 @@ export class ReadPackageRatesComponent implements OnInit {
   // }
 
   routerAddPackageRate() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
+    const dialog = new MatDialogConfig();
+    dialog.disableClose = true;
+    dialog.width ='20rem';
+    dialog.height = 'auto';
     const dialogReference = this.dialog.open(
       CreatePackageRateComponent, 
-      dialogConfig
+      dialog
     );
   }
-  routerEditPackageRate(packageRateId: number, packageRatePrice: number, packagePriceDate: string) {
-    console.log(packageRateId, packageRatePrice, packagePriceDate);
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
+  routerEditPackageRate() {
+    const dialog = new MatDialogConfig();
+    dialog.disableClose = true;
+    dialog.width ='20rem';
+    dialog.height = 'auto';
     const dialogReference = this.dialog.open(
-      EditPackageRateComponent, 
-      {
-        disableClose:true,
-        data:{
-          packageRateId,
-          packageRatePrice,
-          packagePriceDate
-
-        }
-      }
+    EditPackageRateComponent, 
+    dialog
     );
 
 }

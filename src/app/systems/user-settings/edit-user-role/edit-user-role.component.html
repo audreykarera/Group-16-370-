@@ -1,23 +1,14 @@
-<body>
-        <div class="modal-body" style="width: auto; height: auto;">
-                <h3>Edit User Role</h3>
-                <div class="form-group">
-                        <div class="container">
-                                <div class="row">
-                                        <div class="col">
-                                                <mat-form-field class="example-full-width" appearance="fill">
-                                                 <mat-label>User Role Name</mat-label>
-                                                 <input matInput placeholder="">
-                                                </mat-form-field>        
-                                                
-                                                <br>
-                                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                                        <button mat-stroked-button (click)="onSave()">Save</button>
-                                                        <button mat-raised-button (click)="Close()" color="warn">Cancel</button>
-                                                </div>
-                                        </div>
-                                </div>
-                        </div>
-                </div>
-        </div>
-</body>
+
+<h1 mat-dialog-title>Edit User Role</h1>
+<div mat-dialog-content>
+  <form class="text-center">
+    <mat-form-field appearance="fill">
+      <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Edit User Role</mat-label>
+      <input matInput placeholder="User Role">
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button (click)="onSave()" >Save</button>
+  <button mat-raised-button (click)="Close()" mat-dialog-close color="warn">Close</button>
+</div>
