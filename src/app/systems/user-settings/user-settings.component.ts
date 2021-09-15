@@ -1,12 +1,14 @@
 import { UserRole } from './../../models/userRole';
 import { EditUserRoleComponent } from './edit-user-role/edit-user-role.component';
 import { DeleteUserRoleComponent } from './delete-user-role/delete-user-role.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogInterface } from 'src/app/Interfaces/dialog.interface';
 import { SharedComponent } from 'src/app/component/shared components/shared/shared.component';
 import { UserRoleService } from 'src/app/shared/services/user-role.service';
 import { CreateUserRoleComponent } from './create-user-role/create-user-role.component';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 export interface UserSettingsTable {
   userid: number;
@@ -29,7 +31,19 @@ export class UserSettingsComponent implements OnInit {
   // userRole: UserRole;
 
   displayedColumns: string[] = ['userid', 'userrole', 'edit', 'delete'];
-  dataSource = ELEMENT_DATA;
+  dataSource = new MatTableDataSource (ELEMENT_DATA);
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+ 
   
   constructor(
     public dialog: MatDialog) { }

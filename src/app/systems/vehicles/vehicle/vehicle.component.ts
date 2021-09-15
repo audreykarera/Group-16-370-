@@ -1,10 +1,11 @@
 import { EditVehicleComponent } from './../edit-vehicle/edit-vehicle/edit-vehicle.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Vehicle } from 'src/app/models/vehicle';
 import { VehicleService } from 'src/app/shared/services/vehicle.service';
 import { CreateVehicleComponent } from '../create-vehicle/create-vehicle.component';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 export interface PeriodicElement {
   numberPlate: string;
@@ -30,6 +31,12 @@ export class VehicleComponent implements OnInit {
 
   displayedColumns: string[] = [ 'numberPlate', 'make', 'model', 'availability','edit','delete'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
+
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

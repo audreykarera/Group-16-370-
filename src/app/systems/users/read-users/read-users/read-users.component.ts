@@ -1,11 +1,12 @@
 
 import { DialogInterface } from 'src/app/Interfaces/dialog.interface';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { EditUsersComponent } from '../../edit-user/edit-users/edit-users.component';
 import { Observable } from 'rxjs';
 import { SharedComponent } from 'src/app/component/shared components/shared/shared.component';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 export interface UsersTable {
   usersname: string;
@@ -28,6 +29,11 @@ export class ReadUsersComponent implements OnInit {
 
   displayedColumns: string[] = ['usersname', 'username', 'email','role','loginstatus', 'edit'];
   dataSource = new MatTableDataSource (ELEMENT_DATA);
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

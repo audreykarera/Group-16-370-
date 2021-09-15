@@ -4,7 +4,7 @@ import { PackageService } from '../../../../shared/services/package.service';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { EditPackagesComponent } from './../../edit-packages/edit-packages/edit-packages.component';
 import { CreatePackageComponent } from './../../create-packages/create-package/create-package.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 import { SharedComponent } from 'src/app/component/shared components/shared/shared.component';
@@ -14,6 +14,7 @@ import { DialogInterface } from 'src/app/interfaces/dialog.interface';
 import { PackageRateService } from 'src/app/shared/services/package-rate.service';
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 export interface PackageTable {
   packagename: string;
@@ -38,6 +39,11 @@ export class ReadPackagesComponent implements OnInit {
 
   displayedColumns: string[] = ['packagename', 'pricerate', 'description', 'edit', 'delete'];
   dataSource = new MatTableDataSource (ELEMENT_DATA);
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

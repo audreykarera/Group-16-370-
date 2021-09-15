@@ -24,14 +24,18 @@ const ELEMENT_DATA: EquipmentTable[] = [
 })
 export class EquipmentComponent implements OnInit {
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-
   // ngAfterViewInit(){
   //   this.dataSource.paginator = this.paginator;
   // }
 
   displayedColumns: string[] = ['name', 'availability', 'edit', 'delete'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
+
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -47,7 +51,6 @@ export class EquipmentComponent implements OnInit {
 
   ngOnInit(): void {
     this.readEquipment()
-    // this.dataSource.paginator = this.paginator;
   }
 
   readEquipment() {

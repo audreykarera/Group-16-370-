@@ -3,8 +3,9 @@ import { ViewEmpSideCollectionNoteComponent } from './../../view-emp-side-collec
 import { EditEmpSideCollectionNoteComponent } from './../../edit-emp-side-collection-note/edit-emp-side-collection-note/edit-emp-side-collection-note.component';
 import { EmployeeSideCollectionNoteComponent } from './../../employee-side-collection-note/employee-side-collection-note.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 export interface EmpSideCollectionNoteTable {
   collectionNoteNum: number;
@@ -27,6 +28,11 @@ export class ReadEmpSideCollectionNoteComponent implements OnInit {
 
   displayedColumns: string[] = ['collectionNoteNum', 'service', 'servicetype', 'date', 'edit','view'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

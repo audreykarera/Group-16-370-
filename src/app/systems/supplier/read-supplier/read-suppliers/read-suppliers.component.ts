@@ -1,4 +1,4 @@
-import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
+import { Component, OnInit, Pipe, PipeTransform, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CreateSupplierComponent } from '../../create-supplier/create-supplier/create-supplier.component';
 import { EditSuppliersComponent } from '../../edit-supplier/edit-suppliers/edit-suppliers.component';
@@ -7,6 +7,7 @@ import { SupplierService } from 'src/app/shared/services/supplier.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 export interface SupplierTable {
   suppliername: string;
@@ -30,6 +31,12 @@ export class ReadSuppliersComponent implements OnInit {
 
   displayedColumns: string[] = ['suppliername', 'email', 'cellnumber', 'edit', 'delete'];
   dataSource = new MatTableDataSource (ELEMENT_DATA);
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
+
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

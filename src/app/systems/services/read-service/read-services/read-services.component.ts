@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 import { ServiceService } from './../../../../shared/services/service.service';
 import { EditServiceComponent } from './../../edit-service/edit-service/edit-service.component';
 import { CreateServiceComponent } from './../../create-service/create-service/create-service.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { SharedComponent } from 'src/app/component/shared components/shared/shared.component';
@@ -16,6 +16,7 @@ import { Service } from 'src/app/models/service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ServicePrice } from 'src/app/models/servicePrice';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 export interface ServiceTable {
   servicename: string;
@@ -44,6 +45,11 @@ export class ReadServicesComponent implements OnInit {
 
   displayedColumns: string[] = ['servicename', 'startingprice', 'description', 'servicetype', 'edit', 'delete'];
   dataSource = new MatTableDataSource (ELEMENT_DATA);
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

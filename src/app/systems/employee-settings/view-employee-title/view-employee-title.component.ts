@@ -3,12 +3,13 @@ import { EditTitleComponent } from './../edit-title/edit-title/edit-title.compon
 import { AddTitleComponent } from './../add-title/add-title/add-title.component';
 import { TitleService } from './../../../shared/services/title.service';
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Title } from 'src/app/models/titles';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 export interface Titletable {
   titlename: string;
@@ -32,6 +33,11 @@ export class ViewEmployeeTitleComponent implements OnInit {
 
   displayedColumns: string[] = ['titleid', 'titlename', 'edit', 'delete'];
   dataSource = new MatTableDataSource (ELEMENT_DATA);
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
