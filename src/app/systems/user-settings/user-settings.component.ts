@@ -49,7 +49,7 @@ export class UserSettingsComponent implements OnInit {
       dialog
     )
    }
-  routeredituserrole(userRoleId: number, userRoleName: string) {
+  routeredituserrole() {
     const dialog = new MatDialogConfig
     dialog.disableClose = true;
     dialog.width = 'auto';
