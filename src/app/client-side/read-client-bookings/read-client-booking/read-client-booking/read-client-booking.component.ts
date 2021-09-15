@@ -1,9 +1,10 @@
 import { ViewClientBookingComponent } from './../../../view-client-booking/view-client-booking/view-client-booking.component';
 import { CreateBookingComponent } from './../../../../systems/bookings/create-booking/create-booking/create-booking.component';
 import { BookingDetailsComponent } from 'src/app/client-side/booking details/booking-details/booking-details.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 
 export interface ClientBookingsTable {
@@ -27,7 +28,13 @@ const ELEMENT_DATA: ClientBookingsTable[] = [
 })
 export class ReadClientBookingComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'service','servicetype', 'date','time','view', 'cancel'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  dataSource = new MatTableDataSource<ClientBookingsTable>(ELEMENT_DATA);
+  
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
