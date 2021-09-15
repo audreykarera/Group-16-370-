@@ -9,7 +9,7 @@ export interface CollectionNoteTable {
   collectionnoteid: number;
   clientname: string
   date: string;
-} 
+}
 
 const ELEMENT_DATA: CollectionNoteTable[] = [
   {collectionnoteid: 9, clientname: 'Audrey Sir', date: '29 May 2021'}
@@ -33,24 +33,30 @@ export class ReadCollectionNoteComponent implements OnInit {
    public dialog: MatDialog
   ){}
 
-  ngOnInit(): void {  
+  ngOnInit(): void {
   }
 
   routerAddCollectionNote(){
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
+    const dialog = new MatDialogConfig();
+    dialog.disableClose = true;
+    dialog.width = 'auto';
+    dialog.height = 'auto';
+    dialog.data = {add: 'yes'};
     const dialogReference = this.dialog.open(
       AddCollectionNoteComponent,
-      dialogConfig
+      dialog
     );
   }
-  
+
     routerViewCollectionNote() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
+    const dialog = new MatDialogConfig();
+    dialog.disableClose = true;
+    dialog.width = 'auto';
+    dialog.height = 'auto';
+    dialog.data = {add: 'yes'};
     const dialogReference = this.dialog.open(
-      ViewCollectionNoteComponent, 
-      dialogConfig
+      ViewCollectionNoteComponent,
+      dialog
     );
   }
 

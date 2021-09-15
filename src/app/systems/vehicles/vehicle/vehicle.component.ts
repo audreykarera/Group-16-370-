@@ -66,30 +66,36 @@ export class VehicleComponent implements OnInit {
     }, 10);
   }
 
-  // routerAddvehicle() {
-  //   const dialogConfig = new MatDialogConfig();
-  //   dialogConfig.disableClose = true;
-  //   const dialogReference = this.dialog.open(
-  //     CreateVehicleComponent,
-  //     dialogConfig
-  //   );
+   routerAddvehicle() {
+     const dialog = new MatDialogConfig();
+     dialog.disableClose = true;
+     dialog.width = 'auto';
+    dialog.height = 'auto';
+    dialog.data = {add: 'yes'};
+     const dialogReference = this.dialog.open(
+       CreateVehicleComponent,
+       dialog
+     );
+   }
+
+  // openAddDialog(){
+  //   this.dialog.open(CreateVehicleComponent,{height:'auto',width:'auto'});
   // }
 
-  openAddDialog(){
-    this.dialog.open(CreateVehicleComponent,{height:'auto',width:'auto'});
-  }
-
-  openEditDialog(){
-    this.dialog.open(EditVehicleComponent,{height:'auto',width:'auto'});
-  }
-
-  // routerEditVehicle(){
-  //   const dialogConfig = new MatDialogConfig();
-  //   dialogConfig.disableClose = true;
-  //   const dialogReference = this.dialog.open(
-  //     EditVehicleComponent,
-  //     dialogConfig
-  //   );
+  // openEditDialog(){
+  //   this.dialog.open(EditVehicleComponent,{height:'auto',width:'auto'});
   // }
+
+   routerEditVehicle(){
+     const dialog = new MatDialogConfig();
+     dialog.disableClose = true;
+     dialog.width = 'auto';
+    dialog.height = 'auto';
+    dialog.data = {add: 'yes'};
+     const dialogReference = this.dialog.open(
+       EditVehicleComponent,
+       dialog
+     );
+   }
 
 }
