@@ -73,29 +73,28 @@ export class ReadQuoteStatusComponent implements OnInit {
       this.dialog.open(EditQuoteStatusComponent,{height:'auto',width:'auto'});
     }
 
-  // routerAddQuoteStatus() {
-  //   const dialogConfig = new MatDialogConfig();
-  //   dialogConfig.disableClose = true;
-  //   const dialogReference = this.dialog.open(
-  //     CreateQuoteStatusComponent,
-  //     dialogConfig
-  //   );
-  // }
-  // routerEditQuoteStatus(quoteStatusId: number, quoteStatusName: string) {
-  //   console.log(quoteStatusId, quoteStatusName );
-  //   const dialogConfig = new MatDialogConfig();
-  //   dialogConfig.disableClose = true;
-  //   const dialogReference = this.dialog.open(
-  //     EditQuoteStatusComponent,
-  //     {
-  //       disableClose:true,
-  //       data:{
-  //         quoteStatusId,
-  //         quoteStatusName
-  //       }
-  //     }
-  //   );
-  // }
+  routerAddQuoteStatus() {
+    const dialog = new MatDialogConfig
+    dialog.disableClose = true;
+    dialog.width = 'auto';
+    dialog.height = 'auto';
+    dialog.data = {add: 'yes'}
+    const dialogReference = this.dialog.open(
+      CreateQuoteStatusComponent,
+      dialog
+    )
+   }
+  routerEditQuoteStatus() {
+    const dialog = new MatDialogConfig
+    dialog.disableClose = true;
+    dialog.width = 'auto';
+    dialog.height = 'auto';
+    dialog.data = {add: 'yes'}
+    const dialogReference = this.dialog.open(
+      EditQuoteStatusComponent,
+      dialog
+    )
+   }
 
 
 }
