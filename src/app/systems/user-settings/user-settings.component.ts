@@ -39,24 +39,25 @@ export class UserSettingsComponent implements OnInit {
 
   }
   routercreateuserrole() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
+    const dialog = new MatDialogConfig
+    dialog.disableClose = true;
+    dialog.width = 'auto';
+    dialog.height = 'auto';
+    dialog.data = {add: 'yes'}
     const dialogReference = this.dialog.open(
       CreateUserRoleComponent,
-      dialogConfig
-    );
-  }
-  routeredituserrole(userRoleId: number, userRoleName: string) {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
+      dialog
+    )
+   }
+  routeredituserrole() {
+    const dialog = new MatDialogConfig
+    dialog.disableClose = true;
+    dialog.width = 'auto';
+    dialog.height = 'auto';
+    dialog.data = {add: 'yes'}
     const dialogReference = this.dialog.open(
       EditUserRoleComponent,
-      {
-        data: {
-          userRoleId,
-          userRoleName
-        }
-      }
-    );
-  }
+      dialog
+    )
+    }
 }

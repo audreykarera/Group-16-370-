@@ -69,14 +69,14 @@ export class ReadSuppliersComponent implements OnInit {
   // }
 
 //Used to go to the add model
-  routerAddSupplier() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    const dialogReference = this.dialog.open(
-      CreateSupplierComponent, 
-      dialogConfig
-    );
-  }
+  // routerAddSupplier() {
+  //   const dialogConfig = new MatDialogConfig();
+  //   dialogConfig.disableClose = true;
+  //   const dialogReference = this.dialog.open(
+  //     CreateSupplierComponent, 
+  //     dialogConfig
+  //   );
+  // }
 
   // Filter(event:Event){
   //   let result = this.supplierList.filter(event.target as HTMLInputElement).values
@@ -88,23 +88,45 @@ export class ReadSuppliersComponent implements OnInit {
   //   });
   // }
 //Used to go to the edit model
-  routerEditSupplier(supplierId: number, supplierName: string, supplierContactPersonEmail: string, supplierContactPersonNumber: string) {
-    console.log(supplierId, supplierName, supplierContactPersonEmail, supplierContactPersonNumber);
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    const dialogReference = this.dialog.open(
-      EditSuppliersComponent, 
-      {
-        disableClose: true,
-        data: {
-          supplierId, 
-          supplierName, 
-          supplierContactPersonEmail,
-          supplierContactPersonNumber
-        }
-      }
-    );
+  // routerEditSupplier(supplierId: number, supplierName: string, supplierContactPersonEmail: string, supplierContactPersonNumber: string) {
+  //   console.log(supplierId, supplierName, supplierContactPersonEmail, supplierContactPersonNumber);
+  //   const dialogConfig = new MatDialogConfig();
+  //   dialogConfig.disableClose = true;
+  //   const dialogReference = this.dialog.open(
+  //     EditSuppliersComponent, 
+  //     {
+  //       disableClose: true,
+  //       data: {
+  //         supplierId, 
+  //         supplierName, 
+  //         supplierContactPersonEmail,
+  //         supplierContactPersonNumber
+  //       }
+  //     }
+  //   );
+  // }
+  routerEditSupplier() {
+  const dialog = new MatDialogConfig
+  dialog.disableClose = true;
+  dialog.width = 'auto';
+  dialog.height = 'auto';
+  dialog.data = {add: 'yes'}
+  const dialogReference = this.dialog.open(
+    EditSuppliersComponent,
+    dialog
+  )
   }
 
+  routerAddSupplier() {
+    const dialog = new MatDialogConfig
+    dialog.disableClose = true;
+    dialog.width = 'auto';
+    dialog.height = 'auto';
+    dialog.data = {add: 'yes'}
+    const dialogReference = this.dialog.open(
+      CreateSupplierComponent,
+      dialog
+    )
+    }
 }
 

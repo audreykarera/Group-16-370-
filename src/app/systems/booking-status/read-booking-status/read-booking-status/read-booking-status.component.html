@@ -4,7 +4,7 @@
     <div class="page__content-data">
       <div class="position-relative">
         <div class="position-absolute top-0 end-0 icon-hover">
-          <mat-icon style="font-size: xx-large" (click)="openAddDialog()">add</mat-icon>
+          <mat-icon style="font-size: xx-large" (click)="routerAddBookingStatus()">add</mat-icon>
         </div>
       </div>
 
@@ -31,7 +31,7 @@
           </tr>
           <tr>
             <td mat-cell *matCellDef="let row">
-              <button mat-icon-button (click)="openEditDialog()">
+              <button mat-icon-button (click)="routerEditBookingStatus()">
                 <mat-icon>edit</mat-icon>
               </button>
             </td>
