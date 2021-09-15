@@ -5,7 +5,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 export interface ExtraCollection {
   extracollectionid: number;
   price: number;
-} 
+}
 
 const ELEMENT_DATA: ExtraCollection[] = [
   {extracollectionid: 1, price: 400}
@@ -27,11 +27,14 @@ export class ReadExtraCollectionComponent implements OnInit {
   }
 
   routerEditExtraCollectionPrice() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
+    const dialog = new MatDialogConfig();
+    dialog.disableClose = true;
+    dialog.width = 'auto';
+    dialog.height = 'auto';
+    dialog.data = {add: 'yes'};
     const dialogReference = this.dialog.open(
-      EditExtraCollectionComponent, 
-      dialogConfig
+      EditExtraCollectionComponent,
+      dialog
     );
 
 }

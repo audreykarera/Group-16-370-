@@ -12,11 +12,11 @@ import { MatTableDataSource } from '@angular/material/table';
 export interface EmploymentStatusTable {
   employementstatusname: string;
   employementstatusid: number;
-} 
+}
 
 const ELEMENT_DATA: EmploymentStatusTable[] = [
-  {employementstatusid: 1, employementstatusname: 'Retrenched'},
-  
+  { employementstatusid: 1, employementstatusname: 'Retrenched' },
+
 ];
 
 @Component({
@@ -25,13 +25,13 @@ const ELEMENT_DATA: EmploymentStatusTable[] = [
   styleUrls: ['./view-employment-statuses.component.scss']
 })
 export class ViewEmploymentStatusesComponent implements OnInit {
-  
-  // employmentStatusList: EmploymentStatus[]; 
-  // employmentStatus: EmploymentStatus; 
 
-  
+  // employmentStatusList: EmploymentStatus[];
+  // employmentStatus: EmploymentStatus;
+
+
   displayedColumns: string[] = ['employementstatusid', 'employementstatusname', 'edit', 'delete'];
-  dataSource = new MatTableDataSource (ELEMENT_DATA);
+  dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -48,10 +48,10 @@ export class ViewEmploymentStatusesComponent implements OnInit {
     //this.readEmploymentStatuses();
   }
 
-  Close(){
+  Close() {
     this.dialog.closeAll();
   }
-  
+
   // readEmploymentStatuses(){
   //   console.log(this.employmentStatusList);
   //   this.employmentStatusService.getEmploymentStatuses().subscribe((res)=>{
@@ -59,40 +59,58 @@ export class ViewEmploymentStatusesComponent implements OnInit {
   //     console.log(this.employmentStatusList);
   //   });
   // }
-    // onDelete(id){
-    //   this.employmentStatusService.deleteEmploymentStatus(id).subscribe((res)=>{
-    //     console.log(id);
-    //     this.readEmploymentStatuses();
-    //   });this.Close();
-    //   this.notificationsService.successToaster("Employment Status deleted", "Success");
-    //   setTimeout(()=>{
-    //     window.location.reload();
-    //   }, 1000);
-    //   }
-    
-  routerEditEmploymentStatuses(employmentStatusId: number, employmentStatusName: string) {
-    console.log(employmentStatusId, employmentStatusName);
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = false; 
+  // onDelete(id){
+  //   this.employmentStatusService.deleteEmploymentStatus(id).subscribe((res)=>{
+  //     console.log(id);
+  //     this.readEmploymentStatuses();
+  //   });this.Close();
+  //   this.notificationsService.successToaster("Employment Status deleted", "Success");
+  //   setTimeout(()=>{
+  //     window.location.reload();
+  //   }, 1000);
+  //   }
+
+  // routerEditEmploymentStatuses(employmentStatusId: number, employmentStatusName: string) {
+  //   console.log(employmentStatusId, employmentStatusName);
+  //   const dialogConfig = new MatDialogConfig();
+  //   dialogConfig.disableClose = false;
+  //   const dialogReference = this.dialog.open(
+  //     EditEmploymentStatusComponent,
+  //     {
+  //       disableClose: true,
+  //       data: {
+  //         employmentStatusId,
+  //         employmentStatusName
+  //       }
+  //     }
+
+  //   );
+  //   }
+
+  routerAddEmploymentStatuses() {
+    const dialog = new MatDialogConfig();
+    dialog.disableClose = false;
+    dialog.width = 'auto';
+    dialog.height = 'auto';
+    dialog.data = {add: 'yes'};
+    const dialogReference = this.dialog.open(
+      AddEmploymentStatusComponent,
+      dialog
+    );
+  }
+
+routerEditEmploymentStatuses() {
+    const dialog = new MatDialogConfig();
+    dialog.disableClose = false;
+    dialog.width = 'auto';
+    dialog.height = 'auto';
+    dialog.data = {add: 'yes'};
     const dialogReference = this.dialog.open(
       EditEmploymentStatusComponent,
-      {
-        disableClose: true,
-        data: {
-          employmentStatusId, 
-          employmentStatusName
-        }
-      }
-     
+      dialog
     );
+  }
 
-    }
-    routerAddEmploymentStatuses() {
-      const dialogConfig = new MatDialogConfig();
-      dialogConfig.disableClose = false; 
-      const dialogReference = this.dialog.open(
-        AddEmploymentStatusComponent,
-        dialogConfig
-      );
-      }
+
+
 }
