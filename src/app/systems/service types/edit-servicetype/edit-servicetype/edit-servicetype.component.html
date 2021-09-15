@@ -1,40 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Service Type</title>
-</head>
-
-<body>
-    <div class="modal-body" style="width: 20rem; height: 20rem;">
-        <h3>Edit Service Type</h3>
-        <div class="form-group">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                    <form class="text-center">
-                        <mat-form-field class="example-full-width" appearance="fill">
+<h1 mat-dialog-title>Edit Service Type</h1>
+<div mat-dialog-content>
+<form class="text-center">
+ <mat-form-field class="example-full-width" appearance="fill">
                          <mat-label>Service Type Name</mat-label>
-                         <input matInput placeholder="">
-                        </mat-form-field>
-                       <mat-form-field class="example-full-width" appearance="fill">
+                          <input matInput class="example-right-align" placeholder="Oil">
+ </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="fill">
                           <mat-label>Service Type Description</mat-label>
                           <textarea matInput placeholder="Ex. What the package includes..."></textarea>
                         </mat-form-field>
-                     </form>   
-                            <br>
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button mat-stroked-button >Save</button>
-                        <button mat-raised-button (click)="Close()" color="warn">Cancel</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
-
-</html>
+</form>                        
+</div>
+<div mat-dialog-actions>
+  <button mat-stroked-button >Save</button>
+  <button mat-raised-button (click)="Close()" color="warn">Cancel</button>
+</div>

@@ -1,39 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Employee Type</title>
-</head>
-
-<body>
-    <div class="modal-body" style="width: 20rem; height: 12rem;">
-        <h3>Edit Employee Type</h3>
-        <div class="form-group">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                    <form class="text-center">
-                     <mat-form-field class="example-full-width" appearance="fill">
-                         <mat-label>Edit Employee Type Name</mat-label>
-                         <input matInput placeholder="">
-                     </mat-form-field>
-                    </form> 
-                        
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button mat-stroked-button >Save</button>
-                            <button mat-raised-button (click)="Close()" color="warn">Cancel</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
-
-</html>
-
-
+<h1 mat-dialog-title>Edit Employee Type</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Employee Type Name</mat-label>
+    <input matInput placeholder="">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-stroked-button >Save</button>
+  <button mat-raised-button (click)="Close()" color="warn">Cancel</button>
+</div>
 

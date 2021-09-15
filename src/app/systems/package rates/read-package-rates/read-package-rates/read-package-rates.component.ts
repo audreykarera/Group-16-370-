@@ -61,28 +61,23 @@ export class ReadPackageRatesComponent implements OnInit {
   // }
 
   routerAddPackageRate() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
+    const dialog = new MatDialogConfig();
+    dialog.disableClose = true;
+    dialog.width ='20rem';
+    dialog.height = 'auto';
     const dialogReference = this.dialog.open(
       CreatePackageRateComponent, 
-      dialogConfig
+      dialog
     );
   }
-  routerEditPackageRate(packageRateId: number, packageRatePrice: number, packagePriceDate: string) {
-    console.log(packageRateId, packageRatePrice, packagePriceDate);
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
+  routerEditPackageRate() {
+    const dialog = new MatDialogConfig();
+    dialog.disableClose = true;
+    dialog.width ='20rem';
+    dialog.height = 'auto';
     const dialogReference = this.dialog.open(
-      EditPackageRateComponent, 
-      {
-        disableClose:true,
-        data:{
-          packageRateId,
-          packageRatePrice,
-          packagePriceDate
-
-        }
-      }
+    EditPackageRateComponent, 
+    dialog
     );
 
 }

@@ -80,29 +80,40 @@ export class ReadServicetypeComponent implements OnInit {
   // }
   
   routerAddServiceType() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
+    const dialog = new MatDialogConfig();
+    dialog.disableClose = true;
+    dialog.width ='20rem';
+    dialog.height = 'auto';
     const dialogReference = this.dialog.open(
       CreateServicetypeComponent,
-      dialogConfig
+      dialog
     );
+  }
+    routerEditServiceType() {
+      const dialog = new MatDialogConfig();
+      dialog.disableClose = true;
+      dialog.width ='20rem';
+      dialog.height = 'auto';
+      const dialogReference = this.dialog.open(
+        EditServicetypeComponent,
+        dialog
+      );
   }
 
   
-  routerEditServiceType(serviceTypeId:number,serviceTypeName:string,serviceTypeDescription:string) {
-    console.log(serviceTypeId,serviceTypeName,serviceTypeDescription);    
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    const dialogReference = this.dialog.open(
-      EditServicetypeComponent,
-      {
-        disableClose:false, //if click on something else it will close
-        data:{
-          serviceTypeId, //used in order to call what needs to be edited
-          serviceTypeName,
-          serviceTypeDescription
-        }
-      }
-    );
+  // routerEditServiceType(serviceTypeId:number,serviceTypeName:string,serviceTypeDescription:string) {
+  //   console.log(serviceTypeId,serviceTypeName,serviceTypeDescription);    
+  //   const dialogConfig = new MatDialogConfig();
+  //   dialogConfig.disableClose = true;
+  //   const dialogReference = this.dialog.open(
+  //     EditServicetypeComponent,
+  //     {
+  //       disableClose:false, //if click on something else it will close
+  //       data:{
+  //         serviceTypeId, //used in order to call what needs to be edited
+  //         serviceTypeName,
+  //         serviceTypeDescription
+  //       }
+  //     }
+  //   );
   }
-}
