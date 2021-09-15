@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { Title } from 'src/app/models/titles';
-import { NotificationsService } from 'src/app/shared/services/notifications.service';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
+import { Title } from 'src/app/Interfaces/Index';
 import { TitleService } from 'src/app/shared/services/title.service';
 
 @Component({
@@ -10,38 +11,65 @@ import { TitleService } from 'src/app/shared/services/title.service';
   styleUrls: ['./add-title.component.scss']
 })
 export class AddTitleComponent implements OnInit {
-  
-  titles: Title
+  form: FormGroup;
+  title: Title
+
+
+
+  error_messages = {
+    TitleName: [
+      { type: 'required', message: 'Title description is required' },
+      { type: 'minLength', message: 'Title must be more than 1 character' },
+      { type: 'maxLength', message: 'Title must be less than 5 characters' }
+    ]
+  }
+
   constructor(
-    private titleService: TitleService,
-    private notificationsService: NotificationsService,
+    private service: TitleService,
     public dialog: MatDialog,
+    private formBuilder: FormBuilder, 
+    public dialogRef: MatDialogRef<AddTitleComponent>
   ) { }
 
   ngOnInit(): void {
-    this.refreshForm()
+    this.refreshForm();
+    this.createForm();
+    console.log('Hello')
   }
 
-  Close(){
+  createForm() {
+    this.form = this.formBuilder.group({
+      TitleName: new FormControl(
+        this.title.TitleName,
+        Validators.compose([
+          Validators.required,
+          Validators.maxLength(4),
+          Validators.minLength(2)
+        ])
+      )
+    });
+  }
+
+  Close() {
     this.dialog.closeAll();
   }
 
-  onSave(){
-    this.titleService.postTitle(this.titles).subscribe((res)=>{
-      this.titles = res as Title; 
-    });
-    this.Close();
-    this.notificationsService.successToaster("New Title added", "Success");
-    setTimeout(()=>{
-      window.location.reload();
-    }, 1000);
+  OnSubmit() {
+    console.log('Hello')
+    if (this.form.valid) {
+      this.title = this.form.value;
+      this.service.CreateTitle(this.title).subscribe(res => {
+        this.refreshForm();
+        this.dialogRef.close('add');
+      });
+    }
   }
 
-  refreshForm(){
-    this.titles = {
-    TitleId: 0,
-    TitleDescription: ''
-   
+  refreshForm() {
+    this.title = {
+      TitleId: 0,
+      TitleName: ''
     }
-}}
+  }
+}
 

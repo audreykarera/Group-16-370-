@@ -1,12 +1,11 @@
-
 <div class="container-fluid page">
   <div class="d-flex page__box p-3 mt-2">Title</div>
   <div class="page__content shadow p-3">
     <div class="page__content-data">
-    <mat-form-field appearance="standard">
-          <mat-label>Filter</mat-label>
-          <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
-        </mat-form-field>
+      <mat-form-field appearance="standard">
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+      </mat-form-field>
       <div class="position-relative">
         <div class="position-absolute top-0 end-0 icon-hover">
           <mat-icon (click)="routerAddEmployeeTitles()" style="font-size: xx-large">add</mat-icon>
@@ -15,32 +14,41 @@
       <br>
       <br>
 
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-             <ng-container matColumnDef="titleid">
-                <th mat-header-cell *matHeaderCellDef> Title No. </th>
-                <td mat-cell *matCellDef="let element"> {{element.titleid}} </td>
-             </ng-container>
-             <ng-container matColumnDef="titlename">
-               <th mat-header-cell *matHeaderCellDef> Title Description </th>
-               <td mat-cell *matCellDef="let element"> {{element.titlename}} </td>
-              </ng-container>
-              <ng-container matColumnDef="edit">
-                <tr><th mat-header-cell *matHeaderCellDef> Edit </th></tr>
-                <tr>
-                  <td mat-cell *matCellDef="let row" style="width:20%">
-                     <button mat-icon-button (click)="routerEditEmployeeTitles()" title="Edit Title"><mat-icon>edit</mat-icon></button>
-                  </td>  
-                </tr>
-              </ng-container>    
-              <ng-container matColumnDef="delete">
-                <tr><th mat-header-cell *matHeaderCellDef> Delete </th></tr>
-                <tr>
-                  <td mat-cell *matCellDef="let row" style="width:20%">
-                     <button mat-icon-button color="danger" title="Delete Title"><mat-icon>delete</mat-icon></button>
-                  </td>  
-                </tr>
-              </ng-container>  
-              
+      <table mat-table [dataSource]="titleList" class="mat-elevation-z8">
+        <ng-container matColumnDef="titlename">
+          <th mat-header-cell *matHeaderCellDef> Title Description </th>
+          <td mat-cell *matCellDef="let element"> {{element.titleName}} </td>
+        </ng-container>
+        <ng-container matColumnDef="edit">
+          <tr>
+            <th mat-header-cell *matHeaderCellDef> Edit </th>
+          </tr>
+          <tr>
+            <td mat-cell *matCellDef="let element" style="width:20%">
+              <button mat-icon-button title="Edit Title">
+                <mat-icon>edit</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </ng-container>
+        <ng-container matColumnDef="delete">
+          <tr>
+            <th mat-header-cell *matHeaderCellDef> Delete </th>
+          </tr>
+          <tr>
+            <td mat-cell *matCellDef="let element" style="width:20%">
+              <button mat-icon-button color="danger" title="Delete Title">
+                <mat-icon (click)="DeleteTitle(element.titleId)">delete</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <br>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
