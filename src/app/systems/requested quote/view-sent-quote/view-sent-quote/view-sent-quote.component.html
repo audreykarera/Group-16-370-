@@ -9,7 +9,7 @@
 </head>
 
 <body>
-  <div class="modal-body" style="width: 35rem; height: 31rem;">
+  <div class="modal-body" style="width: auto; height: auto;">
     <h3>Service Quotation</h3>
     <br>
     <div class="form-group">
@@ -119,8 +119,8 @@
           </div>
           <br>
           <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button class="btn btn-outline-success me-md-2" type="button" routerLinkActive="list-item-active" routerLink="/make-booking">Make a Booking</button>
-            <button class="btn btn-outline-danger me-md-2" type="button">Close</button>
+            <button mat-raised-button routerLinkActive="list-item-active" routerLink="/make-booking">Make a Booking</button>
+            <button mat-raised-button (click)="Close()" color="warn">Close</button>
 
         </div>
         </div>

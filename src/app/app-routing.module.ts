@@ -1,3 +1,6 @@
+import { ReadEmpSideCollectionNoteComponent } from './systems/collection note/read-emp-side-collection-note/read-emp-side-collection-note/read-emp-side-collection-note.component';
+import { ReadSlotStatusComponent } from './systems/schedule/read-slot-status/read-slot-status/read-slot-status.component';
+import { ViewEmployeeTypeComponent } from './systems/employee-settings/view-employee-type/view-employee-type.component';
 import { ReadExtraCollectionComponent } from './systems/extra-collection/read-extra-collection/read-extra-collection.component';
 import { ViewEmploymentStatusesComponent } from './systems/employee-settings/view-employment-statuses/view-employment-statuses.component';
 import { ViewEmployeeTitleComponent } from './systems/employee-settings/view-employee-title/view-employee-title.component';
@@ -10,18 +13,16 @@ import { CreateBookingComponent } from './systems/bookings/create-booking/create
 
 import { EstimateCostingComponent } from './systems/estimate-costing/estimate-costing/estimate-costing.component';
 import { BookingSlotsComponent } from './client-side/booking slots/booking-slots/booking-slots.component';
-import { ReadClientBookingComponent } from './client-side/read-client-bookings/read-client-booking/read-client-booking.component';
 
 import { UserSettingsComponent } from './systems/user-settings/user-settings.component';
 
 import { ReadScheduleComponent } from './systems/schedule/read-schedule/read-schedule/read-schedule.component';
 import { EditClientComponent } from './systems/clients/edit-client/edit-client/edit-client.component';
 import { EmployeeSideCollectionNoteComponent } from './systems/collection note/employee-side-collection-note/employee-side-collection-note.component';
-import { EmployeeSideBookingsComponent } from './systems/bookings/employee-side-bookings/employee-side-bookings.component';
 import { LoginComponent } from './employee-side/user-login/login/login.component';
 import { LodgeComplaintComponent } from './systems/complaints/lodge-complaint/lodge-complaint/lodge-complaint.component';
 import { RegisterClientsComponent } from './systems/clients/register-clients/register-clients/register-clients.component';
-import { EditEmployeeComponent } from './employee-side/edit-employee/edit-employee.component';
+
 import { NavbarComponent } from './client-side/client-homepage/navbar/navbar.component';
 import { ScheduleEmployeeComponent } from './employee-side/schedule-employee/schedule-employee.component';
 import { ReadQuoteComponent } from './systems/quotes/read-quote/read-quote/read-quote.component';
@@ -49,6 +50,9 @@ import { RequestQuoteComponent } from './systems/quotes/request quote/request-qu
 import { EditSuppliersComponent } from './systems/supplier/edit-supplier/edit-suppliers/edit-suppliers.component';
 import { VehicleComponent } from './systems/vehicles/vehicle/vehicle.component';
 import { EquipmentComponent } from './systems/equipment/equipment/equipment/equipment.component';
+import { EmployeeSideBookingsComponent } from './systems/bookings/employee-side-bookings/employee-side-bookings/employee-side-bookings.component';
+import { EditEmployeeComponent } from './employee-side/edit-employee/edit-employee/edit-employee.component';
+import { ReadClientBookingComponent } from './client-side/read-client-bookings/read-client-booking/read-client-booking/read-client-booking.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -75,7 +79,7 @@ const routes: Routes = [
   { path: 'lodge-complaint', component: LodgeComplaintComponent},
   { path: 'login', component: LoginComponent},
   { path: 'employeesidebookings', component: EmployeeSideBookingsComponent},
-  { path: 'employeesidecollectionnote', component: EmployeeSideCollectionNoteComponent },
+  { path: 'employeesidecollectionnote', component: ReadEmpSideCollectionNoteComponent },
   { path: 'schedule', component: ReadScheduleComponent},
   { path: 'estimate-costing', component: EstimateCostingComponent},
   { path: 'user-settings', component: UserSettingsComponent},
@@ -90,12 +94,13 @@ const routes: Routes = [
   { path: 'vehicle', component:VehicleComponent},
   {path: 'equipment', component: EquipmentComponent},
   {path: 'paymenttypes', component: ReadPaymentTypeComponent},
-  {path: 'bookingstatus', component: ReadBookingStatusComponent}, 
-  {path: 'quotestatuses', component: ReadQuoteStatusComponent}, 
+  {path: 'bookingstatus', component: ReadBookingStatusComponent},
+  {path: 'quotestatuses', component: ReadQuoteStatusComponent},
   {path: 'titles', component: ViewEmployeeTitleComponent},
   {path: 'employmentstatuses', component: ViewEmploymentStatusesComponent},
   {path: 'extra-collection', component: ReadExtraCollectionComponent},
-  
+  {path: 'employeetypes', component: ViewEmployeeTypeComponent},
+  {path: 'read-slot-status', component: ReadSlotStatusComponent},
 ];
 
 @NgModule({

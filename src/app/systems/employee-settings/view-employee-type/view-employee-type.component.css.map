@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,KAAK,CAAC;EACF,KAAK,EAAE,IAAI;CACZ",
+    "sources": [
+        "view-employee-type.component.scss"
+    ],
+    "names": [],
+    "file": "view-employee-type.component.css"
+}

@@ -30,7 +30,41 @@
     </div>
     <div class="row">
       <div class="col">
-        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Name</label>
+        <form>
+          <mat-form-field appearance="outline">
+            <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Name</mat-label>
+            <input matInput placeholder="ex. 'Tristan'">
+          </mat-form-field>
+        </form>
+        <form>
+          <mat-form-field appearance="outline">
+            <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Email Address</mat-label>
+            <input matInput placeholder="ex. 'tristanogle1@gmail.com'">
+          </mat-form-field>
+        </form>
+        <form>
+          <mat-form-field appearance="outline">
+            <mat-label>Province</mat-label>
+            <mat-select>
+              <mat-option value="one">Gauteng</mat-option>
+              <mat-option value="two">KZN</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </form>
+        <form>
+          <mat-form-field appearance="outline">
+            <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Suburb</mat-label>
+            <input matInput placeholder="ex. 'Tristan'">
+          </mat-form-field>
+        </form>
+        <form>
+          <mat-form-field appearance="outline">
+            <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Password</mat-label>
+            <input matInput placeholder="ex. 'Tristan'">
+          </mat-form-field>
+        </form>
+
+        <!-- <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Name</label>
         <input class="form-control form-control-sm" type="text" placeholder="ex. 'Tristan'" aria-label=".form-control-sm example">
         <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Email Address</label>
         <input class="form-control form-control-sm" type="text" placeholder="ex. 'tristanogle1@gmail.com'" aria-label=".form-control-sm example">
@@ -43,10 +77,41 @@
         <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Suburb</label>
         <input class="form-control form-control-sm" type="text" placeholder="" aria-label=".form-control-sm example">
         <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Old Password</label>
-        <input class="form-control form-control-sm" type="text" placeholder="" aria-label=".form-control-sm example">
+        <input class="form-control form-control-sm" type="text" placeholder="" aria-label=".form-control-sm example"> -->
       </div>
       <div class="col">
-        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Surname</label>
+
+        <form>
+          <mat-form-field appearance="outline">
+            <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Surname</mat-label>
+            <input matInput placeholder="ex. 'Ogle'">
+          </mat-form-field>
+        </form>
+        <form>
+          <mat-form-field appearance="outline">
+            <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Contact Number</mat-label>
+            <input matInput placeholder="ex. '083 408 5536'">
+          </mat-form-field>
+        </form>
+        <form>
+          <mat-form-field appearance="outline">
+            <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">City</mat-label>
+            <input matInput placeholder="ex. 'Centurion'">
+          </mat-form-field>
+        </form>
+        <form>
+          <mat-form-field appearance="outline">
+            <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Street</mat-label>
+            <input matInput placeholder="ex. '12 Brandybush st'">
+          </mat-form-field>
+        </form>
+        <form>
+          <mat-form-field appearance="outline">
+            <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Confirm Password</mat-label>
+            <input matInput placeholder="">
+          </mat-form-field>
+        </form>
+        <!-- <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Surname</label>
         <input class="form-control form-control-sm" type="text" placeholder="ex. 'Ogle'" aria-label=".form-control-sm example">
         <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Contact Number</label>
         <input class="form-control form-control-sm" type="text" placeholder="ex. '0844081135'" aria-label=".form-control-sm example">
@@ -55,7 +120,7 @@
         <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Street</label>
         <input class="form-control form-control-sm" type="text" placeholder="" aria-label=".form-control-sm example">
         <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">New Password</label>
-        <input class="form-control form-control-sm" type="text" placeholder="" aria-label=".form-control-sm example">
+        <input class="form-control form-control-sm" type="text" placeholder="" aria-label=".form-control-sm example"> -->
       </div>
     </div>
 
@@ -63,8 +128,8 @@
   </mat-card-content>
   <mat-card-actions>
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-      <button class="btn btn-outline-success me-md-2" (click)="openConfirmDialog()" type="button">Edit</button>
-      <button class="btn btn-outline-danger" (click)="openCancelDialog()" type="button">Cancel</button>
+      <button mat-stroked-button (click)="openConfirmDialog()" >Save</button>
+      <button mat-raised-button (click)="openCancelDialog()" color="warn">Cancel</button>   
   </div>
   </mat-card-actions>
 </mat-card>

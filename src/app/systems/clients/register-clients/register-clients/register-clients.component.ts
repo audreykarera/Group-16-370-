@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
 interface company {
   value: string;
@@ -31,9 +32,14 @@ export class RegisterClientsComponent implements OnInit {
     }
   }
       
-  constructor() { }
+  constructor( public dialog: MatDialog,) { }
 
   ngOnInit(): void {
   }
 
+  Close(){
+    this.dialog.closeAll();
+  }
+
+  
 }

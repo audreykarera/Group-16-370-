@@ -1,48 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
+<h1 mat-dialog-title>Add Supplier</h1>
+<div mat-dialog-content>
+  <form class="text-center">
+    <mat-form-field appearance="fill">
+      <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Supplier Name</mat-label>
+      <input matInput placeholder="Placeholder">
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Supplier Contact Number</mat-label>
+      <input matInput placeholder="Placeholder">
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Supplier Email</mat-label>
+      <input matInput placeholder="Placeholder">
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button (click)="onSave()">Save</button>
+  <button mat-raised-button (click)="Close()" mat-dialog-close color="warn">Close</button>
+</div>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Supplier</title>
-</head>
 
-<body>
-    <div class="modal-body" style="width: 20rem; height: 20rem;">
-        <h3>Add Supplier</h3>
-        <div class="form-group">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                    <mat-form-field class="example-full-width" appearance="fill">
-                         <mat-label>Supplier Name</mat-label>
-                         <input matInput placeholder="">
-                        </mat-form-field>
-                        <mat-form-field class="example-full-width" appearance="fill">
-                         <mat-label>Supplier Contact</mat-label>
-                         <input matInput placeholder="">
-                        </mat-form-field>
-                         <mat-form-field class="example-full-width" appearance="fill">
-                         <mat-label>Supplier Email</mat-label>
-                         <input matInput placeholder="">
-                        </mat-form-field>
-                      
-                        <br>
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button class="btn btn-outline-success me-md-2" (click)="onSave()"
-                                type="button">Save</button>
-                            <button class="btn btn-outline-danger" (click)="Close()"
-                                type="button">Cancel</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
-
-</html>
 
 
 <!-- <form [formGroup]="supplierForm" (ngSubmit)="onSave()">

@@ -7,31 +7,67 @@
 
   <mat-card-content>
     <div>
-     <mat-form-field appearance="fill" class="m-2">
-        <mat-label >Company?</mat-label>
+      <mat-form-field appearance="fill" class="m-2">
+        <mat-label>Company?</mat-label>
         <mat-select (onSelectionChange)="get($event)">
-                            <mat-option *ngFor="let item of companies" (click)="get(item)" [value]="item.value">
-                                {{item.viewValue}}
-                            </mat-option>
-                        </mat-select>
+          <mat-option *ngFor="let item of companies" (click)="get(item)" [value]="item.value">
+            {{item.viewValue}}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
       <span *ngIf="isSelected">
-                        <span *ngIf="Yes">
-                            <mat-form-field appearance="fill">
-                                <mat-label>Company Name</mat-label>
-                                <input matInput placeholder="">
-                                <mat-icon matSuffix>business</mat-icon>
-                                <mat-hint>Enter the name of your Company</mat-hint>
-                            </mat-form-field>
-                        </span>
+        <span *ngIf="Yes">
+          <mat-form-field appearance="fill">
+            <mat-label>Company Name</mat-label>
+            <input matInput placeholder="">
+            <mat-icon matSuffix>business</mat-icon>
+            <mat-hint>Enter the name of your Company</mat-hint>
+          </mat-form-field>
+        </span>
       </span>
     </div>
+
     <div class="row">
       <div class="col">
-        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Name</label>
-        <input class="form-control form-control-sm" type="text" placeholder="ex. 'Tristan'" aria-label=".form-control-sm example">
-        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Email Address</label>
-        <input class="form-control form-control-sm" type="text" placeholder="ex. 'tristanogle1@gmail.com'" aria-label=".form-control-sm example">
+        <form>
+          <mat-form-field appearance="outline">
+            <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Name</mat-label>
+            <input matInput placeholder="ex. 'Tristan'">
+          </mat-form-field>
+        </form>
+        <form>
+          <mat-form-field appearance="outline">
+            <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Email Address</mat-label>
+            <input matInput placeholder="ex. 'tristanogle1@gmail.com'">
+          </mat-form-field>
+        </form>
+        <form>
+          <mat-form-field appearance="outline">
+            <mat-label>Province</mat-label>
+            <mat-select>
+              <mat-option value="one">Gauteng</mat-option>
+              <mat-option value="two">KZN</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </form>
+        <form>
+          <mat-form-field appearance="outline">
+            <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Suburb</mat-label>
+            <input matInput placeholder="ex. 'Tristan'">
+          </mat-form-field>
+        </form>
+        <form>
+          <mat-form-field appearance="outline">
+            <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Password</mat-label>
+            <input matInput placeholder="ex. 'Tristan'">
+          </mat-form-field>
+        </form>
+        <!-- <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Name</label>
+        <input class="form-control form-control-sm" type="text" placeholder="ex. 'Tristan'"
+          aria-label=".form-control-sm example"> -->
+        <!-- <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Email Address</label>
+        <input class="form-control form-control-sm" type="text" placeholder="ex. 'tristanogle1@gmail.com'"
+          aria-label=".form-control-sm example">
         <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Province</label>
         <select class="form-select form-select-sm" aria-label=".form-select-sm example" type="text">
           <option selected></option>
@@ -41,19 +77,52 @@
         <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Suburb</label>
         <input class="form-control form-control-sm" type="text" placeholder="" aria-label=".form-control-sm example">
         <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Password</label>
-        <input class="form-control form-control-sm" type="text" placeholder="" aria-label=".form-control-sm example">
+        <input class="form-control form-control-sm" type="text" placeholder="" aria-label=".form-control-sm example"> -->
       </div>
       <div class="col">
-        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Surname</label>
-        <input class="form-control form-control-sm" type="text" placeholder="ex. 'Ogle'" aria-label=".form-control-sm example">
+        <form>
+          <mat-form-field appearance="outline">
+            <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Surname</mat-label>
+            <input matInput placeholder="ex. 'Ogle'">
+          </mat-form-field>
+        </form>
+        <form>
+          <mat-form-field appearance="outline">
+            <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Contact Number</mat-label>
+            <input matInput placeholder="ex. '083 408 5536'">
+          </mat-form-field>
+        </form>
+        <form>
+          <mat-form-field appearance="outline">
+            <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">City</mat-label>
+            <input matInput placeholder="ex. 'Centurion'">
+          </mat-form-field>
+        </form>
+        <form>
+          <mat-form-field appearance="outline">
+            <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Street</mat-label>
+            <input matInput placeholder="ex. '12 Brandybush st'">
+          </mat-form-field>
+        </form>
+        <form>
+          <mat-form-field appearance="outline">
+            <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Confirm Password</mat-label>
+            <input matInput placeholder="">
+          </mat-form-field>
+        </form>
+
+        <!-- <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Surname</label>
+        <input class="form-control form-control-sm" type="text" placeholder="ex. 'Ogle'"
+          aria-label=".form-control-sm example">
         <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Contact Number</label>
-        <input class="form-control form-control-sm" type="text" placeholder="ex. '0844081135'" aria-label=".form-control-sm example">
+        <input class="form-control form-control-sm" type="text" placeholder="ex. '0844081135'"
+          aria-label=".form-control-sm example">
         <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">City</label>
         <input class="form-control form-control-sm" type="text" placeholder="" aria-label=".form-control-sm example">
         <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Street</label>
         <input class="form-control form-control-sm" type="text" placeholder="" aria-label=".form-control-sm example">
         <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Confirm Password</label>
-        <input class="form-control form-control-sm" type="text" placeholder="" aria-label=".form-control-sm example">
+        <input class="form-control form-control-sm" type="text" placeholder="" aria-label=".form-control-sm example"> -->
       </div>
     </div>
 
@@ -61,8 +130,8 @@
   </mat-card-content>
   <mat-card-actions>
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-      <button class="btn btn-outline-success me-md-2" type="button">Register</button>
-      <button class="btn btn-outline-danger" type="button">Cancel</button>
-  </div>
+      <button mat-stroked-button>Save</button>
+      <button mat-raised-button (click)="Close()" color="warn">Cancel</button>   
+    </div>
   </mat-card-actions>
 </mat-card>

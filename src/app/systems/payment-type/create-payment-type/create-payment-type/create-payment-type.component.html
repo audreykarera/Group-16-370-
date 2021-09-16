@@ -16,16 +16,15 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
+                    <form class="text-center">
                          <mat-form-field class="example-full-width" appearance="fill">
                          <mat-label>Enter Payment Type</mat-label>
                          <input matInput placeholder="">
                         </mat-form-field>
-                        <br>
+                    </form>    
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button class="btn btn-outline-success me-md-2"
-                                type="button" (click)="onSave()">Save</button>
-                            <button class="btn btn-outline-danger" 
-                                type="button" (click)="Close()">Cancel</button>
+                        <button mat-stroked-button (click)="onSave()">Save</button>
+                        <button mat-raised-button (click)="Close()" color="warn">Cancel</button>
                         </div>
                     </div>
                 </div>

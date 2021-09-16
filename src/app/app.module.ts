@@ -21,6 +21,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -43,11 +44,11 @@ import { ReadClientsComponent } from './systems/clients/read-clients/read-client
 import { ReadSuppliersComponent } from './systems/supplier/read-supplier/read-suppliers/read-suppliers.component';
 import { ReadUsersComponent } from './systems/users/read-users/read-users/read-users.component';
 import { GenerateReportComponent } from './systems/reports/generate-report/generate-report/generate-report.component';
-import { CreateSupplierComponent } from './systems/supplier/create-supplier/create-supplier/create-supplier.component';
+
 import { ViewEmployeeComponent } from './systems/employees/view-employee/view-employee/view-employee.component';
 import { EditUsersComponent } from './systems/users/edit-user/edit-users/edit-users.component';
 import { ViewClientsComponent } from './systems/clients/view-clients/view-clients/view-clients.component';
-import { EditSuppliersComponent } from './systems/supplier/edit-supplier/edit-suppliers/edit-suppliers.component';
+
 import { ReadServicesComponent } from './systems/services/read-service/read-services/read-services.component';
 import { CreateServiceComponent } from './systems/services/create-service/create-service/create-service.component';
 import { DeleteServiceComponent } from './systems/services/delete-service/delete-service/delete-service.component';
@@ -73,7 +74,7 @@ import { ReadInvoiceComponent } from './systems/invoices/read-invoice/read-invoi
 import { EmployeeSettingsComponent } from './systems/employee-settings/employee-settings.component';
 import { ReadComplaintsComponent } from './systems/complaints/read-complaints/read-complaints/read-complaints.component';
 import { ViewComplaintsComponent } from './systems/complaints/view-complaints/view-complaints/view-complaints.component';
-import { ViewEmployeeTitleComponent } from './systems/employee-settings/view-employee-title/view-employee-title.component';
+
 import { ViewEmployeeTypeComponent } from './systems/employee-settings/view-employee-type/view-employee-type.component';
 import { ViewEmploymentStatusesComponent } from './systems/employee-settings/view-employment-statuses/view-employment-statuses.component';
 import { ScheduleEmployeeComponent } from './employee-side/schedule-employee/schedule-employee.component';
@@ -90,7 +91,6 @@ import { UserSettingsComponent } from './systems/user-settings/user-settings.com
 import { CreateUserRoleComponent } from './systems/user-settings/create-user-role/create-user-role.component';
 import { EditUserRoleComponent } from './systems/user-settings/edit-user-role/edit-user-role.component';
 import { DeleteUserRoleComponent } from './systems/user-settings/delete-user-role/delete-user-role.component';
-import { ReadClientBookingComponent } from './client-side/read-client-bookings/read-client-booking/read-client-booking.component';
 import { BookingSlotsComponent } from './client-side/booking slots/booking-slots/booking-slots.component';
 import { EstimateCostingComponent } from './systems/estimate-costing/estimate-costing/estimate-costing.component';
 import { ViewSentQuoteComponent } from './systems/requested quote/view-sent-quote/view-sent-quote/view-sent-quote.component';
@@ -123,6 +123,25 @@ import { ReadExtraCollectionComponent } from './systems/extra-collection/read-ex
 import { EditExtraCollectionComponent } from './systems/extra-collection/edit-extra-collection/edit-extra-collection/edit-extra-collection.component';
 import { EditEquipmentComponent } from './systems/equipment/edit-equipment/edit-equipment/edit-equipment.component';
 import { EditVehicleComponent } from './systems/vehicles/edit-vehicle/edit-vehicle/edit-vehicle.component';
+import { EditEmploymentStatusComponent } from './systems/employee-settings/edit-employment-status/edit-employment-status/edit-employment-status.component';
+import { ReadSlotStatusComponent } from './systems/schedule/read-slot-status/read-slot-status/read-slot-status.component';
+import { CreateSlotStatusComponent } from './systems/schedule/create-slot-status/create-slot-status/create-slot-status.component';
+import { EditSlotStatusComponent } from './systems/schedule/edit-slot-status/edit-slot-status/edit-slot-status.component';
+import { EditBookingStatusComponent } from './systems/booking-status/edit-booking-status/edit-booking-status/edit-booking-status.component';
+import { EmployeeSideBookingsComponent } from './systems/bookings/employee-side-bookings/employee-side-bookings/employee-side-bookings.component';
+import { EditEmployeeComponent } from './employee-side/edit-employee/edit-employee/edit-employee.component';
+import { ReadEmpSideCollectionNoteComponent } from './systems/collection note/read-emp-side-collection-note/read-emp-side-collection-note/read-emp-side-collection-note.component';
+import { EditEmpSideCollectionNoteComponent } from './systems/collection note/edit-emp-side-collection-note/edit-emp-side-collection-note/edit-emp-side-collection-note.component';
+import { ViewEmpSideCollectionNoteComponent } from './systems/collection note/view-emp-side-collection-note/view-emp-side-collection-note/view-emp-side-collection-note.component';
+import { EditEmployeeTypeComponent } from './systems/employee-settings/edit-employee-type/edit-employee-type/edit-employee-type.component';
+import { ReadRequestedquoteComponent } from './systems/requested quote/read-requestedquote/read-requestedquote/read-requestedquote.component';
+import { PrintClientInvoicesComponent } from './systems/invoices/print-client-invoices/print-client-invoices/print-client-invoices.component';
+import { ReadClientBookingComponent } from './client-side/read-client-bookings/read-client-booking/read-client-booking/read-client-booking.component';
+import { ViewClientBookingComponent } from './client-side/view-client-booking/view-client-booking/view-client-booking.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { EditSuppliersComponent } from './systems/supplier/edit-supplier/edit-suppliers/edit-suppliers.component';
+import { CreateSupplierComponent } from './systems/supplier/create-supplier/create-supplier/create-supplier.component';
+import { ViewEmployeeTitleComponent } from './systems/employee-settings/view-employee-title/view-employee-title.component';
 
 
 
@@ -149,6 +168,7 @@ const angularMaterials = [
   MatCardModule,
   FullCalendarModule,
   MatButtonModule,
+  MatPaginatorModule,
 ]
 
 @NgModule({
@@ -244,7 +264,21 @@ const angularMaterials = [
     ReadExtraCollectionComponent,
     EditExtraCollectionComponent,
     EditEquipmentComponent,
-    EditVehicleComponent
+    EditVehicleComponent,
+    EditEmploymentStatusComponent,
+    ReadSlotStatusComponent,
+    CreateSlotStatusComponent,
+    EditSlotStatusComponent,
+    EditBookingStatusComponent,
+    EmployeeSideBookingsComponent,
+    EditEmployeeComponent,
+    ReadEmpSideCollectionNoteComponent,
+    EditEmpSideCollectionNoteComponent,
+    ViewEmpSideCollectionNoteComponent,
+    EditEmployeeTypeComponent,
+    ReadRequestedquoteComponent,
+    PrintClientInvoicesComponent,
+    ViewClientBookingComponent
   ],
 
   imports: [
@@ -258,9 +292,9 @@ const angularMaterials = [
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    ToastrModule.forRoot(), 
+    ToastrModule.forRoot(),
     MatIconModule
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent],

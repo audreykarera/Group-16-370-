@@ -1,0 +1,101 @@
+html,
+body {
+  height: 100%;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+th {
+  font-weight: normal;
+}
+
+td {
+  font-size: small;
+}
+
+.page {
+  color: white;
+  padding: 0 1rem;
+  background: white;
+}
+
+.page__box {
+  min-height: 85px;
+  background: #28a745;
+  margin: 0 -1rem;
+  font-size: 20px;
+  color: white;
+}
+
+.page__content {
+  min-height: calc(100vh - 135px);
+  border-radius: 10px;
+  margin-top: -1.5rem;
+  background: white;
+  color: black;
+}
+
+.icon-hover:hover {
+  color: #28a745;
+  cursor: pointer;
+}
+
+.pagination > li > a,
+.pagination > li > span {
+  color: black;
+}
+
+select[type="text"]:focus,
+input[type="file"]:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {
+  border-color: #28a745;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px #28a745;
+          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px #28a745;
+  outline: 0 none;
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: #28a745 !important;
+}
+
+::ng-deep.mat-form-field-underline {
+  /*change color of underline*/
+  background-color: #28a745 !important;
+}
+
+::ng-deep.mat-form-field-ripple {
+  /*change color of underline when focused*/
+  background-color: #28a745 !important;
+}
+
+mat-datepicker-toggle {
+  color: #28a745 !important;
+}
+/*# sourceMappingURL=styles.css.map */
+
+/* Border */
+.mat-form-field-appearance-outline {
+  color: #28a745 ;
+}

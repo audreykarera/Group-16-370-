@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "read-quote-status.component.scss"
+    ],
+    "names": [],
+    "file": "read-quote-status.component.css"
+}

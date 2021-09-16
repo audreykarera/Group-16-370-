@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./booking-details.component.scss']
 })
 export class BookingDetailsComponent implements OnInit {
+  dialog: any;
 
   constructor() { }
 
@@ -14,5 +15,9 @@ export class BookingDetailsComponent implements OnInit {
   handleDateClick(arg) {
     alert('date click! ' + arg.dateStr);
 
+}
+
+Close(){
+  this.dialog.closeAll();
 }
 }

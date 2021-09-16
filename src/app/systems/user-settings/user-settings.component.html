@@ -3,51 +3,46 @@
   <div class="d-flex page__box p-3 mt-2">User Roles</div>
   <div class="page__content shadow p-3">
     <div class="page__content-data">
-      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </div>
-      <br>
-      <br>
-        <div class="position-relative">
-          <div class="position-absolute top-0 end-0 icon-hover">
-            <mat-icon style="font-size: xx-large" (click)="routercreateuserrole()">add</mat-icon>
-          </div>
+    <mat-form-field appearance="standard">
+          <mat-label>Filter</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+        </mat-form-field>
+      <div class="position-relative">
+        <div class="position-absolute top-0 end-0 icon-hover">
+          <mat-icon (click)="routercreateuserrole()" style="font-size: xx-large">add</mat-icon>
         </div>
-        <br>
-      <div class="table-responsive">
-        <table class="table table-hover align-middle">
-          <thead>
-            <tr>
-              <th class="col-2">User Role ID</th>
-              <th class="col-5">User Role Description</th>
-              <th class="col-2">Edit</th>
-              <th class="col-2">Delete</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let item of userRoleList">
-              <td>{{item.userRoleId}}</td>
-              <td>{{item.userRoleName}}</td>
-              <td class="icon-hover">
-                <mat-icon (click)="routeredituserrole(item.userRoleId, item.userRoleName)">edit</mat-icon>
-              </td>
-              <td class="icon-hover">
-                <mat-icon (click)="onDelete(item.userRoleId)">delete</mat-icon>
-              </td>
-            </tr>
-          </tbody>
-        </table>
       </div>
-      <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-end">
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item"><a class="page-link" href="#">4</a></li>
-          <li class="page-item"><a class="page-link" href="#">5</a></li>
-        </ul>
-      </nav>
-    </div>
-  </div>
+      <br>
+      <br>
+
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+             <ng-container matColumnDef="userid">
+                <th mat-header-cell *matHeaderCellDef> User Role Id </th>
+                <td mat-cell *matCellDef="let element"> {{element.userid}} </td>
+             </ng-container>
+             <ng-container matColumnDef="userrole">
+               <th mat-header-cell *matHeaderCellDef> User Role Name </th>
+               <td mat-cell *matCellDef="let element"> {{element.userrole}} </td>
+              </ng-container>
+              <ng-container matColumnDef="edit">
+                <tr><th mat-header-cell *matHeaderCellDef> Edit </th></tr>
+                <tr>
+                  <td mat-cell *matCellDef="let row" style="width:20%">
+                     <button mat-icon-button (click)="routeredituserrole()" title="Edit User Role"><mat-icon>edit</mat-icon></button>
+                  </td>  
+                </tr>
+              </ng-container>    
+              <ng-container matColumnDef="delete">
+                <tr><th mat-header-cell *matHeaderCellDef> Delete </th></tr>
+                <tr>
+                  <td mat-cell *matCellDef="let row" style="width:20%">
+                     <button mat-icon-button color="danger" (click)="routerEditPaymentType()" title="Delete User Role"><mat-icon>delete</mat-icon></button>
+                  </td>  
+                </tr>
+              </ng-container>  
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+     </div>
+   </div>
 </div>

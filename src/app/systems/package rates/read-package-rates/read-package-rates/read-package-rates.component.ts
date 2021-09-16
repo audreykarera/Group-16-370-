@@ -2,11 +2,24 @@ import { CreatePackageRateComponent } from './../../create-package-price/create-
 
 import { PackageRate } from './../../../../models/packageRate';
 import { EditPackageRateComponent } from './../../edit-package-rate/edit-package-rate/edit-package-rate.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { HttpErrorResponse } from '@angular/common/http';
 import { PackageRateService } from 'src/app/shared/services/package-rate.service';
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+
+export interface PackageRateTable {
+  rateprice: number;
+  dateofprice: string;
+} 
+
+const ELEMENT_DATA: PackageRateTable[] = [
+  {rateprice: 650, dateofprice: '09/11/2021'},
+  
+];
+
 
 @Component({
   selector: 'app-read-package-rates',
@@ -15,59 +28,63 @@ import { NotificationsService } from 'src/app/shared/services/notifications.serv
 })
 export class ReadPackageRatesComponent implements OnInit {
 
-  packageRateList: PackageRate[];
-  packageRate: PackageRate;
-  searchText='';
+  // packageRateList: PackageRate[];
+  // packageRate: PackageRate;
+  // searchText='';
 
-  constructor(public dialog: MatDialog,
-    private packageRateService: PackageRateService,
-    private notificationService: NotificationsService) { }
+  displayedColumns: string[] = ['rateprice', 'dateofprice', 'edit', 'delete'];
+  dataSource = new MatTableDataSource (ELEMENT_DATA);
+ 
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+
+  constructor(public dialog: MatDialog) {}
+    // private packageRateService: PackageRateService,
+    // private notificationService: NotificationsService
 
   ngOnInit(): void {
-    this.readPackageRates();
+    //this.readPackageRates();
   }
 
-  readPackageRates(){
-    this.packageRateService.getPackageRate().subscribe((res)=>{
-      this.packageRateList=res as PackageRate[];
-    }, (err:HttpErrorResponse)=>{
-      this.notificationService.failToaster("Unable to display Payment Types", "Error");
-      console.log(err);
-    })
-  }
+  // readPackageRates(){
+  //   this.packageRateService.getPackageRate().subscribe((res)=>{
+  //     this.packageRateList=res as PackageRate[];
+  //   }, (err:HttpErrorResponse)=>{
+  //     this.notificationService.failToaster("Unable to display Payment Types", "Error");
+  //     console.log(err);
+  //   })
+  // }
 
-  onDelete(id){
-    this.packageRateService.deletePackageRate(id).subscribe((res)=>{
-      console.log(id);
-      this.readPackageRates();
-    }, (err: HttpErrorResponse)=>{
-      this.notificationService.failToaster("Pacckage Rate Deleted ", "Success");
-    });
-  }
+  // onDelete(id){
+  //   this.packageRateService.deletePackageRate(id).subscribe((res)=>{
+  //     console.log(id);
+  //     this.readPackageRates();
+  //   }, (err: HttpErrorResponse)=>{
+  //     this.notificationService.failToaster("Pacckage Rate Deleted ", "Success");
+  //   });
+  // }
 
   routerAddPackageRate() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
+    const dialog = new MatDialogConfig();
+    dialog.disableClose = true;
+    dialog.width ='20rem';
+    dialog.height = 'auto';
     const dialogReference = this.dialog.open(
       CreatePackageRateComponent, 
-      dialogConfig
+      dialog
     );
   }
-  routerEditPackageRate(packageRateId: number, packageRatePrice: number, packagePriceDate: string) {
-    console.log(packageRateId, packageRatePrice, packagePriceDate);
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
+  routerEditPackageRate() {
+    const dialog = new MatDialogConfig();
+    dialog.disableClose = true;
+    dialog.width ='20rem';
+    dialog.height = 'auto';
     const dialogReference = this.dialog.open(
-      EditPackageRateComponent, 
-      {
-        disableClose:true,
-        data:{
-          packageRateId,
-          packageRatePrice,
-          packagePriceDate
-
-        }
-      }
+    EditPackageRateComponent, 
+    dialog
     );
 
 }

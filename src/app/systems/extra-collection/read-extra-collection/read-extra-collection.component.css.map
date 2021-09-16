@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,KAAK,CAAC;EACF,KAAK,EAAE,IAAI;CACZ",
+    "sources": [
+        "read-extra-collection.component.scss"
+    ],
+    "names": [],
+    "file": "read-extra-collection.component.css"
+}

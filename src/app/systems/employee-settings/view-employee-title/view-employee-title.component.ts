@@ -2,12 +2,17 @@ import { NotificationsService } from './../../../shared/services/notifications.s
 import { EditTitleComponent } from './../edit-title/edit-title/edit-title.component';
 import { AddTitleComponent } from './../add-title/add-title/add-title.component';
 import { TitleService } from './../../../shared/services/title.service';
-
-import { Component, OnInit } from '@angular/core';
+import { map } from 'rxjs/operators';
+import { Title } from 'src/app/Interfaces/Index';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Title } from 'src/app/models/titles';
+import { MatTableDataSource } from '@angular/material/table';
+import { id } from '@swimlane/ngx-charts';
+import { MatPaginator } from '@angular/material/paginator';
+
+
 
 @Component({
   selector: 'app-view-employee-title',
@@ -15,61 +20,99 @@ import { Title } from 'src/app/models/titles';
   styleUrls: ['./view-employee-title.component.scss']
 })
 export class ViewEmployeeTitleComponent implements OnInit {
-  titleList: Title[]; 
-  title: Title; 
 
+  titleList: Title[] = [];
+  titles$: Observable<Title[]> = this.service.getTitles();
+  title: Title
+
+
+  displayedColumns: string[] = ['titlename', 'edit', 'delete'];
+  dataSource = new MatTableDataSource(this.titleList);
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+    console.log(event);
+  }
 
   constructor(
-    public titleService: TitleService,
     public dialog: MatDialog,
-    notificationsService: NotificationsService
-  ) { }
+    private service: TitleService, 
+    private notificationsService: NotificationsService,) { }
 
   ngOnInit(): void {
-    this.readTitles();
+    this.GetTitles();
+    this.refreshForm();
   }
-  Close(){
+
+  refreshForm() {
+    this.title = {
+      TitleId: 0,
+      TitleName: ''
+    }
+  }
+
+  Close() {
     this.dialog.closeAll();
   }
-  
-  
-  readTitles(){
-    console.log(this.titleList);
-    this.titleService.getTitles().subscribe((res)=>{
-      this.titleList = res as Title[];
-      console.log(this.titleList);
+
+  GetTitles(){
+    this.titles$.subscribe(res=>{
+      if(res){
+        this.titleList = res; 
+        console.log(res);
+      }
     });
   }
-    onDelete(id){
-      this.titleService.deleteTitle(id).subscribe((res)=>{
-        console.log(id);
-        this.readTitles();
-      });
+
+  DeleteTitle(id){
+    console.log(id);
+    this.service.DeleteTitle(id).subscribe((res)=>{
+        this.notificationsService.successToaster('Title Deleted', 'Success'); 
+        this.GetTitles();
+    });
+    
   }
 
-  routerEditEmployeeTitles(titleId: number, titleDescription: string) {
-    console.log(titleId, titleDescription);
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = false; 
-    const dialogReference = this.dialog.open(
-      EditTitleComponent,
-      {
-        disableClose: true,
-        data: {
-          titleId, 
-          titleDescription
-        }
-      }
-    );
+// routerEditEmployeeTitles(titleId: number, titleDescription: string) {
+//   console.log(titleId, titleDescription);
+//   const dialogConfig = new MatDialogConfig();
+//   dialogConfig.disableClose = false;
+//   const dialogReference = this.dialog.open(
+//     EditTitleComponent,
+//     {
+//       disableClose: true,
+//       data: {
+//         titleId,
+//         titleDescription
+//       }
+//     }
+//   );
 
-  }
-  routerAddEmployeeTitles() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = false; 
-    const dialogReference = this.dialog.open(
-      AddTitleComponent,
-      dialogConfig
-    );
-  }
+// }
+
+routerAddEmployeeTitles(){
+  const dialog = new MatDialogConfig();
+  dialog.disableClose = true;
+  dialog.width = 'auto';
+  dialog.height = 'auto',
+  dialog.data = { add: 'yes' }
+  const dialogReference = this.dialog.open(
+    AddTitleComponent,
+    dialog
+  ); 
+
+  dialogReference.afterClosed().subscribe((res)=>{
+    if(res == 'add'){
+      this.notificationsService.successToaster('Title Added', 'Success'); 
+      this.GetTitles();
+    }
+  });
+}
 
 }

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,KAAK,CAAC;EACF,KAAK,EAAE,IAAI;CACZ",
+    "sources": [
+        "read-package-rates.component.scss"
+    ],
+    "names": [],
+    "file": "read-package-rates.component.css"
+}

@@ -1,53 +1,64 @@
 <div class="container-fluid page">
-    <div class="d-flex page__box p-3 mt-2">Equipment</div>
-    <div class="page__content shadow p-3">
-        <div class="page__content-data">
-
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </div>
-            <br>
-            <div class="position-relative">
-                <div class="position-absolute top-0 end-0 icon-hover">
-                    <mat-icon style="font-size: xx-large" (click)="routerAddequipment()">add</mat-icon>
-                </div>
-            </div>
-            <br>
-
-            <div class="table-responsive">
-                <table class="table table-hover align-middle">
-                    <thead>
-                        <tr>
-                            <th class="col">Equipment Name</th>
-                            <th class="col">Equipment Availability</th>
-                            <th class="col-1">Edit</th>
-                            <th class="col-1">Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let item of equipmentList">
-                            <td>{{item.equipmentName}}</td>
-                            <td>{{item.equipmentAvailable}}</td>
-                            <td class="icon-hover">
-                                <mat-icon (click)="routerEditEquipment()">edit</mat-icon>
-                            </td>
-                            <td class="icon-hover">
-                                <mat-icon (click)="onDelete(item.equipmentId)">delete</mat-icon>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-end">
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">4</a></li>
-                    <li class="page-item"><a class="page-link" href="#">5</a></li>
-                </ul>
-            </nav>
+  <div class="d-flex page__box p-3 mt-2">Equipment</div>
+  <div class="page__content shadow p-3">
+    <div class="page__content-data">
+      <div class="position-relative">
+        <div class="position-absolute top-0 end-0 icon-hover">
+          <mat-icon style="font-size: xx-large" (click)="routerAddEquipment()">add</mat-icon>
         </div>
+      </div>
+      <br>
+
+      <mat-form-field appearance="standard">
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+      </mat-form-field>
+
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Equipment Name</th>
+          <td mat-cell *matCellDef="let element">{{element.name}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="availability">
+          <th mat-header-cell *matHeaderCellDef>Equipment Availability</th>
+          <td mat-cell *matCellDef="let element">{{element.availability}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="edit">
+          <tr>
+            <th mat-header-cell *matHeaderCellDef>Edit</th>
+          </tr>
+          <tr>
+            <td mat-cell *matCellDef="let row">
+              <button mat-icon-button (click)="routerEditEquipment()">
+                <mat-icon>edit</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </ng-container>
+
+        <ng-container matColumnDef="delete">
+          <tr>
+            <th mat-header-cell *matHeaderCellDef>Delete</th>
+          </tr>
+          <tr>
+            <td mat-cell *matCellDef="let row">
+              <button mat-icon-button>
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+        </tr>
+      </table>
     </div>
+  </div>
 </div>

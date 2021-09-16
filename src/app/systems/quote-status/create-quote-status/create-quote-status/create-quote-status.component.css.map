@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "create-quote-status.component.scss"
+    ],
+    "names": [],
+    "file": "create-quote-status.component.css"
+}

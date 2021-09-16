@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "show-estimate.component.scss"
+    ],
+    "names": [],
+    "file": "show-estimate.component.css"
+}

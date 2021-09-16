@@ -1,13 +1,24 @@
 import { EmployeeType } from './../../../models/employeeType';
-import { EditEmployeeTypeComponent } from './../edit-employee-type/edit-employee-type.component';
-import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { Component,Inject, OnInit, ViewChild } from '@angular/core';
+import { MatDialog,MatDialogRef, MatDialogConfig } from '@angular/material/dialog';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { EmployeeTypeService } from 'src/app/shared/services/employee-type.service';
 import { AddEmployeeTypeComponent } from '../add-employee-type/add-employee-type/add-employee-type.component';
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
+import { EditEmployeeTypeComponent } from '../edit-employee-type/edit-employee-type/edit-employee-type.component';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
+export interface EmployeeTypeTable {
+  typename: string;
+  employeetypeid: number;
+} 
+
+const ELEMENT_DATA: EmployeeTypeTable[] = [
+  {employeetypeid: 1, typename: 'Driver'},
+
+];
 
 @Component({
   selector: 'app-view-employee-type',
@@ -15,8 +26,18 @@ import { NotificationsService } from 'src/app/shared/services/notifications.serv
   styleUrls: ['./view-employee-type.component.scss']
 })
 export class ViewEmployeeTypeComponent implements OnInit {
-  employeeTypeList: EmployeeType[];
-  employeeType: EmployeeType;
+  // employeeTypeList: EmployeeType[];
+  // employeeType: EmployeeType;
+
+  displayedColumns: string[] = ['employeetypeid', 'typename', 'edit', 'delete'];
+  dataSource = new MatTableDataSource (ELEMENT_DATA);
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+
 
 
   constructor(
@@ -26,35 +47,38 @@ export class ViewEmployeeTypeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.readEmployeeTypes();
+    //this.readEmployeeTypes();
   }
   Close(){
     this.dialog.closeAll();
   }
   
-  readEmployeeTypes(){
-    console.log(this.employeeTypeList);
-    this.employeeTypeService.getEmployeeType().subscribe((res) => {
-      this.employeeTypeList = res as EmployeeType[];
-      console.log(this.employeeTypeList);
-    });
-  }
-    onDelete(id){
-      this.employeeTypeService.deleteEmployeeType(id).subscribe((res)=>{
-        console.log(id);
-        this.readEmployeeTypes();
-      });this.Close();
-      this.notificationsService.successToaster("Employee Type deleted", "Success");
-      setTimeout(()=>{
-        window.location.reload();
-      }, 1000);
-  }
+  // readEmployeeTypes(){
+  //   console.log(this.employeeTypeList);
+  //   this.employeeTypeService.getEmployeeType().subscribe((res) => {
+  //     this.employeeTypeList = res as EmployeeType[];
+  //     console.log(this.employeeTypeList);
+  //   });
+  // }
+  //   onDelete(id){
+  //     this.employeeTypeService.deleteEmployeeType(id).subscribe((res)=>{
+  //       console.log(id);
+  //       this.readEmployeeTypes();
+  //     });this.Close();
+  //     this.notificationsService.successToaster("Employee Type deleted", "Success");
+  //     setTimeout(()=>{
+  //       window.location.reload();
+  //     }, 1000);
+  // }
 
   routerEditEmployeeTypes(employeeTypeId: number, employeeTypeName: string) {
     console.log(employeeTypeId, employeeTypeName);
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = false;
+    const dialog = new MatDialogConfig();
+    dialog.disableClose = false;
+    dialog.width ='auto';
+    dialog.height = 'auto';
     const dialogReference = this.dialog.open(
+      
       EditEmployeeTypeComponent,
       {
         disableClose: true,
@@ -67,11 +91,14 @@ export class ViewEmployeeTypeComponent implements OnInit {
 
   }
   routerAddEmployeeTypes() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = false;
+    const dialog = new MatDialogConfig();
+    dialog.disableClose = true;
+    dialog.width ='auto';
+    dialog.height = 'auto';
     const dialogReference = this.dialog.open(
       AddEmployeeTypeComponent,
-      dialogConfig
+      dialog
     );
   }
 }
+

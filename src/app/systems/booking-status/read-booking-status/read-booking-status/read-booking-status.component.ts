@@ -6,6 +6,17 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { BookingStatus } from 'src/app/models/bookingstatus';
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { MatTableDataSource } from '@angular/material/table';
+
+export interface BookingStatusTable{
+  id: number;
+  name: string;
+}
+
+const ELEMENT_DATA: BookingStatusTable[] = [
+  {id: 1, name: 'Booked'},
+  {id: 2, name: 'Pending'}
+];
 
 @Component({
   selector: 'app-read-booking-status',
@@ -13,6 +24,17 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./read-booking-status.component.scss']
 })
 export class ReadBookingStatusComponent implements OnInit {
+
+
+  displayedColumns: string[] = ['id','name','edit','delete'];
+  dataSource = new MatTableDataSource(ELEMENT_DATA);
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+
 
   bookingStatusList: BookingStatus[];
   bookingStatus:BookingStatus;
@@ -44,29 +66,37 @@ export class ReadBookingStatusComponent implements OnInit {
     });
   }
 
-  routerAddBookingStatus() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    const dialogReference = this.dialog.open(
-      CreateBookingStatusComponent, 
-      dialogConfig
-    );
-  }
-  routerEditBookingStatus(bookingStatusId:number, bookingStatusName:string) {
-    console.log(bookingStatusId, bookingStatusName);
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    const dialogReference = this.dialog.open(
-      EditBookingStatusComponent, 
-      {
-        disableClose:true,
-        data:{
-          bookingStatusId,
-          bookingStatusName
-        }
-      }
-    );
+  // openAddDialog(){
+  //   this.dialog.open(CreateBookingStatusComponent,{height:'auto',width:'auto'});
+  // }
 
-}
+  // openEditDialog(){
+  //   this.dialog.open(EditBookingStatusComponent,{height:'auto',width:'auto'});
+  // }
+
+   routerAddBookingStatus() {
+    const dialog = new MatDialogConfig
+    dialog.disableClose = true;
+    dialog.width = 'auto';
+    dialog.height = 'auto';
+    dialog.data = {add: 'yes'}
+    const dialogReference = this.dialog.open(
+      CreateBookingStatusComponent,
+      dialog
+    )
+   }
+   routerEditBookingStatus() {
+    const dialog = new MatDialogConfig
+    dialog.disableClose = true;
+    dialog.width = 'auto';
+    dialog.height = 'auto';
+    dialog.data = {add: 'yes'}
+    const dialogReference = this.dialog.open(
+      EditBookingStatusComponent,
+      dialog
+    )
+   }
+
+
 }
 

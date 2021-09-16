@@ -1,25 +1,14 @@
-<body>
-        <div class="modal-body" style="width: 20rem; height: auto;">
-                <h3>Add User Role</h3>
-                <div class="form-group">
-                        <div class="container">
-                                <div class="row">
-                                        <div class="col">
-                                                <mat-form-field class="example-full-width" appearance="fill">
-                                                 <mat-label>User Role Name</mat-label>
-                                                 <input matInput placeholder="">
-                                                </mat-form-field>        
-                                                
-                                                <br>
-                                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                                        <button class="btn btn-outline-success me-md-2"
-                                                                (click)="onSave()" type="button">Save</button>
-                                                        <button class="btn btn-outline-danger" (click)="Close()"
-                                                                type="button">Cancel</button>
-                                                </div>
-                                        </div>
-                                </div>
-                        </div>
-                </div>
-        </div>
-</body>
+
+<h1 mat-dialog-title>Add User Role</h1>
+<div mat-dialog-content>
+  <form class="text-center">
+    <mat-form-field appearance="fill">
+      <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Add User Role</mat-label>
+      <input matInput placeholder="User Role">
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button (click)="onSave()" >Save</button>
+  <button mat-raised-button (click)="Close()" mat-dialog-close color="warn">Close</button>
+</div>

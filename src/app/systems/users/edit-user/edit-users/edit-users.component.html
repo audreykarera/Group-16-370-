@@ -9,32 +9,41 @@
 </head>
 
 <body>
-    <div class="modal-body" style="width: 20rem; height: 26rem;">
+    <div class="modal-body" style="width: 20rem; height: auto;">
         <h3>Edit User</h3>
         <div class="form-group">
             <div class="container">
                 <div class="row">
                     <div class="col">
                         <label class="col-form-label col-form-label-sm mt-4 float-right" for="inputSmall">User Roles</label>
-                        <select class="form-select form-select-sm" aria-label=".form-select-sm example" type="text">
-                            <option selected></option>
-                                <option value="1">Administrator</option>
-                                <option value="2">External</option>
-                                <option value="3">Internal</option>
-                          </select>
-                        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">User's Name</label>
-                        <input class="form-control form-control-sm" type="text" placeholder="Rowan Gauld"
-                            aria-label=".form-control-sm example" readonly>
-                        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Username</label>
-                        <input class="form-control form-control-sm" type="text" placeholder="rowanG"
-                            aria-label=".form-control-sm example" readonly>
-                        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Email Address</label>
-                        <input class="form-control form-control-sm" type="text" placeholder="rowang@gmail.com"
-                            aria-label=".form-control-sm example" readonly>
+                        <form>
+                           <mat-form-field appearance="fill">
+                             <mat-label>Role</mat-label>
+                             <mat-select>
+                             <mat-option value="one">Admin</mat-option>
+                             <mat-option value="two">Employee</mat-option>
+                             <mat-option value="three">Client</mat-option>
+                             </mat-select>
+                           </mat-form-field>
+                        </form>
+                        <form>
+                          <mat-form-field appearance="fill">
+                            <mat-label>User's Name</mat-label>
+                            <input matInput placeholder="Aubrey Sir" readonly>
+                          </mat-form-field>
+                          <mat-form-field appearance="fill">
+                            <mat-label>Username</mat-label>
+                            <input matInput placeholder="aubreysir24" readonly>
+                          </mat-form-field>
+                          <mat-form-field appearance="fill">
+                            <mat-label>Email Address</mat-label>
+                            <input matInput placeholder="aubreysir@gmail.com" readonly>
+                          </mat-form-field>
+                        </form>
                         <br>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button class="btn btn-outline-success me-md-2"  (click)="openConfirmDialog()" type="button">Save</button>
-                            <button class="btn btn-outline-danger"  (click)="Close()" type="button">Cancel</button>
+                            <button mat-stroked-button>Save</button>
+                        <button mat-raised-button (click)="Close()" color="warn">Cancel</button>
                         </div>
                     </div>
                 </div>

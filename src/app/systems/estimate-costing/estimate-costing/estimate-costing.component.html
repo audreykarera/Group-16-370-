@@ -81,13 +81,18 @@
           <div class="position-relative">
             <mat-icon class="position-absolute top-0 end-0 icon-hover">add_circle</mat-icon>
           </div>
-          <label class="col-form-label col-form-label-sm mt-2 float-right" for="inputSmall">Province</label>
-          <select class="form-select form-select-sm" aria-label=".form-select-sm example" type="text">
-            <option selected></option>
-            <option value="1">Gauteng</option>
-            <option value="2">Kwa-Zulu-Natal</option>
 
-          </select>
+          <form class="text-center">
+            <mat-form-field appearance="fill">
+              <mat-label>Province</mat-label>
+              <mat-select>
+                <mat-option value="one">Gauteng</mat-option>
+                <mat-option value="two">KZN</mat-option>
+              </mat-select>
+              <mat-icon matSuffix>travel_explore</mat-icon>
+              <mat-hint>Enter the name of your Province</mat-hint>
+            </mat-form-field>
+          </form>
           <div class="text-center">
             <div class="col-form-label col-form-label-sm mt-2 float-right">
               <mat-form-field appearance="fill">
@@ -117,8 +122,8 @@
         </mat-card-content>
         <mat-card-actions>
           <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-            <button class="btn btn-outline-success me-md-2" type="button" (click)="routerGenerateEstimate()">Generate</button>
-            <button class="btn btn-outline-primary" type="button" routerLinkActive="list-item-active" routerLink="/request-quote">Request Quote</button>
+            <button mat-stroked-button (click)="routerGenerateEstimate()">Generate</button>
+            <button mat-raised-button routerLinkActive="list-item-active" routerLink="/request-quote">Request Quote</button>  
           </div>
         </mat-card-actions>
       </mat-card>

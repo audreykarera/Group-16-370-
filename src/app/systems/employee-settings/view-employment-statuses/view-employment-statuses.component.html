@@ -1,21 +1,47 @@
-<div class="modal-content" >
-      <div class="modal-header">
-      <h4 class="modal-title">Employment Statuses</h4>
-        <button (click)=" Close()" type="button" class="close" data-dismiss="modal">&times;</button>
+<div class="container-fluid page">
+  <div class="d-flex page__box p-3 mt-2">Employment Statuses</div>
+  <div class="page__content shadow p-3">
+    <div class="page__content-data">
+    <mat-form-field appearance="standard">
+          <mat-label>Filter</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+        </mat-form-field>
+      <div class="position-relative">
+        <div class="position-absolute top-0 end-0 icon-hover">
+          <mat-icon (click)="routerAddEmploymentStatuses()" style="font-size: xx-large">add</mat-icon>
+        </div>
       </div>
-      <div class="modal-body">
-        <div class="table-responsive">
-        <table class="table table-hover align-middle">
-          <tbody>
-            <tr *ngFor="let item of employmentStatusList">
-            <td class="col-5"><span>{{item.employmentStatusName}}</span></td>
-                <td class="icon-hover">
-                <mat-icon (click) ="routerEditEmploymentStatuses(item.employmentStatusId, item.employmentStatusName)">edit</mat-icon>
-                </td>
-                <td class="icon-hover">
-                <mat-icon (click) ="onDelete(item.employmentStatusId)">delete</mat-icon>
-                </td>
-            </tr>
-            <br>
-        <button type="button" class="btn btn-success" (click) ="routerAddEmploymentStatuses()">Add </button>
-
+      <br>
+      <br>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+             <ng-container matColumnDef="employementstatusid">
+                <th mat-header-cell *matHeaderCellDef> Employment Status No. </th>
+                <td mat-cell *matCellDef="let element"> {{element.employementstatusid}} </td>
+             </ng-container>
+             <ng-container matColumnDef="employementstatusname">
+               <th mat-header-cell *matHeaderCellDef> Employment Status Name </th>
+               <td mat-cell *matCellDef="let element"> {{element.employementstatusname}} </td>
+              </ng-container>
+              <ng-container matColumnDef="edit">
+                <tr><th mat-header-cell *matHeaderCellDef> Edit </th></tr>
+                <tr>
+                  <td mat-cell *matCellDef="let row" style="width:20%">
+                     <button mat-icon-button (click)="routerEditEmploymentStatuses()" title="Edit Employment Status"><mat-icon>edit</mat-icon></button>
+                  </td>
+                </tr>
+              </ng-container>
+              <ng-container matColumnDef="delete">
+                <tr><th mat-header-cell *matHeaderCellDef> Delete </th></tr>
+                <tr>
+                  <td mat-cell *matCellDef="let row" style="width:20%">
+                     <button mat-icon-button color="danger" title="Delete Employment Status"><mat-icon>delete</mat-icon></button>
+                  </td>
+                </tr>
+              </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <br>
+     </div>
+   </div>
+</div>

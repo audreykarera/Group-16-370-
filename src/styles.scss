@@ -50,7 +50,7 @@ td{
     color:black;
 }
 
-textarea:focus,
+// textarea:focus,
 select[type="text"]:focus,
 input[type="file"]:focus,
 input[type="text"]:focus,
@@ -59,7 +59,7 @@ input[type="datetime"]:focus,
 input[type="datetime-local"]:focus,
 input[type="date"]:focus,
 input[type="month"]:focus,
-input[type="time"]:focus,
+//input[type="time"]:focus,
 input[type="week"]:focus,
 input[type="number"]:focus,
 input[type="email"]:focus,
@@ -85,12 +85,19 @@ input[type="color"]:focus,
 
 ::ng-deep.mat-form-field-ripple {
  /*change color of underline when focused*/
- background-color: #28a745 !important;;
+ background-color: #28a745 !important;
 }
+
+  // .mat-form-field-outline{
+  //   color: #28a745 !important;
+  // }
 
 
 mat-datepicker-toggle {
   color: #28a745 !important;
 }
 
+.errors{
+  color: red;
+}
 

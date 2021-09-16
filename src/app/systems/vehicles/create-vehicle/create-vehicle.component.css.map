@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "create-vehicle.component.scss"
+    ],
+    "names": [],
+    "file": "create-vehicle.component.css"
+}
