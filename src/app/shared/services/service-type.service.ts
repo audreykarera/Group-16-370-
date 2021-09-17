@@ -1,41 +1,51 @@
-import { ServiceType } from 'src/app/models/serviceType';
+
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { ServiceType } from 'src/app/Interfaces/Index';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServiceTypeService {
-  apiUrl = "http://localhost:60000/api/servicetype/";
+  apiUrl = "http://localhost:60000/api/servicetype";
   constructor(
     private http: HttpClient
   ) { }
 
-  getServiceTypes() {
-    return this.http.get(this.apiUrl + 'getservicetype/');
+  getServiceTypes(): Observable<ServiceType[]> {
+    return this.http.get<ServiceType[]>(`${this.apiUrl}`)
+      .pipe(map(res => res));
   }
 
-  getServiceTypeId(id) {
-    return this.http.get(this.apiUrl + 'getservicetype' + id);
+  getServiceType(id: number): Observable<ServiceType[]> {
+    return this.http.get<ServiceType[]>(`${this.apiUrl}/${id}`)
+      .pipe(map(res => res));
   }
 
-  patchServiceType(obj) {
-    return this.http.patch(this.apiUrl + 'updateservicetype/', obj);
+  UpdateServiceType(serviceType: ServiceType) {
+    return this.http.put(`${this.apiUrl}/${serviceType.ServiceTypeId}`, serviceType)
+      .pipe(map(res => res));
   }
 
-  postServiceType(obj) {
-    return this.http.post(this.apiUrl + 'createservicetype/', obj);
+  CreateServiceType(serviceType: ServiceType): Observable<any> {
+    return this.http.post(`${this.apiUrl}`, serviceType)
+      .pipe(map(res => res));
   }
 
-  deleteServiceType(id) {
-    return this.http.delete(this.apiUrl + 'deleteservicetype' + id);
+  DeleteServiceType(id: number) {
+    return this.http.delete(`${this.apiUrl}/${id}`)
+      .pipe(map(res => res));
   }
-  getServiceTypeByName(name){
-    return this.http.get(this.apiUrl + 'getservicetypebyname' + name); 
-  }
+
+  // DeleteServiceType(id){
+  //   return this.http.delete(`${this.apiUrl}/`+ id);
+  // }
+
+
+ 
   
 
 }

@@ -9,7 +9,8 @@ import { FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { SharedComponent } from 'src/app/component/shared components/shared/shared.component';
 import { DialogInterface } from 'src/app/interfaces/dialog.interface';
-import { ServiceType } from 'src/app/models/serviceType';
+import { ServiceType } from 'src/app/Interfaces/Index';
+
 
 interface Food {
   value: string;
@@ -67,7 +68,7 @@ export class CreateServiceComponent implements OnInit {
       ServiceId:0,
       ServiceName: '',
       ServiceDescription:'',
-      ServiceType:[],
+      
       ServicePrice:[],
       Location:[],
     }
