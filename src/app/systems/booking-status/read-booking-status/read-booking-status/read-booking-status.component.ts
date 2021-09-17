@@ -1,3 +1,4 @@
+import { FormControl } from '@angular/forms';
 import { EditBookingStatusComponent } from './../../edit-booking-status/edit-booking-status/edit-booking-status.component';
 import { CreateBookingStatusComponent } from './../../create-booking-status/create-booking-status/create-booking-status.component';
 import { BookingStatusService } from './../../../../shared/services/booking-status.service';
@@ -32,7 +33,8 @@ export class ReadBookingStatusComponent implements OnInit {
 
   constructor(public dialog: MatDialog,
     private service: BookingStatusService, 
-    private notificationsService: NotificationsService,) { }
+    private notificationsService: NotificationsService,
+    ) { }
 
   ngOnInit(): void {
     this.GetBookingStatuses();
@@ -84,6 +86,7 @@ export class ReadBookingStatusComponent implements OnInit {
     }
   });
 }
+
   //  routerEditBookingStatus() {
   //   const dialog = new MatDialogConfig
   //   dialog.disableClose = true;

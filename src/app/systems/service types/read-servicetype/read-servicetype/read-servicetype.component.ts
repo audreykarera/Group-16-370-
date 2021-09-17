@@ -111,9 +111,6 @@ export class ReadServicetypeComponent implements OnInit {
       CreateServicetypeComponent,
       dialog
     ); 
-
-    
-
   dialogReference.afterClosed().subscribe((res)=>{
     if(res == 'add'){
       this.notificationsService.successToaster('Service Type Added', 'Success'); 

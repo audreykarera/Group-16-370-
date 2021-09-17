@@ -9,19 +9,19 @@ export interface ServiceType{
     ServiceTypeDescription:string |null;
 }
 
-export class Supplier{
+export interface Supplier{
     SupplierId: number | null; 
     SupplierName: string | null; 
     SupplierContactPersonNumber: string | null;
     SupplierContactPersonEmail: string | null;
 }
 
-export class BookingStatus{
+export interface BookingStatus{
     BookingStatusId: number | null;
     BookingStatusName: string |null;
 }
 
-export class Vehicle{
+export interface Vehicle{
     VehicleId: number |null;
       VehicleNumberPlate: string | null;
       VehicleMake: string |null;
