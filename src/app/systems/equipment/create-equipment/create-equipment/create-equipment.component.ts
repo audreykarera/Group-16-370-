@@ -1,6 +1,8 @@
+import { Equipment } from 'src/app/Interfaces/Index';
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { Equipment } from 'src/app/models/equipment';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+
 import { EquipmentService } from 'src/app/shared/services/equipment.service';
 
 @Component({
@@ -9,27 +11,52 @@ import { EquipmentService } from 'src/app/shared/services/equipment.service';
   styleUrls: ['./create-equipment.component.scss']
 })
 export class CreateEquipmentComponent implements OnInit {
-  equipment: Equipment; 
+
+ form: FormGroup;
+ equipment: Equipment;
+
+ error_messages = {
+   EquipmentName: [
+     {type: 'required', message: 'Equipment description is required'},
+     {type: 'minLength', message: 'Equipment must be more than 2 character'},
+     {type: 'maxLength', message: 'Equipment must be less than 51 characters'}
+   ]
+ }
+
+
 
   constructor(public dialog: MatDialog,
-    private equipmentService: EquipmentService,) { }
+     private equipmentService: EquipmentService,
+    public dialogRef: MatDialogRef<CreateEquipmentComponent>,
+    private formBuilder: FormBuilder,
+    ) { }
 
   ngOnInit(): void {
-    this.refreshForm()
+    this.refreshForm();
+    this.createForm();
   }
 
-  Close(){
-    this.dialog.closeAll();
+  createForm(){
+    this.form = this.formBuilder.group({
+      EquipmentName: new FormControl(
+        this.equipment.EquipmentName,
+        Validators.compose([
+          Validators.required,
+          Validators.maxLength(50),
+          Validators.minLength(3)
+        ])
+      )
+    });
   }
 
-  onSave(){
-    this.equipmentService.postVehicle(this.equipment).subscribe((res)=>{
-      this.equipment = res as Equipment
-    }); 
-    this.Close();
-    setTimeout(()=>{
-      window.location.reload();
-    }, 1000);
+  onSubmit(){
+    if(this.form.valid) {
+      this.equipment = this.form.value;
+      this.equipmentService.CreateEquipment(this.equipment).subscribe(res =>{
+        this.refreshForm();
+        this.dialogRef.close('add');
+      })
+    }
   }
 
   refreshForm(){
@@ -39,5 +66,15 @@ export class CreateEquipmentComponent implements OnInit {
       EquipmentAvailable: true
     }
   }
+
+  Close(){
+    this.dialog.closeAll();
+  }
+
+
+
+
+
+
 
 }
