@@ -28,16 +28,15 @@ export class EditSuppliersComponent implements OnInit {
     this.dialog.closeAll();
   }
   
-  onSave(){
-    this.supplierService.patchSupplier(this.supplier).subscribe((res)=>{
-      this.supplier = res as Supplier; 
-    });
-    this.Close();
-    this.notificationService.successToaster("Successfully saved supplied", "Error");
-    setTimeout(()=>{
-      window.location.reload();
-    }, 1000);
-  }
+  // onSave(){
+  //   this.supplierService.patchSupplier(this.supplier).subscribe((res)=>{
+  //     this.supplier = res as Supplier; 
+  //   });
+  //   this.Close();
+  //   this.notificationService.successToaster("Successfully saved supplied", "Error");
+  //   setTimeout(()=>{
+  //     window.location.reload();
+  //   }, 1000);
 
   refreshForm(){
     this.supplier = {

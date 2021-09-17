@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { BookingStatus } from 'src/app/models/bookingstatus';
+import { BookingStatus } from 'src/app/Interfaces/Index';
 import { BookingStatusService } from 'src/app/shared/services/booking-status.service';
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
 
@@ -11,40 +12,62 @@ import { NotificationsService } from 'src/app/shared/services/notifications.serv
   styleUrls: ['./create-booking-status.component.scss']
 })
 export class CreateBookingStatusComponent implements OnInit {
+  form: FormGroup;
+  bookingstatus: BookingStatus
 
-  bookingStatus: BookingStatus;
-  bookingStatusList: BookingStatus[];
+  error_messages = {
+    BookingStatusName: [
+      { type: 'required', message: 'Booking Status Name is required' },
+      { type: 'minLength', message: 'Booking Status must be more than 1 character' },
+      { type: 'maxLength', message: 'Booking Status Name must be less than 20 characters' }
+    ]
+  }
 
-  constructor(private bookingStatusService: BookingStatusService,
-    public dialog:MatDialog,
-    private notificationService:NotificationsService,
-    public router:Router) { }
+  constructor(private service: BookingStatusService,
+    public dialog: MatDialog,
+    private formBuilder: FormBuilder, 
+    public dialogRef: MatDialogRef<CreateBookingStatusComponent>) { }
 
     ngOnInit(): void {
       this.refreshForm();
+      this.createForm();
+      console.log('Hello')
+    }
+
+    createForm() {
+      this.form = this.formBuilder.group({
+        BookingStatusName: new FormControl(
+          this.bookingstatus.BookingStatusName,
+          Validators.compose([
+            Validators.required,
+            Validators.maxLength(19),
+            Validators.minLength(2)
+          ])
+        )
+      });
     }
   
     Close(){
       this.dialog.closeAll();
     }
-  
-    onSave(){
-      this.bookingStatusService.postBookingStatus(this.bookingStatus).subscribe((res)=>{
-        this.bookingStatus = res as BookingStatus; 
-      });
-      this.Close();
-      this.notificationService.successToaster("Successfully saved Booking Status", "Success Message");
-      setTimeout(()=>{
-        window.location.reload();
-      }, 1000);
+
+    OnSubmit() {
+      console.log('Hello')
+      if (this.form.valid) {
+        this.bookingstatus = this.form.value;
+        this.service.CreateBookingStatus(this.bookingstatus).subscribe(res => {
+          this.refreshForm();
+          this.dialogRef.close('add');
+        });
+      }
     }
   
-    //This method rfreshes the form verytime something is done. That is why it is called in the OnInit
-    refreshForm(){
-      this.bookingStatus = {
+     refreshForm(){
+      this.bookingstatus = {
         BookingStatusId: 0,
         BookingStatusName: ''
     }
 
   }
 }
+
