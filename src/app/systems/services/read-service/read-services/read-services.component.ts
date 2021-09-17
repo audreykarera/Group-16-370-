@@ -101,11 +101,13 @@ export class ReadServicesComponent implements OnInit {
   //   }
 
   routerAddSerice() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
+    const dialog = new MatDialogConfig();
+    dialog.disableClose = true;
+    dialog.width ='20rem';
+    dialog.height = 'auto';
     const dialogReference = this.dialog.open(
       CreateServiceComponent,
-      dialogConfig
+      dialog
     );
   }
 

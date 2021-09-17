@@ -1,28 +1,15 @@
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Service</title>
-</head>
-
-<body>
-    <div class="modal-body" style="width: 15rem; height: auto;">
-        <h3>Add Service</h3>
-        <div class="form-group">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                       <mat-form-field class="example-full-width" appearance="fill">
-                         <mat-label>Service Name</mat-label>
-                         <input matInput placeholder="Collection and Disposal">
-                        </mat-form-field>
-                        <mat-form-field class="example-full-width" appearance="fill">
-                         <mat-label>Service Description</mat-label>
-                         <input matInput placeholder="Safely collect and dispose of..">
-                        </mat-form-field>
-                        <form>
+<h1 mat-dialog-title>Add Service</h1>
+<mat-dialog-content>
+  <form class="text-center">
+     <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Service Name</mat-label>
+          <input matInput class="example-right-align" placeholder="">
+     </mat-form-field>
+     <mat-form-field class="example-full-width" appearance="fill">
+                          <mat-label>Service Description</mat-label>
+                          <input matInput placeholder="DD/MM/YYYY">
+     </mat-form-field>
+     <form>
                            <mat-form-field appearance="fill">
                              <mat-label>Service Type</mat-label>
                              <mat-select>
@@ -32,22 +19,19 @@
                              </mat-select>
                            </mat-form-field>
                         </form>
-                        <mat-form-field class="example-full-width" appearance="fill">
-                         <mat-label>Starting Price</mat-label>
-                          <input matInput class="example-right-align" placeholder="0">
-                          <span matPrefix>R&nbsp;</span>
-                        </mat-form-field>
-                        
-                            <br>
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <button mat-stroked-button >Save</button>
-                        <button mat-raised-button (click)="Close()" color="warn">Cancel</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
-
-</html>
+                        <form>
+                           <mat-form-field appearance="fill">
+                             <mat-label>Service Price</mat-label>
+                             <mat-select>
+                             <mat-option value="one">R200</mat-option>
+                             <mat-option value="two">R400</mat-option>
+                             <mat-option value="three">R300</mat-option>
+                             </mat-select>
+                           </mat-form-field>
+                        </form>                            
+  </form>                        
+</mat-dialog-content>
+<div mat-dialog-actions>
+  <button mat-stroked-button >Save</button>
+  <button mat-raised-button (click)="Close()" color="warn">Cancel</button>
+</div>
