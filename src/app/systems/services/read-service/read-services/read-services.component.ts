@@ -1,6 +1,6 @@
 import { NotificationsService } from './../../../../shared/services/notifications.service';
 import { LocationService } from './../../../../shared/services/location.service';
-import { ServiceType } from './../../../../models/serviceType';
+
 import { ServicePriceService } from './../../../../shared/services/service-price.service';
 import { ServiceTypeService } from './../../../../shared/services/service-type.service';
 import { Observable } from 'rxjs';
@@ -17,6 +17,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { ServicePrice } from 'src/app/models/servicePrice';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { ServiceType } from 'src/app/Interfaces/Index';
 
 export interface ServiceTable {
   servicename: string;

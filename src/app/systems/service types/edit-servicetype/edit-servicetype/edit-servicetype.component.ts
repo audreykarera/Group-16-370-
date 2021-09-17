@@ -1,10 +1,11 @@
-import { ServiceType } from 'src/app/models/serviceType';
+
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SharedComponent } from 'src/app/component/shared components/shared/shared.component';
 import { DialogInterface } from 'src/app/Interfaces/dialog.interface';
 import { ServiceTypeService } from 'src/app/shared/services/service-type.service';
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
+import { ServiceType } from 'src/app/Interfaces/Index';
 
 @Component({
   selector: 'app-edit-servicetype',
@@ -26,18 +27,6 @@ export class EditServicetypeComponent implements OnInit {
  
   Close(){
     this.dialog.closeAll();
-  }
-  
-
-  updateServiceTypes() {
-    this.serviceTypeService.patchServiceType(this.serviceType).subscribe((res) => {
-      this.serviceType = res as ServiceType;
-    });
-    this.Close();
-    this.notificationService.successToaster("Successfully saved supplied", "Error");
-    setTimeout(()=>{
-      window.location.reload();
-    }, 1000);
   }
 
   refreshForm() {
