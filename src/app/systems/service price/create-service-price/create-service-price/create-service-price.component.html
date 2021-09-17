@@ -1,21 +1,18 @@
-<h1 mat-dialog-title>Add Package Rate</h1>
-<div mat-dialog-content>
+<h1 mat-dialog-title>Add Service Price</h1>
+<mat-dialog-content>
   <form class="text-center">
      <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>Package Rate Price</mat-label>
+          <mat-label>Service Price</mat-label>
           <input matInput class="example-right-align" placeholder="0">
           <span matPrefix>R&nbsp;</span>
      </mat-form-field>
       <mat-form-field class="example-full-width" appearance="fill">
-                          <mat-label>Date of Price Rate</mat-label>
+                          <mat-label>Date of Service Price</mat-label>
                           <input matInput placeholder="DD/MM/YYYY">
                         </mat-form-field>
   </form>                        
-</div>
+</mat-dialog-content>
 <div mat-dialog-actions>
   <button mat-stroked-button >Save</button>
   <button mat-raised-button (click)="Close()" color="warn">Cancel</button>
 </div>
-
-
-
