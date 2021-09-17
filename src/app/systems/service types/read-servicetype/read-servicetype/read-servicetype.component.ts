@@ -90,17 +90,7 @@ export class ReadServicetypeComponent implements OnInit {
       
     }
   
-  routerAddServiceType() {
-    const dialog = new MatDialogConfig();
-    dialog.disableClose = true;
-    dialog.width ='20rem';
-    dialog.height = 'auto';
-    const dialogReference = this.dialog.open(
-      CreateServicetypeComponent,
-      dialog
-    );
-  }
-   
+    
   routerAddServiceTypes(){
     const dialog = new MatDialogConfig();
     dialog.disableClose = true;
@@ -117,5 +107,6 @@ export class ReadServicetypeComponent implements OnInit {
       this.GetServiceTypes();
     }
   });
+  
   }
 }

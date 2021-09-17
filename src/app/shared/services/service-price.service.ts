@@ -1,34 +1,39 @@
 import { Observable } from 'rxjs';
-import { ServicePrice } from './../../models/servicePrice';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
+import { ServicePrice } from 'src/app/Interfaces/Index';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServicePriceService {
-  apiUrl="http://localhost:60000/api/serviceprice/";
+  apiUrl="http://localhost:60000/api/serviceprice";
   constructor(private http:HttpClient) { }
 
 
-  getServicePrices(){
-    return this.http.get(this.apiUrl + 'getserviceprice/');
-  }  
-
-  getServicePriceId(id){
-    return this.http.get(this.apiUrl+'getserviceprice'+id);
+  getServicePrices(): Observable<ServicePrice[]> {
+    return this.http.get<ServicePrice[]>(`${this.apiUrl}`)
+      .pipe(map(res => res));
   }
 
-  patchServicePrice(obj){
-    return this.http.patch(this.apiUrl + 'updateserviceprice/', obj);
+  getServicePrice(id: number): Observable<ServicePrice[]> {
+    return this.http.get<ServicePrice[]>(`${this.apiUrl}/${id}`)
+      .pipe(map(res => res));
   }
 
-  postServicePrice(obj){
-    return this.http.post(this.apiUrl +'createserviceprice/', obj);
-  } 
+  UpdateServicePrice(servicePrice: ServicePrice) {
+    return this.http.put(`${this.apiUrl}/${servicePrice.ServicePriceId}`, servicePrice)
+      .pipe(map(res => res));
+  }
 
-  deleteServicePrice(id){
-    return this.http.delete(this.apiUrl +'deleteserviceprice'+ id);
+  CreateServicePrice(servicePrice: ServicePrice): Observable<any> {
+    return this.http.post(`${this.apiUrl}`, servicePrice)
+      .pipe(map(res => res));
+  }
+
+  DeleteServicePrice(id: number) {
+    return this.http.delete(`${this.apiUrl}/${id}`)
+      .pipe(map(res => res));
   }
 }
