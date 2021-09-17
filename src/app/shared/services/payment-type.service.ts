@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { ServicePrice } from './../../models/servicePrice';
+
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';

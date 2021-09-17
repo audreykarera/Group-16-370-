@@ -1,50 +1,57 @@
 <div class="container-fluid page">
-  <div class="d-flex page__box p-3 mt-2">Service Price</div>
+  <div class="d-flex page__box p-3 mt-2">Service Prices</div>
   <div class="page__content shadow p-3">
     <div class="page__content-data">
     <mat-form-field appearance="standard">
           <mat-label>Filter</mat-label>
           <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
         </mat-form-field>
-      <br>
-      <br>
-        <div class="position-relative">
-          <div class="position-absolute top-0 end-0 icon-hover">
-            <mat-icon style="font-size: xx-large" (click)="routerAddServicePrice()" >add</mat-icon>
-          </div>
+      <div class="position-relative">
+        <div class="position-absolute top-0 end-0 icon-hover">
+          <mat-icon (click)="routerAddServicePrices()" style="font-size: xx-large">add</mat-icon>
         </div>
-        <br>
-        <br>
-         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-             <ng-container matColumnDef="serviceprice">
-                <th mat-header-cell *matHeaderCellDef> Service Price</th>
-                <td mat-cell *matCellDef="let element"> {{element.serviceprice}} </td>
-             </ng-container>`  `
-             `  <ng-container matColumnDef="dateofprice">
-               <th mat-header-cell *matHeaderCellDef>Date of Service Price </th>
-               <td mat-cell *matCellDef="let element"> {{element.dateofprice}} </td>
+      </div>
+      <br>
+      <br>
+         <table mat-table [dataSource]="servicePriceList" class="mat-elevation-z8">
+             <ng-container matColumnDef="servicepriceamount">
+                <th mat-header-cell *matHeaderCellDef>Service Price Amount </th>
+                <td mat-cell *matCellDef="let element"> {{element.servicePriceAmount}} </td>
+             </ng-container>
+             <ng-container matColumnDef="servicepricedate">
+               <th mat-header-cell *matHeaderCellDef> Service Price Date </th>
+               <td mat-cell *matCellDef="let element"> {{element.servicePriceDate}} </td>
               </ng-container>
-              <ng-container matColumnDef="edit">
-                <tr><th mat-header-cell *matHeaderCellDef> Edit </th></tr>
-                <tr>
-                  <td mat-cell *matCellDef="let row" style="width:20%">
-                     <button mat-icon-button (click)="routerEditServicePrice()" title="Edit Package Price Rate"><mat-icon>edit</mat-icon></button>
-                  </td>  
-                </tr>
-              </ng-container>    
+    <ng-container matColumnDef="edit">
+          <tr>
+            <th mat-header-cell *matHeaderCellDef> Edit </th>
+          </tr>
+          <tr>
+            <td mat-cell *matCellDef="let element" style="width:20%">
+              <button mat-icon-button title="Edit ServicePrice">
+                <mat-icon>edit</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </ng-container> 
               <ng-container matColumnDef="delete">
-                <tr><th mat-header-cell *matHeaderCellDef> Delete </th></tr>
-                <tr>
-                  <td mat-cell *matCellDef="let row" style="width:20%">
-                     <button mat-icon-button color="danger" title="Delete Service Price "><mat-icon>delete</mat-icon></button>
-                  </td>  
-                </tr>
-              </ng-container>  
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          <tr>
+            <th mat-header-cell *matHeaderCellDef> Delete </th>
+          </tr>
+          <tr>
+            <td mat-cell *matCellDef="let element" style="width:20%">
+              <button mat-icon-button color="danger" title="Delete ServiceType">
+                <mat-icon (click)="DeleteServicePrice(element.servicePriceId)">delete</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
+        <br>
+        <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
+        </mat-paginator>
+      </div>
     </div>
   </div>
-</div>
-
-
