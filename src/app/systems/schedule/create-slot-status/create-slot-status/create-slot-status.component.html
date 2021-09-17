@@ -1,16 +1,32 @@
 <h1 mat-dialog-title>Add Slot Status</h1>
-<div mat-dialog-content>
-  <form class="text-center">
+<mat-dialog-content>
+  <form class="text-center" [formGroup]="form" (ngSubmit)="OnSubmit()" >
     <mat-form-field appearance="fill">
       <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Slot Status</mat-label>
-      <input matInput placeholder="New Slot Status">
+      <input matInput placeholder="New Slot Status" formControlName="SlotStatusName">
+      <div class="errors">
+        <ng-container *ngFor="let item of slotStatus.SlotStatusName" >
+          <div class="errors" *ngIf="
+          form.get('SlotStatusName').hasError(item.type) &&
+          (form.get('SlotStatusName').dirty ||
+            form.get('SlotStatusName').touched)">
+            {{item.message}}
+          </div>
+        </ng-container>
+      </div>
     </mat-form-field>
-  </form>
+    <div align="end">
+      <button mat-stroked-button>Save</button>
+  </div>
+</form>
+<div align="end">
+  <button mat-raised-button (click)="Close()" color="warn">Cancel</button>
 </div>
-<div mat-dialog-actions>
+</mat-dialog-content>
+<!-- <div mat-dialog-actions>
   <button mat-raised-button >Save</button>
   <button mat-raised-button mat-dialog-close color="warn">Close</button>
-</div>
+</div> -->
 
 
 <!-- <!DOCTYPE html>

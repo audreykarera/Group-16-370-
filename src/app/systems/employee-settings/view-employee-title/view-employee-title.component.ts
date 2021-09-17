@@ -42,7 +42,7 @@ export class ViewEmployeeTitleComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    private service: TitleService, 
+    private service: TitleService,
     private notificationsService: NotificationsService,) { }
 
   ngOnInit(): void {
@@ -64,7 +64,7 @@ export class ViewEmployeeTitleComponent implements OnInit {
   GetTitles(){
     this.titles$.subscribe(res=>{
       if(res){
-        this.titleList = res; 
+        this.titleList = res;
         console.log(res);
       }
     });
@@ -73,10 +73,10 @@ export class ViewEmployeeTitleComponent implements OnInit {
   DeleteTitle(id){
     console.log(id);
     this.service.DeleteTitle(id).subscribe((res)=>{
-        this.notificationsService.successToaster('Title Deleted', 'Success'); 
+        this.notificationsService.successToaster('Title Deleted', 'Success');
         this.GetTitles();
     });
-    
+
   }
 
 // routerEditEmployeeTitles(titleId: number, titleDescription: string) {
@@ -105,11 +105,11 @@ routerAddEmployeeTitles(){
   const dialogReference = this.dialog.open(
     AddTitleComponent,
     dialog
-  ); 
+  );
 
   dialogReference.afterClosed().subscribe((res)=>{
     if(res == 'add'){
-      this.notificationsService.successToaster('Title Added', 'Success'); 
+      this.notificationsService.successToaster('Title Added', 'Success');
       this.GetTitles();
     }
   });
