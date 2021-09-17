@@ -1,3 +1,4 @@
+import { ReadServicePriceComponent } from './systems/service price/read-service-price/read-service-price/read-service-price.component';
 import { ReadEmpSideCollectionNoteComponent } from './systems/collection note/read-emp-side-collection-note/read-emp-side-collection-note/read-emp-side-collection-note.component';
 import { ReadSlotStatusComponent } from './systems/schedule/read-slot-status/read-slot-status/read-slot-status.component';
 import { ViewEmployeeTypeComponent } from './systems/employee-settings/view-employee-type/view-employee-type.component';
@@ -101,6 +102,7 @@ const routes: Routes = [
   {path: 'extra-collection', component: ReadExtraCollectionComponent},
   {path: 'employeetypes', component: ViewEmployeeTypeComponent},
   {path: 'read-slot-status', component: ReadSlotStatusComponent},
+  {path: 'serviceprice', component: ReadServicePriceComponent},
 ];
 
 @NgModule({

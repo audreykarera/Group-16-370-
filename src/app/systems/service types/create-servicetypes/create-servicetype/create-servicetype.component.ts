@@ -1,11 +1,12 @@
 import { Router } from '@angular/router';
-import { ServiceType } from './../../../../models/serviceType';
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { SharedComponent } from 'src/app/component/shared components/shared/shared.component';
 import { DialogInterface } from 'src/app/interfaces/dialog.interface';
 import { ServiceTypeService } from 'src/app/shared/services/service-type.service';
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
+import { ServiceType } from 'src/app/Interfaces/Index';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-create-servicetype',
@@ -13,33 +14,70 @@ import { NotificationsService } from 'src/app/shared/services/notifications.serv
   styleUrls: ['./create-servicetype.component.scss']
 })
 export class CreateServicetypeComponent implements OnInit {
-  serviceType: ServiceType;
+ form:FormGroup;
+ serviceType:ServiceType
+
+  error_messages = {
+    ServiceTypeName: [
+      { type: 'required', message: 'Service Type name is required' },
+      { type: 'minLength', message: 'Service Type must be more than 1 character' },
+      { type: 'maxLength', message: 'Service Type must be less than 30 characters' }
+    ],
+    ServiceTypeDescription: [
+      { type: 'required', message: 'Service Type description is required' },
+      { type: 'minLength', message: 'Service Type must be more than 1 character' },
+      { type: 'maxLength', message: 'Service Type must be less than 30 characters' }
+    ]
+  }
 
   constructor(
-    private serviceTypeService:ServiceTypeService,
-    private notificationService: NotificationsService,
+    private service: ServiceTypeService,
     public dialog: MatDialog,
-    public router:Router) { }
+    private formBuilder: FormBuilder, 
+    public dialogRef: MatDialogRef<CreateServicetypeComponent>
+  ) { }
   
-      ngOnInit(): void {
-        this.refreshForm();
-      }
+  ngOnInit(): void {
+    this.refreshForm();
+    this.createForm();
+    console.log('Service Types')
+  }
 
+  createForm() {
+    this.form = this.formBuilder.group({
+      ServiceTypeName: new FormControl(
+        this.serviceType.ServiceTypeName,
+        Validators.compose([
+          Validators.required,
+          Validators.maxLength(20),
+          Validators.minLength(2)
+        ])
+      ),
+      ServiceTypeDescription: new FormControl(
+        this.serviceType.ServiceTypeDescription,
+        Validators.compose([
+          Validators.required,
+          Validators.maxLength(30),
+          Validators.minLength(2)
+        ])
+      ),
+    });
+  }
       Close(){
         this.dialog.closeAll();
       }
         
-      onSave(){
-        this.serviceTypeService.postServiceType(this.serviceType).subscribe((res)=>{
-          this.serviceType = res as ServiceType;
-        });
-        this.Close();
-        this.notificationService.successToaster("Successfully saved service type","Success Message");
-        setTimeout(()=>{
-          window.location.reload();
-        }, 1000);
+      OnSubmit() {
+        console.log('Service Type added')
+        if (this.form.valid) {
+          this.serviceType = this.form.value;
+          this.service.CreateServiceType(this.serviceType).subscribe(res => {
+            this.refreshForm();
+            this.dialogRef.close('add');
+          });
+        }
       }
-    
+
       refreshForm(){
         this.serviceType = {
           ServiceTypeId: 0,

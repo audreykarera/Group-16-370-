@@ -1,5 +1,4 @@
 import { CreatePackageRateComponent } from './../../create-package-price/create-package-rate/create-package-rate.component';
-
 import { PackageRate } from './../../../../models/packageRate';
 import { EditPackageRateComponent } from './../../edit-package-rate/edit-package-rate/edit-package-rate.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -20,7 +19,6 @@ const ELEMENT_DATA: PackageRateTable[] = [
   
 ];
 
-
 @Component({
   selector: 'app-read-package-rates',
   templateUrl: './read-package-rates.component.html',
@@ -40,32 +38,11 @@ export class ReadPackageRatesComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-
   constructor(public dialog: MatDialog) {}
-    // private packageRateService: PackageRateService,
-    // private notificationService: NotificationsService
 
   ngOnInit(): void {
-    //this.readPackageRates();
+  
   }
-
-  // readPackageRates(){
-  //   this.packageRateService.getPackageRate().subscribe((res)=>{
-  //     this.packageRateList=res as PackageRate[];
-  //   }, (err:HttpErrorResponse)=>{
-  //     this.notificationService.failToaster("Unable to display Payment Types", "Error");
-  //     console.log(err);
-  //   })
-  // }
-
-  // onDelete(id){
-  //   this.packageRateService.deletePackageRate(id).subscribe((res)=>{
-  //     console.log(id);
-  //     this.readPackageRates();
-  //   }, (err: HttpErrorResponse)=>{
-  //     this.notificationService.failToaster("Pacckage Rate Deleted ", "Success");
-  //   });
-  // }
 
   routerAddPackageRate() {
     const dialog = new MatDialogConfig();

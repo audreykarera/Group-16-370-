@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Vehicle } from '../models/vehicle';
+import { Vehicle } from '../Interfaces/Index';
+
 
 @Pipe({
   name: 'vehicleSearch'
