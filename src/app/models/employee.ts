@@ -1,6 +1,4 @@
-import { EmployeeTitle } from "./employeeTitle";
-import { EmployeeType } from "./employeetype";
-import { EmploymentStatus } from "./employmentstatus";
+
 import { UserRole } from "./userRole";
 
 export class Employee {
@@ -16,10 +14,5 @@ export class Employee {
     EmployeeEmergencyContactSurname?: string; 
     EmployeePassword?: string;
     Username?: string;
-    TitleId?: number;
-    EmploymentStatusId?:number;
-    EmployeeTypeId?:number;
     UserRoleId?: number; 
 }
-
-const employee: Employee = {};

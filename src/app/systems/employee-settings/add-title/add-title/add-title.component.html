@@ -16,14 +16,10 @@
             </div>
         </mat-form-field>
         <div align="end">
-            <button mat-stroked-button>Save</button>
+            <button mat-stroked-button [disabled]="!form.valid">Save</button>
         </div>
     </form>
     <div align="end">
         <button mat-raised-button (click)="Close()" color="warn">Cancel</button>
     </div>
 </mat-dialog-content>
-<!-- <mat-dialog-actions align="end">
-    <button mat-stroked-button type="submit">Save</button>
-    <button mat-raised-button (click)="Close()" color="warn">Cancel</button>
-</mat-dialog-actions> -->

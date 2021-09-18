@@ -1,56 +1,53 @@
-
 <div class="container-fluid page">
   <div class="d-flex page__box p-3 mt-2">Employee Types</div>
   <div class="page__content shadow p-3">
     <div class="page__content-data">
-    <mat-form-field appearance="standard">
-          <mat-label>Filter</mat-label>
-          <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
-        </mat-form-field>
+      <mat-form-field appearance="standard">
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+      </mat-form-field>
       <div class="position-relative">
         <div class="position-absolute top-0 end-0 icon-hover">
-          <mat-icon (click)="routerAddEmployeeTypes()" style="font-size: xx-large">add</mat-icon>
+          <mat-icon (click)="routerAddEmployeeType()" style="font-size: xx-large">add</mat-icon>
         </div>
       </div>
       <br>
       <br>
-
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-             <ng-container matColumnDef="employeetypeid">
-                <th mat-header-cell *matHeaderCellDef> Employee Type No. </th>
-                <td mat-cell *matCellDef="let element"> {{element.employeetypeid}} </td>
-             </ng-container>
-             <ng-container matColumnDef="typename">
-               <th mat-header-cell *matHeaderCellDef> Employee Type Name </th>
-               <td mat-cell *matCellDef="let element"> {{element.typename}} </td>
-              </ng-container>
-              <ng-container matColumnDef="edit">
-                <tr><th mat-header-cell *matHeaderCellDef> Edit </th></tr>
-                <tr>
-                  <td mat-cell *matCellDef="let row" style="width:20%">
-                     <button mat-icon-button  (click)="routerEditEmployeeTypes()" title="Edit Employee Type"><mat-icon>edit</mat-icon></button>
-                  </td>  
-                </tr>
-              </ng-container>    
-              <ng-container matColumnDef="delete">
-                <tr><th mat-header-cell *matHeaderCellDef> Delete </th></tr>
-                <tr>
-                  <td mat-cell *matCellDef="let row" style="width:20%">
-                     <button mat-icon-button color="danger" title="Delete Employee Type"><mat-icon>delete</mat-icon></button>
-                  </td>  
-                </tr>
-              </ng-container>  
-              
-
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
-        <br>
-        <mat-paginator [length]="100"
-              [pageSize]="10"
-              [pageSizeOptions]="[5, 10, 25, 100]"
-              aria-label="Select page">
-</mat-paginator>
-     </div>
-   </div>
+      <table mat-table [dataSource]="employeeTypeList" class="mat-elevation-z8">
+        <ng-container matColumnDef="typename">
+          <th mat-header-cell *matHeaderCellDef> Employee Type Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.employeeTypeName}} </td>
+        </ng-container>
+        <ng-container matColumnDef="edit">
+          <tr>
+            <th mat-header-cell *matHeaderCellDef> Edit </th>
+          </tr>
+          <tr>
+            <td mat-cell *matCellDef="let element" style="width:20%">
+              <button mat-icon-button (click)="routerEditEmployeeType(element.employeeTypeId, element.employeeTypeName)" title="Edit Employee Type">
+                <mat-icon>edit</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </ng-container>
+        <ng-container matColumnDef="delete">
+          <tr>
+            <th mat-header-cell *matHeaderCellDef> Delete </th>
+          </tr>
+          <tr>
+            <td mat-cell *matCellDef="let element" style="width:20%">
+              <button mat-icon-button color="danger" title="Delete Employee Type">
+                <mat-icon (click)="DeleteEmployeeType(element.employeeTypeId)">delete</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <br>
+      <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
+      </mat-paginator>
+    </div>
+  </div>
 </div>

@@ -1,7 +1,7 @@
 import { EditEmploymentStatusComponent } from './../edit-employment-status/edit-employment-status/edit-employment-status.component';
 import { EmploymentStatusService } from './../../../shared/services/employment-status.service';
 import { AddEmploymentStatusComponent } from './../add-employment-status/add-employment-status/add-employment-status.component';
-import { EmploymentStatus } from './../../../models/employmentStatus';
+import { EmploymentStatus } from 'src/app/Interfaces/Index';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
@@ -10,16 +10,6 @@ import { NotificationsService } from 'src/app/shared/services/notifications.serv
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 
-export interface EmploymentStatusTable {
-  employementstatusname: string;
-  employementstatusid: number;
-}
-
-const ELEMENT_DATA: EmploymentStatusTable[] = [
-  { employementstatusid: 1, employementstatusname: 'Retrenched' },
-
-];
-
 @Component({
   selector: 'app-view-employment-statuses',
   templateUrl: './view-employment-statuses.component.html',
@@ -27,12 +17,13 @@ const ELEMENT_DATA: EmploymentStatusTable[] = [
 })
 export class ViewEmploymentStatusesComponent implements OnInit {
 
-  // employmentStatusList: EmploymentStatus[];
-  // employmentStatus: EmploymentStatus;
+  employmentStatusList: EmploymentStatus[] = [];
+  employmentStatus$: Observable<EmploymentStatus[]> = this.service.getEmploymentStatuses();
+  employmentStatus: EmploymentStatus;
 
 
-  displayedColumns: string[] = ['employementstatusid', 'employementstatusname', 'edit', 'delete'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  displayedColumns: string[] = ['employementstatusname', 'edit', 'delete'];
+  dataSource = new MatTableDataSource(this.employmentStatusList);
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngAfterViewInit() {
@@ -44,79 +35,84 @@ export class ViewEmploymentStatusesComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-
-
   constructor(
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private service: EmploymentStatusService,
+    private notificationsService: NotificationsService,
   ) { }
 
   ngOnInit(): void {
-    //this.readEmploymentStatuses();
+    this.refreshForm();
+    this.GetEmploymentStatus();
+  }
+
+  refreshForm() {
+    this.employmentStatus = {
+      EmploymentStatusId: 0,
+      EmploymentStatusName: ''
+    }
   }
 
   Close() {
     this.dialog.closeAll();
   }
 
-  // readEmploymentStatuses(){
-  //   console.log(this.employmentStatusList);
-  //   this.employmentStatusService.getEmploymentStatuses().subscribe((res)=>{
-  //     this.employmentStatusList = res as EmploymentStatus[];
-  //     console.log(this.employmentStatusList);
-  //   });
-  // }
-  // onDelete(id){
-  //   this.employmentStatusService.deleteEmploymentStatus(id).subscribe((res)=>{
-  //     console.log(id);
-  //     this.readEmploymentStatuses();
-  //   });this.Close();
-  //   this.notificationsService.successToaster("Employment Status deleted", "Success");
-  //   setTimeout(()=>{
-  //     window.location.reload();
-  //   }, 1000);
-  //   }
+  GetEmploymentStatus() {
+    this.employmentStatus$.subscribe(res => {
+      if (res) {
+        this.employmentStatusList = res;
+        console.log(res);
+      }
+    });
+  }
 
-  // routerEditEmploymentStatuses(employmentStatusId: number, employmentStatusName: string) {
-  //   console.log(employmentStatusId, employmentStatusName);
-  //   const dialogConfig = new MatDialogConfig();
-  //   dialogConfig.disableClose = false;
-  //   const dialogReference = this.dialog.open(
-  //     EditEmploymentStatusComponent,
-  //     {
-  //       disableClose: true,
-  //       data: {
-  //         employmentStatusId,
-  //         employmentStatusName
-  //       }
-  //     }
+  DeleteEmploymentStatus(id) {
+    console.log(id);
+    this.service.DeleteEmploymentStatus(id).subscribe((res) => {
+      this.notificationsService.successToaster('Employment Status Deleted', 'Success');
+      this.GetEmploymentStatus();
+    });
 
-  //   );
-  //   }
+  }
 
-  routerAddEmploymentStatuses() {
+  routerEditEmploymentStatuses(employmentStatusId: number, employmentStatusName: string) {
     const dialog = new MatDialogConfig();
-    dialog.disableClose = false;
+    dialog.disableClose = true;
     dialog.width = 'auto';
-    dialog.height = 'auto';
-    dialog.data = {add: 'yes'};
+    dialog.height = 'auto',
+      dialog.data = { add: 'yes' }
+    const dialogReference = this.dialog.open(
+      EditEmploymentStatusComponent,
+      {
+        data: { employmentStatusId: employmentStatusId, employmentStatusName: employmentStatusName }
+      });
+
+    dialogReference.afterClosed().subscribe((res) => {
+      if (res == 'add') {
+        this.notificationsService.successToaster('Employment Status Edited', 'Success');
+        this.GetEmploymentStatus();
+      }
+    });
+  }
+
+
+  routerAddEmploymentStatus() {
+    const dialog = new MatDialogConfig();
+    dialog.disableClose = true;
+    dialog.width = 'auto';
+    dialog.height = 'auto',
+      dialog.data = { add: 'yes' }
     const dialogReference = this.dialog.open(
       AddEmploymentStatusComponent,
       dialog
     );
+
+    dialogReference.afterClosed().subscribe((res) => {
+      if (res == 'add') {
+        this.notificationsService.successToaster('Employment Status Added', 'Success');
+        this.GetEmploymentStatus();
+      }
+    });
   }
-
-routerEditEmploymentStatuses() {
-    const dialog = new MatDialogConfig();
-    dialog.disableClose = false;
-    dialog.width = 'auto';
-    dialog.height = 'auto';
-    dialog.data = {add: 'yes'};
-    const dialogReference = this.dialog.open(
-      EditEmploymentStatusComponent,
-      dialog
-    );
-  }
-
-
 
 }

@@ -14,8 +14,6 @@ export class AddTitleComponent implements OnInit {
   form: FormGroup;
   title: Title
 
-
-
   error_messages = {
     TitleName: [
       { type: 'required', message: 'Title description is required' },

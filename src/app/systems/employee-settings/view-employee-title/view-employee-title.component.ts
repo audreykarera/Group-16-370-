@@ -9,10 +9,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
-import { id } from '@swimlane/ngx-charts';
 import { MatPaginator } from '@angular/material/paginator';
-
-
 
 @Component({
   selector: 'app-view-employee-title',
@@ -23,8 +20,7 @@ export class ViewEmployeeTitleComponent implements OnInit {
 
   titleList: Title[] = [];
   titles$: Observable<Title[]> = this.service.getTitles();
-  title: Title
-
+  title: Title;
 
   displayedColumns: string[] = ['titlename', 'edit', 'delete'];
   dataSource = new MatTableDataSource(this.titleList);
@@ -42,7 +38,7 @@ export class ViewEmployeeTitleComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    private service: TitleService, 
+    private service: TitleService,
     private notificationsService: NotificationsService,) { }
 
   ngOnInit(): void {
@@ -61,58 +57,61 @@ export class ViewEmployeeTitleComponent implements OnInit {
     this.dialog.closeAll();
   }
 
-  GetTitles(){
-    this.titles$.subscribe(res=>{
-      if(res){
-        this.titleList = res; 
+  GetTitles() {
+    this.titles$.subscribe(res => {
+      if (res) {
+        this.titleList = res;
         console.log(res);
       }
     });
   }
 
-  DeleteTitle(id){
+  DeleteTitle(id) {
     console.log(id);
-    this.service.DeleteTitle(id).subscribe((res)=>{
-        this.notificationsService.successToaster('Title Deleted', 'Success'); 
-        this.GetTitles();
+    this.service.DeleteTitle(id).subscribe((res) => {
+      this.notificationsService.successToaster('Title Deleted', 'Success');
+      this.GetTitles();
     });
-    
+
   }
 
-// routerEditEmployeeTitles(titleId: number, titleDescription: string) {
-//   console.log(titleId, titleDescription);
-//   const dialogConfig = new MatDialogConfig();
-//   dialogConfig.disableClose = false;
-//   const dialogReference = this.dialog.open(
-//     EditTitleComponent,
-//     {
-//       disableClose: true,
-//       data: {
-//         titleId,
-//         titleDescription
-//       }
-//     }
-//   );
+  routerEditEmployeeTitle(titleId: number, titleName: string) {
+    const dialog = new MatDialogConfig();
+    dialog.disableClose = true;
+    dialog.width = 'auto';
+    dialog.height = 'auto',
+      dialog.data = { add: 'yes' }
+    const dialogReference = this.dialog.open(
+      EditTitleComponent,
+      {
+        data: { titleId: titleId, titleName: titleName }
+      });
 
-// }
+    dialogReference.afterClosed().subscribe((res) => {
+      if (res == 'add') {
+        this.notificationsService.successToaster('Title Edited', 'Success');
+        this.GetTitles();
+      }
+    });
+  }
 
-routerAddEmployeeTitles(){
-  const dialog = new MatDialogConfig();
-  dialog.disableClose = true;
-  dialog.width = 'auto';
-  dialog.height = 'auto',
-  dialog.data = { add: 'yes' }
-  const dialogReference = this.dialog.open(
-    AddTitleComponent,
-    dialog
-  ); 
+  routerAddEmployeeTitles() {
+    const dialog = new MatDialogConfig();
+    dialog.disableClose = true;
+    dialog.width = 'auto';
+    dialog.height = 'auto',
+      dialog.data = { add: 'yes' }
+    const dialogReference = this.dialog.open(
+      AddTitleComponent,
+      dialog
+    );
 
-  dialogReference.afterClosed().subscribe((res)=>{
-    if(res == 'add'){
-      this.notificationsService.successToaster('Title Added', 'Success'); 
-      this.GetTitles();
-    }
-  });
-}
+    dialogReference.afterClosed().subscribe((res) => {
+      if (res == 'add') {
+        this.notificationsService.successToaster('Title Added', 'Success');
+        this.GetTitles();
+      }
+    });
+  }
 
 }

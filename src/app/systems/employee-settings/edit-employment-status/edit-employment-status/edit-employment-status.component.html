@@ -1,52 +1,25 @@
-<h1 mat-dialog-title>Edit Employment Status</h1>
-<div mat-dialog-content>
-  <form class="text-center">
-    <mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>Update Employment Status</mat-label>
-    <input matInput placeholder="">
-   </mat-form-field>
-</form>
-</div>
-<div mat-dialog-actions>
-  <button mat-raised-button >Save</button>
-  <button mat-raised-button mat-dialog-close color="warn">Close</button>
-</div>
-
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Employment Status</title>
-    <br>
-</head>
-
-<body>
-    <div class="modal-body" style="width: auto; height: auto;">
-        <h3>Edit Employment Status</h3>
-        <div class="form-group">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                    <form class="text-center">
-                         <mat-form-field class="example-full-width" appearance="fill">
-                         <mat-label>Update Employment Status</mat-label>
-                         <input matInput placeholder="">
-                        </mat-form-field>
-                    </form>
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button mat-stroked-button>Save</button>
-                            <button mat-raised-button (click)="Close()" color="warn">Cancel</button>
-                        </div>
+<h2 mat-dialog-title>Edit Employment Status</h2>
+<mat-dialog-content>
+    <form [formGroup]="form" (ngSubmit)="OnSubmit()">
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Edit Employment Status Description</mat-label>
+            <input matInput placeholder="" formControlName="EmploymentStatusName">
+            <div class="errors">
+                <ng-container *ngFor="let item of error_messages.EmploymentStatusName">
+                    <div class="errors" *ngIf="
+                  form.get('EmploymentStatusName').hasError(item.type) &&
+                  (form.get('EmploymentStatusName').dirty ||
+                    form.get('EmploymentStatusName').touched)">
+                        {{ item.message }}
                     </div>
-                </div>
+                </ng-container>
             </div>
+        </mat-form-field>
+        <div align="end">
+            <button mat-stroked-button [disabled]="!form.valid">Save</button>
         </div>
+    </form>
+    <div align="end">
+        <button mat-raised-button (click)="Close()" color="warn">Cancel</button>
     </div>
-</body>
-
-</html>
- -->
+</mat-dialog-content>

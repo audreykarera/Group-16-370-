@@ -38,9 +38,5 @@ export class TitleService {
       .pipe(map(res => res));
   }
 
-  // DeleteTitle(id){
-  //   return this.http.delete(`${this.apiUrl}/`+ id);
-  // }
-
 
 }
