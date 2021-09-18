@@ -44,7 +44,7 @@ export class ReadPaymentTypeComponent implements OnInit {
   ){}
 
   ngOnInit(): void {
-   this.getPaymentTypes();
+   this.GetPaymentTypes();
     this.refreshForm();
   }
 
@@ -72,11 +72,11 @@ export class ReadPaymentTypeComponent implements OnInit {
     dialogReference.afterClosed().subscribe((res) => {
       if(res == 'add')
       this.notificationsService.successToaster('Payment Type Added', 'Success');
-      this.getPaymentTypes();
+      this.GetPaymentTypes();
     });
   }
 
-  routerEditPaymentType() {
+  routerEditPaymentType(paymentTypeId: number, paymentTypeName: string) {
     const dialog = new MatDialogConfig();
     dialog.disableClose = true;
     dialog.width = 'auto';
@@ -84,15 +84,24 @@ export class ReadPaymentTypeComponent implements OnInit {
     dialog.data = {add: 'yes'};
     const dialogReference = this.dialog.open(
       EditPaymentTypeComponent,
-      dialog
+      {
+        data: {paymentTypeId: paymentTypeId, paymentTypeName: paymentTypeName}
+      }
     );
+
+    dialogReference.afterClosed().subscribe((res) => {
+      if(res == 'add'){
+        this.notificationsService.successToaster('Payment Type Edited', 'Success');
+        this.GetPaymentTypes();
+      }
+    });
   }
 
   Close() {
     this.dialog.closeAll();
   }
 
-  getPaymentTypes(){
+  GetPaymentTypes(){
     this.paymentType$.subscribe(res =>{
       if(res){
         this.paymentTypeList = res;
@@ -105,7 +114,7 @@ export class ReadPaymentTypeComponent implements OnInit {
     console.log(id);
     this.service.DeletePaymentType(id).subscribe((res) =>{
       this.notificationsService.successToaster('Payment Type Deleted', 'Success');
-      this.getPaymentTypes();
+      this.GetPaymentTypes();
     })
   }
 
