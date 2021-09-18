@@ -30,7 +30,7 @@
           </tr>
           <tr>
             <td mat-cell *matCellDef="let element" style="width:20%">
-              <button mat-icon-button title="Edit ServiceType">
+              <button mat-icon-button (click)="routerEditServiceTypes(element.serviceTypeId,element.serviceTypeName, element.serviceTypeDescription)" title="Edit ServiceType">
                 <mat-icon>edit</mat-icon>
               </button>
             </td>

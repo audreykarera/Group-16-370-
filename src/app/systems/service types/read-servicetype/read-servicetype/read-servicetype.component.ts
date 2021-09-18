@@ -89,6 +89,27 @@ export class ReadServicetypeComponent implements OnInit {
       });
       
     }
+
+    routerEditServiceTypes(serviceTypeId:number, serviceTypeName:string, serviceTypeDescription:string){
+      const dialog=new MatDialogConfig();
+      dialog.disableClose=true;
+      dialog.width='auto';
+      dialog.height='auto';
+        dialog.data={add:'yes'}
+      const dialogReference=this.dialog.open(
+        EditServicetypeComponent,
+        {
+          data:{serviceTypeId:serviceTypeId, serviceTypeName:serviceTypeName, serviceTypeDescription:serviceTypeDescription}
+        }
+        );
+        dialogReference.afterClosed().subscribe((res)=>{
+          if (res == 'add'){
+            this.notificationsService.successToaster('Service Type Edited', 'Success');
+            this.GetServiceTypes();
+          }
+        });
+      }    
+    
   
     
   routerAddServiceTypes(){

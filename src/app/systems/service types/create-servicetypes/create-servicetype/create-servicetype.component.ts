@@ -20,13 +20,13 @@ export class CreateServicetypeComponent implements OnInit {
   error_messages = {
     ServiceTypeName: [
       { type: 'required', message: 'Service Type name is required' },
-      { type: 'minLength', message: 'Service Type must be more than 1 character' },
-      { type: 'maxLength', message: 'Service Type must be less than 30 characters' }
+      { type: 'minlength', message: 'Service Type must be more than 1 character' },
+      { type: 'maxlength', message: 'Service Type must be less than 30 characters' }
     ],
     ServiceTypeDescription: [
       { type: 'required', message: 'Service Type description is required' },
-      { type: 'minLength', message: 'Service Type must be more than 1 character' },
-      { type: 'maxLength', message: 'Service Type must be less than 30 characters' }
+      { type: 'minlength', message: 'Service Type must be more than 1 character' },
+      { type: 'maxlength', message: 'Service Type must be less than 30 characters' }
     ]
   }
 
