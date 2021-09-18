@@ -1,21 +1,15 @@
+import { Observable } from 'rxjs';
+import { Equipment } from 'src/app/Interfaces/Index';
 import { EditEquipmentComponent } from './../../edit-equipment/edit-equipment/edit-equipment.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { Equipment } from 'src/app/models/equipment';
+
 import { EquipmentService } from 'src/app/shared/services/equipment.service';
 import { CreateEquipmentComponent } from '../../create-equipment/create-equipment/create-equipment.component';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { NotificationsService } from 'src/app/shared/services/notifications.service';
 
-export interface EquipmentTable {
-  name: string;
-  availability: boolean;
-}
-
-const ELEMENT_DATA: EquipmentTable[] = [
-  { name: 'GFS Skip', availability: true },
-  { name: 'Spill Kit', availability: false }
-];
 
 @Component({
   selector: 'app-equipment',
@@ -24,17 +18,13 @@ const ELEMENT_DATA: EquipmentTable[] = [
 })
 export class EquipmentComponent implements OnInit {
 
-  // ngAfterViewInit(){
-  //   this.dataSource.paginator = this.paginator;
-  // }
+  equipmentList: Equipment[] = [];
+  equipment$: Observable<Equipment[]> = this.service.getEquipments();
+  equipment: Equipment;
 
   displayedColumns: string[] = ['name', 'availability', 'edit', 'delete'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  dataSource = new MatTableDataSource(this.equipmentList);
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-  }
 
 
   applyFilter(event: Event) {
@@ -42,39 +32,45 @@ export class EquipmentComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-
-  equipmentList: Equipment[];
-  equipment: Equipment;
-
-  constructor(private equipmentService: EquipmentService,
-    public dialog: MatDialog) { }
+  constructor(
+    public dialog: MatDialog,
+    private service: EquipmentService,
+    private notificationsService: NotificationsService
+    ) { }
 
   ngOnInit(): void {
-    this.readEquipment()
+    this.GetEquipments();
+    this.refreshForm();
   }
 
-  readEquipment() {
-    this.equipmentService.getEquipments().subscribe((res) => {
-      this.equipmentList = res as Equipment[];
+  refreshForm() {
+    this.equipment = {
+      EquipmentId: 0,
+      EquipmentName: '',
+      EquipmentAvailable: true
+    }
+  }
+
+  Close() {
+    this.dialog.closeAll();
+  }
+
+  GetEquipments(){
+    this.equipment$.subscribe(res=>{
+      if(res){
+        this.equipmentList = res;
+        console.log(res);
+      }
     });
   }
 
-  onDelete(id) {
-    this.equipmentService.deleteEquipment(id).subscribe((res) => {
+  DeleteEquipment(id){
+    console.log(id);
+    this.service.DeleteEquipment(id).subscribe((res)=>{
+        this.notificationsService.successToaster('Equipment Deleted', 'Success');
+        this.GetEquipments();
     });
-    setTimeout(() => {
-      window.location.reload();
-    }, 10);
   }
-
-
-  // openAddDialog(){
-  //   this.dialog.open(CreateEquipmentComponent,{height:'auto',width:'auto'});
-  // }
-
-  // openEditDialog(){
-  //   this.dialog.open(EditEquipmentComponent);
-  // }
 
   routerEditEquipment() {
     const dialog = new MatDialogConfig();
@@ -98,6 +94,13 @@ export class EquipmentComponent implements OnInit {
       CreateEquipmentComponent,
       dialog
     );
+
+    dialogReference.afterClosed().subscribe((res)=>{
+      if(res == 'add'){
+        this.notificationsService.successToaster('Equipment Added', 'Success');
+        this.GetEquipments();
+      }
+    });
   }
 
 }

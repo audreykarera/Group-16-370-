@@ -22,13 +22,8 @@ const ELEMENT_DATA: ComplaintsTable[] = [
 export class ReadComplaintsComponent implements OnInit {
 
   displayedColumns: string[] = ['complaintid', 'clientname', 'date', 'view'];
-  dataSource = new MatTableDataSource (ELEMENT_DATA);
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-  }
-
+  dataSource = new MatTableDataSource (ELEMENT_DATA)
+  
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();

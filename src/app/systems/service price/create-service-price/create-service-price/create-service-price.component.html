@@ -1,0 +1,42 @@
+<h1 mat-dialog-title>Add Service Price</h1>
+<mat-dialog-content>
+    <form [formGroup]="form" (ngSubmit)="OnSubmit()">
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Service Price Amount</mat-label>
+            <input matInput placeholder="R" formControlName="ServicePriceAmount">
+          
+            <div class="errors">
+                <ng-container *ngFor="let item of error_messages.ServicePriceAmount">
+                    <div class="errors" *ngIf="
+                  form.get('ServicePriceAmount').hasError(item.type) &&
+                  (form.get('ServicePriceAmount').dirty ||
+                    form.get('ServicePriceAmount').touched)">
+                        {{ item.message }}
+                    </div>
+                </ng-container>
+            </div>           
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Service Price Date</mat-label>
+          <input matInput placeholder="YYYY/MM/DD" formControlName="ServicePriceDate">
+          <div class="errors">
+              <ng-container *ngFor="let item of error_messages.ServicePriceDate">
+                  <div class="errors" *ngIf="
+                form.get('ServicePriceDate').hasError(item.type) &&
+                (form.get('ServicePriceDate').dirty ||
+                  form.get('ServicePriceDate').touched)">
+                      {{ item.message }}
+                  </div>
+              </ng-container>
+          </div>           
+      </mat-form-field>
+        
+        <div align="end">
+            <button mat-stroked-button >Save</button>
+        </div>
+    </form>
+    <div align="end">
+        <button mat-raised-button (click)="Close()" color="warn">Cancel</button>
+    </div>
+</mat-dialog-content>

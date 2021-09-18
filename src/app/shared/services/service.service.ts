@@ -2,42 +2,43 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {map} from 'rxjs/operators';
-import { Service } from 'src/app/models/service';
+import { Service } from 'src/app/Interfaces/Index';
+
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class ServiceService {
-apiUrl="http://localhost:60000/api/service/";
-
+  apiUrl = "http://localhost:60000/api/service";
   constructor(
-    private http:HttpClient
-    ) { }
+    private http: HttpClient
+  ) { }
 
- 
-    getServices() {
-      return this.http.get(this.apiUrl + 'getservice/');
+    getServices(): Observable<Service[]> {
+      return this.http.get<Service[]>(`${this.apiUrl}`)
+        .pipe(map(res => res));
     }
   
-    getServiceId(id) {
-      return this.http.get(this.apiUrl + 'getservice' + id);
+    getService(id: number): Observable<Service[]> {
+      return this.http.get<Service[]>(`${this.apiUrl}/${id}`)
+        .pipe(map(res => res));
     }
   
-    patchService(obj) {
-      return this.http.patch(this.apiUrl + 'updateservice/', obj);
+    UpdateService(serviceType: Service) {
+      return this.http.put(`${this.apiUrl}/${serviceType.ServiceId}`, serviceType)
+        .pipe(map(res => res));
     }
   
-    postService(obj) {
-      return this.http.post(this.apiUrl + 'createservice/', obj);
+    CreateService(serviceType: Service): Observable<any> {
+      return this.http.post(`${this.apiUrl}`, serviceType)
+        .pipe(map(res => res));
     }
   
-    deleteService(id) {
-      return this.http.delete(this.apiUrl + 'deleteservice' + id);
+    DeleteService(id: number) {
+      return this.http.delete(`${this.apiUrl}/${id}`)
+        .pipe(map(res => res));
     }
-    getServiceByName(name){
-      return this.http.get(this.apiUrl + 'getservicebyname' + name); 
-    }
+    
   
-
 }

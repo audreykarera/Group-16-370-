@@ -142,6 +142,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { EditSuppliersComponent } from './systems/supplier/edit-supplier/edit-suppliers/edit-suppliers.component';
 import { CreateSupplierComponent } from './systems/supplier/create-supplier/create-supplier/create-supplier.component';
 import { ViewEmployeeTitleComponent } from './systems/employee-settings/view-employee-title/view-employee-title.component';
+import { ReadServicePriceComponent } from './systems/service price/read-service-price/read-service-price/read-service-price.component';
+import { CreateServicePriceComponent } from './systems/service price/create-service-price/create-service-price/create-service-price.component';
+import { EditServicepriceComponent } from './systems/service price/edit-service-price/edit-serviceprice/edit-serviceprice.component';
 
 
 
@@ -278,7 +281,10 @@ const angularMaterials = [
     EditEmployeeTypeComponent,
     ReadRequestedquoteComponent,
     PrintClientInvoicesComponent,
-    ViewClientBookingComponent
+    ViewClientBookingComponent,
+    ReadServicePriceComponent,
+    CreateServicePriceComponent,
+    EditServicepriceComponent
   ],
 
   imports: [

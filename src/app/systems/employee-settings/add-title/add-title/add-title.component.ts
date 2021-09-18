@@ -20,6 +20,7 @@ export class AddTitleComponent implements OnInit {
       { type: 'minLength', message: 'Title must be more than 1 character' },
       { type: 'maxLength', message: 'Title must be less than 5 characters' }
     ]
+    
   }
 
   constructor(

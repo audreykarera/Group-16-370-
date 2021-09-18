@@ -1,15 +1,31 @@
-<h1 mat-dialog-title>Add Equipment</h1>
-<div mat-dialog-content>
-  <form class="text-center">
-    <mat-form-field appearance="fill">
-      <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Equipment Name</mat-label>
-      <input matInput placeholder="Equipment Name">
+<h2 mat-dialog-title>Add Equipment</h2>
+<mat-dialog-content>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Add Equipment Name</mat-label>
+      <input matInput placeholder="" formControlName="EquipmentName">
+      <div class="errors">
+        <ng-container *ngFor="let item of error_messages.EquipmentName">
+          <div class="errors" *ngIf="
+          form.get('EquipmentName').hasError(item.type) &&
+          (form.get('EquipmentName').dirty ||
+          form.get('EquipmentName').touched)">
+            {{item.message}}
+          </div>
+        </ng-container>
+      </div>
     </mat-form-field>
+    <div align="end">
+      <button mat-stroked-button>Save</button>
+    </div>
   </form>
-</div>
-<div mat-dialog-actions>
+  <div align="end">
+    <button mat-raised-button (click)="Close()" color="warn">Cancel</button>
+  </div>
+</mat-dialog-content>
+
+
+<!-- <div mat-dialog-actions>
   <button mat-raised-button >Save</button>
   <button mat-raised-button mat-dialog-close color="warn">Close</button>
-</div>
-
-
+</div> -->

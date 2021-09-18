@@ -1,5 +1,6 @@
+import { Observable } from 'rxjs';
+
 import { HttpErrorResponse } from '@angular/common/http';
-import { PaymentType } from 'src/app/models/paymentType';
 import { CreatePaymentTypeComponent } from './../../create-payment-type/create-payment-type/create-payment-type.component';
 import { EditPaymentTypeComponent } from './../../edit-payment-type/edit-payment-type/edit-payment-type.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -8,16 +9,7 @@ import { PaymentTypeService } from 'src/app/shared/services/payment-type.service
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-
-export interface PeriodicElement {
-  paymenttype: string;
-  paymenttypeid: number;
-} 
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {paymenttypeid: 1, paymenttype: 'Cash'}
-
-];
+import { PaymentType } from 'src/app/Interfaces/Index';
 
 
 @Component({
@@ -26,12 +18,13 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./read-payment-type.component.scss']
 })
 export class ReadPaymentTypeComponent implements OnInit {
-  // paymentTypeList:PaymentType[];
-  // paymentType:PaymentType;
-  // searchText='';
+
+  paymentTypeList: PaymentType[] = [];
+  paymentType$: Observable<PaymentType[]> = this.service.getPaymentTypes();
+  paymentType: PaymentType;
 
   displayedColumns: string[] = ['paymenttypeid', 'paymenttype', 'edit', 'delete'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  dataSource = new MatTableDataSource(this.paymentTypeList);
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngAfterViewInit() {
@@ -40,58 +33,91 @@ export class ReadPaymentTypeComponent implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+
   }
 
 
-  constructor(public dialog: MatDialog,){}
-    // private paymentTypeService:PaymentTypeService,
-    // private notificationService: NotificationsService) 
-   
+  constructor(
+    public dialog: MatDialog,
+    private service: PaymentTypeService,
+    private notificationsService: NotificationsService
+  ){}
 
   ngOnInit(): void {
-    //this.readPaymentTypes();
+   this.GetPaymentTypes();
+    this.refreshForm();
   }
 
-  // readPaymentTypes(){
-  //   this.paymentTypeService.getPaymentTypes().subscribe((res)=>{
-  //     this.paymentTypeList=res as PaymentType[];
-  //   }, (err:HttpErrorResponse)=>{
-  //     this.notificationService.failToaster("Unable to display Payment Types", "Error");
-  //     console.log(err);
-  //   })
-  // }
-
-  // onDelete(id){
-  //   this.paymentTypeService.deletePaymentType(id).subscribe((res)=>{
-  //     console.log(id);
-  //     this.readPaymentTypes();
-  //   }, (err: HttpErrorResponse)=>{
-  //     this.notificationService.failToaster("Unable to delete payment type", "Error");
-  //   });
-  // }
+  refreshForm() {
+    this.paymentType = {
+      PaymentTypeId: 0,
+      PaymentTypeName: ''
+    }
+  }
 
   routerAddPaymentType() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
+    const dialog = new MatDialogConfig();
+    dialog.disableClose = true;
+    dialog.width = 'auto';
+    dialog.height = 'auto';
+    dialog.data = {add: 'yes'};
     const dialogReference = this.dialog.open(
-      CreatePaymentTypeComponent, 
-      dialogConfig
+      CreatePaymentTypeComponent,
+      dialog
     );
+
+    dialogReference.afterClosed().subscribe((res) => {
+      if(res == 'add')
+      this.notificationsService.successToaster('Payment Type Added', 'Success');
+      this.GetPaymentTypes();
+    });
   }
-  routerEditPaymentType(paymentTypeId:number, paymentTypeName:string) {
-    console.log(paymentTypeId,paymentTypeName);
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
+
+  routerEditPaymentType(paymentTypeId: number, paymentTypeName: string) {
+    const dialog = new MatDialogConfig();
+    dialog.disableClose = true;
+    dialog.width = 'auto';
+    dialog.height = 'auto';
+    dialog.data = {add: 'yes'};
     const dialogReference = this.dialog.open(
-      EditPaymentTypeComponent, 
+      EditPaymentTypeComponent,
       {
-        disableClose:true,
-        data:{
-          paymentTypeId,
-          paymentTypeName
-        }
+        data: {paymentTypeId: paymentTypeId, paymentTypeName: paymentTypeName}
       }
     );
 
-}
+    dialogReference.afterClosed().subscribe((res) => {
+      if(res == 'add'){
+        this.notificationsService.successToaster('Payment Type Edited', 'Success');
+        this.GetPaymentTypes();
+      }
+    });
+  }
+
+  Close() {
+    this.dialog.closeAll();
+  }
+
+  GetPaymentTypes(){
+    this.paymentType$.subscribe(res =>{
+      if(res){
+        this.paymentTypeList = res;
+        console.log(res);
+      }
+    });
+  }
+
+  DeletePaymentType(id){
+    console.log(id);
+    this.service.DeletePaymentType(id).subscribe((res) =>{
+      this.notificationsService.successToaster('Payment Type Deleted', 'Success');
+      this.GetPaymentTypes();
+    })
+  }
+
+
+
+
+
+
 }

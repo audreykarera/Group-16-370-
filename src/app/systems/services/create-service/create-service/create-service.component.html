@@ -1,53 +1,74 @@
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Service</title>
-</head>
-
-<body>
-    <div class="modal-body" style="width: 15rem; height: auto;">
-        <h3>Add Service</h3>
-        <div class="form-group">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                       <mat-form-field class="example-full-width" appearance="fill">
-                         <mat-label>Service Name</mat-label>
-                         <input matInput placeholder="Collection and Disposal">
-                        </mat-form-field>
-                        <mat-form-field class="example-full-width" appearance="fill">
-                         <mat-label>Service Description</mat-label>
-                         <input matInput placeholder="Safely collect and dispose of..">
-                        </mat-form-field>
-                        <form>
-                           <mat-form-field appearance="fill">
-                             <mat-label>Service Type</mat-label>
-                             <mat-select>
-                             <mat-option value="one">Collection & Disposal</mat-option>
-                             <mat-option value="two">Skip</mat-option>
-                             <mat-option value="three">Removal</mat-option>
-                             </mat-select>
-                           </mat-form-field>
-                        </form>
-                        <mat-form-field class="example-full-width" appearance="fill">
-                         <mat-label>Starting Price</mat-label>
-                          <input matInput class="example-right-align" placeholder="0">
-                          <span matPrefix>R&nbsp;</span>
-                        </mat-form-field>
-                        
-                            <br>
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <button mat-stroked-button >Save</button>
-                        <button mat-raised-button (click)="Close()" color="warn">Cancel</button>
-                        </div>
+<h2 mat-dialog-title>Add Service</h2>
+<mat-dialog-content>
+    <form [formGroup]="form" (ngSubmit)="OnSubmit()">
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Add Service Name</mat-label>
+            <input matInput placeholder="" formControlName="ServiceName">
+            <div class="errors">
+                <ng-container *ngFor="let item of error_messages.ServiceName">
+                    <div class="errors" *ngIf="
+                  form.get('ServiceName').hasError(item.type) &&
+                  (form.get('ServiceName').dirty ||
+                    form.get('ServiceName').touched)">
+                        {{ item.message }}
                     </div>
-                </div>
-            </div>
+                </ng-container>              
+              </div> 
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Service Description</mat-label>
+          <input matInput placeholder="" formControlName="ServiceDescription">
+          <div class="errors">
+              <ng-container *ngFor="let item of error_messages.ServiceDescription">
+                  <div class="errors" *ngIf="
+                form.get('ServiceDescription').hasError(item.type) &&
+                (form.get('ServiceDescription').dirty ||
+                  form.get('ServiceDescription').touched)">
+                      {{ item.message }}
+                  </div>
+              </ng-container>      
+          </div>       
+       </mat-form-field>
+       <br>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Service Type</mat-label>
+            <mat-select [(value)]="serviceTypes">
+                <mat-option *ngFor="let item of serviceTypes" [value] = "item.serviceTypeName">
+                {{item.serviceTypeName}}
+                </mat-option>
+            </mat-select>
+      </mat-form-field>
+      <br>
+       <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Service Price</mat-label>
+          <mat-select [(value)]="servicePrices">
+                <mat-option *ngFor="let item of servicePrices" [value] = "item.servicePriceAmount">
+                {{item.servicePriceAmount}}
+                </mat-option>
+            </mat-select>
+      </mat-form-field>
+                <br>
+             <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Location</mat-label>
+          <input matInput placeholder="" formControlName="LocationId">
+          <div class="errors">
+              <ng-container *ngFor="let item of error_messages.LocationId">
+                  <div class="errors" *ngIf="
+                form.get('LocationId').hasError(item.type) &&
+                (form.get('LocationId').dirty ||
+                  form.get('LocationId').touched)">
+                      {{ item.message }}
+                  </div>
+              </ng-container>
+               </div>    
+      </mat-form-field>
+        
+        <div align="end">
+            <button mat-stroked-button >Save</button>
         </div>
+    </form>
+    <div align="end">
+        <button mat-raised-button (click)="Close()" color="warn">Cancel</button>
     </div>
-</body>
-
-</html>
+</mat-dialog-content>

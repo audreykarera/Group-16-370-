@@ -26,9 +26,6 @@ export class ViewEmploymentStatusesComponent implements OnInit {
   dataSource = new MatTableDataSource(this.employmentStatusList);
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
