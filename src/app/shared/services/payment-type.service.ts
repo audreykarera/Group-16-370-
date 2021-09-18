@@ -1,44 +1,44 @@
+
 import { Observable } from 'rxjs';
 
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
+import { PaymentType } from 'src/app/Interfaces/Index';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class PaymentTypeService {
-  apiUrl = "http://localhost:60000/api/paymenttype/";
+  apiUrl = "http://localhost:60000/api/paymenttype";
   constructor(
     private http: HttpClient
   ) { }
 
-  getPaymentTypes() {
-    return this.http.get(this.apiUrl + 'getpaymenttypes/');
+  getPaymentTypes(): Observable<PaymentType[]> {
+    return this.http.get<PaymentType[]>(`${this.apiUrl}`)
+    .pipe(map(res => res));
   }
 
-  getPaymentTypeId(id) {
-    return this.http.get(this.apiUrl + 'getpaymenttype' + id);
+  getPaymentType(id: number): Observable<PaymentType[]> {
+    return this.http.get<PaymentType[]>(`${this.apiUrl}/${id}`)
+    .pipe(map(res => res));
   }
 
-  patchPaymentType(obj) {
-    return this.http.patch(this.apiUrl + 'updatepaymenttype/', obj);
+  UpdatePaymentType(paymentType: PaymentType){
+    return this.http.put(`${this.apiUrl}/${paymentType.PaymentTypeId}`, paymentType)
+    .pipe(map(res => res));
   }
 
-  postPaymentType(obj) {
-    return this.http.post(this.apiUrl + 'createpaymenttype/', obj);
+  CreatePaymentType(paymentType: PaymentType): Observable<any> {
+    return this.http.post(`${this.apiUrl}`, paymentType)
+    .pipe(map(res => res));
   }
 
-  deletePaymentType(id) {
-    return this.http.delete(this.apiUrl + 'deletepaymenttype' + id);
-  }
-  
-  getPaymentTypeByName(name){
-    return this.http.get(this.apiUrl + 'getpaymenttypename' + name); 
+  DeletePaymentType(id: number){
+    return this.http.delete(`${this.apiUrl}/${id}`)
+    .pipe(map(res => res));
   }
 
 }
-
-
-

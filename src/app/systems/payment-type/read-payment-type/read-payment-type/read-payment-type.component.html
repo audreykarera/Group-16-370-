@@ -2,25 +2,24 @@
   <div class="d-flex page__box p-3 mt-2">Payment Types</div>
   <div class="page__content shadow p-3">
     <div class="page__content-data">
-    <mat-form-field appearance="standard">
-          <mat-label>Filter</mat-label>
-          <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
-        </mat-form-field>
       <div class="position-relative">
         <div class="position-absolute top-0 end-0 icon-hover">
           <mat-icon (click)="routerAddPaymentType()" style="font-size: xx-large">add</mat-icon>
         </div>
       </div>
       <br>
-      <br>
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <mat-form-field appearance="standard">
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+      </mat-form-field>
+        <table mat-table [dataSource]="paymentTypeList" class="mat-elevation-z8">
              <ng-container matColumnDef="paymenttypeid">
                 <th mat-header-cell *matHeaderCellDef> Payment Id </th>
-                <td mat-cell *matCellDef="let element"> {{element.paymenttypeid}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.paymentTypeId}} </td>
              </ng-container>
              <ng-container matColumnDef="paymenttype">
                <th mat-header-cell *matHeaderCellDef> Payment Type Name </th>
-               <td mat-cell *matCellDef="let element"> {{element.paymenttype}} </td>
+               <td mat-cell *matCellDef="let element"> {{element.paymentTypeName}} </td>
               </ng-container>
               <ng-container matColumnDef="edit">
                 <tr><th mat-header-cell *matHeaderCellDef> Edit </th></tr>
@@ -34,7 +33,7 @@
                 <tr><th mat-header-cell *matHeaderCellDef> Delete </th></tr>
                 <tr>
                   <td mat-cell *matCellDef="let row" style="width:20%">
-                     <button mat-icon-button  (click)="routerEditPaymentType()" title="Delete Payment Type"><mat-icon>delete</mat-icon></button>
+                     <button mat-icon-button  (click)="DeletePaymentType(element.PaymentTypeId)"><mat-icon>delete</mat-icon></button>
                   </td>
                 </tr>
               </ng-container>
