@@ -6,12 +6,12 @@
         <input matInput placeholder="" formControlName="ServiceTypeName">
         <div class="errors">
           <ng-container *ngFor="let items of error_messages.ServiceTypeName">
-            <div class="errors" *ngIf="
-                form.get('ServiceTypeName').hasError(item.type) &&
-                (form.get('ServiceTypeName').dirty ||
-                form.get ('ServiceTypeName').touched)">
-                  {{item.message}}
-            </div>
+          <div class="errors" *ngIf="
+        form.get('ServiceTypeName').hasError(item.type) &&
+        (form.get('ServiceTypeName').dirty ||
+        form.get('ServiceTypeName').touched)" >
+        {{item.message}}
+        </div>
           </ng-container>
         </div>
   </mat-form-field>        
@@ -31,12 +31,12 @@
         </div>
   </mat-form-field>                      
          
-          <div align="end">
-            <button mat-stroked-button [disabled]="!form.valid">Save</button>
-          </div>
-        </form>
-          <div align="end">
-            <button mat-raised-button (click)="Close()" color="warn">Cancel</button>
-          </div>
+  <div align="end">
+    <button mat-stroked-button [disabled]="!form.valid">Save</button>
+  </div>
+</form>
+  <div align="end">
+    <button mat-raised-button (click)="Close()" color="warn">Cancel</button>
+  </div>
 </mat-dialog-content>
   

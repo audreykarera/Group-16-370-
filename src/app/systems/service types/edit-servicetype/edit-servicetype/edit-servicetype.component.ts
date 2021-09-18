@@ -32,18 +32,17 @@ export class EditServicetypeComponent implements OnInit {
   }
 
   constructor(
+    private serviceTypeService:ServiceTypeService,
     public dialog: MatDialog,
-    public dialogRef:MatDialogRef<EditServicetypeComponent>,
-    private formBuilder:FormBuilder,
-    private serviceTypeService: ServiceTypeService,
+    private formBuilder: FormBuilder,
+    public dialogRef: MatDialogRef<EditServicetypeComponent>,
     @Inject(MAT_DIALOG_DATA)
     public data: any,
     private notificationService: NotificationsService) { };
 
-  ngOnInit(): void {
-    this.refreshForm();
-    this.createForm();
-    
+  ngOnInit(): void {    
+    this.createForm(); 
+    this.refreshForm();   
   }
  
   Close(){
@@ -54,12 +53,11 @@ export class EditServicetypeComponent implements OnInit {
     this.form=this.formBuilder.group({
       ServiceTypeName: [this.data.serviceTypeName, [Validators.required, Validators.maxLength(30), Validators.minLength(2)]],
       ServiceTypeDescription:[this.data.serviceTypeDescription, [Validators.required, Validators.maxLength(30), Validators.minLength(2)]]
-    })
+    });
   }
 
   OnSubmit(){
-    console.log('Hello')
-    if (this.form.valid){
+   if (this.form.valid){
       const serviceType:ServiceType=this.form.value;
       serviceType.ServiceTypeId=this.data.serviceTypeId;
       this.serviceTypeService.UpdateServiceType(serviceType).subscribe(res=>{
@@ -78,7 +76,7 @@ export class EditServicetypeComponent implements OnInit {
     this.serviceType = {
       ServiceTypeId: 0,
       ServiceTypeName: '',
-      ServiceTypeDescription: '',
+      ServiceTypeDescription: ''
     }
   }
 }
