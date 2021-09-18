@@ -88,15 +88,25 @@ export class ReadSlotStatusComponent implements OnInit {
     });
   }
 
-  routerEditSlotStatus() {
+  routerEditSlotStatus(slotStatusId: number, slotStatusName: string) {
     const dialog = new MatDialogConfig();
     dialog.disableClose = true;
     dialog.width ='auto';
     dialog.height ='auto';
     const dialogReference = this.dialog.open(
       EditSlotStatusComponent,
-      dialog
+      {
+        data: {slotStatusId: slotStatusId, slotStatusName: slotStatusName}
+      }
     );
+
+    dialogReference.afterClosed().subscribe((res) => {
+      if(res == 'add'){
+        this.notificationsService.successToaster('Payment Type Edited', 'Success');
+        this.GetSlotStatuses();
+      }
+    });
+
   }
 
 }

@@ -73,7 +73,7 @@ export class ReadPaymentTypeComponent implements OnInit {
     });
   }
 
-  routerEditPaymentType() {
+  routerEditPaymentType(paymentTypeId: number, paymentTypeName: string) {
     const dialog = new MatDialogConfig();
     dialog.disableClose = true;
     dialog.width = 'auto';
@@ -81,8 +81,17 @@ export class ReadPaymentTypeComponent implements OnInit {
     dialog.data = {add: 'yes'};
     const dialogReference = this.dialog.open(
       EditPaymentTypeComponent,
-      dialog
+      {
+        data: {paymentTypeId: paymentTypeId, paymentTypeName: paymentTypeName}
+      }
     );
+
+    dialogReference.afterClosed().subscribe((res) => {
+      if(res == 'add'){
+        this.notificationsService.successToaster('Payment Type Edited', 'Success');
+        this.GetPaymentTypes();
+      }
+    });
   }
 
   Close() {
