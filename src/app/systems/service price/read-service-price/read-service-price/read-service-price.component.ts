@@ -80,29 +80,27 @@ export class ReadServicePriceComponent implements OnInit {
       });
       
     }
-  // routerAddServicePrice() {
-  //   const dialog = new MatDialogConfig();
-  //   dialog.disableClose = true;
-  //   dialog.width ='20rem';
-  //   dialog.height = 'auto';
-  //   const dialogReference = this.dialog.open(
-  //     CreateServicePriceComponent, 
-  //     dialog
-  //   );
-  // }
 
-  // routerAddServicePrices(){
-  //   const dialog = new MatDialogConfig();
-  //   dialog.disableClose = true;
-  //   dialog.width = 'auto';
-  //   dialog.height = 'auto',
-  //   dialog.data = { add: 'yes' }
-  //   const dialogReference = this.dialog.open(
-  //     CreateServicePriceComponent,
-  //     dialog
-  //   ); 
-  // }
-
+    routerEditServicePrices(servicePriceId:number, servicePriceAmount:string, servicePriceDate:string){
+      const dialog=new MatDialogConfig();
+      dialog.disableClose=true;
+      dialog.width='auto';
+      dialog.height='auto';
+        dialog.data={add:'yes'}
+      const dialogReference=this.dialog.open(
+        EditServicepriceComponent,
+        {
+          data:{servicePriceId:servicePriceId, servicePriceAmount:servicePriceAmount, servicePriceDate:servicePriceDate}
+        }
+        );
+        dialogReference.afterClosed().subscribe((res)=>{
+          if (res == 'add'){
+            this.notificationsService.successToaster('Service Type Edited', 'Success');
+            this.GetServicePrices();
+          }
+        });
+      }    
+      
   routerAddServicePrices() {
     const dialog = new MatDialogConfig();
     dialog.disableClose = true;

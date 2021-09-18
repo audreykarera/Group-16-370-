@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td mat-cell *matCellDef="let element" style="width:20%">
-              <button mat-icon-button title="Edit ServicePrice">
+                <button mat-icon-button (click)="routerEditServicePrices(element.servicePriceId,element.servicePriceAmount, element.servicePriceDate)" title="Edit ServicePrice">
                 <mat-icon>edit</mat-icon>
               </button>
             </td>
