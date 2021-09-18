@@ -1,44 +1,5 @@
 <h1 mat-dialog-title>Edit Service Type</h1>
  <mat-dialog-content>
-<form [formGroup]="form" (ngSubmit)="OnSubmit()">
- <mat-form-field class="example-full-width" appearance="fill">
-                         <mat-label>Service Type Name</mat-label>
-                          <input matInput placeholder="" formControlName="ServiceType">
-                          <div class="errors">
-                            <ng-container *ngFor="let items of error_messages.ServiceTypeName">
-                              <div class="errors" *ngIf*"
-                              form.get('ServiceTypeName').hasError(item.type)&&
-                              (form.get('ServiceTypeName').dirty ||
-                              form.get ('ServiceTypeName').touched)">
-                              {{item.message}}
-                              </div>
-                              </ng-container>
-                            </div>
-                       
-              </mat-form-field>
-                       <mat-form-field class="example-full-width" appearance="fill">
-                         <mat-label>Service Type Description</mat-label>
-                          <input matInput placeholder="" formControlName="ServiceType">
-                          <div class="errors">
-                            <ng-container *ngFor="let items of error_messages.ServiceTypeDescription">
-                              <div class="errors" *ngIf*"
-                              form.get('ServiceTypeDescription').hasError(item.type)&&
-                              (form.get('ServiceTypeDescription').dirty ||
-                              form.get ('ServiceTypeDescription').touched)">
-                              {{item.message}}
-                              </div>
-                              </ng-container>
-                            </div>
-                       
-              </mat-form-field>
-            
-          
-          <div align="end">
-            <button mat-stroked-button [disabled]="!form.valid">Save</button>
-          </div>
-        </form>
-                     
-    </>
          <div align="end">
             <button mat-raised-button (click)="Close()" color="warn">Cancel</button>
           </div>

@@ -30,7 +30,6 @@ export class ReadBookingStatusComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-
   constructor(public dialog: MatDialog,
     private service: BookingStatusService, 
     private notificationsService: NotificationsService,
@@ -87,17 +86,25 @@ export class ReadBookingStatusComponent implements OnInit {
   });
 }
 
-  //  routerEditBookingStatus() {
-  //   const dialog = new MatDialogConfig
-  //   dialog.disableClose = true;
-  //   dialog.width = 'auto';
-  //   dialog.height = 'auto';
-  //   dialog.data = {add: 'yes'}
-  //   const dialogReference = this.dialog.open(
-  //     EditBookingStatusComponent,
-  //     dialog
-  //   )
-  //  }
+   routerEditBookingStatus(bookingStatusId: number, bookingStatusName: string) {
+    const dialog = new MatDialogConfig
+    dialog.disableClose = true;
+    dialog.width = 'auto';
+    dialog.height = 'auto';
+    dialog.data = {add: 'yes'}
+    const dialogReference = this.dialog.open(
+      EditBookingStatusComponent,
+      {
+        data: {bookingStatusId: bookingStatusId, bookingStatusName: bookingStatusName}
+      });
+
+      dialogReference.afterClosed().subscribe((res)=>{
+        if(res == 'add'){
+          this.notificationsService.successToaster('Booking Status Edited', 'Success'); 
+          this.GetBookingStatuses();
+        }
+      });
+   }
 
 
 }

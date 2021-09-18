@@ -18,8 +18,8 @@ export class CreateBookingStatusComponent implements OnInit {
   error_messages = {
     BookingStatusName: [
       { type: 'required', message: 'Booking Status Name is required' },
-      { type: 'minLength', message: 'Booking Status must be more than 1 character' },
-      { type: 'maxLength', message: 'Booking Status Name must be less than 20 characters' }
+      { type: 'minlength', message: 'Booking Status must be more than 1 character' },
+      { type: 'maxlength', message: 'Booking Status Name must be less than 20 characters' }
     ]
   }
 

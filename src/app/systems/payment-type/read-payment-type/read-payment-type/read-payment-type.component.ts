@@ -44,7 +44,7 @@ export class ReadPaymentTypeComponent implements OnInit {
   ){}
 
   ngOnInit(): void {
-   this.getPaymentTypes();
+   this.GetPaymentTypes();
     this.refreshForm();
   }
 
@@ -54,9 +54,6 @@ export class ReadPaymentTypeComponent implements OnInit {
       PaymentTypeName: ''
     }
   }
-
-
-
 
   routerAddPaymentType() {
     const dialog = new MatDialogConfig();
@@ -72,7 +69,7 @@ export class ReadPaymentTypeComponent implements OnInit {
     dialogReference.afterClosed().subscribe((res) => {
       if(res == 'add')
       this.notificationsService.successToaster('Payment Type Added', 'Success');
-      this.getPaymentTypes();
+      this.GetPaymentTypes();
     });
   }
 
@@ -92,7 +89,7 @@ export class ReadPaymentTypeComponent implements OnInit {
     this.dialog.closeAll();
   }
 
-  getPaymentTypes(){
+  GetPaymentTypes(){
     this.paymentType$.subscribe(res =>{
       if(res){
         this.paymentTypeList = res;
@@ -105,7 +102,7 @@ export class ReadPaymentTypeComponent implements OnInit {
     console.log(id);
     this.service.DeletePaymentType(id).subscribe((res) =>{
       this.notificationsService.successToaster('Payment Type Deleted', 'Success');
-      this.getPaymentTypes();
+      this.GetPaymentTypes();
     })
   }
 

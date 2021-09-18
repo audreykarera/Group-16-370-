@@ -8,6 +8,7 @@ import { BookingStatus } from 'src/app/Interfaces/Index';
   providedIn: 'root'
 })
 export class BookingStatusService {
+
   apiUrl = 'http://localhost:60000/api/bookingstatus';
   constructor(
     private http: HttpClient
