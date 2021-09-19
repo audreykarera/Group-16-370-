@@ -16,15 +16,12 @@ import { Observable } from 'rxjs';
   styleUrls: ['./read-suppliers.component.scss']
 })
 export class ReadSuppliersComponent implements OnInit {
-  // supplierList: Supplier[];
-  // supplier: Supplier;
-  // searchText = '';
 
   supplierList: Supplier[] = [];
   suppliers$: Observable<Supplier[]> = this.supplierService.getSuppliers();
   supplier: Supplier
 
-  displayedColumns: string[] = ['suppliername', 'email', 'cellnumber', 'edit', 'delete'];
+  displayedColumns: string[] = ['suppliername','cellnumber' ,'email', 'edit', 'delete'];
   dataSource = new MatTableDataSource (this.supplierList);
   // @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -164,6 +161,28 @@ export class ReadSuppliersComponent implements OnInit {
         this.GetSuppliers();
       }
     });
-    }
+  }
+    
+    routerEditSupplier(supplierId: number, supplierName: string, supplierContactPersonNumber: string, supplierContactPersonEmail: string ) {
+      const dialog = new MatDialogConfig
+      dialog.disableClose = true;
+      dialog.width = '20rem';
+      dialog.height = 'auto';
+      dialog.data = {add: 'yes'}
+      const dialogReference = this.dialog.open(
+        EditSuppliersComponent,
+        {
+          data: { supplierId: supplierId, supplierName: supplierName, supplierContactPersonNumber: supplierContactPersonNumber, supplierContactPersonEmail: supplierContactPersonEmail }
+        });
+  
+      dialogReference.afterClosed().subscribe((res) => {
+        if (res == 'add') {
+          this.notificationService.successToaster('Supplier Edited', 'Success');
+          this.GetSuppliers();
+        }
+      });
+      }
+
+      
 }
 
