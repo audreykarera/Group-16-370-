@@ -1,4 +1,4 @@
-<h2 mat-dialog-title>Edit Booking Status</h2>
+<h2 mat-dialog-title>Add Booking Status</h2>
 <mat-dialog-content>
     <form [formGroup]="form" (ngSubmit)="OnSubmit()">
         <mat-form-field class="example-full-width" appearance="fill">
@@ -16,7 +16,7 @@
             </div>
         </mat-form-field>
         <div align="end">
-            <button mat-stroked-button [disabled]="!form.valid">Save</button>
+            <button mat-stroked-button  [disabled]="!form.valid">Save</button>
         </div>
     </form>
     <div align="end">
