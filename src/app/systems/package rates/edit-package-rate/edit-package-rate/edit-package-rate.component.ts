@@ -1,8 +1,8 @@
 import { PackageRateService } from './../../../../shared/services/package-rate.service';
-import { PackageRate } from './../../../../models/packageRate';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
+import { PackageRate } from 'src/app/Interfaces/Index';
 
 @Component({
   selector: 'app-edit-package-rate',
@@ -27,16 +27,16 @@ export class EditPackageRateComponent implements OnInit {
       this.dialog.closeAll();
     }
 
-    onSave(){
-      this.packageRateService.patchPackageRate(this.packageRateService).subscribe((res)=>{
-        this.packageRate = res as PackageRate; 
-      });
-      this.Close();
-      this.notificationService.successToaster("Successfully saved Payment Type", "Error");
-      setTimeout(()=>{
-        window.location.reload();
-      }, 1000);
-    }
+    // onSave(){
+    //   this.packageRateService.patchPackageRate(this.packageRateService).subscribe((res)=>{
+    //     this.packageRate = res as PackageRate; 
+    //   });
+    //   this.Close();
+    //   this.notificationService.successToaster("Successfully saved Payment Type", "Error");
+    //   setTimeout(()=>{
+    //     window.location.reload();
+    //   }, 1000);
+    // }
   
     refreshForm(){
       this.packageRate = {

@@ -3,7 +3,6 @@ import { EditTitleComponent } from './../edit-title/edit-title/edit-title.compon
 import { AddTitleComponent } from './../add-title/add-title/add-title.component';
 import { TitleService } from './../../../shared/services/title.service';
 import { map } from 'rxjs/operators';
-import { Title } from 'src/app/Interfaces/Index';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -11,6 +10,7 @@ import { Observable } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
 import { id } from '@swimlane/ngx-charts';
 import { MatPaginator } from '@angular/material/paginator';
+import { Title } from 'src/app/Interfaces/Index';
 
 
 

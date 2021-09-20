@@ -2,52 +2,69 @@
   <div class="d-flex page__box p-3 mt-2">Package Rates</div>
   <div class="page__content shadow p-3">
     <div class="page__content-data">
-    <mat-form-field appearance="standard">
-          <mat-label>Filter</mat-label>
-          <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
-        </mat-form-field>
+      <mat-form-field appearance="standard">
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+      </mat-form-field>
       <br>
       <br>
-        <div class="position-relative">
-          <div class="position-absolute top-0 end-0 icon-hover">
-            <mat-icon style="font-size: xx-large" (click)="routerAddPackageRate()" >add</mat-icon>
-          </div>
+      <div class="position-relative">
+        <div class="position-absolute top-0 end-0 icon-hover">
+          <mat-icon style="font-size: xx-large" (click)="routerAddPackageRate()">add</mat-icon>
         </div>
-        <br>
-        <br>
-         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-             <ng-container matColumnDef="rateprice">
-                <th mat-header-cell *matHeaderCellDef> Package Price Rate</th>
-                <td mat-cell *matCellDef="let element"> {{element.rateprice}} </td>
-             </ng-container>`  `
-             `  <ng-container matColumnDef="dateofprice">
-               <th mat-header-cell *matHeaderCellDef>Date of Price Rate </th>
-               <td mat-cell *matCellDef="let element"> {{element.dateofprice}} </td>
-              </ng-container>
-              <ng-container matColumnDef="edit">
-                <tr><th mat-header-cell *matHeaderCellDef> Edit </th></tr>
-                <tr>
-                  <td mat-cell *matCellDef="let row" style="width:20%">
-                     <button mat-icon-button (click)="routerEditPackageRate()" title="Edit Package Price Rate"><mat-icon>edit</mat-icon></button>
-                  </td>  
-                </tr>
-              </ng-container>    
-              <ng-container matColumnDef="delete">
-                <tr><th mat-header-cell *matHeaderCellDef> Delete </th></tr>
-                <tr>
-                  <td mat-cell *matCellDef="let row" style="width:20%">
-                     <button mat-icon-button color="danger" (click)="routerEditPaymentType()" title="Delete Package Price Rate"><mat-icon>delete</mat-icon></button>
-                  </td>  
-                </tr>
-              </ng-container>  
-              
+      </div>
+      <br>
+      <br>
+      <table mat-table [dataSource]="packageRateList" class="mat-elevation-z8">
 
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
+        <ng-container matColumnDef="ratepriceId">
+          <th mat-header-cell *matHeaderCellDef> Package Price ID</th>
+          <td mat-cell *matCellDef="let element"> {{element.packageRateId}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="rateprice">
+          <th mat-header-cell *matHeaderCellDef> Package Price Rate</th>
+          <td mat-cell *matCellDef="let element"> {{element.packagePrice}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="dateofprice">
+          <th mat-header-cell *matHeaderCellDef>Date of Price Rate </th>
+          <td mat-cell *matCellDef="let element"> {{element.packagePriceDate}} </td>
+        </ng-container>
+
+        <!-- edit Column -->
+        <ng-container matColumnDef="edit">
+          <tr>
+            <th mat-header-cell *matHeaderCellDef> Edit </th>
+          </tr>
+          <tr>
+            <td mat-cell *matCellDef="let element" style="width:20%">
+              <button mat-icon-button (click)="routerEditPackageRate(element.packageRateId, element.packagePrice, element.packagePriceDate)" title="Edit Package Price Rate">
+                <mat-icon>edit</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </ng-container>
+
+        <!-- Delete Column -->
+        <ng-container matColumnDef="delete">
+          <tr>
+            <th mat-header-cell *matHeaderCellDef> Delete </th>
+          </tr>
+          <tr>
+            <td mat-cell *matCellDef="let element" style="width:20%">
+              <button mat-icon-button color="danger" title="Delete Package Rate ">
+                <mat-icon (click)="DeletePackageRate(element.packageRateId)">delete</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </ng-container>
+
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let element; columns: displayedColumns;"></tr>
+      </table>
     </div>
   </div>
 </div>
-
-
-

@@ -53,7 +53,6 @@ import { ReadServicesComponent } from './systems/services/read-service/read-serv
 import { CreateServiceComponent } from './systems/services/create-service/create-service/create-service.component';
 import { DeleteServiceComponent } from './systems/services/delete-service/delete-service/delete-service.component';
 import { EditServiceComponent } from './systems/services/edit-service/edit-service/edit-service.component';
-import { CreatePackageComponent } from './systems/packages/create-packages/create-package/create-package.component';
 import { ReadPackagesComponent } from './systems/packages/read-packages/read-packages/read-packages.component';
 import { EditPackagesComponent } from './systems/packages/edit-packages/edit-packages/edit-packages.component';
 import { CreateServicetypeComponent } from './systems/service types/create-servicetypes/create-servicetype/create-servicetype.component';
@@ -142,6 +141,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { EditSuppliersComponent } from './systems/supplier/edit-supplier/edit-suppliers/edit-suppliers.component';
 import { CreateSupplierComponent } from './systems/supplier/create-supplier/create-supplier/create-supplier.component';
 import { ViewEmployeeTitleComponent } from './systems/employee-settings/view-employee-title/view-employee-title.component';
+import { AddExtraCollectionComponent } from './systems/extra-collection/add-extra-collection/add-extra-collection/add-extra-collection.component';
+import { CreatePackageComponent } from './systems/packages/create-packages/create-package/create-package.component';
+
 
 
 
@@ -278,7 +280,8 @@ const angularMaterials = [
     EditEmployeeTypeComponent,
     ReadRequestedquoteComponent,
     PrintClientInvoicesComponent,
-    ViewClientBookingComponent
+    ViewClientBookingComponent,
+    AddExtraCollectionComponent
   ],
 
   imports: [
