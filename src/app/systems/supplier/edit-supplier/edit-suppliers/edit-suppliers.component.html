@@ -1,26 +1,59 @@
 <h1 mat-dialog-title>Edit Supplier</h1>
-<div mat-dialog-content>
-  <form class="text-center">
+<mat-dialog-content>
+  <form class="text-center"  [formGroup]="form" (ngSubmit)="OnSubmit()">
     <mat-form-field appearance="fill">
       <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Supplier Name</mat-label>
-      <input matInput placeholder="Placeholder">
+      <input matInput placeholder="Placeholder" formControlName="SupplierName">
+            <div class="errors">
+                <ng-container *ngFor="let item of error_messages.SupplierName">
+                    <div class="errors" *ngIf="
+                  form.get('SupplierName').hasError(item.type) &&
+                  (form.get('SupplierName').dirty ||
+                    form.get('SupplierName').touched)">
+                        {{ item.message }}
+                    </div>
+                </ng-container>
+            </div>
+    </mat-form-field>        
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Supplier Contact Number</mat-label>
+      <input matInput placeholder="Placeholder" formControlName="SupplierContactPersonNumber">
+            <div class="errors">
+                <ng-container *ngFor="let item of error_messages.SupplierContactPersonNumber">
+                    <div class="errors" *ngIf="
+                  form.get('SupplierContactPersonNumber').hasError(item.type) &&
+                  (form.get('SupplierContactPersonNumber').dirty ||
+                    form.get('SupplierContactPersonNumber').touched)">
+                        {{ item.message }}
+                    </div>
+                </ng-container>
+            </div>
     </mat-form-field>
     <br>
     <mat-form-field appearance="fill">
-      <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Supplier Contact</mat-label>
-      <input matInput placeholder="Placeholder" readonly>
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="fill">
-      <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Vehicle Model</mat-label>
-      <input matInput placeholder="Placeholder" readonly>
-    </mat-form-field>
+      <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Supplier Email</mat-label>
+      <input matInput placeholder="Placeholder" formControlName="SupplierContactPersonEmail">
+            <div class="errors">
+                <ng-container *ngFor="let item of error_messages.SupplierContactPersonEmail">
+                    <div class="errors" *ngIf="
+                  form.get('SupplierContactPersonEmail').hasError(item.type) &&
+                  (form.get('SupplierContactPersonEmail').dirty ||
+                    form.get('SupplierContactPersonEmail').touched)">
+                        {{ item.message }}
+                    </div>
+                </ng-container>
+            </div>    
+    </mat-form-field>             
+   <div align="end">
+            <button mat-stroked-button [disabled]="!form.valid" >Save</button>
+        </div>
   </form>
-</div>
-<div mat-dialog-actions>
-  <button mat-raised-button>Save</button>
-  <button mat-raised-button  (click)="Close()" mat-dialog-close color="warn">Close</button>
-</div>
+    <div align="end">
+        <button mat-raised-button (click)="Close()" color="warn">Cancel</button>
+    </div>
+</mat-dialog-content>
+
 
 
 <!-- <!DOCTYPE html>

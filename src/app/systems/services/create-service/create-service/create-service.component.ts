@@ -116,7 +116,7 @@ export class CreateServiceComponent implements OnInit {
   }
 
   OnSubmit() {
-    console.log('Service Type added')
+    console.log('Service added')
     if (this.form.valid) {
       this.serviceTable = this.form.value;
       this.service.CreateService(this.serviceTable).subscribe(res => {

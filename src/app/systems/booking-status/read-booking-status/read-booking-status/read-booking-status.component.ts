@@ -32,8 +32,8 @@ export class ReadBookingStatusComponent implements OnInit {
 
   constructor(public dialog: MatDialog,
     private service: BookingStatusService, 
-    private notificationsService: NotificationsService,
-    ) { }
+    private notificationsService: NotificationsService,) 
+    { }
 
   ngOnInit(): void {
     this.GetBookingStatuses();
@@ -95,17 +95,16 @@ export class ReadBookingStatusComponent implements OnInit {
     const dialogReference = this.dialog.open(
       EditBookingStatusComponent,
       {
-        data: {bookingStatusId: bookingStatusId, bookingStatusName: bookingStatusName}
+        data: { bookingStatusId: bookingStatusId, bookingStatusName: bookingStatusName }
       });
 
-      dialogReference.afterClosed().subscribe((res)=>{
-        if(res == 'add'){
-          this.notificationsService.successToaster('Booking Status Edited', 'Success'); 
-          this.GetBookingStatuses();
-        }
-      });
-   }
+    dialogReference.afterClosed().subscribe((res) => {
+      if (res == 'add') {
+        this.notificationsService.successToaster('Title Edited', 'Success');
+        this.GetBookingStatuses();
+      }
+    });
 
-
+}
 }
 

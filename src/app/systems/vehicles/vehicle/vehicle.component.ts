@@ -107,16 +107,25 @@ export class VehicleComponent implements OnInit {
   //   this.dialog.open(EditVehicleComponent,{height:'auto',width:'auto'});
   // }
 
-  //  routerEditVehicle(){
-  //    const dialog = new MatDialogConfig();
-  //    dialog.disableClose = true;
-  //    dialog.width = 'auto';
-  //   dialog.height = 'auto';
-  //   dialog.data = {add: 'yes'};
-  //    const dialogReference = this.dialog.open(
-  //      EditVehicleComponent,
-  //      dialog
-  //    );
-   }
+   routerEditVehicle(vehicleId: number, vehicleNumberPlate: string, vehicleMake: string, vehicleModel: string, vehicleAvailable: boolean ){
+     const dialog = new MatDialogConfig();
+     dialog.disableClose = true;
+     dialog.width = 'auto';
+    dialog.height = 'auto';
+    dialog.data = {add: 'yes'};
+     const dialogReference = this.dialog.open(
+       EditVehicleComponent,
+       {
+        data: { vehicleId: vehicleId,  vehicleNumberPlate: vehicleNumberPlate, vehicleMake: vehicleMake, vehicleModel: vehicleModel, vehicleAvailable: vehicleAvailable }
+      });
+
+    dialogReference.afterClosed().subscribe((res) => {
+      if (res == 'add') {
+        this.notificationService.successToaster('Vehcile Edited', 'Success');
+        this.GetVehicles();
+      }
+    });
+  }
+}
 
 

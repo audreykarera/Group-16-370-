@@ -1,27 +1,58 @@
 <h1 mat-dialog-title>Edit Vehicle</h1>
-<div mat-dialog-content>
-  <form class="text-center">
+<mat-dialog-content>
+  <form class="text-center"  [formGroup]="form" (ngSubmit)="OnSubmit()">
     <mat-form-field appearance="fill">
       <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Vehicle Number Plate</mat-label>
-      <input matInput placeholder="Placeholder">
-    </mat-form-field>
+      <input matInput placeholder="Placeholder" formControlName="VehicleNumberPlate">
+            <div class="errors">
+                <ng-container *ngFor="let item of error_messages.VehicleNumberPlate">
+                    <div class="errors" *ngIf="
+                  form.get('VehicleNumberPlate').hasError(item.type) &&
+                  (form.get('VehicleNumberPlate').dirty ||
+                    form.get('VehicleNumberPlate').touched)">
+                        {{ item.message }}
+                    </div>
+                </ng-container>
+            </div>
+    </mat-form-field>        
     <br>
     <mat-form-field appearance="fill">
       <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Vehicle Make</mat-label>
-      <input matInput placeholder="Placeholder" readonly>
+      <input matInput placeholder="Placeholder" formControlName="VehicleMake">
+            <div class="errors">
+                <ng-container *ngFor="let item of error_messages.VehicleMake">
+                    <div class="errors" *ngIf="
+                  form.get('VehicleMake').hasError(item.type) &&
+                  (form.get('VehicleMake').dirty ||
+                    form.get('VehicleMake').touched)">
+                        {{ item.message }}
+                    </div>
+                </ng-container>
+            </div>
     </mat-form-field>
     <br>
     <mat-form-field appearance="fill">
       <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Vehicle Model</mat-label>
-      <input matInput placeholder="Placeholder" readonly>
-    </mat-form-field>
+      <input matInput placeholder="Placeholder" formControlName="VehicleModel">
+            <div class="errors">
+                <ng-container *ngFor="let item of error_messages.VehicleModel">
+                    <div class="errors" *ngIf="
+                  form.get('VehicleModel').hasError(item.type) &&
+                  (form.get('VehicleModel').dirty ||
+                    form.get('VehicleModel').touched)">
+                        {{ item.message }}
+                    </div>
+                </ng-container>
+            </div>    
+    </mat-form-field>             
+   <div align="end">
+            <button mat-stroked-button [disabled]="!form.valid" >Save</button>
+        </div>
   </form>
-</div>
-<div mat-dialog-actions>
-  <button mat-raised-button >Save</button>
-  <button mat-raised-button mat-dialog-close color="warn">Close</button>
-</div>
-
+    <div align="end">
+        <button mat-raised-button (click)="Close()" color="warn">Cancel</button>
+    </div>
+</mat-dialog-content>
 
 <!-- <!DOCTYPE html>
 <html lang="en">

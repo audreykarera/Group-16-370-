@@ -19,13 +19,13 @@
           <th mat-header-cell *matHeaderCellDef> Supplier Name </th>
           <td mat-cell *matCellDef="let element"> {{element.supplierName}} </td>
         </ng-container>
-        <ng-container matColumnDef="email">
-          <th mat-header-cell *matHeaderCellDef> Supplier Email </th>
-          <td mat-cell *matCellDef="let element"> {{element.supplierContactPersonEmail}} </td>
-        </ng-container>
         <ng-container matColumnDef="cellnumber">
           <th mat-header-cell *matHeaderCellDef> Supplier Cell number </th>
           <td mat-cell *matCellDef="let element"> {{element.supplierContactPersonNumber}} </td>
+        </ng-container>
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef> Supplier Email </th>
+          <td mat-cell *matCellDef="let element"> {{element.supplierContactPersonEmail}} </td>
         </ng-container>
         <ng-container matColumnDef="edit">
           <tr>
@@ -34,7 +34,7 @@
           <tr>
             <td mat-cell *matCellDef="let element" style="width:20%">
               <button mat-icon-button title="Edit Supplier">
-                <mat-icon>edit</mat-icon>
+                <mat-icon  (click)="routerEditSupplier(element.supplierId, element.supplierName, element.supplierContactPersonNumber, element.supplierContactPersonEmail)">edit</mat-icon>
               </button>
             </td>
           </tr>
