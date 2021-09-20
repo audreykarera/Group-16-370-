@@ -1,5 +1,10 @@
-import { MatDialog } from '@angular/material/dialog';
-import { Component, OnInit } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import { NotificationsService } from './../../../../shared/services/notifications.service';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, OnInit, Inject } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { BookingStatusService } from 'src/app/shared/services/booking-status.service';
+import { BookingStatus } from 'src/app/Interfaces/Index';
 
 @Component({
   selector: 'app-edit-booking-status',
@@ -8,15 +13,66 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditBookingStatusComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
+  form: FormGroup;
+  bookingstatus: BookingStatus
 
-  ngOnInit(): void {
+  error_messages = {
+    BookingStatusName: [
+      { type: 'required', message: 'Booking Status Name is required' },
+      { type: 'minlength', message: 'Booking Status must be more than 1 character' },
+      { type: 'maxlength', message: 'Booking Status Name must be less than 20 characters' }
+    ]
+  }
+     
+  constructor(private service: BookingStatusService,
+    public dialog: MatDialog,
+    private formBuilder: FormBuilder, 
+    private notificationService: NotificationsService,
+    public dialogRef: MatDialogRef<EditBookingStatusComponent>,
+    @Inject(MAT_DIALOG_DATA)
+    public data: any,
+    ) { }
+
+    ngOnInit(): void {
+      this.createForm();
+    this.refreshForm();
+    }
+
+    Close(){
+      this.dialog.closeAll();
   }
 
-  Close(){
-    this.dialog.closeAll();
+  createForm() {
+    this.form = this.formBuilder.group({
+      BookingStatusName: [this.data.bookingStatusName, [Validators.required, Validators.maxLength(19), Validators.minLength(2)]]
+    })
   }
 
+  OnSubmit() {
+    console.log('Hello')
+    if (this.form.valid) {
+      const bookingStatus: BookingStatus = this.form.value;
+      bookingStatus.BookingStatusId = this.data.bookingStatusId;
+      this.service.UpdateBookingStatus(this.bookingstatus).subscribe(res => {
+        this.refreshForm();
+        this.dialogRef.close('add');
+      }, (err: HttpErrorResponse) => {
+        if(err.status != 200){
+          this.notificationService.failToaster('There was an error!', 'Error');
+        }
+      }
+      );
+    }
+  }
 
+  refreshForm(){
+    this.bookingstatus = {
+      BookingStatusId: 0,
+      BookingStatusName: ''
+  }
+
+  }
 
 }
+
+

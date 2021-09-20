@@ -25,7 +25,7 @@
           </tr>
           <tr>
             <td mat-cell *matCellDef="let element" style="width:20%">
-              <button mat-icon-button title="Edit Title">
+              <button mat-icon-button (click)="routerEditEmployeeTitle(element.titleId, element.titleName)" title="Edit Title">
                 <mat-icon>edit</mat-icon>
               </button>
             </td>

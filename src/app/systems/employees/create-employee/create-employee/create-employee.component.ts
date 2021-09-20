@@ -2,10 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AbstractControlOptions, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Employee } from 'src/app/models/employee';
-import { EmployeeTitle } from 'src/app/models/employeeTitle';
-import { EmployeeType } from 'src/app/models/employeeType';
 import { Title } from '@angular/platform-browser';
-import { EmploymentStatus } from 'src/app/models/employmentstatus';
 import { UserRole } from 'src/app/models/userRole';
 import { EmployeeService } from 'src/app/shared/services/employee.service';
 import { EmployeeTypeService } from 'src/app/shared/services/employee-type.service';
@@ -25,16 +22,6 @@ export class CreateEmployeeComponent implements OnInit {
   employeeList: Employee[];
   employee: Employee; 
 
-  titleList: EmployeeTitle[];
-  title: Title; 
-  titleLable: string = '';
-
-  typeList: EmployeeType[];
-  type: EmployeeType;
-
-  statusList: EmploymentStatus[];
-  status: EmploymentStatus; 
-
   userRoleList: UserRole[];
   userRole: UserRole;
 
@@ -53,7 +40,7 @@ export class CreateEmployeeComponent implements OnInit {
   ngOnInit(): void {
     this.readUserRoles();
     // this.readTitles();
-    this.readEmployeeType();
+    // this.readEmployeeType();
     this.resetObject();
   }
 
@@ -68,11 +55,11 @@ export class CreateEmployeeComponent implements OnInit {
     });
   }
 
-  readEmployeeType(){
-    this.employeeTypeService.getEmployeeType().subscribe((res)=>{
-      this.typeList = res as EmployeeType[];
-    })
-  }
+  // readEmployeeType(){
+  //   this.employeeTypeService.getEmployeeType().subscribe((res)=>{
+  //     this.typeList = res as EmployeeType[];
+  //   })
+  // }
 
   // readTitles(){
   //   this.titleService.getTitles().subscribe((res)=>{
@@ -107,9 +94,6 @@ export class CreateEmployeeComponent implements OnInit {
       EmployeeIdNumber: '', 
       EmployeePassword: '',
       Username: '',
-      TitleId: 0,
-      EmploymentStatusId: 0, 
-      EmployeeTypeId: 0, 
       UserRoleId: 0
     }
   }

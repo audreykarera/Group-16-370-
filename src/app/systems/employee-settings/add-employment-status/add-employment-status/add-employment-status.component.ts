@@ -1,8 +1,9 @@
 import { NotificationsService } from './../../../../shared/services/notifications.service';
 import { EmploymentStatusService } from './../../../../shared/services/employment-status.service';
-import { EmploymentStatus } from './../../../../models/employmentstatus';
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { EmploymentStatus } from 'src/app/Interfaces/Index';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-employment-status',
@@ -10,40 +11,64 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./add-employment-status.component.scss']
 })
 export class AddEmploymentStatusComponent implements OnInit {
+  form: FormGroup;
+  employmentStatus: EmploymentStatus
 
-  employmentStatuses: EmploymentStatus
+  error_messages = {
+    EmploymentStatusName: [
+      { type: 'minLength', message: 'Employment Status must be more than 2 character' },
+      { type: 'required', message: 'Employment Status description is required' },
+      { type: 'maxLength', message: 'Employment Status must be less than 10 characters' }
+    ]
+  }
 
   constructor(
-    private employmentStatusService: EmploymentStatusService, 
+    private service: EmploymentStatusService,
     private notificationsService: NotificationsService,
     public dialog: MatDialog,
+    private formBuilder: FormBuilder,
+    public dialogRef: MatDialogRef<AddEmploymentStatusComponent>
   ) { }
 
   ngOnInit(): void {
-    this.refreshForm()
+    this.refreshForm();
+    this.createForm();
   }
 
-  Close(){
+  Close() {
     this.dialog.closeAll();
   }
 
-  onSave(){
-    this.employmentStatusService.postEmploymentStatus(this.employmentStatuses).subscribe((res)=>{
-      this.employmentStatuses = res as EmploymentStatus; 
-    });
-    this.Close();
-    this.notificationsService.successToaster("New Employment Status added", "Success");
-    setTimeout(()=>{
-      window.location.reload();
-    }, 1000);
+  createForm() {
+    this.form = this.formBuilder.group({
+      EmploymentStatusName: new FormControl(
+        this.employmentStatus.EmploymentStatusName,
+        Validators.compose([
+          Validators.maxLength(10),
+          Validators.required,
+          Validators.minLength(3)
+        ])
+      )
+    })
   }
 
-  refreshForm(){
-    this.employmentStatuses = {
+  OnSubmit() {
+    console.log('Hello')
+    if (this.form.valid) {
+      this.employmentStatus = this.form.value;
+      this.service.CreateEmploymentStatus(this.employmentStatus).subscribe(res => {
+        this.refreshForm();
+        this.dialogRef.close('add');
+      });
+    }
+  }
+
+  refreshForm() {
+    this.employmentStatus = {
       EmploymentStatusId: 0,
       EmploymentStatusName: ''
-   
     }
 
-}}
+  }
+}
 

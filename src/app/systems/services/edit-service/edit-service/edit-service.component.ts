@@ -3,7 +3,8 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SharedComponent } from 'src/app/component/shared components/shared/shared.component';
 import { DialogInterface } from 'src/app/interfaces/dialog.interface';
-import { Service } from 'src/app/models/service';
+import { Service } from 'src/app/Interfaces/Index';
+
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
 import { ServiceService } from 'src/app/shared/services/service.service';
 
@@ -22,39 +23,42 @@ export class EditServiceComponent implements OnInit {
      @Inject(MAT_DIALOG_DATA)
      public data: any,
      private notificationService: NotificationsService) { }
-
   ngOnInit(): void {
-    console.log(this.data);
-    this.readService();
+    throw new Error('Method not implemented.');
   }
 
-  Close(){
-    this.dialog.closeAll();
-  }
+  // ngOnInit(): void {
+  //   console.log(this.data);
+  //   this.readService();
+  // }
 
-  updateService(){
-    this.serviceService.patchService(this.serviceList).subscribe((res)=>{
-      this.serviceList = res as Service;
-    });
-    this.Close();
-    this.notificationService.successToaster("Successfully save Service","Error");
-  }
+  // Close(){
+  //   this.dialog.closeAll();
+  // }
 
-  readService(){
-    this.serviceService.getServices().subscribe((res)=>{
-      this.serviceList =res as Service;
-    })
-  }
+  // updateService(){
+  //   this.serviceService.patchService(this.serviceList).subscribe((res)=>{
+  //     this.serviceList = res as Service;
+  //   });
+  //   this.Close();
+  //   this.notificationService.successToaster("Successfully save Service","Error");
+  // }
 
-  refreshForm(){
-    this.serviceList={
-      ServiceId:0,
-      ServiceName:'',
-      ServiceDescription: '',
-       ServiceType:[],
-       ServicePrice:[],
-       Location:[],
-    }
-  }
+  // readService(){
+  //   this.serviceService.getServices().subscribe((res)=>{
+  //     this.serviceList =res as Service;
+  //   })
+  // }
+
+  // refreshForm(){
+  //   this.serviceList={
+  //     ServiceId:0,
+  //     ServiceName:'',
+  //     ServiceDescription: '',
+       
+       
+  //      Location:[],
+  //   }
+  // }
   
 }

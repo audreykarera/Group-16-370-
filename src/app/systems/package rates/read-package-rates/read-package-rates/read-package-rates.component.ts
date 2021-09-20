@@ -11,7 +11,6 @@ import { MatPaginator } from '@angular/material/paginator';
 import { Observable } from 'rxjs';
 import { PackageRate } from 'src/app/Interfaces/Index';
 
-
 @Component({
   selector: 'app-read-package-rates',
   templateUrl: './read-package-rates.component.html',

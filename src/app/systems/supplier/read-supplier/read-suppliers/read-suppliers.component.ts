@@ -2,22 +2,13 @@ import { Component, OnInit, Pipe, PipeTransform, ViewChild } from '@angular/core
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CreateSupplierComponent } from '../../create-supplier/create-supplier/create-supplier.component';
 import { EditSuppliersComponent } from '../../edit-supplier/edit-suppliers/edit-suppliers.component';
-import { Supplier } from 'src/app/models/supplier';
 import { SupplierService } from 'src/app/shared/services/supplier.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
-
-export interface SupplierTable {
-  suppliername: string;
-  email: string;
-  cellnumber: string;
-} 
-
-const ELEMENT_DATA: SupplierTable[] = [
-  {suppliername: 'John Smith', email: 'johnsmith@gmail.com', cellnumber: '0826734216'},
-];
+import { Supplier } from 'src/app/Interfaces/Index';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-read-suppliers',
@@ -25,12 +16,13 @@ const ELEMENT_DATA: SupplierTable[] = [
   styleUrls: ['./read-suppliers.component.scss']
 })
 export class ReadSuppliersComponent implements OnInit {
-  // supplierList: Supplier[];
-  // supplier: Supplier;
-  // searchText = '';
 
-  displayedColumns: string[] = ['suppliername', 'email', 'cellnumber', 'edit', 'delete'];
-  dataSource = new MatTableDataSource (ELEMENT_DATA);
+  supplierList: Supplier[] = [];
+  suppliers$: Observable<Supplier[]> = this.supplierService.getSuppliers();
+  supplier: Supplier
+
+  displayedColumns: string[] = ['suppliername','cellnumber' ,'email', 'edit', 'delete'];
+  dataSource = new MatTableDataSource (this.supplierList);
   // @ViewChild(MatPaginator) paginator: MatPaginator;
 
   // ngAfterViewInit() {
@@ -43,7 +35,6 @@ export class ReadSuppliersComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-
   constructor(private supplierService: SupplierService,
     public dialog: MatDialog,
     private notificationService: NotificationsService,
@@ -51,10 +42,40 @@ export class ReadSuppliersComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //this.readSuppliers();
+    this.GetSuppliers();
+    this.refreshForm();
   }
-  
 
+  refreshForm() {
+    this.supplier = {
+    SupplierId: 0,
+    SupplierName: '',
+    SupplierContactPersonNumber: '',
+    SupplierContactPersonEmail: ''
+    }
+  }
+
+  Close() {
+    this.dialog.closeAll();
+  }
+
+  GetSuppliers(){
+    this.suppliers$.subscribe(res=>{
+      if(res){
+        this.supplierList = res; 
+        console.log(res);
+      }
+    });
+  }
+
+  DeleteSupplier(id){
+    console.log(id);
+    this.supplierService.DeleteSupplier(id).subscribe((res)=>{
+        this.notificationService.successToaster('Supplier Deleted', 'Success'); 
+        this.GetSuppliers();
+    });
+    
+  }
   
 
   // readSuppliers(){
@@ -112,28 +133,56 @@ export class ReadSuppliersComponent implements OnInit {
   //     }
   //   );
   // }
-  routerEditSupplier() {
-  const dialog = new MatDialogConfig
-  dialog.disableClose = true;
-  dialog.width = 'auto';
-  dialog.height = 'auto';
-  dialog.data = {add: 'yes'}
-  const dialogReference = this.dialog.open(
-    EditSuppliersComponent,
-    dialog
-  )
-  }
+  // routerEditSupplier() {
+  // const dialog = new MatDialogConfig
+  // dialog.disableClose = true;
+  // dialog.width = 'auto';
+  // dialog.height = 'auto';
+  // dialog.data = {add: 'yes'}
+  // const dialogReference = this.dialog.open(
+  //   EditSuppliersComponent,
+  //   dialog
+  // )
+  // }
 
   routerAddSupplier() {
     const dialog = new MatDialogConfig
     dialog.disableClose = true;
-    dialog.width = 'auto';
+    dialog.width = '20rem';
     dialog.height = 'auto';
     dialog.data = {add: 'yes'}
     const dialogReference = this.dialog.open(
       CreateSupplierComponent,
       dialog
-    )
-    }
+    );
+    dialogReference.afterClosed().subscribe((res)=>{
+      if(res == 'add'){
+        this.notificationService.successToaster('Supplier Added', 'Success'); 
+        this.GetSuppliers();
+      }
+    });
+  }
+    
+    routerEditSupplier(supplierId: number, supplierName: string, supplierContactPersonNumber: string, supplierContactPersonEmail: string ) {
+      const dialog = new MatDialogConfig
+      dialog.disableClose = true;
+      dialog.width = '20rem';
+      dialog.height = 'auto';
+      dialog.data = {add: 'yes'}
+      const dialogReference = this.dialog.open(
+        EditSuppliersComponent,
+        {
+          data: { supplierId: supplierId, supplierName: supplierName, supplierContactPersonNumber: supplierContactPersonNumber, supplierContactPersonEmail: supplierContactPersonEmail }
+        });
+  
+      dialogReference.afterClosed().subscribe((res) => {
+        if (res == 'add') {
+          this.notificationService.successToaster('Supplier Edited', 'Success');
+          this.GetSuppliers();
+        }
+      });
+      }
+
+      
 }
 

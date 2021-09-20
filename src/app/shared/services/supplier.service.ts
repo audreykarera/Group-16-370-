@@ -1,44 +1,47 @@
+
  import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Supplier } from 'src/app/models/supplier';
+import { Supplier } from 'src/app/Interfaces/Index';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SupplierService {
-  apiUrl = 'http://localhost:60000/api/supplier/';
+  apiUrl = 'http://localhost:60000/api/supplier';
   constructor(
     private http: HttpClient
   ) { }
 
-
-  readonly baseURL = 'http://localhost:60000/api/supplier'
-  formData: Supplier = new Supplier()
-
-  //Get all suppliers
-  getSuppliers(){
-    return this.http.get(this.apiUrl + 'getsuppliers/');
-  }
-//Get supplier by id
-  getSupplierId(id){
-    return this.http.get(this.apiUrl + 'getsupplier' + id);
-  }
-//Update supplier
-  patchSupplier(obj){
-    return this.http.patch(this.apiUrl + 'updatesupplier',obj);
-  }
-//Create supplier
-  postSupplier(obj){
-    return this.http.post(this.apiUrl + 'createsupplier/', obj);
-  }
-//Delete supplier
-  deleteSupplier(id){
-    return this.http.delete(this.apiUrl + 'deletesupplier' + id);
+  getSuppliers(): Observable<Supplier[]> {
+    return this.http.get<Supplier[]>(`${this.apiUrl}`)
+      .pipe(map(res => res));
   }
 
-  getSupplierByName(name){
-    return this.http.get(this.apiUrl + 'getsuppliername' + name); 
+  getSupplier(id: number): Observable<Supplier[]> {
+    return this.http.get<Supplier[]>(`${this.apiUrl}/${id}`)
+      .pipe(map(res => res));
   }
+
+  UpdateSupplier(supplier: Supplier) {
+    return this.http.put(`${this.apiUrl}/${supplier.SupplierId}`, supplier)
+      .pipe(map(res => res));
+  }
+
+  CreateSupplier(supplier: Supplier): Observable<any> {
+    return this.http.post(`${this.apiUrl}`, supplier)
+      .pipe(map(res => res));
+  }
+
+  DeleteSupplier(id: number) {
+    return this.http.delete(`${this.apiUrl}/${id}`)
+      .pipe(map(res => res));
+  }
+
+  // DeleteTitle(id){
+  //   return this.http.delete(`${this.apiUrl}/`+ id);
+  // }
+
+
 }

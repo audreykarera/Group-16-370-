@@ -1,6 +1,6 @@
-import { EmployeeType } from './../../../models/employeeType';
-import { Component,Inject, OnInit, ViewChild } from '@angular/core';
-import { MatDialog,MatDialogRef, MatDialogConfig } from '@angular/material/dialog';
+import { EmployeeType } from 'src/app/Interfaces/Index';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { MatDialog, MatDialogRef, MatDialogConfig } from '@angular/material/dialog';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { EmployeeTypeService } from 'src/app/shared/services/employee-type.service';
@@ -10,95 +10,108 @@ import { EditEmployeeTypeComponent } from '../edit-employee-type/edit-employee-t
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 
-export interface EmployeeTypeTable {
-  typename: string;
-  employeetypeid: number;
-} 
-
-const ELEMENT_DATA: EmployeeTypeTable[] = [
-  {employeetypeid: 1, typename: 'Driver'},
-
-];
-
 @Component({
   selector: 'app-view-employee-type',
   templateUrl: './view-employee-type.component.html',
   styleUrls: ['./view-employee-type.component.scss']
 })
 export class ViewEmployeeTypeComponent implements OnInit {
-  // employeeTypeList: EmployeeType[];
-  // employeeType: EmployeeType;
 
-  displayedColumns: string[] = ['employeetypeid', 'typename', 'edit', 'delete'];
-  dataSource = new MatTableDataSource (ELEMENT_DATA);
+  employeeTypeList: EmployeeType[] = [];
+  employeeType$: Observable<EmployeeType[]> = this.service.getEmployeeTypes();
+  employeeType: EmployeeType;
+
+  displayedColumns: string[] = ['typename', 'edit', 'delete'];
+  dataSource = new MatTableDataSource(this.employeeTypeList);
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-
-
-
   constructor(
-    public employeeTypeService: EmployeeTypeService,
+    private service: EmployeeTypeService,
     private notificationsService: NotificationsService,
     public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
-    //this.readEmployeeTypes();
+    this.GetEmployeeTypes();
+    this.refreshForm();
   }
-  Close(){
+
+  refreshForm() {
+    this.employeeType = {
+      EmployeeTypeId: 0,
+      EmployeeTypeName: ''
+    }
+  }
+
+  Close() {
     this.dialog.closeAll();
   }
-  
-  // readEmployeeTypes(){
-  //   console.log(this.employeeTypeList);
-  //   this.employeeTypeService.getEmployeeType().subscribe((res) => {
-  //     this.employeeTypeList = res as EmployeeType[];
-  //     console.log(this.employeeTypeList);
-  //   });
-  // }
-  //   onDelete(id){
-  //     this.employeeTypeService.deleteEmployeeType(id).subscribe((res)=>{
-  //       console.log(id);
-  //       this.readEmployeeTypes();
-  //     });this.Close();
-  //     this.notificationsService.successToaster("Employee Type deleted", "Success");
-  //     setTimeout(()=>{
-  //       window.location.reload();
-  //     }, 1000);
-  // }
 
-  routerEditEmployeeTypes(employeeTypeId: number, employeeTypeName: string) {
-    console.log(employeeTypeId, employeeTypeName);
-    const dialog = new MatDialogConfig();
-    dialog.disableClose = false;
-    dialog.width ='auto';
-    dialog.height = 'auto';
-    const dialogReference = this.dialog.open(
-      
-      EditEmployeeTypeComponent,
-      {
-        disableClose: true,
-        data: {
-          employeeTypeId, 
-          employeeTypeName
-        }
+  GetEmployeeTypes() {
+    this.employeeType$.subscribe(res => {
+      if (res) {
+        this.employeeTypeList = res;
+        console.log(res);
       }
-    );
+    });
+  }
+
+  DeleteEmployeeType(id) {
+    console.log(id);
+    this.service.DeleteEmployeeType(id).subscribe((res) => {
+      this.notificationsService.successToaster('Employee Type Deleted', 'Success');
+      this.GetEmployeeTypes();
+    });
 
   }
-  routerAddEmployeeTypes() {
+
+
+  routerEditEmployeeType(employeeTypeId: number, employeeTypeName: string) {
     const dialog = new MatDialogConfig();
     dialog.disableClose = true;
-    dialog.width ='auto';
-    dialog.height = 'auto';
+    dialog.width = 'auto';
+    dialog.height = 'auto',
+      dialog.data = { add: 'yes' }
+    const dialogReference = this.dialog.open(
+      EditEmployeeTypeComponent,
+      {
+        data: { employeeTypeId: employeeTypeId, employeeTypeName: employeeTypeName }
+      });
+
+    dialogReference.afterClosed().subscribe((res) => {
+      if (res == 'add') {
+        this.notificationsService.successToaster('Employee Type Edited', 'Success');
+        this. GetEmployeeTypes()
+      }
+    });
+  }
+
+  routerAddEmployeeType() {
+    const dialog = new MatDialogConfig();
+    dialog.disableClose = true;
+    dialog.width = 'auto';
+    dialog.height = 'auto',
+      dialog.data = { add: 'yes' }
     const dialogReference = this.dialog.open(
       AddEmployeeTypeComponent,
       dialog
     );
+
+    dialogReference.afterClosed().subscribe((res) => {
+      if (res == 'add') {
+        this.notificationsService.successToaster('Employee Type Added', 'Success');
+        this.GetEmployeeTypes();
+      }
+    });
   }
 }
 

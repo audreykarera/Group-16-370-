@@ -144,6 +144,9 @@ import { ViewEmployeeTitleComponent } from './systems/employee-settings/view-emp
 import { AddExtraCollectionComponent } from './systems/extra-collection/add-extra-collection/add-extra-collection/add-extra-collection.component';
 import { CreatePackageComponent } from './systems/packages/create-packages/create-package/create-package.component';
 
+import { ReadServicePriceComponent } from './systems/service price/read-service-price/read-service-price/read-service-price.component';
+import { CreateServicePriceComponent } from './systems/service price/create-service-price/create-service-price/create-service-price.component';
+import { EditServicepriceComponent } from './systems/service price/edit-service-price/edit-serviceprice/edit-serviceprice.component';
 
 
 
@@ -281,7 +284,10 @@ const angularMaterials = [
     ReadRequestedquoteComponent,
     PrintClientInvoicesComponent,
     ViewClientBookingComponent,
-    AddExtraCollectionComponent
+    AddExtraCollectionComponent,
+    ReadServicePriceComponent,
+    CreateServicePriceComponent,
+    EditServicepriceComponent
   ],
 
   imports: [

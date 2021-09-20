@@ -1,20 +1,16 @@
+import { ServicePriceService } from './../../../../shared/services/service-price.service';
+
 import { NotificationsService } from './../../../../shared/services/notifications.service';
 import { Router } from '@angular/router';
-import { Service } from './../../../../models/service';
 import { ServiceTypeService } from 'src/app/shared/services/service-type.service';
-
 import { ServiceService } from 'src/app/shared/services/service.service';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { SharedComponent } from 'src/app/component/shared components/shared/shared.component';
 import { DialogInterface } from 'src/app/interfaces/dialog.interface';
-import { ServiceType } from 'src/app/models/serviceType';
+import { Service, ServicePrice, ServiceType } from 'src/app/Interfaces/Index';
 
-interface Food {
-  value: string;
-  viewValue: string;
-}
 
 @Component({
   selector: 'app-create-service',
@@ -22,90 +18,131 @@ interface Food {
   styleUrls: ['./create-service.component.scss']
 })
 export class CreateServiceComponent implements OnInit {
+  form:FormGroup;
+  serviceTable:Service;
+  serviceTypes:ServiceType[];
+  serviceTypes$;
+  servicePrices:ServicePrice[];
+  servicePrices$
 
-  foods: Food[] = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'}
-  ];
-  service:Service;
-  serviceTypeList: ServiceType[];
+  error_messages = {
+    ServiceName: [
+      { type: 'required', message: 'Service Name is required' },
+      { type: 'minLength', message: 'Service Name must be more than 1 character' },
+      { type: 'maxLength', message: 'Service Name must be less than 30 characters' }
+    ],
+    ServiceDescription: [
+      { type: 'required', message: 'Service Description is required' },
+      { type: 'minLength', message: 'Service Description must be more than 1 character' },
+      { type: 'maxLength', message: 'Service Description must be less than 30 characters' }
+    ],
+    ServiceTypeId: [
+      { type: 'required', message: 'Service Type is required' },     
+    ],
+    ServicePriceId: [
+      { type: 'required', message: 'Service Price is required' },     
+    ],
+    LocationId: [
+      { type: 'required', message: 'Location is required' },     
+    ]
+  }
+
   
-  constructor(private _service:ServiceService,
-    private notificationService:NotificationsService,
+  constructor(
+    private service: ServiceService,
+    private serviceTypeService: ServiceTypeService,
+    private servicePriceService:ServicePriceService,
     public dialog: MatDialog,
-    public serviceService:ServiceService,
-    public serviceTypeService:ServiceTypeService,
-    public router: Router){ }
+    private formBuilder: FormBuilder, 
+    public dialogRef: MatDialogRef<CreateServiceComponent>
+  ) { }
 
   ngOnInit(): void {
     this.refreshForm();
+    this.createForm();
+    this.serviceTypes$=this.getServiceTypes();
+    this.servicePrices$=this.getServicePrices();
     
+    console.log('Services')
+  }
+  
+  createForm() {
+    this.form = this.formBuilder.group({
+      ServiceName: new FormControl(
+        this.serviceTable.ServiceName,
+        Validators.compose([
+          Validators.required,
+          Validators.maxLength(20),
+          Validators.minLength(2)
+        ])
+      ),
+      ServiceDescription: new FormControl(
+        this.serviceTable.ServiceDescription,
+        Validators.compose([
+          Validators.required,
+          Validators.maxLength(30),
+          Validators.minLength(2)
+        ])
+      ),
+      ServiceType: new FormControl(
+        this.serviceTable.ServiceTypeId,
+        Validators.compose([
+          Validators.required,
+          Validators.maxLength(30),
+          Validators.minLength(2)
+        ])
+      ),
+      ServicePrice: new FormControl(
+        this.serviceTable.ServicePriceId,
+        Validators.compose([
+          Validators.required,
+          Validators.maxLength(30),
+          Validators.minLength(2)
+        ])
+      ),
+      LocationId: new FormControl(
+        this.serviceTable.LocationId,
+        Validators.compose([
+          Validators.required,
+          Validators.maxLength(30),
+          Validators.minLength(2)
+        ])
+      ),
+    });
   }
   
   Close(){
     this.dialog.closeAll();
   }
 
-  onSave(){
-    this.serviceService.postService(this.service).subscribe((res)=>{
-      this.service = res as Service;
-    });
-    this.Close();
-    this.notificationService.successToaster("Successfully save Service","Error");
-  }
-
- 
-  readServiceTypes(){
-    this.serviceTypeService.getServiceTypes().subscribe((res)=>{
-      this.serviceTypeList =res as ServiceType[];
-    })
-  }
- 
-  refreshForm(){
-    this.service={
-      ServiceId:0,
-      ServiceName: '',
-      ServiceDescription:'',
-      ServiceType:[],
-      ServicePrice:[],
-      Location:[],
+  OnSubmit() {
+    console.log('Service added')
+    if (this.form.valid) {
+      this.serviceTable = this.form.value;
+      this.service.CreateService(this.serviceTable).subscribe(res => {
+        this.refreshForm();
+        this.dialogRef.close('add');
+      });
     }
   }
-
-  openConfirmDialog() {
-    const dialogInterface: DialogInterface = {
-      dialogHeader: 'Confirmation Message',
-      dialogContent: 'Are you sure you want to save this?',
-      cancelButtonLabel: 'No',
-      confirmButtonLabel: 'Yes',
-      callbackMethod: () => {
-       
-      },
-    };
-    this.dialog.open(SharedComponent, {
-      width: '300px',
-      data: dialogInterface,
-    });
+  refreshForm() {
+    this.serviceTable = {
+      ServiceId: 0,
+      ServiceName: '',
+      ServiceDescription:'',
+      ServiceTypeId:0,
+      ServicePriceId:0,
+      LocationId:0
+    }
   }
-  
-  /**
-     * This method invokes the Cancel Dialog
-     */
-  openCancelDialog() {
-    const dialogInterface: DialogInterface = {
-      dialogHeader: 'Confirmation Message',
-      dialogContent: 'Are you sure you want cancel this ?',
-      cancelButtonLabel: 'No',
-      confirmButtonLabel: 'Yes',
-      callbackMethod: () => {
-       
-      },
-    };
-    this.dialog.open(SharedComponent, {
-      width: '300px',
-      data: dialogInterface,
-    });
+  getServiceTypes(){
+    this.serviceTypeService.getServiceTypes().subscribe((res)=>{
+      this.serviceTypes=res as ServiceType[];
+    })
   }
-
+  getServicePrices(){
+    this.servicePriceService.getServicePrices().subscribe((res)=>{
+      this.servicePrices=res as ServicePrice[];
+    })
+  }
 }

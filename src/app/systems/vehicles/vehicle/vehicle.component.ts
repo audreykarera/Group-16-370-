@@ -1,23 +1,15 @@
 import { EditVehicleComponent } from './../edit-vehicle/edit-vehicle/edit-vehicle.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { Vehicle } from 'src/app/models/vehicle';
+
 import { VehicleService } from 'src/app/shared/services/vehicle.service';
 import { CreateVehicleComponent } from '../create-vehicle/create-vehicle.component';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { Vehicle } from 'src/app/Interfaces/Index';
+import { Observable } from 'rxjs';
+import { NotificationsService } from 'src/app/shared/services/notifications.service';
 
-export interface PeriodicElement {
-  numberPlate: string;
-  make: string;
-  model: string;
-  availability: boolean;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {numberPlate: 'FGB345-GP', make: 'KIA', model: 'K2700', availability: true},
-  {numberPlate: 'YGD678-GP', make: 'Ford', model: 'Ranger', availability: true},
-];
 
 @Component({
   selector: 'app-vehicle',
@@ -25,12 +17,14 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./vehicle.component.scss']
 })
 
-
-
 export class VehicleComponent implements OnInit {
+  vehicleList: Vehicle[] = [];
+  vehicles$: Observable<Vehicle[]> = this.vehicleService.getVehicles();
+  vehicle: Vehicle
+
 
   displayedColumns: string[] = [ 'numberPlate', 'make', 'model', 'availability','edit','delete'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  dataSource = new MatTableDataSource(this.vehicleList);
   // @ViewChild(MatPaginator) paginator: MatPaginator;
 
   // ngAfterViewInit() {
@@ -43,35 +37,49 @@ export class VehicleComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-
-
-  vehicleList: Vehicle[];
-  vehicle: Vehicle;
-  seachedValue: string = '';
-
   constructor(
     private vehicleService: VehicleService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private notificationService: NotificationsService
   ) { }
 
   ngOnInit(): void {
-    this.readVehicle()
+    this.GetVehicles();
+    this.refreshForm();
   }
 
-  readVehicle(){
-    this.vehicleService.getVehicles().subscribe((res)=>{
-      this.vehicleList = res as Vehicle[];
-      console.log(this.vehicleList);
-    })
+  refreshForm() {
+    this.vehicle = {
+      VehicleId: 0,
+      VehicleNumberPlate: '',
+      VehicleMake: '',
+      VehicleModel: '',
+      VehicleAvailable: true
+    }
   }
 
-  onDelete(id){
-    this.vehicleService.deleteVehicle(id).subscribe((res)=>{
+  Close() {
+    this.dialog.closeAll();
+  }
+
+  GetVehicles(){
+    this.vehicles$.subscribe(res=>{
+      if(res){
+        this.vehicleList = res; 
+        console.log(res);
+      }
     });
-    setTimeout(()=>{
-      window.location.reload();
-    }, 10);
   }
+
+  DeleteVehicle(id){
+    console.log(id);
+    this.vehicleService.DeleteVehicle(id).subscribe((res)=>{
+        this.notificationService.successToaster('Vehicle Deleted', 'Success'); 
+        this.GetVehicles();
+    });
+    
+  }
+  
 
    routerAddvehicle() {
      const dialog = new MatDialogConfig();
@@ -83,6 +91,12 @@ export class VehicleComponent implements OnInit {
        CreateVehicleComponent,
        dialog
      );
+     dialogReference.afterClosed().subscribe((res)=>{
+      if(res == 'add'){
+        this.notificationService.successToaster('Vehicle Added', 'Success'); 
+        this.GetVehicles();
+      }
+    });
    }
 
   // openAddDialog(){
@@ -93,7 +107,7 @@ export class VehicleComponent implements OnInit {
   //   this.dialog.open(EditVehicleComponent,{height:'auto',width:'auto'});
   // }
 
-   routerEditVehicle(){
+   routerEditVehicle(vehicleId: number, vehicleNumberPlate: string, vehicleMake: string, vehicleModel: string, vehicleAvailable: boolean ){
      const dialog = new MatDialogConfig();
      dialog.disableClose = true;
      dialog.width = 'auto';
@@ -101,8 +115,17 @@ export class VehicleComponent implements OnInit {
     dialog.data = {add: 'yes'};
      const dialogReference = this.dialog.open(
        EditVehicleComponent,
-       dialog
-     );
-   }
+       {
+        data: { vehicleId: vehicleId,  vehicleNumberPlate: vehicleNumberPlate, vehicleMake: vehicleMake, vehicleModel: vehicleModel, vehicleAvailable: vehicleAvailable }
+      });
 
+    dialogReference.afterClosed().subscribe((res) => {
+      if (res == 'add') {
+        this.notificationService.successToaster('Vehcile Edited', 'Success');
+        this.GetVehicles();
+      }
+    });
+  }
 }
+
+

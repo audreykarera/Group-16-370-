@@ -114,6 +114,7 @@
       <mat-menu #settings="matMenu" xPosition="before">
         <button mat-menu-item routerLinkActive="list-item-active" routerLink="/services">Services</button>
         <button mat-menu-item routerLinkActive="list-item-active" routerLink="/servicetypes">Service Type</button>
+        <button mat-menu-item routerLinkActive="list-item-active" routerLink="/serviceprice">Service Price</button>
         <button mat-menu-item routerLinkActive="list-item-active" routerLink="/read-slot-status">Slot Statuses</button>
         <button mat-menu-item routerLinkActive="list-item-active" routerLink="/packages">Packages</button>
         <button mat-menu-item routerLinkActive="list-item-active" routerLink="/packagerates">Package Rates</button>
@@ -207,6 +208,13 @@
         <mat-icon>
           <mat-icon>request_quote</mat-icon>
         </mat-icon> My Quotes
+      </a>
+    </span>
+     <span *ngIf="Client">
+      <a mat-list-item routerLinkActive="list-item-active" routerLink="/lodge-complaint">
+        <mat-icon>
+          <mat-icon>assignment</mat-icon>
+        </mat-icon> Lodge Complaint
       </a>
     </span>
     <span *ngIf="Client">

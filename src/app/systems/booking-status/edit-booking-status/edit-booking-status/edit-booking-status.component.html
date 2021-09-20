@@ -1,16 +1,28 @@
-<h1 mat-dialog-title>Edit Booking Status</h1>
-<div mat-dialog-content>
-  <form class="text-center">
-    <mat-form-field appearance="fill">
-      <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Edit Booking Status</mat-label>
-      <input matInput placeholder="Booking Status">
-    </mat-form-field>
-  </form>
-</div>
-<div mat-dialog-actions>
-  <button mat-raised-button >Save</button>
-  <button mat-raised-button mat-dialog-close color="warn">Close</button>
-</div>
+<h2 mat-dialog-title>Add Booking Status</h2>
+<mat-dialog-content>
+    <form [formGroup]="form" (ngSubmit)="OnSubmit()">
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Edit Booking Status Name</mat-label>
+            <input matInput placeholder="" formControlName="BookingStatusName">
+            <div class="errors">
+                <ng-container *ngFor="let item of error_messages.BookingStatusName">
+                    <div class="errors" *ngIf="
+                  form.get('BookingStatusName').hasError(item.type) &&
+                  (form.get('BookingStatusName').dirty ||
+                    form.get('BookingStatusName').touched)">
+                        {{ item.message }}
+                    </div>
+                </ng-container>
+            </div>
+        </mat-form-field>
+        <div align="end">
+            <button mat-stroked-button  [disabled]="!form.valid">Save</button>
+        </div>
+    </form>
+    <div align="end">
+        <button mat-raised-button (click)="Close()" color="warn">Cancel</button>
+    </div>
+</mat-dialog-content>
 
 <!-- <!DOCTYPE html>
 <html lang="en">
