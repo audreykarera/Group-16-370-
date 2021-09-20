@@ -110,7 +110,6 @@ import { ReadBookingStatusComponent } from './systems/booking-status/read-bookin
 import { CreateBookingStatusComponent } from './systems/booking-status/create-booking-status/create-booking-status/create-booking-status.component';
 import { ReadPackageRatesComponent } from './systems/package rates/read-package-rates/read-package-rates/read-package-rates.component';
 import { EditPackageRateComponent } from './systems/package rates/edit-package-rate/edit-package-rate/edit-package-rate.component';
-import { CreatePackageRateComponent } from './systems/package rates/create-package-price/create-package-rate/create-package-rate.component';
 import { CreateSlotComponent } from './systems/schedule/create-slot/create-slot/create-slot.component';
 import { ResetPasswordComponent } from './employee-side/user-login/reset-password/reset-password/reset-password.component';
 import { VehicleComponent } from './systems/vehicles/vehicle/vehicle.component';
@@ -147,6 +146,7 @@ import { CreatePackageComponent } from './systems/packages/create-packages/creat
 import { ReadServicePriceComponent } from './systems/service price/read-service-price/read-service-price/read-service-price.component';
 import { CreateServicePriceComponent } from './systems/service price/create-service-price/create-service-price/create-service-price.component';
 import { EditServicepriceComponent } from './systems/service price/edit-service-price/edit-serviceprice/edit-serviceprice.component';
+import { CreatePackageRateComponent } from './systems/package rates/create-package-price/create-package-rate/create-package-rate.component';
 
 
 

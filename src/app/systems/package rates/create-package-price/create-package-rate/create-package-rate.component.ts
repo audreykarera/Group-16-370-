@@ -51,21 +51,19 @@ export class CreatePackageRateComponent implements OnInit {
             Validators.minLength(2)
           ])
           
-        )
-      });
-     this.form = this.formBuilder.group({
-     PackagePriceDate: new FormControl(
-     this.rate.PackagePriceDate,
-      Validators.compose([
-      Validators.required,
-      Validators.maxLength(6),
-      Validators.minLength(6)
-       ])
-          
-       )
+        ),
+        PackagePriceDate: new FormControl(
+          this.rate.PackagePriceDate,
+           Validators.compose([
+           Validators.required,
+           Validators.maxLength(8),
+           Validators.minLength(8)
+            ])
+               
+            )
+
       });
     }
-  
     Close() {
       this.dialog.closeAll();
     }

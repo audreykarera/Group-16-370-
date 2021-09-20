@@ -7,7 +7,7 @@
       <span matPrefix>R&nbsp;</span>
       <div class="errors">
         <ng-container *ngFor="let item of error_messages.PackageRatePrice">
-          <div class="errors" *ngIf="
+   <div class= "errors" *ngIf="
                   form.get('PackageRatePrice').hasError(item.type) &&
                   (form.get('PackageRatePrice').dirty ||
                   form.get('PackageRatePrice').touched)">
