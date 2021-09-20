@@ -72,7 +72,7 @@ export class EquipmentComponent implements OnInit {
     });
   }
 
-  routerEditEquipment() {
+  routerEditEquipment(equipmentName: string, equipmentAvailable: boolean) {
     const dialog = new MatDialogConfig();
     dialog.disableClose = true;
     dialog.width = 'auto';
@@ -80,8 +80,17 @@ export class EquipmentComponent implements OnInit {
     dialog.data = {add: 'yes'};
     const dialogReference = this.dialog.open(
       EditEquipmentComponent,
-      dialog
+      {
+        data: {equipmentName: equipmentName, equipmentAvailable: equipmentAvailable}
+      }
     );
+
+    dialogReference.afterClosed().subscribe((res) => {
+      if(res == 'add'){
+        this.notificationsService.successToaster('Equipment Description editied', 'Success');
+        this.GetEquipments();
+      }
+    });
   }
 
   routerAddEquipment() {
