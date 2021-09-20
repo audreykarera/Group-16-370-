@@ -1,6 +1,7 @@
-<!-- <h2 mat-dialog-title>Create Skip Package</h2>
+<h2 mat-dialog-title>Create Skip Package</h2>
 <mat-dialog-content>
     <form [formGroup]="form" (ngSubmit)="OnSubmit()">
+        
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Add Skip Package Name</mat-label>
             <input matInput placeholder="" formControlName="PackageName">
@@ -9,13 +10,13 @@
                     <div class="errors" *ngIf="
                   form.get('PackageName').hasError(item.type) &&
                   (form.get('PackageName').dirty ||
-                    form.get('PackageName').touched)">
+                  form.get('PackageName').touched)">
                         {{ item.message }}
                     </div>
                 </ng-container>
             </div>
         </mat-form-field>
-<br>
+        <br>
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Package Price Rate</mat-label>
             <input matInput placeholder="" formControlName="PackageName">
@@ -45,7 +46,7 @@
                 </ng-container>
             </div>
         </mat-form-field>
-         <br>
+        <br>
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Extra Collection</mat-label>
             <input matInput placeholder="" formControlName="ExtraCollection">
@@ -75,7 +76,7 @@
                 </ng-container>
             </div>
         </mat-form-field>
-         <br>
+        <br>
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Service Name</mat-label>
             <input matInput placeholder="" formControlName="ServiceName">
@@ -89,8 +90,6 @@
                     </div>
                 </ng-container>
             </div>
-        </mat-form-field> 
-            
         </mat-form-field>
 
         <div align="end">
@@ -100,4 +99,4 @@
     <div align="end">
         <button mat-raised-button (click)="Close()" color="warn">Cancel</button>
     </div>
-</mat-dialog-content>  -->
+</mat-dialog-content> 

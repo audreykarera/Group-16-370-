@@ -31,8 +31,6 @@ export class CreatePackageComponent implements OnInit {
     ],
     ExtraCollection: [
       { type: 'required', message: 'Extra Collection is required' },
-      { type: 'minLength', message: '' },
-      { type: 'maxLength', message: '' }
     ],
     ExtraPriceAmount: [
       { type: 'required', message: 'Extra Collection Price is required' },
@@ -67,9 +65,7 @@ export class CreatePackageComponent implements OnInit {
           Validators.maxLength(5),
           Validators.minLength(1)
         ])
-      )
-    });
-    this.form = this.formBuilder.group({
+      ),
       PackageDetails: new FormControl(
         this.package.PackageDetails,
           Validators.compose([
@@ -77,19 +73,13 @@ export class CreatePackageComponent implements OnInit {
           Validators.maxLength(20),
           Validators.minLength(2)
         ])
-      )
-    });
-    this.form = this.formBuilder.group({
+      ),
       ExtraCollection: new FormControl(
         this.package.ExtraCollection,
           Validators.compose([
           Validators.required,
-          Validators.maxLength(2),
-          Validators.minLength(2)
         ])
-      )
-    });
-    this.form = this.formBuilder.group({
+      ),
       ExtraPriceAmount: new FormControl(
         this.package.ExtraPriceAmount,
           Validators.compose([
@@ -97,9 +87,7 @@ export class CreatePackageComponent implements OnInit {
           Validators.maxLength(5),
           Validators.minLength(2)
         ])
-      )
-    });
-    this.form = this.formBuilder.group({
+      ),
       ServiceName: new FormControl(
         this.package.ServiceName,
           Validators.compose([
