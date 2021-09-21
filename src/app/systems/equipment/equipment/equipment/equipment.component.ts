@@ -72,7 +72,7 @@ export class EquipmentComponent implements OnInit {
     });
   }
 
-  routerEditEquipment(equipmentName: string, equipmentAvailable: boolean) {
+  routerEditEquipment(equipmentId: number,equipmentName: string, equipmentAvailable: boolean) {
     const dialog = new MatDialogConfig();
     dialog.disableClose = true;
     dialog.width = 'auto';
@@ -81,7 +81,7 @@ export class EquipmentComponent implements OnInit {
     const dialogReference = this.dialog.open(
       EditEquipmentComponent,
       {
-        data: {equipmentName: equipmentName, equipmentAvailable: equipmentAvailable}
+        data: {equipmentId: equipmentId,equipmentName: equipmentName, equipmentAvailable: equipmentAvailable}
       }
     );
 
