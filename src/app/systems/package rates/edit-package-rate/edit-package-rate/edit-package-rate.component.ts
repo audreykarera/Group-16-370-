@@ -41,7 +41,7 @@ export class EditPackageRateComponent implements OnInit {
     refreshForm(){
       this.packageRate = {
         PackageRateId: 0,
-        PackageRatePrice: '',
+        PackageRatePrice: 0,
         PackagePriceDate: ''
       }
   }

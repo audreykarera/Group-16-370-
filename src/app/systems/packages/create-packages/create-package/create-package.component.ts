@@ -117,7 +117,7 @@ export class CreatePackageComponent implements OnInit {
     PackageDetails: '',
     PackagePrice: '',
     ExtraCollection: true,
-    ExtraPriceAmount:'',
+    ExtraPriceAmount:0,
     ServiceName:''
     }
   }

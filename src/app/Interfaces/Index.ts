@@ -10,7 +10,7 @@ export interface ExtraCollectionPrice {
 }
 export interface PackageRate {
     PackageRateId: number | null;
-    PackageRatePrice: string | null;
+    PackageRatePrice: number | null;
     PackagePriceDate: string | null;
 }
 
@@ -20,7 +20,7 @@ export interface Package {
     PackageDetails: string | null;
     PackagePrice: string | null;
     ExtraCollection: boolean | null;
-    ExtraPriceAmount: string | null;
+    ExtraPriceAmount: number | null;
     ServiceName: string | null; 
 
 }
@@ -64,20 +64,20 @@ export interface ServiceType{
 
 export interface ServicePrice{
     ServicePriceId:number |null;
-    ServicePriceAmount: number|null;
+    ServicePriceAmount: number |null;
     ServicePriceDate:string |null;
 }
 
 export interface Service{
     ServiceId:number|null;
     ServiceName:string|null;
-    ServiceDescription:string|null;
-    // ServiceType: ServiceType[];
-    // ServicePrice:ServicePrice[];
-    // Location : Location[];
+    ServiceDescription:string|null;  
     ServiceTypeId: number|null;
     ServicePriceId:number|null;
     // LocationId:number|null;
+    // ServiceType: ServiceType[];
+    // ServicePrice:ServicePrice[];
+    // Location : Location[];
 }
 
 export interface Supplier{

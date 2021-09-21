@@ -53,15 +53,12 @@ export class CreateServicePriceComponent implements OnInit {
         ])
       ),
       ServicePriceDate: new FormControl(
-        this.servicePrice.ServicePriceDate,
-        Validators.compose([
-          Validators.required,
-          Validators.maxLength(30),
-          Validators.minLength(2)
-        ])
-      ),
-    });
+        (new Date()).toISOString().substring(0, 10)          
+        
+      )
+    })
   }
+
   Close(){
     this.dialog.closeAll();
   }

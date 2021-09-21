@@ -33,7 +33,7 @@
        <br>
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Service Type</mat-label>
-            <mat-select [(value)]="serviceTypes$">
+            <mat-select [(value)]="serviceTypes$" >
                 <mat-option *ngFor="let item of serviceTypes" [value] = "item.serviceTypeName">
                 {{item.serviceTypeName}}
                 </mat-option>
