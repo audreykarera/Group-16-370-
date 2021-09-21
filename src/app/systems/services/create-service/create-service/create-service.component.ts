@@ -41,10 +41,10 @@ export class CreateServiceComponent implements OnInit {
     ],
     ServicePriceId: [
       { type: 'required', message: 'Service Price is required' },     
-    ],
-    LocationId: [
-      { type: 'required', message: 'Location is required' },     
     ]
+    // LocationId: [
+    //   { type: 'required', message: 'Location is required' },     
+    // ]
   }
 
   
@@ -99,15 +99,15 @@ export class CreateServiceComponent implements OnInit {
           Validators.maxLength(30),
           Validators.minLength(2)
         ])
-      ),
-      LocationId: new FormControl(
-        this.serviceTable.LocationId,
-        Validators.compose([
-          Validators.required,
-          Validators.maxLength(30),
-          Validators.minLength(2)
-        ])
-      ),
+      )
+      // LocationId: new FormControl(
+      //   this.serviceTable.LocationId,
+      //   Validators.compose([
+      //     Validators.required,
+      //     Validators.maxLength(30),
+      //     Validators.minLength(2)
+      //   ])
+      // ),
     });
   }
   
@@ -119,7 +119,9 @@ export class CreateServiceComponent implements OnInit {
     console.log('Service added')
     if (this.form.valid) {
       this.serviceTable = this.form.value;
+      console.log(this.serviceTable);
       this.service.CreateService(this.serviceTable).subscribe(res => {
+        
         this.refreshForm();
         this.dialogRef.close('add');
       });
@@ -131,8 +133,8 @@ export class CreateServiceComponent implements OnInit {
       ServiceName: '',
       ServiceDescription:'',
       ServiceTypeId:0,
-      ServicePriceId:0,
-      LocationId:0
+      ServicePriceId:0
+      // LocationId:0
     }
   }
   getServiceTypes(){

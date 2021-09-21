@@ -42,7 +42,7 @@ export interface ServiceType{
 
 export interface ServicePrice{
     ServicePriceId:number |null;
-    ServicePriceAmount: string|null;
+    ServicePriceAmount: number|null;
     ServicePriceDate:string |null;
 }
 
@@ -55,7 +55,7 @@ export interface Service{
     // Location : Location[];
     ServiceTypeId: number|null;
     ServicePriceId:number|null;
-    LocationId:number|null;
+    // LocationId:number|null;
 }
 
 export interface Supplier{
