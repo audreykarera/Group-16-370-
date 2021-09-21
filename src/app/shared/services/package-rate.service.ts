@@ -1,37 +1,42 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { PackageRate } from 'src/app/Interfaces/Index';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PackageRateService {
-  apiUrl = "http://localhost:60000/api/packagerate/";
+  apiUrl = "http://localhost:60000/api/packagerate";
   constructor(
     private http: HttpClient
   ) { }
 
-  getPackageRate() {
-    return this.http.get(this.apiUrl + 'getpackagerate/');
+  getPackageRates(): Observable<PackageRate[]> {
+    return this.http.get<PackageRate[]>(`${this.apiUrl}`)
+      .pipe(map(res => res));
+  }
+  getPackageRate(id: number): Observable<PackageRate[]> {
+    return this.http.get<PackageRate[]>(`${this.apiUrl}/${id}`)
+      .pipe(map(res => res));
   }
 
-  getPackageRateId(id) {
-    return this.http.get(this.apiUrl + 'getpackagerateid' + id);
+  UpdatePackageRate(rate: PackageRate) {
+    return this.http.put(`${this.apiUrl}/${rate.PackageRateId}`, rate)
+      .pipe(map(res => res));
   }
 
-  patchPackageRate(obj) {
-    return this.http.patch(this.apiUrl + 'updatepackagerate/', obj);
+  CreatePackageRate(rate: PackageRate): Observable<any> {
+    return this.http.post(`${this.apiUrl}`, rate)
+      .pipe(map(res => res));
   }
 
-  postPackageRate(obj) {
-    return this.http.post(this.apiUrl + 'createpackagerate/', obj);
+  DeletePackageRate(id: number) {
+    return this.http.delete(`${this.apiUrl}/${id}`)
+      .pipe(map(res => res));
   }
 
-  deletePackageRate(id) {
-    return this.http.delete(this.apiUrl + 'deletepackagerate' + id);
-  }
-  getPackageRateName(name){
-    return this.http.get(this.apiUrl + 'getpackageratebyamount' + name); 
-  }
   
 
 }

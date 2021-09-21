@@ -1,9 +1,9 @@
 import { PackageService } from '../../../../shared/services/package.service';
-import { Package } from './../../../../models/package';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { SharedComponent } from 'src/app/component/shared components/shared/shared.component';
 import { DialogInterface } from 'src/app/interfaces/dialog.interface';
+import { Package } from 'src/app/Interfaces/Index';
 
 @Component({
   selector: 'app-edit-packages',

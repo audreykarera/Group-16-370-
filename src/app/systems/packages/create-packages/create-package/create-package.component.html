@@ -1,39 +1,102 @@
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Skip Package</title>
-</head>
-
-<body>
-    <div class="modal-body" style="width: 20rem; height: auto">
-        <h3>Add Skip Package</h3>
-        <div class="form-group">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <mat-form-field class="example-full-width" appearance="fill">
-                         <mat-label>Package Name</mat-label>
-                         <input matInput placeholder="">
-                        </mat-form-field>
-                        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Package Price Rate</label>
-                        <mat-form-field class="example-full-width" appearance="fill">
-                         <input matInput placeholder="">
-                        </mat-form-field>
-                        <label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Package Details</label>
-                        <mat-form-field class="example-full-width" appearance="fill">
-                          <mat-label>Insert package details</mat-label>
-                          <textarea matInput placeholder="Ex. What the package includes..."></textarea>
-                        </mat-form-field>
-                        
-                            <br>
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button class="btn btn-outline-success me-md-2"  (click)="openConfirmDialog()" type="button">Save</button>
-                            <button class="btn btn-outline-danger" (click)="Close() " type="button">Cancel</button>
-                        </div>
+<h2 mat-dialog-title>Create Skip Package</h2>
+<mat-dialog-content>
+    <form [formGroup]="form" (ngSubmit)="OnSubmit()">
+        
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Add Skip Package Name</mat-label>
+            <input matInput placeholder="" formControlName="PackageName">
+            <div class="errors">
+                <ng-container *ngFor="let item of error_messages.PackageName">
+                    <div class="errors" *ngIf="
+                  form.get('PackageName').hasError(item.type) &&
+                  (form.get('PackageName').dirty ||
+                  form.get('PackageName').touched)">
+                        {{ item.message }}
                     </div>
-                </div>
+                </ng-container>
             </div>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Package Price Rate</mat-label>
+            <input matInput placeholder="" formControlName="PackageName">
+            <div class="errors">
+                <ng-container *ngFor="let item of error_messages.PackageName">
+                    <div class="errors" *ngIf="
+                  form.get('PackageName').hasError(item.type) &&
+                  (form.get('PackageName').dirty ||
+                    form.get('PackageName').touched)">
+                        {{ item.message }}
+                    </div>
+                </ng-container>
+            </div>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Package Description</mat-label>
+            <input matInput placeholder="Ex. What the package includes..." formControlName="PackageDetails">
+            <div class="errors">
+                <ng-container *ngFor="let item of error_messages.PackageDetails">
+                    <div class="errors" *ngIf="
+                  form.get('PackageDetails').hasError(item.type) &&
+                  (form.get('PackageDetails').dirty ||
+                    form.get('PackageDetails').touched)">
+                        {{ item.message }}
+                    </div>
+                </ng-container>
+            </div>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Extra Collection</mat-label>
+            <input matInput placeholder="" formControlName="ExtraCollection">
+            <div class="errors">
+                <ng-container *ngFor="let item of error_messages.PackageName">
+                    <div class="errors" *ngIf="
+                  form.get('ExtraCollection').hasError(item.type) &&
+                  (form.get('ExtraCollection').dirty ||
+                    form.get('ExtraCollection').touched)">
+                        {{ item.message }}
+                    </div>
+                </ng-container>
+            </div>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Extra Price</mat-label>
+            <input matInput placeholder="" formControlName="ExtraPriceAmount">
+            <div class="errors">
+                <ng-container *ngFor="let item of error_messages.PackageName">
+                    <div class="errors" *ngIf="
+                  form.get('ExtraPriceAmount').hasError(item.type) &&
+                  (form.get('ExtraPriceAmount').dirty ||
+                    form.get('ExtraPriceAmount').touched)">
+                        {{ item.message }}
+                    </div>
+                </ng-container>
+            </div>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Service Name</mat-label>
+            <input matInput placeholder="" formControlName="ServiceName">
+            <div class="errors">
+                <ng-container *ngFor="let item of error_messages.ServiceName">
+                    <div class="errors" *ngIf="
+                  form.get('ServiceName').hasError(item.type) &&
+                  (form.get('ServiceName').dirty ||
+                    form.get('ServiceName').touched)">
+                        {{ item.message }}
+                    </div>
+                </ng-container>
+            </div>
+        </mat-form-field>
+
+        <div align="end">
+            <button mat-stroked-button>Save</button>
         </div>
+    </form>
+    <div align="end">
+        <button mat-raised-button (click)="Close()" color="warn">Cancel</button>
+    </div>
+</mat-dialog-content> 

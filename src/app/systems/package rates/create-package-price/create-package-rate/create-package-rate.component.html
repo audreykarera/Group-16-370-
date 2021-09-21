@@ -1,21 +1,41 @@
 <h1 mat-dialog-title>Add Package Rate</h1>
-<div mat-dialog-content>
-  <form class="text-center">
-     <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>Package Rate Price</mat-label>
-          <input matInput class="example-right-align" placeholder="0">
-          <span matPrefix>R&nbsp;</span>
-     </mat-form-field>
-      <mat-form-field class="example-full-width" appearance="fill">
-                          <mat-label>Date of Price Rate</mat-label>
-                          <input matInput placeholder="DD/MM/YYYY">
-                        </mat-form-field>
-  </form>                        
-</div>
-<div mat-dialog-actions>
-  <button mat-stroked-button >Save</button>
-  <button mat-raised-button (click)="Close()" color="warn">Cancel</button>
-</div>
+<mat-dialog-content>
+  <form [formGroup]="form" (ngSubmit)="OnSubmit()">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Package Rate Price</mat-label>
+      <input matInput placeholder="0" formControlName="PackageRatePrice">
+      <span matPrefix>R&nbsp;</span>
+      <div class="errors">
+        <ng-container *ngFor="let item of error_messages.PackageRatePrice">
+   <div class= "errors" *ngIf="
+                  form.get('PackageRatePrice').hasError(item.type) &&
+                  (form.get('PackageRatePrice').dirty ||
+                  form.get('PackageRatePrice').touched)">
+            {{ item.message }}
+          </div>
+        </ng-container>
+      </div>
+    </mat-form-field>
 
-
-
+    <mat-form-field class="example-full-width" appearance="fill" >
+      <mat-label>Date of Price Rate</mat-label>
+      <input matInput placeholder="YYYY/MM/DD" formControlName="PackagePriceDate">
+      <div class="errors">
+        <ng-container *ngFor="let item of error_messages.PackagePriceDate">
+          <div class="errors" *ngIf="
+                  form.get('PackagePriceDate').hasError(item.type) &&
+                  (form.get('PackagePriceDate').dirty ||
+                  form.get('PackagePriceDate').touched)">
+            {{ item.message }}
+          </div>
+        </ng-container>
+      </div>
+    </mat-form-field>
+    <div align="end">
+      <button mat-stroked-button>Save</button>
+    </div>
+  </form>
+  <div align="end">
+    <button mat-raised-button (click)="Close()" color="warn">Cancel</button>
+  </div>
+</mat-dialog-content>
