@@ -80,6 +80,14 @@ export interface Service{
     // Location : Location[];
 }
 
+export interface Booking {
+    BookingId: number|null;
+    ClientId : number|null;
+    BookingStatusId: number| null;
+    CollectionNoteId: number|null;
+    PaymentTypeId: number|null;
+}
+
 export interface Supplier{
     SupplierId: number |null;
     SupplierName: string|null;
@@ -98,4 +106,9 @@ export interface Vehicle{
     VehicleMake:string|null;
     VehicleModel:string|null;
     VehicleAvailable: boolean |null;
+}
+
+export class QuoteStatus{
+    QuoteStatusId: number|null;
+    QuoteStatusName: string|null;
 }

@@ -147,6 +147,7 @@ import { ReadServicePriceComponent } from './systems/service price/read-service-
 import { CreateServicePriceComponent } from './systems/service price/create-service-price/create-service-price/create-service-price.component';
 import { EditServicepriceComponent } from './systems/service price/edit-service-price/edit-serviceprice/edit-serviceprice.component';
 import { CreatePackageRateComponent } from './systems/package rates/create-package-price/create-package-rate/create-package-rate.component';
+import { ViewBookingsComponent } from './systems/bookings/view-bookings/view-bookings.component';
 
 
 
@@ -287,7 +288,8 @@ const angularMaterials = [
     AddExtraCollectionComponent,
     ReadServicePriceComponent,
     CreateServicePriceComponent,
-    EditServicepriceComponent
+    EditServicepriceComponent,
+    ViewBookingsComponent
   ],
 
   imports: [
