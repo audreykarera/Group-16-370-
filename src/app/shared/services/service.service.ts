@@ -1,3 +1,4 @@
+
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -25,13 +26,13 @@ export class ServiceService {
         .pipe(map(res => res));
     }
   
-    UpdateService(serviceType: Service) {
-      return this.http.put(`${this.apiUrl}/${serviceType.ServiceId}`, serviceType)
+    UpdateService(service: Service) {
+      return this.http.put(`${this.apiUrl}/${service.ServiceId}`, service)
         .pipe(map(res => res));
     }
   
-    CreateService(serviceType: Service): Observable<any> {
-      return this.http.post(`${this.apiUrl}`, serviceType)
+    CreateService(service: Service): Observable<any> {
+      return this.http.post(`${this.apiUrl}`, service)
         .pipe(map(res => res));
     }
   

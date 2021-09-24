@@ -53,7 +53,6 @@ import { ReadServicesComponent } from './systems/services/read-service/read-serv
 import { CreateServiceComponent } from './systems/services/create-service/create-service/create-service.component';
 import { DeleteServiceComponent } from './systems/services/delete-service/delete-service/delete-service.component';
 import { EditServiceComponent } from './systems/services/edit-service/edit-service/edit-service.component';
-import { CreatePackageComponent } from './systems/packages/create-packages/create-package/create-package.component';
 import { ReadPackagesComponent } from './systems/packages/read-packages/read-packages/read-packages.component';
 import { EditPackagesComponent } from './systems/packages/edit-packages/edit-packages/edit-packages.component';
 import { CreateServicetypeComponent } from './systems/service types/create-servicetypes/create-servicetype/create-servicetype.component';
@@ -107,7 +106,6 @@ import { ReadBookingStatusComponent } from './systems/booking-status/read-bookin
 import { CreateBookingStatusComponent } from './systems/booking-status/create-booking-status/create-booking-status/create-booking-status.component';
 import { ReadPackageRatesComponent } from './systems/package rates/read-package-rates/read-package-rates/read-package-rates.component';
 import { EditPackageRateComponent } from './systems/package rates/edit-package-rate/edit-package-rate/edit-package-rate.component';
-import { CreatePackageRateComponent } from './systems/package rates/create-package-price/create-package-rate/create-package-rate.component';
 import { CreateSlotComponent } from './systems/schedule/create-slot/create-slot/create-slot.component';
 import { VehicleComponent } from './systems/vehicles/vehicle/vehicle.component';
 import { CreateVehicleComponent } from './systems/vehicles/create-vehicle/create-vehicle.component';
@@ -137,6 +135,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { EditSuppliersComponent } from './systems/supplier/edit-supplier/edit-suppliers/edit-suppliers.component';
 import { CreateSupplierComponent } from './systems/supplier/create-supplier/create-supplier/create-supplier.component';
 import { ViewEmployeeTitleComponent } from './systems/employee-settings/view-employee-title/view-employee-title.component';
+import { AddExtraCollectionComponent } from './systems/extra-collection/add-extra-collection/add-extra-collection/add-extra-collection.component';
+import { CreatePackageComponent } from './systems/packages/create-packages/create-package/create-package.component';
+
 import { ReadServicePriceComponent } from './systems/service price/read-service-price/read-service-price/read-service-price.component';
 import { CreateServicePriceComponent } from './systems/service price/create-service-price/create-service-price/create-service-price.component';
 import { EditServicepriceComponent } from './systems/service price/edit-service-price/edit-serviceprice/edit-serviceprice.component';
@@ -146,6 +147,8 @@ import { WhatWeDoComponent } from './staticpage/what-we-do/what-we-do.component'
 import { EmployeedatetimeslotComponent } from './systems/schedule/employeedatetimeslot/employeedatetimeslot.component';
 import { CreateEmployeedatetimeslotComponent } from './systems/schedule/employeedatetimeslot/create-employeedatetimeslot/create-employeedatetimeslot.component';
 import { EditSlotComponent } from './systems/schedule/edit-slot/edit-slot.component';
+import { CreatePackageRateComponent } from './systems/package rates/create-package-price/create-package-rate/create-package-rate.component';
+import { ViewBookingsComponent } from './systems/bookings/view-bookings/view-bookings.component';
 
 
 
@@ -279,6 +282,7 @@ const angularMaterials = [
     ReadRequestedquoteComponent,
     PrintClientInvoicesComponent,
     ViewClientBookingComponent,
+    AddExtraCollectionComponent,
     ReadServicePriceComponent,
     CreateServicePriceComponent,
     EditServicepriceComponent,
@@ -288,6 +292,7 @@ const angularMaterials = [
     EmployeedatetimeslotComponent,
     CreateEmployeedatetimeslotComponent,
     EditSlotComponent,
+    ViewBookingsComponent
   ],
 
   imports: [

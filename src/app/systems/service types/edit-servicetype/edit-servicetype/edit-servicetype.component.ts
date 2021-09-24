@@ -1,10 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { SharedComponent } from 'src/app/component/shared components/shared/shared.component';
-import { DialogInterface } from 'src/app/Interfaces/dialog.interface';
 import { ServiceTypeService } from 'src/app/shared/services/service-type.service';
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
 import { ServiceType } from 'src/app/Interfaces/Index';
@@ -18,6 +15,7 @@ import { ServiceType } from 'src/app/Interfaces/Index';
 export class EditServicetypeComponent implements OnInit {
   form: FormGroup;
   serviceType:ServiceType;
+
   error_messages = {
     ServiceTypeName: [
       { type: 'required', message: 'Service Type name is required' },
@@ -32,18 +30,18 @@ export class EditServicetypeComponent implements OnInit {
   }
 
   constructor(
+    private serviceTypeService:ServiceTypeService,
+    private notificationService: NotificationsService,
     public dialog: MatDialog,
-    public dialogRef:MatDialogRef<EditServicetypeComponent>,
-    private formBuilder:FormBuilder,
-    private serviceTypeService: ServiceTypeService,
+    private formBuilder: FormBuilder,
+    public dialogRef: MatDialogRef<EditServicetypeComponent>,
     @Inject(MAT_DIALOG_DATA)
-    public data: any,
-    private notificationService: NotificationsService) { };
+    public data: any
+  ){ }
 
-  ngOnInit(): void {
-    this.refreshForm();
-    this.createForm();
-    
+  ngOnInit(): void {    
+    this.createForm(); 
+    this.refreshForm();   
   }
  
   Close(){
@@ -54,12 +52,11 @@ export class EditServicetypeComponent implements OnInit {
     this.form=this.formBuilder.group({
       ServiceTypeName: [this.data.serviceTypeName, [Validators.required, Validators.maxLength(30), Validators.minLength(2)]],
       ServiceTypeDescription:[this.data.serviceTypeDescription, [Validators.required, Validators.maxLength(30), Validators.minLength(2)]]
-    })
+    });
   }
 
   OnSubmit(){
-    console.log('Hello')
-    if (this.form.valid){
+   if (this.form.valid){
       const serviceType:ServiceType=this.form.value;
       serviceType.ServiceTypeId=this.data.serviceTypeId;
       this.serviceTypeService.UpdateServiceType(serviceType).subscribe(res=>{
@@ -78,7 +75,7 @@ export class EditServicetypeComponent implements OnInit {
     this.serviceType = {
       ServiceTypeId: 0,
       ServiceTypeName: '',
-      ServiceTypeDescription: '',
+      ServiceTypeDescription: ''
     }
   }
 }

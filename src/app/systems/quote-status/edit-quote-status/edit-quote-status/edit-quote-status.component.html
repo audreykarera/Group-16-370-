@@ -1,16 +1,27 @@
 <h1 mat-dialog-title>Edit Quote Status</h1>
-<div mat-dialog-content>
-  <form class="text-center">
+<mat-dialog-content>
+  <form class="text-center" [formGroup]="form" (ngSubmit)="OnSubmit()" >
     <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>Enter Edited Quote Status</mat-label>
-      <input matInput placeholder="Confirmed">
-     </mat-form-field>
-  </form>
+    <mat-label>Update Quote Status</mat-label>
+    <input matInput placeholder="" formControlName="QuoteStatusName">
+    <div class="errors">
+      <ng-container *ngFor="let item of error_messages.QuoteStatusName" >
+        <div class="errors" *ngIf="form.get('QuoteStatusName').hasError(item.type) &&
+        (form.get('QuoteStatusName').dirty ||
+        form.get('QuoteStatusName').touched)">
+          {{item.message}}
+        </div>
+      </ng-container>
+    </div>
+   </mat-form-field>
+   <div align="end">
+    <button mat-stroked-button>Save</button>
 </div>
-<div mat-dialog-actions>
-  <button mat-raised-button >Save</button>
-  <button mat-raised-button mat-dialog-close color="warn">Close</button>
+</form>
+<div align="end">
+<button mat-raised-button (click)="Close()" color="warn">Cancel</button>
 </div>
+</mat-dialog-content>
 
 
 <!-- <!DOCTYPE html>

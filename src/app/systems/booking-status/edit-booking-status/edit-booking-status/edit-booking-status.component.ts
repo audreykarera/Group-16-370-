@@ -23,7 +23,7 @@ export class EditBookingStatusComponent implements OnInit {
       { type: 'maxlength', message: 'Booking Status Name must be less than 20 characters' }
     ]
   }
-
+     
   constructor(private service: BookingStatusService,
     public dialog: MatDialog,
     private formBuilder: FormBuilder, 
@@ -34,52 +34,45 @@ export class EditBookingStatusComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-      this.refreshForm();
       this.createForm();
-      console.log('Hello')
+    this.refreshForm();
     }
 
-    createForm() {
-      this.form = this.formBuilder.group({
-        BookingStatusName: new FormControl(
-          this.bookingstatus.BookingStatusName,
-          Validators.compose([
-            Validators.required,
-            Validators.maxLength(19),
-            Validators.minLength(2)
-          ])
-        )
-      });
-    }
-  
     Close(){
       this.dialog.closeAll();
-    }
+  }
 
-    OnSubmit() {
-      console.log('Hello')
-      if (this.form.valid) {
+  createForm() {
+    this.form = this.formBuilder.group({
+      BookingStatusName: [this.data.bookingStatusName, [Validators.required, Validators.maxLength(19), Validators.minLength(2)]]
+    })
+  }
+
+  OnSubmit() {
+    console.log('Hello')
+    if (this.form.valid) {
       const bookingStatus: BookingStatus = this.form.value;
       bookingStatus.BookingStatusId = this.data.bookingStatusId;
-      this.service.UpdateBookingStatus(bookingStatus).subscribe(res => {
+      this.service.UpdateBookingStatus(this.bookingstatus).subscribe(res => {
         this.refreshForm();
         this.dialogRef.close('add');
       }, (err: HttpErrorResponse) => {
-          if (err.status != 200){
-            this.notificationService.failToaster('There was an error!', 'Error');
-          }
+        if(err.status != 200){
+          this.notificationService.failToaster('There was an error!', 'Error');
+        }
       }
-          );
-      }
+      );
     }
-  
-     refreshForm(){
-      this.bookingstatus = {
-        BookingStatusId: 0,
-        BookingStatusName: ''
-    }
+  }
+
+  refreshForm(){
+    this.bookingstatus = {
+      BookingStatusId: 0,
+      BookingStatusName: ''
+  }
 
   }
+
 }
 
 

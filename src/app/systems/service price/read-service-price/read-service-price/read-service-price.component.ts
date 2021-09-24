@@ -54,7 +54,7 @@ export class ReadServicePriceComponent implements OnInit {
     refreshForm() {
       this.servicePrice = {
         ServicePriceId: 0,
-        ServicePriceAmount: '',
+        ServicePriceAmount: 0,
         ServicePriceDate:''
       }
     }

@@ -33,7 +33,7 @@
        <br>
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Service Type</mat-label>
-            <mat-select [(value)]="serviceTypes">
+            <mat-select [(value)]="serviceTypes$" >
                 <mat-option *ngFor="let item of serviceTypes" [value] = "item.serviceTypeName">
                 {{item.serviceTypeName}}
                 </mat-option>
@@ -42,14 +42,14 @@
       <br>
        <mat-form-field class="example-full-width" appearance="fill">
           <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Service Price</mat-label>
-          <mat-select [(value)]="servicePrices">
+          <mat-select [(value)]="servicePrices$">
                 <mat-option *ngFor="let item of servicePrices" [value] = "item.servicePriceAmount">
                 {{item.servicePriceAmount}}
                 </mat-option>
             </mat-select>
       </mat-form-field>
                 <br>
-             <mat-form-field class="example-full-width" appearance="fill">
+             <!--<mat-form-field class="example-full-width" appearance="fill">
           <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Location</mat-label>
           <input matInput placeholder="" formControlName="LocationId">
           <div class="errors">
@@ -62,7 +62,7 @@
                   </div>
               </ng-container>
                </div>    
-      </mat-form-field>
+      </mat-form-field> -->
         
         <div align="end">
             <button mat-stroked-button >Save</button>

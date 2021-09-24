@@ -1,6 +1,28 @@
+import { ExtraCollection } from './../systems/extra-collection/read-extra-collection/read-extra-collection.component';
 export interface Title{
     TitleId: number | null;
     TitleName: string | null;
+}
+export interface ExtraCollectionPrice {
+    ExtraCollectionPriceId: number | null;
+    ExtraPriceAmount: string | null;   
+
+}
+export interface PackageRate {
+    PackageRateId: number | null;
+    PackageRatePrice: number | null;
+    PackagePriceDate: string | null;
+}
+
+export interface Package {
+    PackageId: number | null;
+    PackageName: string | null;
+    PackageDetails: string | null;
+    PackagePrice: string | null;
+    ExtraCollection: boolean | null;
+    ExtraPriceAmount: number | null;
+    ServiceName: string | null; 
+
 }
 
 export interface EmployeeType{
@@ -74,20 +96,28 @@ export interface ServiceType{
 
 export interface ServicePrice{
     ServicePriceId:number |null;
-    ServicePriceAmount: string|null;
+    ServicePriceAmount: number |null;
     ServicePriceDate:string |null;
 }
 
 export interface Service{
     ServiceId:number|null;
     ServiceName:string|null;
-    ServiceDescription:string|null;
+    ServiceDescription:string|null;  
+    ServiceTypeId: number|null;
+    ServicePriceId:number|null;
+    // LocationId:number|null;
     // ServiceType: ServiceType[];
     // ServicePrice:ServicePrice[];
     // Location : Location[];
-    ServiceTypeId: number|null;
-    ServicePriceId:number|null;
-    LocationId:number|null;
+}
+
+export interface Booking {
+    BookingId: number|null;
+    ClientId : number|null;
+    BookingStatusId: number| null;
+    CollectionNoteId: number|null;
+    PaymentTypeId: number|null;
 }
 
 export interface Supplier{
@@ -108,4 +138,9 @@ export interface Vehicle{
     VehicleMake:string|null;
     VehicleModel:string|null;
     VehicleAvailable: boolean |null;
+}
+
+export class QuoteStatus{
+    QuoteStatusId: number|null;
+    QuoteStatusName: string|null;
 }
