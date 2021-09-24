@@ -3,7 +3,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CreateEmployeeComponent } from '../../create-employee/create-employee/create-employee.component';
 import { ViewEmployeeComponent } from '../../view-employee/view-employee/view-employee.component';
 import { EmployeeService } from 'src/app/shared/services/employee.service';
-import { Employee } from 'src/app/models/employee';
+import { Employee } from 'src/app/Interfaces/Index';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
 import { MatTableDataSource } from '@angular/material/table';

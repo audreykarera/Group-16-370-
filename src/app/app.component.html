@@ -1,4 +1,4 @@
-<mat-drawer-container>
+<mat-drawer-container *ngIf="userLogin">
   <mat-drawer mode="side" [opened]="sideBarOpen">
     <!-- <mat-drawer mode="side" opened="true"> -->
     <app-sidenav></app-sidenav>
@@ -8,3 +8,4 @@
     <router-outlet></router-outlet>
   </mat-drawer-content>
 </mat-drawer-container>
+<router-outlet></router-outlet>

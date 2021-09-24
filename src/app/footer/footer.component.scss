@@ -1,0 +1,19 @@
+@import "src/styles.scss";
+
+    .footer {
+    height: 12em;
+    display: flex;
+    flex-flow: row wrap;
+    color: #fff;
+    background-color: #207934;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    }
+
+    .column{
+        padding-top: 3em;
+        padding-bottom: 2em;
+        padding-left: 33rem;
+    }

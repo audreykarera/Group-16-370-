@@ -18,67 +18,67 @@
           </div>
         </mat-card-header>
         <mat-card-content>
-        <mat-form-field appearance="fill" class="m-2">
-                          <mat-label>Service</mat-label>
-                          <mat-select (onSelectionChange)="get($event)">
-                              <mat-option *ngFor="let item of services" (click)="get(item)" [value]="item.value">
-                                  {{item.viewValue}}
-                              </mat-option>
-                          </mat-select>
+          <mat-form-field appearance="fill" class="m-2">
+            <mat-label>Service</mat-label>
+            <mat-select (onSelectionChange)="get($event)">
+              <mat-option *ngFor="let item of services" (click)="get(item)" [value]="item.value">
+                {{item.viewValue}}
+              </mat-option>
+            </mat-select>
           </mat-form-field>
-           <span *ngIf="isSelected">
-                          <span *ngIf="CollectionandDisposal">
-                              <mat-form-field appearance="fill" class="m-2">
-                                  <mat-label>Service Type</mat-label>
-                                  <mat-select>
-                                      <mat-option *ngFor="let item of recyclables" (click)="get(item)" [value]="item.value">
-                                          {{item.viewValue}}
-                                      </mat-option>
-                                  </mat-select>
-                              </mat-form-field>
-                          </span>
-                           <span *ngIf="SkipService">
-                              <mat-form-field appearance="fill" class="m-2">
-                                  <mat-label>Service Type</mat-label>
-                                  <mat-select>
-                                      <mat-option *ngFor="let item of packages" (click)="get(item)" [value]="item.value">
-                                          {{item.viewValue}}
-                                      </mat-option>
-                                  </mat-select>
-                              </mat-form-field>
-                          </span>
-                           <span *ngIf="Delivery">
-                              <mat-form-field appearance="fill" class="m-2">
-                                  <mat-label>Service Type</mat-label>
-                                  <mat-select>
-                                      <mat-option *ngFor="let item of deliverables" (click)="get(item)" [value]="item.value">
-                                          {{item.viewValue}}
-                                      </mat-option>
-                                  </mat-select>
-                              </mat-form-field>
-                          </span>
-                          <span *ngIf="Santisation">
-                              <mat-form-field appearance="fill" class="m-2">
-                                  <mat-label>Service Type</mat-label>
-                                  <mat-select>
-                                      <mat-option *ngFor="let item of  santisables" (click)="get(item)" [value]="item.value">
-                                          {{item.viewValue}}
-                                      </mat-option>
-                                  </mat-select>
-                              </mat-form-field>
-                          </span>
-                          <span *ngIf="Removal">
-                              <mat-form-field appearance="fill" class="m-2">
-                                  <mat-label>Service Type</mat-label>
-                                  <mat-select>
-                                      <mat-option *ngFor="let item of removables" (click)="get(item)" [value]="item.value">
-                                          {{item.viewValue}}
-                                      </mat-option>
-                                  </mat-select>
-                              </mat-form-field>
-                          </span>
+          <span *ngIf="isSelected">
+            <span *ngIf="CollectionandDisposal">
+              <mat-form-field appearance="fill" class="m-2">
+                <mat-label>Service Type</mat-label>
+                <mat-select>
+                  <mat-option *ngFor="let item of recyclables" (click)="get(item)" [value]="item.value">
+                    {{item.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </span>
+            <span *ngIf="SkipService">
+              <mat-form-field appearance="fill" class="m-2">
+                <mat-label>Service Type</mat-label>
+                <mat-select>
+                  <mat-option *ngFor="let item of packages" (click)="get(item)" [value]="item.value">
+                    {{item.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </span>
+            <span *ngIf="Delivery">
+              <mat-form-field appearance="fill" class="m-2">
+                <mat-label>Service Type</mat-label>
+                <mat-select>
+                  <mat-option *ngFor="let item of deliverables" (click)="get(item)" [value]="item.value">
+                    {{item.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </span>
+            <span *ngIf="Santisation">
+              <mat-form-field appearance="fill" class="m-2">
+                <mat-label>Service Type</mat-label>
+                <mat-select>
+                  <mat-option *ngFor="let item of  santisables" (click)="get(item)" [value]="item.value">
+                    {{item.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </span>
+            <span *ngIf="Removal">
+              <mat-form-field appearance="fill" class="m-2">
+                <mat-label>Service Type</mat-label>
+                <mat-select>
+                  <mat-option *ngFor="let item of removables" (click)="get(item)" [value]="item.value">
+                    {{item.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </span>
           </span>
-           <form class="text-center">
+          <form class="text-center">
             <mat-form-field appearance="fill">
               <mat-label>Province</mat-label>
               <mat-select>
@@ -118,8 +118,10 @@
         </mat-card-content>
         <mat-card-actions>
           <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-            <button class="btn btn-outline-success me-md-2" type="button" (click)="routerGenerateEstimate()">Generate</button>
-            <button class="btn btn-outline-primary" type="button" routerLinkActive="list-item-active" routerLink="/request-quote">Request Quote</button>
+            <button class="btn btn-outline-success me-md-2" type="button"
+              (click)="routerGenerateEstimate()">Generate</button>
+            <button class="btn btn-outline-primary" type="button" routerLinkActive="list-item-active"
+              routerLink="/request-quote">Request Quote</button>
           </div>
         </mat-card-actions>
       </mat-card>
