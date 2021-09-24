@@ -1,5 +1,4 @@
 import { ServicePriceService } from './../../../../shared/services/service-price.service';
-
 import { NotificationsService } from './../../../../shared/services/notifications.service';
 import { Router } from '@angular/router';
 import { ServiceTypeService } from 'src/app/shared/services/service-type.service';
@@ -21,9 +20,8 @@ export class CreateServiceComponent implements OnInit {
   form:FormGroup;
   serviceTable:Service;
   serviceTypes:ServiceType[];
-  serviceTypes$;
   servicePrices:ServicePrice[];
-  servicePrices$
+ 
 
   error_messages = {
     ServiceName: [
@@ -60,8 +58,9 @@ export class CreateServiceComponent implements OnInit {
   ngOnInit(): void {
     this.refreshForm();
     this.createForm();
-    this.serviceTypes$=this.getServiceTypes();
-    this.servicePrices$=this.getServicePrices();
+    this.getServiceTypes();
+    this.getServicePrices();
+
     
     console.log('Services')
   }
@@ -84,7 +83,7 @@ export class CreateServiceComponent implements OnInit {
           Validators.minLength(2)
         ])
       ),
-      ServiceType: new FormControl(
+      ServiceTypeId: new FormControl(
         this.serviceTable.ServiceTypeId,
         Validators.compose([
           Validators.required,
@@ -92,7 +91,7 @@ export class CreateServiceComponent implements OnInit {
           Validators.minLength(2)
         ])
       ),
-      ServicePrice: new FormControl(
+      ServicePriceId: new FormControl(
         this.serviceTable.ServicePriceId,
         Validators.compose([
           Validators.required,
@@ -127,13 +126,14 @@ export class CreateServiceComponent implements OnInit {
       });
     }
   }
+  
   refreshForm() {
     this.serviceTable = {
       ServiceId: 0,
       ServiceName: '',
       ServiceDescription:'',
       ServiceTypeId:0,
-      ServicePriceId:0
+      ServicePriceId:0,
       // LocationId:0
     }
   }

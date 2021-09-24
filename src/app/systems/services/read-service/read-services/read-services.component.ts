@@ -109,4 +109,25 @@ export class ReadServicesComponent implements OnInit {
        }
      });
     }
+
+    routerEditService(serviceId:number, serviceName:string, serviceDescription:string, serviceTypeId:number, servicePriceId:number){
+      const dialog=new MatDialogConfig();
+      dialog.disableClose=true;
+      dialog.width='auto';
+      dialog.height='auto';
+        dialog.data={add:'yes'}
+      const dialogReference=this.dialog.open(
+        EditServiceComponent,
+        {
+          data:{serviceId:serviceId, serviceName:serviceName, serviceDescription:serviceDescription, serviceTypeId:serviceTypeId, servicePriceId:servicePriceId}
+        }
+        );
+        dialogReference.afterClosed().subscribe((res)=>{
+          if (res == 'add'){
+            this.notificationsService.successToaster('Service Edited', 'Success');
+            this.GetServices();
+          }
+        });
+      }    
+    
   }

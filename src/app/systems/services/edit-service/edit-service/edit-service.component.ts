@@ -1,12 +1,17 @@
 
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SharedComponent } from 'src/app/component/shared components/shared/shared.component';
 import { DialogInterface } from 'src/app/interfaces/dialog.interface';
-import { Service } from 'src/app/Interfaces/Index';
+import { Service, ServicePrice, ServiceType } from 'src/app/Interfaces/Index';
 
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
 import { ServiceService } from 'src/app/shared/services/service.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ServiceTypeService } from 'src/app/shared/services/service-type.service';
+import { ServicePriceService } from 'src/app/shared/services/service-price.service';
 
 @Component({
   selector: 'app-edit-service',
@@ -15,50 +20,102 @@ import { ServiceService } from 'src/app/shared/services/service.service';
 })
 
 export class EditServiceComponent implements OnInit {
+  form:FormGroup;
   serviceList: Service;
+  serviceTypes:ServiceType[];
+  servicePrices:ServicePrice[];
 
-  constructor(
-    public dialog: MatDialog,
-     private serviceService: ServiceService,
-     @Inject(MAT_DIALOG_DATA)
-     public data: any,
-     private notificationService: NotificationsService) { }
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
+  error_messages = {
+    ServiceName: [
+      { type: 'required', message: 'Service Name is required' },
+      { type: 'minLength', message: 'Service Name must be more than 1 character' },
+      { type: 'maxLength', message: 'Service Name must be less than 30 characters' }
+    ],
+    ServiceDescription: [
+      { type: 'required', message: 'Service Description is required' },
+      { type: 'minLength', message: 'Service Description must be more than 1 character' },
+      { type: 'maxLength', message: 'Service Description must be less than 30 characters' }
+    ],
+    ServiceTypeId: [
+      { type: 'required', message: 'Service Type is required' },     
+    ],
+    ServicePriceId: [
+      { type: 'required', message: 'Service Price is required' },     
+    ]
   }
 
-  // ngOnInit(): void {
-  //   console.log(this.data);
-  //   this.readService();
-  // }
+  constructor(
+    private serviceService:ServiceService,
+    private serviceTypeService: ServiceTypeService,
+    private servicePriceService:ServicePriceService,
+    private notificationService: NotificationsService,
+    public dialog: MatDialog,
+    private formBuilder: FormBuilder,
+    public dialogRef: MatDialogRef<EditServiceComponent>,
+    @Inject(MAT_DIALOG_DATA)
+    public data: any
+     ) { }
 
-  // Close(){
-  //   this.dialog.closeAll();
-  // }
+     ngOnInit(): void {    
+      this.createForm(); 
+      this.refreshForm();   
+      this.getServiceTypes();
+      this.getServicePrices();
+      
+    }
 
-  // updateService(){
-  //   this.serviceService.patchService(this.serviceList).subscribe((res)=>{
-  //     this.serviceList = res as Service;
-  //   });
-  //   this.Close();
-  //   this.notificationService.successToaster("Successfully save Service","Error");
-  // }
+    Close(){
+      this.dialog.closeAll();
+    }
+  
+    createForm(){
+      this.form=this.formBuilder.group({
+        ServiceName: [this.data.serviceName, [Validators.required, Validators.maxLength(30), Validators.minLength(2)]],
+        ServiceDescription:[this.data.serviceDescription, [Validators.required, Validators.maxLength(30), Validators.minLength(2)]],
+        ServiceTypeId:[this.data.serviceTypeName,[Validators.required, Validators.maxLength(30), Validators.minLength(1)]],
+        ServicePriceId:[this.data.servicePriceAmount,[Validators.required, Validators.maxLength(30), Validators.minLength(1)]]
 
-  // readService(){
-  //   this.serviceService.getServices().subscribe((res)=>{
-  //     this.serviceList =res as Service;
-  //   })
-  // }
+      });
+    }
 
-  // refreshForm(){
-  //   this.serviceList={
-  //     ServiceId:0,
-  //     ServiceName:'',
-  //     ServiceDescription: '',
-       
-       
-  //      Location:[],
-  //   }
-  // }
+    OnSubmit(){
+      if (this.form.valid){
+         const serviceList:Service=this.form.value;
+         serviceList.ServiceId=this.data.serviceId;
+         console.log(this.serviceList);
+         this.serviceService.UpdateService(serviceList).subscribe(res=>{
+           this.refreshForm();
+           this.dialogRef.close('add');
+         }, (err:HttpErrorResponse)=>{
+           if (err.status!=200){
+             this.notificationService.failToaster('There was an error!', 'Error');
+           }
+         }
+       );
+       }
+     }
+
+     refreshForm() {
+      this.serviceList = {
+        ServiceId: 0,
+        ServiceName: '',
+        ServiceDescription:'',
+        ServiceTypeId:0,
+        ServicePriceId:0,
+        // LocationId:0
+      }
+    }
+
+    getServiceTypes(){
+      this.serviceTypeService.getServiceTypes().subscribe((res)=>{
+        this.serviceTypes=res as ServiceType[];
+      })
+    }
+    getServicePrices(){
+      this.servicePriceService.getServicePrices().subscribe((res)=>{
+        this.servicePrices=res as ServicePrice[];
+      })
+    }
+  
   
 }

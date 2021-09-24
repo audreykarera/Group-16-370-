@@ -74,9 +74,9 @@ export interface Service{
     ServiceDescription:string|null;  
     ServiceTypeId: number|null;
     ServicePriceId:number|null;
-    // LocationId:number|null;
-    // ServiceType: ServiceType[];
-    // ServicePrice:ServicePrice[];
+    // ServiceType: ServiceType;
+    // ServicePrice:ServicePrice;
+    // LocationId:number|null;  
     // Location : Location[];
 }
 

@@ -57,7 +57,7 @@ export class CreateServicetypeComponent implements OnInit {
         this.serviceType.ServiceTypeDescription,
         Validators.compose([
           Validators.required,
-          Validators.maxLength(30),
+          Validators.maxLength(60),
           Validators.minLength(2)
         ])
       ),
