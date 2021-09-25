@@ -1,5 +1,4 @@
 import { CreateQuoteStatusComponent } from './../../create-quote-status/create-quote-status/create-quote-status.component';
-import { QuoteStatus } from './../../../../models/quotestatus';
 import { QuoteStatusService } from './../../../../shared/services/quote-status.service';
 import { EditQuoteStatusComponent } from './../../edit-quote-status/edit-quote-status/edit-quote-status.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -7,17 +6,8 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
-
-export interface QuoteStatusTable {
-  id: number;
-  quoteStatus: string;
-}
-
-const ELEMENT_DATA: QuoteStatusTable[] = [
-  {id: 1, quoteStatus: 'Sent'},
-  {id: 2, quoteStatus: 'Not Sent'}
-
-];
+import { Observable } from 'rxjs';
+import { QuoteStatus } from 'src/app/Interfaces/Index';
 
 @Component({
   selector: 'app-read-quote-status',
@@ -26,81 +16,102 @@ const ELEMENT_DATA: QuoteStatusTable[] = [
 })
 export class ReadQuoteStatusComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'quoteStatus', 'edit', 'delete'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  quoteStatusList: QuoteStatus[] = [];
+  quoteStatuses$: Observable<QuoteStatus[]> = this.quoteStatusService.getQuoteStatuses();
+  quoteStatus: QuoteStatus;
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-  }
+  displayedColumns: string[] = ['quoteStatus', 'edit', 'delete'];
+  dataSource = new MatTableDataSource(this.quoteStatusList);
+ 
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  quoteStatusList: QuoteStatus[];
-  quoteStatus: QuoteStatus;
-
 
   constructor(
     public quoteStatusService: QuoteStatusService,
     public dialog: MatDialog,
-    notificationsService: NotificationsService
+    private notificationsService: NotificationsService
   ) { }
 
   ngOnInit(): void {
-    this.readQuoteStatuses();
-  }
-  Close(){
-    this.dialog.closeAll();
-  }
-
-
-  readQuoteStatuses(){
-    console.log(this.quoteStatus);
-    this.quoteStatusService.getQuoteStatuses().subscribe((res)=>{
-      this.quoteStatusList = res as QuoteStatus[];
-      console.log(this.quoteStatusList);
-    });
-  }
-    onDelete(id){
-      this.quoteStatusService.deleteQuoteStatus(id).subscribe((res)=>{
-        console.log(id);
-        this.readQuoteStatuses();
-      });
-    }
-
-    openAddDialog(){
-      this.dialog.open(CreateQuoteStatusComponent,{height:'auto',width:'auto'});
-    }
-
-    openEditDialog(){
-      this.dialog.open(EditQuoteStatusComponent,{height:'auto',width:'auto'});
-    }
-
-  routerAddQuoteStatus() {
-    const dialog = new MatDialogConfig
-    dialog.disableClose = true;
-    dialog.width = 'auto';
-    dialog.height = 'auto';
-    dialog.data = {add: 'yes'}
-    const dialogReference = this.dialog.open(
-      CreateQuoteStatusComponent,
-      dialog
-    )
+    this.GetQuoteStatuses();
+     this.refreshForm();
    }
-  routerEditQuoteStatus() {
-    const dialog = new MatDialogConfig
-    dialog.disableClose = true;
-    dialog.width = 'auto';
-    dialog.height = 'auto';
-    dialog.data = {add: 'yes'}
-    const dialogReference = this.dialog.open(
-      EditQuoteStatusComponent,
-      dialog
-    )
+ 
+   refreshForm() {
+     this.quoteStatus = {
+       QuoteStatusId: 0,
+       QuoteStatusName: ''
+     }
    }
-
-
-}
+ 
+   routerAddQuoteStatus() {
+     const dialog = new MatDialogConfig();
+     dialog.disableClose = true;
+     dialog.width = 'auto';
+     dialog.height = 'auto';
+     dialog.data = {add: 'yes'};
+     const dialogReference = this.dialog.open(
+       CreateQuoteStatusComponent,
+       dialog
+     );
+ 
+     dialogReference.afterClosed().subscribe((res) => {
+       if(res == 'add')
+       this.notificationsService.successToaster('Quote Status  Added', 'Success');
+       this.GetQuoteStatuses();
+     });
+   }
+ 
+   routerEditQuoteStatus(quoteStatusId: number, quoteStatusName: string) {
+     const dialog = new MatDialogConfig();
+     dialog.disableClose = true;
+     dialog.width = 'auto';
+     dialog.height = 'auto';
+     dialog.data = {add: 'yes'};
+     const dialogReference = this.dialog.open(
+       EditQuoteStatusComponent,
+       {
+         data: {quoteStatusId: quoteStatusId, quoteStatusName: quoteStatusName}
+       }
+     );
+ 
+     dialogReference.afterClosed().subscribe((res) => {
+       if(res == 'add'){
+         this.notificationsService.successToaster('Quote Status Edited', 'Success');
+         this.GetQuoteStatuses();
+       }
+     });
+   }
+ 
+   Close() {
+     this.dialog.closeAll();
+   }
+ 
+   GetQuoteStatuses(){
+     this.quoteStatuses$.subscribe(res =>{
+       if(res){
+         this.quoteStatusList = res;
+         console.log(res);
+       }
+     });
+   }
+ 
+   DeleteQuoteStatus(id){
+     console.log(id);
+     this.quoteStatusService.DeleteQuoteStatus(id).subscribe((res) =>{
+       this.notificationsService.successToaster('Quote Status Deleted', 'Success');
+       this.GetQuoteStatuses();
+     })
+   }
+ 
+ 
+ 
+ 
+ 
+ 
+ }
+ 

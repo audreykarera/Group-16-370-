@@ -10,7 +10,7 @@ export interface ExtraCollectionPrice {
 }
 export interface PackageRate {
     PackageRateId: number | null;
-    PackageRatePrice: string | null;
+    PackageRatePrice: number | null;
     PackagePriceDate: string | null;
 }
 
@@ -20,7 +20,7 @@ export interface Package {
     PackageDetails: string | null;
     PackagePrice: string | null;
     ExtraCollection: boolean | null;
-    ExtraPriceAmount: string | null;
+    ExtraPriceAmount: number | null;
     ServiceName: string | null;
 
 }
@@ -33,6 +33,38 @@ export interface EmployeeType{
 export interface EmploymentStatus{
     EmploymentStatusId: number | null;
     EmploymentStatusName: string | null;
+}
+
+export class Employee {
+    EmployeeId: number | null;
+    EmployeeFirstName: string | null;
+    EmployeeSurname: string | null;
+    EmployeeMiddleName: string | null;
+    EmployeeCellPhoneNumber: string | null;
+    EmployeeEmailAddress: string | null;
+    EmployeeIdNumber: string | null;
+    EmployeeEmergencyContactNumber: string | null;
+    EmployeeEmergencyContactFirstName: string | null;
+    EmployeeEmergencyContactSurname: string | null;
+    TitleId: number | null;
+    EmploymentStatusId: number | null;
+    EmployeeTypeId: number | null;
+}
+
+export interface DateTimeSlot{
+    DateTimeSlotId: number | null;
+    Date: Date | null;
+    StartTime: string | null;
+    EndTime: string | null;
+}
+
+export interface EmployeeDateTimeSlot{
+    EmployeeDateTimeSlotId: number | null;
+    EmployeeId: number | null;
+    DateTimeSlotId: number | null;
+    EquipmentId: number | null;
+    VehicleId: number | null;
+    SlotStatusId: number | null;
 }
 
 export interface Complaint{
@@ -64,7 +96,7 @@ export interface ServiceType{
 
 export interface ServicePrice{
     ServicePriceId:number |null;
-    ServicePriceAmount: string|null;
+    ServicePriceAmount: number |null;
     ServicePriceDate:string |null;
 }
 
@@ -72,12 +104,20 @@ export interface Service{
     ServiceId:number|null;
     ServiceName:string|null;
     ServiceDescription:string|null;
+    ServiceTypeId: number|null;
+    ServicePriceId:number|null;
+    // LocationId:number|null;
     // ServiceType: ServiceType[];
     // ServicePrice:ServicePrice[];
     // Location : Location[];
-    ServiceTypeId: number|null;
-    ServicePriceId:number|null;
-    LocationId:number|null;
+}
+
+export interface Booking {
+    BookingId: number|null;
+    ClientId : number|null;
+    BookingStatusId: number| null;
+    CollectionNoteId: number|null;
+    PaymentTypeId: number|null;
 }
 
 export interface Supplier{
@@ -118,4 +158,9 @@ export interface QuoteLine{
   ServiceName: string | null;
   QuoteDescription: string | null;
   IssuedDate: string | null;
+}
+
+export class QuoteStatus{
+    QuoteStatusId: number|null;
+    QuoteStatusName: string|null;
 }

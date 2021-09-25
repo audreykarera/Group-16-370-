@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
-import { Employee } from 'src/app/models/employee';
+import { Employee } from 'src/app/Interfaces/Index';
 
 @Component({
   selector: 'app-view-employee',
@@ -18,15 +18,15 @@ export class ViewEmployeeComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.data);
-    this.refreshForm();
+    // this.refreshForm();
   }
 
-  refreshForm(){
-    this.employee = {
-      EmployeeId: 0,
-      EmployeeFirstName: '',
-    }
-  }
+  // refreshForm(){
+  //   this.employee = {
+  //     EmployeeId: 0,
+  //     EmployeeFirstName: '',
+  //   }
+  // }
 
   Close(){
     this.dialog.closeAll();

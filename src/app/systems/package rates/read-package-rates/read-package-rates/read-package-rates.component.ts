@@ -44,7 +44,7 @@ export class ReadPackageRatesComponent implements OnInit {
   refreshForm() {
     this.rate = {
     PackageRateId: 0,
-    PackageRatePrice: '',
+    PackageRatePrice: 0,
     PackagePriceDate: ''
     }
   }

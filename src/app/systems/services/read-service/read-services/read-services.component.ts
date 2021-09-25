@@ -33,7 +33,8 @@ export class ReadServicesComponent implements OnInit {
   services$: Observable<Service[]> = this.service.getServices();
   serviceTable: Service
 
-  displayedColumns: string[] = ['servicename', 'servicedescription','servicetypeid','servicepriceid','locationid', 'edit', 'delete'];
+ // displayedColumns: string[] = ['servicename', 'servicedescription','servicetypeid','servicepriceid','locationid', 'edit', 'delete'];
+  displayedColumns: string[] = ['servicename', 'servicedescription','servicetypeid','servicepriceid', 'edit', 'delete'];
   dataSource = new MatTableDataSource (this.serviceList);
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -65,7 +66,7 @@ export class ReadServicesComponent implements OnInit {
         ServiceDescription:'',
         ServiceTypeId:0,
         ServicePriceId:0,
-        LocationId:0
+        // LocationId:0
       }
     }
 

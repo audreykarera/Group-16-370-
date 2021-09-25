@@ -1,4 +1,4 @@
-<mat-toolbar>
+<mat-toolbar *ngIf="userLogin">
   <mat-toolbar-row class="justify-content-between">
     <button mat-icon-button (click)="toggleSidebar()">
       <mat-icon class="icon-hover">menu</mat-icon>

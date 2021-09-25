@@ -52,16 +52,9 @@ export class CreatePackageRateComponent implements OnInit {
           ])
           
         ),
-        PackagePriceDate: new FormControl(
-          this.rate.PackagePriceDate,
-           Validators.compose([
-           Validators.required,
-           Validators.maxLength(8),
-           Validators.minLength(8)
-            ])
-               
-            )
-
+        PackagtePriceDate: new FormControl(
+          (new Date()).toISOString().substring(0, 10)
+        ),
       });
     }
     Close() {
@@ -81,7 +74,7 @@ export class CreatePackageRateComponent implements OnInit {
     refreshForm() {
       this.rate = {
         PackageRateId: 0,
-        PackageRatePrice: '',
+        PackageRatePrice: 0,
         PackagePriceDate: ''
       }
     }

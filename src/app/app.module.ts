@@ -81,15 +81,11 @@ import { NavbarComponent } from './client-side/client-homepage/navbar/navbar.com
 import { RegisterClientsComponent } from './systems/clients/register-clients/register-clients/register-clients.component';
 import { TopNavComponent } from './topnav/top-nav/top-nav.component';
 import { LodgeComplaintComponent } from './systems/complaints/lodge-complaint/lodge-complaint/lodge-complaint.component';
-import { LoginComponent } from './employee-side/user-login/login/login.component';
 import { EmployeeSideCollectionNoteComponent } from './systems/collection note/employee-side-collection-note/employee-side-collection-note.component';
 import { EditClientComponent } from './systems/clients/edit-client/edit-client/edit-client.component';
 import { ScheduleModule, RecurrenceEditorModule } from '@syncfusion/ej2-angular-schedule';
 import { ReadScheduleComponent } from './systems/schedule/read-schedule/read-schedule/read-schedule.component';
 import { UserSettingsComponent } from './systems/user-settings/user-settings.component';
-import { CreateUserRoleComponent } from './systems/user-settings/create-user-role/create-user-role.component';
-import { EditUserRoleComponent } from './systems/user-settings/edit-user-role/edit-user-role.component';
-import { DeleteUserRoleComponent } from './systems/user-settings/delete-user-role/delete-user-role.component';
 import { BookingSlotsComponent } from './client-side/booking slots/booking-slots/booking-slots.component';
 import { EstimateCostingComponent } from './systems/estimate-costing/estimate-costing/estimate-costing.component';
 import { ViewSentQuoteComponent } from './systems/requested quote/view-sent-quote/view-sent-quote/view-sent-quote.component';
@@ -111,7 +107,6 @@ import { CreateBookingStatusComponent } from './systems/booking-status/create-bo
 import { ReadPackageRatesComponent } from './systems/package rates/read-package-rates/read-package-rates/read-package-rates.component';
 import { EditPackageRateComponent } from './systems/package rates/edit-package-rate/edit-package-rate/edit-package-rate.component';
 import { CreateSlotComponent } from './systems/schedule/create-slot/create-slot/create-slot.component';
-import { ResetPasswordComponent } from './employee-side/user-login/reset-password/reset-password/reset-password.component';
 import { VehicleComponent } from './systems/vehicles/vehicle/vehicle.component';
 import { CreateVehicleComponent } from './systems/vehicles/create-vehicle/create-vehicle.component';
 import { VehicleSearchPipe } from './shared/vehicle-search.pipe';
@@ -146,7 +141,14 @@ import { CreatePackageComponent } from './systems/packages/create-packages/creat
 import { ReadServicePriceComponent } from './systems/service price/read-service-price/read-service-price/read-service-price.component';
 import { CreateServicePriceComponent } from './systems/service price/create-service-price/create-service-price/create-service-price.component';
 import { EditServicepriceComponent } from './systems/service price/edit-service-price/edit-serviceprice/edit-serviceprice.component';
+import { StaticpageComponent } from './staticpage/staticpage.component';
+import { FooterComponent } from './footer/footer.component';
+import { WhatWeDoComponent } from './staticpage/what-we-do/what-we-do.component';
+import { EmployeedatetimeslotComponent } from './systems/schedule/employeedatetimeslot/employeedatetimeslot.component';
+import { CreateEmployeedatetimeslotComponent } from './systems/schedule/employeedatetimeslot/create-employeedatetimeslot/create-employeedatetimeslot.component';
+import { EditSlotComponent } from './systems/schedule/edit-slot/edit-slot.component';
 import { CreatePackageRateComponent } from './systems/package rates/create-package-price/create-package-rate/create-package-rate.component';
+import { ViewBookingsComponent } from './systems/bookings/view-bookings/view-bookings.component';
 
 
 
@@ -174,6 +176,7 @@ const angularMaterials = [
   FullCalendarModule,
   MatButtonModule,
   MatPaginatorModule,
+  MatIconModule
 ]
 
 @NgModule({
@@ -227,14 +230,10 @@ const angularMaterials = [
     RegisterClientsComponent,
     TopNavComponent,
     LodgeComplaintComponent,
-    LoginComponent,
     EmployeeSideCollectionNoteComponent,
     EditClientComponent,
     ReadScheduleComponent,
     UserSettingsComponent,
-    CreateUserRoleComponent,
-    EditUserRoleComponent,
-    DeleteUserRoleComponent,
     ReadClientBookingComponent,
     BookingSlotsComponent,
     EstimateCostingComponent,
@@ -260,7 +259,6 @@ const angularMaterials = [
     CreatePackageRateComponent,
     ReadBookingStatusComponent,
     CreateSlotComponent,
-    ResetPasswordComponent,
     VehicleComponent,
     VehicleSearchPipe,
     EquipmentComponent,
@@ -287,7 +285,14 @@ const angularMaterials = [
     AddExtraCollectionComponent,
     ReadServicePriceComponent,
     CreateServicePriceComponent,
-    EditServicepriceComponent
+    EditServicepriceComponent,
+    StaticpageComponent,
+    FooterComponent,
+    WhatWeDoComponent,
+    EmployeedatetimeslotComponent,
+    CreateEmployeedatetimeslotComponent,
+    EditSlotComponent,
+    ViewBookingsComponent
   ],
 
   imports: [
@@ -302,7 +307,6 @@ const angularMaterials = [
     FormsModule,
     ReactiveFormsModule,
     ToastrModule.forRoot(),
-    MatIconModule
 
   ],
   providers: [],

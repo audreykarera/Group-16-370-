@@ -8,6 +8,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Green future Solutions';
   sideBarOpen = true;
+  userLogin = true; 
+  x = false;
 
   sideBarToggler() {
     this.sideBarOpen = !this.sideBarOpen;

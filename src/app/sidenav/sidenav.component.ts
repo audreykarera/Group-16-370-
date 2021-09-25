@@ -26,6 +26,7 @@ interface client {
   styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent implements OnInit {
+  userLogin = false; 
 
   side: side[] = [
     {value: 'Admin', viewValue: 'Admin'},
