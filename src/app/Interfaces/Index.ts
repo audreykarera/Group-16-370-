@@ -5,7 +5,7 @@ export interface Title{
 }
 export interface ExtraCollectionPrice {
     ExtraCollectionPriceId: number | null;
-    ExtraPriceAmount: string | null;   
+    ExtraPriceAmount: string | null;
 
 }
 export interface PackageRate {
@@ -21,7 +21,7 @@ export interface Package {
     PackagePrice: string | null;
     ExtraCollection: boolean | null;
     ExtraPriceAmount: string | null;
-    ServiceName: string | null; 
+    ServiceName: string | null;
 
 }
 
@@ -37,8 +37,8 @@ export interface EmploymentStatus{
 
 export interface Complaint{
     ComplaintId: number | null;
-    ComplaintDescription: string | null; 
-    ComplaintDate: string | null; 
+    ComplaintDescription: string | null;
+    ComplaintDate: string | null;
     Rating: number | null;
 }
 export interface PaymentType{
@@ -98,4 +98,24 @@ export interface Vehicle{
     VehicleMake:string|null;
     VehicleModel:string|null;
     VehicleAvailable: boolean |null;
+}
+
+export interface Quote{
+  QuoteId: number | null;
+  IssuedDate: string | null;
+  QuoteDescription: string | null;
+  EmployeeFirstName: string | null;
+  EmployeeSurname: string | null;
+  EmployeeMiddleName: string | null;
+  EmployeeEmailAddress: string | null;
+  QuoteStatusName: string | null;
+  CompanyName: string | null;
+  ClientEmailAddress: string | null;
+}
+
+export interface QuoteLine{
+  QuoteLineId: number | null;
+  ServiceName: string | null;
+  QuoteDescription: string | null;
+  IssuedDate: string | null;
 }
