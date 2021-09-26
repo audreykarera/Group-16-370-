@@ -1,3 +1,4 @@
+import { ServicePriceService } from './../../../../shared/services/service-price.service';
 import { QuoteLine, Service } from './../../../../Interfaces/Index';
 import { NotificationsService } from './../../../../shared/services/notifications.service';
 import { QuoteService } from './../../../../shared/services/quote.service';
@@ -22,8 +23,7 @@ export class ReadQuoteComponent implements OnInit {
   // quoteLine: QuoteLine;
 
 
-  servicePriceList: ServicePrice[] = [];
-  servicePrice$: Observable<ServicePrice[]> = this.service.getQuoteServicePrice();
+  servicePriceList: ServicePrice[];
   servicePrice: ServicePrice;
   //For Quote Table
    quoteList: Quote[] = [];
@@ -41,39 +41,32 @@ export class ReadQuoteComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private service: QuoteService,
+    private servicePriceService: ServicePriceService,
     private notificationsService: NotificationsService
   ) { }
 
   ngOnInit(): void {
     this.GetQuotes();
-    this.GetServicePrices();
-    this.refreshForm();
+    // this.GetServicePrices();
+    this.readServicePrices();
+    // this.refreshForm();
   }
 
-  refreshForm(){
-    this.quote = {
-      QuoteId: 0,
-      IssuedDate: '',
-      QuoteDescription: '',
-      EmployeeFirstName: '',
-      EmployeeSurname: '',
-      EmployeeMiddleName: '',
-      EmployeeEmailAddress: '',
-      QuoteStatusName: '',
-      CompanyName: '',
-      ClientEmailAddress: '',
-    }
-  }
-
-  //For QuoteLineTable
-  // GetQuoteLines() {
-  //   this.quoteLines$.subscribe(res => {
-  //     if(res) {
-  //       this.quoteLineList = res;
-  //       console.log(res);
-  //     }
-  //   });
+  // refreshForm(){
+  //   this.quote = {
+  //     QuoteId: 0,
+  //     IssuedDate: '',
+  //     QuoteDescription: '',
+  //     EmployeeFirstName: '',
+  //     EmployeeSurname: '',
+  //     EmployeeMiddleName: '',
+  //     EmployeeEmailAddress: '',
+  //     QuoteStatusName: '',
+  //     CompanyName: '',
+  //     ClientEmailAddress: '',
+  //   }
   // }
+
 
   //For Quote Table
    GetQuotes(){
@@ -85,12 +78,9 @@ export class ReadQuoteComponent implements OnInit {
      });
    }
 
-   GetServicePrices(){
-    this.servicePrice$.subscribe(res => {
-      if(res) {
-        this.servicePriceList = res;
-        console.log(res);
-      }
+  readServicePrices(){
+    this.servicePriceService.getServicePrices().subscribe((res)=>{
+      this.servicePriceList = res as ServicePrice[];
     });
   }
 

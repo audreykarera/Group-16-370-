@@ -135,6 +135,31 @@
         </ng-container>
       </div>
      </mat-form-field>
+     <br>
+        <mat-form-field appearance="fill">
+            <mat-label>Service Name</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let service of serviceList" [value]="service.serviceId">
+                    {{service.serviceName}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+            <mat-label>Service Type</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let service of serviceList" [value]="service.serviceId">
+                    {{service.serviceTypeName}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+            <mat-label>Service Price</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let service of serviceList" [value]="service.serviceId">
+                    {{service.servicePriceAmount}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br>
      <div align="end">
       <button mat-stroked-button>Save</button>
     </div>
@@ -144,10 +169,7 @@
   </div>
 </mat-dialog-content>
 
-<!-- <div mat-dialog-actions>
-  <button mat-raised-button >Save</button>
-  <button mat-raised-button mat-dialog-close color="warn">Close</button>
-</div> -->
+
 
 
 <!-- <!DOCTYPE html>
