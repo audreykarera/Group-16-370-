@@ -123,7 +123,6 @@ import { EditSlotStatusComponent } from './systems/schedule/edit-slot-status/edi
 import { EditBookingStatusComponent } from './systems/booking-status/edit-booking-status/edit-booking-status/edit-booking-status.component';
 import { EmployeeSideBookingsComponent } from './systems/bookings/employee-side-bookings/employee-side-bookings/employee-side-bookings.component';
 import { EditEmployeeComponent } from './employee-side/edit-employee/edit-employee/edit-employee.component';
-import { ReadEmpSideCollectionNoteComponent } from './systems/collection note/read-emp-side-collection-note/read-emp-side-collection-note/read-emp-side-collection-note.component';
 import { EditEmpSideCollectionNoteComponent } from './systems/collection note/edit-emp-side-collection-note/edit-emp-side-collection-note/edit-emp-side-collection-note.component';
 import { ViewEmpSideCollectionNoteComponent } from './systems/collection note/view-emp-side-collection-note/view-emp-side-collection-note/view-emp-side-collection-note.component';
 import { EditEmployeeTypeComponent } from './systems/employee-settings/edit-employee-type/edit-employee-type/edit-employee-type.component';
@@ -149,6 +148,7 @@ import { CreateEmployeedatetimeslotComponent } from './systems/schedule/employee
 import { EditSlotComponent } from './systems/schedule/edit-slot/edit-slot.component';
 import { CreatePackageRateComponent } from './systems/package rates/create-package-price/create-package-rate/create-package-rate.component';
 import { ViewBookingsComponent } from './systems/bookings/view-bookings/view-bookings.component';
+import { ReadEmpSideCollectionNoteComponent } from './systems/collection note/read-emp-side-collection-note/read-emp-side-collection-note/read-emp-side-collection-note.component';
 
 
 

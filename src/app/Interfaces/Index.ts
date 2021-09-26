@@ -1,4 +1,4 @@
-import { ExtraCollection } from './../systems/extra-collection/read-extra-collection/read-extra-collection.component';
+
 export interface Title{
     TitleId: number | null;
     TitleName: string | null;
@@ -6,6 +6,14 @@ export interface Title{
 export interface ExtraCollectionPrice {
     ExtraCollectionPriceId: number | null;
     ExtraPriceAmount: string | null;   
+
+}
+export interface CollectionNote {
+    CollectionNoteId: number | null;
+    CollectionDate: string | null;
+    CollectionTime: string | null;
+    ClientId: number | null;
+    EmployeeId: number | null;
 
 }
 export interface PackageRate {
