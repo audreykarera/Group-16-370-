@@ -19,7 +19,8 @@ export interface CollectionNote {
 export interface PackageRate {
     PackageRateId: number | null;
     PackageRatePrice: number | null;
-    PackagePriceDate: string | null;
+    PackagePriceDate:string | null;
+    
 }
 
 export interface Package {

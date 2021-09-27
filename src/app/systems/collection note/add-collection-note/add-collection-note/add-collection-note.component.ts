@@ -1,10 +1,8 @@
-
-import { DialogInterface } from './../../../../interfaces/dialog.interface';
-import { Component,  OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { SharedComponent } from 'src/app/component/shared components/shared/shared.component';
-
-
+import { CollectionNoteService } from 'src/app/shared/services/collection-note.service';
+import { CollectionNote } from './../../../../Interfaces/Index';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-collection-note',
@@ -12,50 +10,49 @@ import { SharedComponent } from 'src/app/component/shared components/shared/shar
   styleUrls: ['./add-collection-note.component.scss']
 })
 export class AddCollectionNoteComponent implements OnInit {
-  
-  
+  form: FormGroup = this.formBuilder.group({
+    CollectionDate: ['', Validators.required],
+    CollectionTime: ['', Validators.required],
+    ClientId: ['', Validators.required],
+    EmployeeId: ['', Validators.required],
 
-  constructor(public dialog: MatDialog) { }
+  })
+  collectionNote: CollectionNote;
+
+  constructor(
+    private service: CollectionNoteService,
+    public dialog:MatDialog,
+    private formBuilder: FormBuilder, 
+    public dialogRef: MatDialogRef<AddCollectionNoteComponent>
+  ) { }
+  
 
   ngOnInit(): void {
+    this.refreshForm();
+      // this.createForm();
+      console.log('Package Rates')
   }
-/**
-   * This method invokes the confirm Dialog
-   */
- openConfirmDialog() {
-  const dialogInterface: DialogInterface = {
-    dialogHeader: 'Confirmation Message',
-    dialogContent: 'Are you sure you want to save this?',
-    cancelButtonLabel: 'No',
-    confirmButtonLabel: 'Yes',
-    callbackMethod: () => {
-     
-    },
-  };
-  this.dialog.open(SharedComponent, {
-    width: '300px',
-    data: dialogInterface,
-  });
-}
+  Close() {
+    this.dialog.closeAll();
+  }
 
-/**
-   * This method invokes the Cancel Dialog
-   */
-openCancelDialog() {
-  const dialogInterface: DialogInterface = {
-    dialogHeader: 'Confirmation Message',
-    dialogContent: 'Are you sure you want cancel?',
-    cancelButtonLabel: 'No',
-    confirmButtonLabel: 'Yes',
-    callbackMethod: () => {
-     
-    },
-  };
-  this.dialog.open(SharedComponent, {
-    width: '300px',
-    data: dialogInterface,
-  });
-}
+  OnSubmit() {
+    console.log('Package Rate added')
+    if (this.form.valid) {
+      this.collectionNote = this.form.value;
+      this.service.CreateCollectionNote(this.collectionNote).subscribe(res => {
+        this.refreshForm();
+        this.dialogRef.close('add');
+      });
+    }
+  }
 
-
-}
+  refreshForm() {
+    this.collectionNote = {
+    CollectionNoteId: 0,
+    CollectionDate: '' ,
+    CollectionTime:'' ,
+    ClientId:0 ,
+    EmployeeId:0,
+    }
+}}

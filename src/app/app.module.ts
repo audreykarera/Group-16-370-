@@ -59,9 +59,6 @@ import { CreateServicetypeComponent } from './systems/service types/create-servi
 import { EditServicetypeComponent } from './systems/service types/edit-servicetype/edit-servicetype/edit-servicetype.component';
 import { ReadServicetypeComponent } from './systems/service types/read-servicetype/read-servicetype/read-servicetype.component';
 import { SharedComponent } from './component/shared components/shared/shared.component';
-import { AddCollectionNoteComponent } from './systems/collection note/add-collection-note/add-collection-note/add-collection-note.component';
-import { ViewCollectionNoteComponent } from './systems/collection note/add-collection-note/view-collection-note/view-collection-note/view-collection-note.component';
-import { ReadCollectionNoteComponent } from './systems/collection note/add-collection-note/read-collection-note/read-collection-note/read-collection-note.component';
 import { CreateBookingComponent } from './systems/bookings/create-booking/create-booking/create-booking.component';
 import { ReadBookingComponent } from './systems/bookings/read-booking/read-booking/read-booking.component';
 import { UpdateBookingComponent } from './systems/bookings/update-booking/update-booking/update-booking.component';
@@ -81,7 +78,6 @@ import { NavbarComponent } from './client-side/client-homepage/navbar/navbar.com
 import { RegisterClientsComponent } from './systems/clients/register-clients/register-clients/register-clients.component';
 import { TopNavComponent } from './topnav/top-nav/top-nav.component';
 import { LodgeComplaintComponent } from './systems/complaints/lodge-complaint/lodge-complaint/lodge-complaint.component';
-import { EmployeeSideCollectionNoteComponent } from './systems/collection note/employee-side-collection-note/employee-side-collection-note.component';
 import { EditClientComponent } from './systems/clients/edit-client/edit-client/edit-client.component';
 import { ScheduleModule, RecurrenceEditorModule } from '@syncfusion/ej2-angular-schedule';
 import { ReadScheduleComponent } from './systems/schedule/read-schedule/read-schedule/read-schedule.component';
@@ -123,8 +119,6 @@ import { EditSlotStatusComponent } from './systems/schedule/edit-slot-status/edi
 import { EditBookingStatusComponent } from './systems/booking-status/edit-booking-status/edit-booking-status/edit-booking-status.component';
 import { EmployeeSideBookingsComponent } from './systems/bookings/employee-side-bookings/employee-side-bookings/employee-side-bookings.component';
 import { EditEmployeeComponent } from './employee-side/edit-employee/edit-employee/edit-employee.component';
-import { EditEmpSideCollectionNoteComponent } from './systems/collection note/edit-emp-side-collection-note/edit-emp-side-collection-note/edit-emp-side-collection-note.component';
-import { ViewEmpSideCollectionNoteComponent } from './systems/collection note/view-emp-side-collection-note/view-emp-side-collection-note/view-emp-side-collection-note.component';
 import { EditEmployeeTypeComponent } from './systems/employee-settings/edit-employee-type/edit-employee-type/edit-employee-type.component';
 import { ReadRequestedquoteComponent } from './systems/requested quote/read-requestedquote/read-requestedquote/read-requestedquote.component';
 import { PrintClientInvoicesComponent } from './systems/invoices/print-client-invoices/print-client-invoices/print-client-invoices.component';
@@ -148,7 +142,11 @@ import { CreateEmployeedatetimeslotComponent } from './systems/schedule/employee
 import { EditSlotComponent } from './systems/schedule/edit-slot/edit-slot.component';
 import { CreatePackageRateComponent } from './systems/package rates/create-package-price/create-package-rate/create-package-rate.component';
 import { ViewBookingsComponent } from './systems/bookings/view-bookings/view-bookings.component';
-import { ReadEmpSideCollectionNoteComponent } from './systems/collection note/read-emp-side-collection-note/read-emp-side-collection-note/read-emp-side-collection-note.component';
+import { EditCollectionNoteComponent } from './systems/collection note/edit-collection-note/edit-collection-note/edit-collection-note.component';
+import { ReadCollectionNoteComponent } from './systems/collection note/read-collection-note/read-collection-note/read-collection-note.component';
+import { AddCollectionNoteComponent } from './systems/collection note/add-collection-note/add-collection-note/add-collection-note.component';
+
+
 
 
 
@@ -208,9 +206,6 @@ const angularMaterials = [
     EditServicetypeComponent,
     ReadServicetypeComponent,
     SharedComponent,
-    AddCollectionNoteComponent,
-    ViewCollectionNoteComponent,
-    ReadCollectionNoteComponent,
     CreateBookingComponent,
     ReadBookingComponent,
     UpdateBookingComponent,
@@ -230,7 +225,6 @@ const angularMaterials = [
     RegisterClientsComponent,
     TopNavComponent,
     LodgeComplaintComponent,
-    EmployeeSideCollectionNoteComponent,
     EditClientComponent,
     ReadScheduleComponent,
     UserSettingsComponent,
@@ -275,9 +269,6 @@ const angularMaterials = [
     EditBookingStatusComponent,
     EmployeeSideBookingsComponent,
     EditEmployeeComponent,
-    ReadEmpSideCollectionNoteComponent,
-    EditEmpSideCollectionNoteComponent,
-    ViewEmpSideCollectionNoteComponent,
     EditEmployeeTypeComponent,
     ReadRequestedquoteComponent,
     PrintClientInvoicesComponent,
@@ -292,7 +283,10 @@ const angularMaterials = [
     EmployeedatetimeslotComponent,
     CreateEmployeedatetimeslotComponent,
     EditSlotComponent,
-    ViewBookingsComponent
+    ViewBookingsComponent,
+    AddCollectionNoteComponent,
+    EditCollectionNoteComponent,
+    ReadCollectionNoteComponent
   ],
 
   imports: [

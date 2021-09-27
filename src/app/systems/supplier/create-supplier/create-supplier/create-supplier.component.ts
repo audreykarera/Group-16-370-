@@ -102,6 +102,9 @@ export class CreateSupplierComponent implements OnInit {
     }
   }
 
+  onFileSelected(event){
+    console.log(event); 
+  }
 }
 
   // onSave(){

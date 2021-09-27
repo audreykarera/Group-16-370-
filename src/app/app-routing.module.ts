@@ -1,5 +1,5 @@
+
 import { ReadServicePriceComponent } from './systems/service price/read-service-price/read-service-price/read-service-price.component';
-import { ReadEmpSideCollectionNoteComponent } from './systems/collection note/read-emp-side-collection-note/read-emp-side-collection-note/read-emp-side-collection-note.component';
 import { ReadSlotStatusComponent } from './systems/schedule/read-slot-status/read-slot-status/read-slot-status.component';
 import { ViewEmployeeTypeComponent } from './systems/employee-settings/view-employee-type/view-employee-type.component';
 import { ReadExtraCollectionComponent } from './systems/extra-collection/read-extra-collection/read-extra-collection.component';
@@ -18,7 +18,6 @@ import { UserSettingsComponent } from './systems/user-settings/user-settings.com
 
 import { ReadScheduleComponent } from './systems/schedule/read-schedule/read-schedule/read-schedule.component';
 import { EditClientComponent } from './systems/clients/edit-client/edit-client/edit-client.component';
-import { EmployeeSideCollectionNoteComponent } from './systems/collection note/employee-side-collection-note/employee-side-collection-note.component';
 import { LodgeComplaintComponent } from './systems/complaints/lodge-complaint/lodge-complaint/lodge-complaint.component';
 import { RegisterClientsComponent } from './systems/clients/register-clients/register-clients/register-clients.component';
 
@@ -31,7 +30,6 @@ import { ReadRequestedquoteComponent } from './systems/requested quote/read-requ
 
 import { EmployeeSettingsComponent } from './systems/employee-settings/employee-settings.component';
 import { ReadInvoiceComponent } from './systems/invoices/read-invoice/read-invoice/read-invoice.component';
-import { ReadCollectionNoteComponent } from './systems/collection note/add-collection-note/read-collection-note/read-collection-note/read-collection-note.component';
 import { ReadServicetypeComponent } from './systems/service types/read-servicetype/read-servicetype/read-servicetype.component';
 import { ReadPackagesComponent } from './systems/packages/read-packages/read-packages/read-packages.component';
 import { NgModule } from '@angular/core';
@@ -56,6 +54,7 @@ import { UserComponent } from './user/user.component';
 import { StaticpageComponent } from './staticpage/staticpage.component';
 import { WhatWeDoComponent } from './staticpage/what-we-do/what-we-do.component';
 import { EmployeedatetimeslotComponent } from './systems/schedule/employeedatetimeslot/employeedatetimeslot.component';
+import { ReadCollectionNoteComponent } from './systems/collection note/read-collection-note/read-collection-note/read-collection-note.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'staticpagehome', pathMatch: 'full' },
@@ -71,7 +70,6 @@ const routes: Routes = [
   { path: 'services', component: ReadServicesComponent },
   { path: 'packages', component: ReadPackagesComponent },
   { path: 'servicetypes', component: ReadServicetypeComponent },
-  { path: 'collectionnote', component: ReadCollectionNoteComponent },
   { path: 'invoices', component: ReadInvoiceComponent },
   { path: 'employee-settings', component: EmployeeSettingsComponent },
   { path: 'requestedquotes', component: ReadRequestedquoteComponent },
@@ -84,7 +82,6 @@ const routes: Routes = [
   { path: 'editclient', component: EditClientComponent },
   { path: 'lodge-complaint', component: LodgeComplaintComponent },
   { path: 'employeesidebookings', component: EmployeeSideBookingsComponent },
-  { path: 'employeesidecollectionnote', component: ReadEmpSideCollectionNoteComponent },
   { path: 'schedule', component: ReadScheduleComponent },
   { path: 'estimate-costing', component: EstimateCostingComponent },
   { path: 'user-settings', component: UserSettingsComponent },
@@ -107,7 +104,8 @@ const routes: Routes = [
   { path: 'employeetypes', component: ViewEmployeeTypeComponent },
   { path: 'read-slot-status', component: ReadSlotStatusComponent },
   { path: 'serviceprice', component: ReadServicePriceComponent },
-  { path: 'employeedatetimeslots', component: EmployeedatetimeslotComponent}
+  { path: 'employeedatetimeslots', component: EmployeedatetimeslotComponent},
+  { path: 'collectionnote', component: ReadCollectionNoteComponent}
 ];
 
 @NgModule({

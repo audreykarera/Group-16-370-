@@ -44,7 +44,12 @@
                     </div>
                 </ng-container>
             </div>    
-    </mat-form-field>             
+    </mat-form-field>    
+
+    <br> 
+    <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Supplier invoice</label>
+      <input class="form-control form-control-sm" id="formFileSm" type="file" (change)="onFileSelected($event)" />
+
    <div align="end">
             <button mat-stroked-button [disabled]="!form.valid">Save</button>
         </div>
