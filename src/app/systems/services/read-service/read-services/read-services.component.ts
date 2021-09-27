@@ -19,10 +19,6 @@ import { MatPaginator } from '@angular/material/paginator';
 import { Service, ServicePrice, ServiceType } from 'src/app/Interfaces/Index';
 
 
-// const ELEMENT_DATA: ServiceTable[] = [
-//   {servicename: 'Collection & Disposal', startingprice: 850, description: 'We will come and collect and dispose of your waste safely', servicetype: 'Oil'},
-// ];
-
 @Component({
   selector: 'app-read-services',
   templateUrl: './read-services.component.html',

@@ -45,7 +45,7 @@ export class ReadPackageRatesComponent implements OnInit {
     this.rate = {
     PackageRateId: 0,
     PackageRatePrice: 0,
-    PackagePriceDate: ''
+    PackagePriceDate: null
     }
   }
   Close() {

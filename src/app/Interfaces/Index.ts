@@ -11,7 +11,7 @@ export interface ExtraCollectionPrice {
 export interface PackageRate {
     PackageRateId: number | null;
     PackageRatePrice: number | null;
-    PackagePriceDate: string | null;
+    PackagePriceDate: Date | null;
 }
 
 export interface Package {
@@ -65,7 +65,7 @@ export interface ServiceType{
 export interface ServicePrice{
     ServicePriceId:number |null;
     ServicePriceAmount: number |null;
-    ServicePriceDate:string |null;
+    ServicePriceDate:Date |null;
 }
 
 export interface Service{
@@ -87,6 +87,17 @@ export interface Booking {
     CollectionNoteId: number|null;
     PaymentTypeId: number|null;
 }
+export interface BookingService {
+    BookingServiceId :number |null;
+    BookingId :number|null;
+    ServiceId : number | null;
+    EmployeeDateTimeSlotId: number | null;
+    EmployeeId: number |null;
+    DateTimeSlotId :number|null;
+    Paid: boolean;
+    UnitDescription: string;
+}
+
 
 export interface Supplier{
     SupplierId: number |null;

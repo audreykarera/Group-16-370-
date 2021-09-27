@@ -75,7 +75,7 @@ export class CreatePackageRateComponent implements OnInit {
       this.rate = {
         PackageRateId: 0,
         PackageRatePrice: 0,
-        PackagePriceDate: ''
+        PackagePriceDate: null
       }
     }
 
