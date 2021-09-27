@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AbstractControlOptions, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Employee } from 'src/app/models/employee';
+import { Employee } from 'src/app/Interfaces/Index';
 import { Title } from '@angular/platform-browser';
-import { UserRole } from 'src/app/models/userRole';
 import { EmployeeService } from 'src/app/shared/services/employee.service';
 import { EmployeeTypeService } from 'src/app/shared/services/employee-type.service';
 import { TitleService } from 'src/app/shared/services/title.service';
@@ -22,8 +21,8 @@ export class CreateEmployeeComponent implements OnInit {
   employeeList: Employee[];
   employee: Employee; 
 
-  userRoleList: UserRole[];
-  userRole: UserRole;
+  // userRoleList: UserRole[];
+  // userRole: UserRole;
 
   selectedTitle: number;
   selectedType: number; 
@@ -49,10 +48,10 @@ export class CreateEmployeeComponent implements OnInit {
   }
 
   readUserRoles() {
-    this.userRoleService.getUserRoles().subscribe((res) => {
-      this.userRoleList = res as UserRole[];
-      console.log(this.userRoleList);
-    });
+    // this.userRoleService.getUserRoles().subscribe((res) => {
+    //   this.userRoleList = res as UserRole[];
+    //   console.log(this.userRoleList);
+    // });
   }
 
   // readEmployeeType(){
@@ -81,21 +80,21 @@ export class CreateEmployeeComponent implements OnInit {
 
 
   resetObject() {
-    this.employee = {
-      EmployeeId: 0,
-      EmployeeFirstName: '',
-      EmployeeMiddleName: '',
-      EmployeeSurname: '',
-      EmployeeEmailAddress:'',
-      EmployeeCellPhoneNumber: '',
-      EmployeeEmergencyContactFirstName: '', 
-      EmployeeEmergencyContactSurname: '', 
-      EmployeeEmergencyContactNumber: '',
-      EmployeeIdNumber: '', 
-      EmployeePassword: '',
-      Username: '',
-      UserRoleId: 0
-    }
+    // this.employee = {
+    //   EmployeeId: 0,
+    //   EmployeeFirstName: '',
+    //   EmployeeMiddleName: '',
+    //   EmployeeSurname: '',
+    //   EmployeeEmailAddress:'',
+    //   EmployeeCellPhoneNumber: '',
+    //   EmployeeEmergencyContactFirstName: '', 
+    //   EmployeeEmergencyContactSurname: '', 
+    //   EmployeeEmergencyContactNumber: '',
+    //   EmployeeIdNumber: '', 
+    //   EmployeePassword: '',
+    //   Username: '',
+    //   UserRoleId: 0
+    // }
   }
 
   // formOptions: AbstractControlOptions = {validators: MustMatch('password', 'confirmPassword')}; 

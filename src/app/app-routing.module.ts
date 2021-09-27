@@ -6,7 +6,6 @@ import { ReadExtraCollectionComponent } from './systems/extra-collection/read-ex
 import { ViewEmploymentStatusesComponent } from './systems/employee-settings/view-employment-statuses/view-employment-statuses.component';
 import { ViewEmployeeTitleComponent } from './systems/employee-settings/view-employee-title/view-employee-title.component';
 import { ReadPackageRatesComponent } from './systems/package rates/read-package-rates/read-package-rates/read-package-rates.component';
-import { CreateSlotComponent } from './systems/schedule/create-slot/create-slot/create-slot.component';
 import { ReadBookingStatusComponent } from './systems/booking-status/read-booking-status/read-booking-status/read-booking-status.component';
 import { ReadQuoteStatusComponent } from './systems/quote-status/read-quote-status/read-quote-status/read-quote-status.component';
 import { ReadPaymentTypeComponent } from './systems/payment-type/read-payment-type/read-payment-type/read-payment-type.component';
@@ -20,7 +19,6 @@ import { UserSettingsComponent } from './systems/user-settings/user-settings.com
 import { ReadScheduleComponent } from './systems/schedule/read-schedule/read-schedule/read-schedule.component';
 import { EditClientComponent } from './systems/clients/edit-client/edit-client/edit-client.component';
 import { EmployeeSideCollectionNoteComponent } from './systems/collection note/employee-side-collection-note/employee-side-collection-note.component';
-import { LoginComponent } from './employee-side/user-login/login/login.component';
 import { LodgeComplaintComponent } from './systems/complaints/lodge-complaint/lodge-complaint/lodge-complaint.component';
 import { RegisterClientsComponent } from './systems/clients/register-clients/register-clients/register-clients.component';
 
@@ -54,9 +52,16 @@ import { EquipmentComponent } from './systems/equipment/equipment/equipment/equi
 import { EmployeeSideBookingsComponent } from './systems/bookings/employee-side-bookings/employee-side-bookings/employee-side-bookings.component';
 import { EditEmployeeComponent } from './employee-side/edit-employee/edit-employee/edit-employee.component';
 import { ReadClientBookingComponent } from './client-side/read-client-bookings/read-client-booking/read-client-booking/read-client-booking.component';
+import { UserComponent } from './user/user.component';
+import { StaticpageComponent } from './staticpage/staticpage.component';
+import { WhatWeDoComponent } from './staticpage/what-we-do/what-we-do.component';
+import { EmployeedatetimeslotComponent } from './systems/schedule/employeedatetimeslot/employeedatetimeslot.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: 'staticpagehome', pathMatch: 'full' },
+  { path: 'staticpagehome', component: StaticpageComponent},
+  { path: 'whatwedo', component: WhatWeDoComponent},
+  { path: 'user', component: UserComponent},
   { path: 'home', component: HomeComponent },
   { path: 'employees', component: ReadEmployeesComponent },
   { path: 'clients', component: ReadClientsComponent },
@@ -70,45 +75,45 @@ const routes: Routes = [
   { path: 'invoices', component: ReadInvoiceComponent },
   { path: 'employee-settings', component: EmployeeSettingsComponent },
   { path: 'requestedquotes', component: ReadRequestedquoteComponent },
-  { path: 'read-complaints', component: ReadComplaintsComponent},
-  { path: 'read-quote', component: ReadQuoteComponent},
-  { path: 'Employee Schedule', component: ScheduleEmployeeComponent},
-  { path: 'tempclientside', component: NavbarComponent},
-  { path: 'tempeditemployee', component: EditEmployeeComponent},
-  { path: 'register-client', component: RegisterClientsComponent},
-  { path: 'editclient', component: EditClientComponent},
-  { path: 'lodge-complaint', component: LodgeComplaintComponent},
-  { path: 'login', component: LoginComponent},
-  { path: 'employeesidebookings', component: EmployeeSideBookingsComponent},
+  { path: 'read-complaints', component: ReadComplaintsComponent },
+  { path: 'read-quote', component: ReadQuoteComponent },
+  { path: 'Employee Schedule', component: ScheduleEmployeeComponent },
+  { path: 'tempclientside', component: NavbarComponent },
+  { path: 'tempeditemployee', component: EditEmployeeComponent },
+  { path: 'register-client', component: RegisterClientsComponent },
+  { path: 'editclient', component: EditClientComponent },
+  { path: 'lodge-complaint', component: LodgeComplaintComponent },
+  { path: 'employeesidebookings', component: EmployeeSideBookingsComponent },
   { path: 'employeesidecollectionnote', component: ReadEmpSideCollectionNoteComponent },
-  { path: 'schedule', component: ReadScheduleComponent},
-  { path: 'estimate-costing', component: EstimateCostingComponent},
-  { path: 'user-settings', component: UserSettingsComponent},
-  { path: 'bookings', component: ReadBookingComponent},
-  { path: 'mybookings', component: ReadClientBookingComponent},
-  { path: 'make-booking', component: BookingSlotsComponent},
-  { path: 'clientviewinvoices', component: ClientViewInvoicesComponent},
-  { path: 'request-quote', component: RequestQuoteComponent},
-  { path: 'create-booking', component: CreateBookingComponent},
-  { path: 'packagerates', component: ReadPackageRatesComponent},
-  { path: 'editsupplier', component: EditSuppliersComponent},
-  { path: 'vehicle', component:VehicleComponent},
-  {path: 'equipment', component: EquipmentComponent},
-  {path: 'paymenttypes', component: ReadPaymentTypeComponent},
-  {path: 'bookingstatus', component: ReadBookingStatusComponent},
-  {path: 'quotestatuses', component: ReadQuoteStatusComponent},
-  {path: 'titles', component: ViewEmployeeTitleComponent},
-  {path: 'employmentstatuses', component: ViewEmploymentStatusesComponent},
-  {path: 'extra-collection', component: ReadExtraCollectionComponent},
-  {path: 'employeetypes', component: ViewEmployeeTypeComponent},
-  {path: 'read-slot-status', component: ReadSlotStatusComponent},
-  {path: 'serviceprice', component: ReadServicePriceComponent},
+  { path: 'schedule', component: ReadScheduleComponent },
+  { path: 'estimate-costing', component: EstimateCostingComponent },
+  { path: 'user-settings', component: UserSettingsComponent },
+  { path: 'bookings', component: ReadBookingComponent },
+  { path: 'mybookings', component: ReadClientBookingComponent },
+  { path: 'make-booking', component: BookingSlotsComponent },
+  { path: 'clientviewinvoices', component: ClientViewInvoicesComponent },
+  { path: 'request-quote', component: RequestQuoteComponent },
+  { path: 'create-booking', component: CreateBookingComponent },
+  { path: 'packagerates', component: ReadPackageRatesComponent },
+  { path: 'editsupplier', component: EditSuppliersComponent },
+  { path: 'vehicle', component: VehicleComponent },
+  { path: 'equipment', component: EquipmentComponent },
+  { path: 'paymenttypes', component: ReadPaymentTypeComponent },
+  { path: 'bookingstatus', component: ReadBookingStatusComponent },
+  { path: 'quotestatuses', component: ReadQuoteStatusComponent },
+  { path: 'titles', component: ViewEmployeeTitleComponent },
+  { path: 'employmentstatuses', component: ViewEmploymentStatusesComponent },
+  { path: 'extra-collection', component: ReadExtraCollectionComponent },
+  { path: 'employeetypes', component: ViewEmployeeTypeComponent },
+  { path: 'read-slot-status', component: ReadSlotStatusComponent },
+  { path: 'serviceprice', component: ReadServicePriceComponent },
+  { path: 'employeedatetimeslots', component: EmployeedatetimeslotComponent}
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
 
 

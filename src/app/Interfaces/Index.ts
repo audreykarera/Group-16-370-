@@ -35,6 +35,38 @@ export interface EmploymentStatus{
     EmploymentStatusName: string | null;
 }
 
+export class Employee {
+    EmployeeId: number | null;  
+    EmployeeFirstName: string | null; 
+    EmployeeSurname: string | null; 
+    EmployeeMiddleName: string | null; 
+    EmployeeCellPhoneNumber: string | null; 
+    EmployeeEmailAddress: string | null; 
+    EmployeeIdNumber: string | null; 
+    EmployeeEmergencyContactNumber: string | null; 
+    EmployeeEmergencyContactFirstName: string | null; 
+    EmployeeEmergencyContactSurname: string | null; 
+    TitleId: number | null; 
+    EmploymentStatusId: number | null; 
+    EmployeeTypeId: number | null; 
+}
+
+export interface DateTimeSlot{
+    DateTimeSlotId: number | null;
+    Date: Date | null; 
+    StartTime: string | null; 
+    EndTime: string | null;
+}
+
+export interface EmployeeDateTimeSlot{
+    EmployeeDateTimeSlotId: number | null; 
+    EmployeeId: number | null; 
+    DateTimeSlotId: number | null; 
+    EquipmentId: number | null; 
+    VehicleId: number | null; 
+    SlotStatusId: number | null;
+}
+
 export interface Complaint{
     ComplaintId: number | null;
     ComplaintDescription: string | null; 

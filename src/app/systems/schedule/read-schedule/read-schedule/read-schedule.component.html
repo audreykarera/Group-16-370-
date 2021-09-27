@@ -1,11 +1,71 @@
 <div class="container-fluid page">
-  <div class="d-flex page__box p-3 mt-2">Schedule</div>
+  <div class="d-flex page__box p-3 mt-2">Booking Slots</div>
   <div class="page__content shadow p-3">
     <div class="page__content-data">
-
-      <div class="container text-center">
-
-        <full-calendar [options]="calendarOptions"></full-calendar>
-        <br>
-        <button class="btn btn-outline-primary" type="button"  (click)="routerEditBookingSlot()">Update Slot</button>
+      <mat-form-field appearance="standard">
+        <mat-label>Filter</mat-label>
+        <input matInput placeholder="Ex. ium" #input>
+      </mat-form-field>
+      <div class="position-relative">
+        <div class="position-absolute top-0 end-0 icon-hover">
+          <mat-icon style="font-size: xx-large" (click)="routerAddSlot()">add</mat-icon>
+        </div>
       </div>
+      <br>
+      <br>
+
+      <table mat-table [dataSource]="dateTimeSlotList" class="mat-elevation-z8">
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef>Date</th>
+          <td mat-cell *matCellDef="let element">{{element.date}}</td>
+        </ng-container>
+        <ng-container matColumnDef="starttime">
+          <th mat-header-cell *matHeaderCellDef>Start Time</th>
+          <td mat-cell *matCellDef="let element">{{element.startTime}}</td>
+        </ng-container>
+        <ng-container matColumnDef="endtime">
+          <th mat-header-cell *matHeaderCellDef>End Time</th>
+          <td mat-cell *matCellDef="let element">{{element.endTime}}</td>
+        </ng-container>
+        <ng-container matColumnDef="edit">
+          <tr>
+            <th mat-header-cell *matHeaderCellDef>Edit</th>
+          </tr>
+          <tr>
+            <td mat-cell *matCellDef="let element">
+              <button mat-icon-button title="edit">
+                <mat-icon (click)="routerEditSlot(element.dateTimeSlotId,element.date, element.startTime, element.endTime)">edit</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </ng-container>
+        <ng-container matColumnDef="delete">
+          <tr>
+            <th mat-header-cell *matHeaderCellDef> Delete </th>
+          </tr>
+          <tr>
+            <td mat-cell *matCellDef="let element">
+              <button mat-icon-button color="danger" title="delete">
+                <mat-icon (click)="DeleteEmploymentStatus(element.dateTimeSlotId)">delete</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </ng-container>
+        <ng-container matColumnDef="assign">
+          <tr>
+            <th mat-header-cell *matHeaderCellDef>Assign Resources</th>
+          </tr>
+          <tr>
+            <td mat-cell *matCellDef="let element">
+              <button mat-icon-button title="assign">
+                <mat-icon (click)="routerAssignResource(element.dateTimeSlotId,element.date, element.startTime, element.endTime)">add_to_queue</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+  </div>
+</div>
