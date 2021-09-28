@@ -17,7 +17,7 @@
             </div>           
         </mat-form-field>
         <br>
-        <mat-form-field class="example-full-width" appearance="fill">
+    <!--    <mat-form-field class="example-full-width" appearance="fill">
           <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Service Price Date</mat-label>
           <input matInput placeholder="YYYY/MM/DD" formControlName="ServicePriceDate">
           <div class="errors">
@@ -30,6 +30,23 @@
                   </div>
               </ng-container>
           </div>           
+      </mat-form-field> -->
+
+            <mat-form-field appearance="fill">
+          <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Service Price Date</mat-label>
+          <input matInput [matDatepicker]="picker" placeholder="2021/09/20" formControlName="ServicePriceDate">
+          <div class="errors">
+              <ng-container *ngFor="let item of error_messages.ServicePriceDate">
+                  <div class="errors" *ngIf="
+                form.get('ServicePriceDate').hasError(item.type) &&
+                (form.get('ServicePriceDate').dirty ||
+                  form.get('ServicePriceDate').touched)">
+                      {{ item.message }}
+                  </div>
+              </ng-container>
+          </div>           
+          <mat-datepicker-toggle matsuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
         
         <div align="end">

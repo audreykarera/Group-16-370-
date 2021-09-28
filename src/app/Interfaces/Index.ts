@@ -1,4 +1,4 @@
-import { ExtraCollection } from './../systems/extra-collection/read-extra-collection/read-extra-collection.component';
+
 export interface Title{
     TitleId: number | null;
     TitleName: string | null;
@@ -8,10 +8,18 @@ export interface ExtraCollectionPrice {
     ExtraPriceAmount: string | null;
 
 }
+export interface CollectionNote {
+    CollectionNoteId: number | null;
+    CollectionDate: string | null;
+    CollectionTime: string | null;
+    ClientId: number | null;
+    EmployeeId: number | null;
+
+}
 export interface PackageRate {
     PackageRateId: number | null;
     PackageRatePrice: number | null;
-    PackagePriceDate: string | null;
+    PackagePriceDate: Date | null;
 }
 
 export interface Package {
@@ -97,7 +105,7 @@ export interface ServiceType{
 export interface ServicePrice{
     ServicePriceId:number |null;
     ServicePriceAmount: number |null;
-    ServicePriceDate:string |null;
+    ServicePriceDate:Date |null;
 }
 
 export interface Service{
@@ -106,9 +114,9 @@ export interface Service{
     ServiceDescription:string|null;
     ServiceTypeId: number|null;
     ServicePriceId:number|null;
-    // LocationId:number|null;
-    // ServiceType: ServiceType[];
-    // ServicePrice:ServicePrice[];
+    // ServiceType: ServiceType;
+    // ServicePrice:ServicePrice;
+    // LocationId:number|null;  
     // Location : Location[];
 }
 
@@ -119,6 +127,17 @@ export interface Booking {
     CollectionNoteId: number|null;
     PaymentTypeId: number|null;
 }
+export interface BookingService {
+    BookingServiceId :number |null;
+    BookingId :number|null;
+    ServiceId : number | null;
+    EmployeeDateTimeSlotId: number | null;
+    EmployeeId: number |null;
+    DateTimeSlotId :number|null;
+    Paid: boolean;
+    UnitDescription: string;
+}
+
 
 export interface Supplier{
     SupplierId: number |null;

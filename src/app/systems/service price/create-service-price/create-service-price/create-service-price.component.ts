@@ -78,7 +78,7 @@ export class CreateServicePriceComponent implements OnInit {
     this.servicePrice = {
       ServicePriceId: 0,
       ServicePriceAmount:0,
-      ServicePriceDate:''
+      ServicePriceDate:null
     }
   }
 
