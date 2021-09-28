@@ -101,10 +101,6 @@ export class CreateSupplierComponent implements OnInit {
       SupplierContactPersonEmail: ''
     }
   }
-
-  onFileSelected(event){
-    console.log(event); 
-  }
 }
 
   // onSave(){
