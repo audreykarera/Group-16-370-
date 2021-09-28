@@ -142,13 +142,17 @@ export interface Vehicle{
 
 export interface Quote{
   QuoteId: number | null;
-  IssuedDate: string | null;
+  IssuedDate: Date | null;
   QuoteDescription: string | null;
-  EmployeeFirstName: string | null;
-  EmployeeSurname: string | null;
-  EmployeeMiddleName: string | null;
-  EmployeeEmailAddress: string | null;
-  QuoteStatusName: string | null;
+  EmployeeId: number | null;
+  QuoteStatusId: number | null;
+  ClientId: number | null;
+}
+
+export interface RequestedQuote{
+  RequestedQuoteId: number | null;
+  RequestedQuoteDescription: string | null;
+  RequestedQuoteDate: Date | null;
   CompanyName: string | null;
   ClientEmailAddress: string | null;
 }

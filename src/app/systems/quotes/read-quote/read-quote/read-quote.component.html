@@ -9,32 +9,28 @@
 
         <br>
         <br>
-         <table mat-table [dataSource]="quoteList" class="mat-elevation-z8">
+         <table mat-table [dataSource]="requestedquoteList" class="mat-elevation-z8">
              <ng-container matColumnDef="quoteid">
-                <th mat-header-cell *matHeaderCellDef> Quote ID </th>
-                <td mat-cell *matCellDef="let element"> {{element.quoteId}} </td>
+                <th mat-header-cell *matHeaderCellDef> Requested Quote ID </th>
+                <td mat-cell *matCellDef="let element"> {{element.requestedQuoteId}} </td>
              </ng-container>
-             <ng-container matColumnDef="empFirstName">
-               <th mat-header-cell *matHeaderCellDef> Employee First Name </th>
-               <td mat-cell *matCellDef="let element"> {{element.employeeFirstName}} </td>
+             <ng-container matColumnDef="issuedDate">
+               <th mat-header-cell *matHeaderCellDef> Requested Quote Date </th>
+               <td mat-cell *matCellDef="let element"> {{element.requestedQuoteDate}} </td>
               </ng-container>
               <ng-container matColumnDef="quoteDescription">
-               <th mat-header-cell *matHeaderCellDef> Quote Description </th>
-               <td mat-cell *matCellDef="let element"> {{element.quoteDescription}} </td>
+               <th mat-header-cell *matHeaderCellDef> Quote Request Description </th>
+               <td mat-cell *matCellDef="let element"> {{element.requestedQuoteDescription}} </td>
               </ng-container>
-              <ng-container matColumnDef="serviceName">
-                <th mat-header-cell *matHeaderCellDef> Service </th>
-                <td mat-cell *matCellDef="let element"> {{element.quoteDescription}} </td>
+              <ng-container matColumnDef="companyName">
+                <th mat-header-cell *matHeaderCellDef> Name of Client </th>
+                <td mat-cell *matCellDef="let element"> {{element.companyName}} </td>
                </ng-container>
-               <ng-container matColumnDef="servicePrice">
-                <th mat-header-cell *matHeaderCellDef> Service Price </th>
-                <td mat-cell *matCellDef="let element"> {{element.servicePriceAmount}} </td>
+               <ng-container matColumnDef="emailAddress">
+                <th mat-header-cell *matHeaderCellDef> Client Email Address </th>
+                <td mat-cell *matCellDef="let element"> {{element.clientEmailAddress}} </td>
                </ng-container>
-              <ng-container matColumnDef="date">
-               <th mat-header-cell *matHeaderCellDef> Issued Date </th>
-               <td mat-cell *matCellDef="let element"> {{element.issuedDate}} </td>
-              </ng-container>
-              <ng-container matColumnDef="generate">
+              <ng-container matColumnDef="generateQuote">
                 <tr><th mat-header-cell *matHeaderCellDef> Generate Quote </th></tr>
                 <tr>
                   <td mat-cell *matCellDef="let element" style="width:20%">
@@ -42,7 +38,7 @@
                   </td>
                 </tr>
               </ng-container>
-              <ng-container matColumnDef="send">
+              <ng-container matColumnDef="sendQuote">
                 <tr><th mat-header-cell *matHeaderCellDef> Send Quote </th></tr>
                 <tr>
                   <td mat-cell *matCellDef="let element" style="width:20%">

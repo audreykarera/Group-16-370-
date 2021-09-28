@@ -16,55 +16,20 @@ export class CreateQuoteComponent implements OnInit {
   form: FormGroup;
   quote: Quote;
 
-  serviceList: Service [];
-  service: Service;
+   serviceList: Service [];
+   service: Service;
 
   error_messages = {
     IssuedDate: [
-      {type: 'required', message: 'Date is required'},
-      {type: 'minlength', message: 'Date must be more than 2 character'},
-      {type: 'maxlength', message: 'Date must be less than 51 characters'}
+      { type: 'required', message: 'Date is required' },
+      { type: 'minlength', message: 'Date must be more than 2 character' },
+      { type: 'maxlength', message: 'Date must be less than 51 characters' }
     ],
     QuoteDescription: [
-      {type: 'required', message: 'Quote Description is required'},
-      {type: 'minlength', message: 'Quote Description must be more than 2 character'},
-      {type: 'maxlength', message: 'Quote Description must be less than 51 characters'}
-    ],
-    EmployeeFirstName: [
-      {type: 'required', message: 'Employee First Name is required'},
-      {type: 'minlength', message: 'Employee First Name must be more than 2 character'},
-      {type: 'maxlength', message: 'Employee First Name must be less than 51 characters'}
-    ],
-    EmployeeSurname: [
-      {type: 'required', message: 'Employee Surname is required'},
-      {type: 'minlength', message: 'Employee Surname must be more than 2 character'},
-      {type: 'maxlength', message: 'Employee Surname must be less than 51 characters'}
-    ],
-    EmployeeMiddleName: [
-      {type: 'required', message: 'Employee Middle Name is required'},
-      {type: 'minlength', message: 'Employee Middle Name must be more than 2 character'},
-      {type: 'maxlength', message: 'Employee Middle Name must be less than 51 characters'}
-    ],
-    EmployeeEmailAddress: [
-      {type: 'required', message: 'Email  is required'},
-      {type: 'minlength', message: 'Email Address must be more than 2 character'},
-      {type: 'maxlength', message: 'Email Address must be less than 51 characters'}
-    ],
-    QuoteStatusName: [
-      {type: 'required', message: 'Quote Status Name is required'},
-      {type: 'minlength', message: 'Quote Status Name must be more than 2 character'},
-      {type: 'maxlength', message: 'Quote Status Name must be less than 51 characters'}
-    ],
-    CompanyName: [
-      {type: 'required', message: 'Company Name is required'},
-      {type: 'minlength', message: 'Company Name must be more than 2 character'},
-      {type: 'maxlength', message: 'Company Name must be less than 51 characters'}
-    ],
-    ClientEmailAddress: [
-      {type: 'required', message: 'Email is required'},
-      {type: 'minlength', message: 'Client Email Address must be more than 2 character'},
-      {type: 'maxlength', message: 'Client Email Address must be less than 51 characters'}
-    ],
+      { type: 'required', message: 'Quote Description is required' },
+      { type: 'minlength', message: 'Quote Description must be more than 2 character' },
+      { type: 'maxlength', message: 'Quote Description must be less than 51 characters' }
+    ]
   }
 
   constructor(
@@ -84,7 +49,7 @@ export class CreateQuoteComponent implements OnInit {
   }
 
 
-  createForm(){
+  createForm() {
     this.form = this.formBuilder.group({
       IssuedDate: new FormControl(
         this.quote.IssuedDate,
@@ -102,97 +67,37 @@ export class CreateQuoteComponent implements OnInit {
           Validators.minLength(3)
         ])
       ),
-      EmployeeFirstName: new FormControl(
-        this.quote.EmployeeFirstName,
-        Validators.compose([
-          Validators.required,
-          Validators.maxLength(50),
-          Validators.minLength(3)
-        ])
-      ),
-      EmployeeSurnameName: new FormControl(
-        this.quote.EmployeeSurname,
-        Validators.compose([
-          Validators.required,
-          Validators.maxLength(50),
-          Validators.minLength(3)
-        ])
-      ),
-      EmployeeMiddleName: new FormControl(
-        this.quote.EmployeeMiddleName,
-        Validators.compose([
-          Validators.required,
-          Validators.maxLength(50),
-          Validators.minLength(3)
-        ])
-      ),
-      EmployeeEmailAddress: new FormControl(
-        this.quote.EmployeeEmailAddress,
-        Validators.compose([
-          Validators.required,
-          Validators.maxLength(50),
-          Validators.minLength(3)
-        ])
-      ),
-      QuoteStatusName: new FormControl(
-        this.quote.QuoteStatusName,
-        Validators.compose([
-          Validators.required,
-          Validators.maxLength(50),
-          Validators.minLength(3)
-        ])
-      ),
-      CompanyName: new FormControl(
-        this.quote.CompanyName,
-        Validators.compose([
-          Validators.required,
-          Validators.maxLength(50),
-          Validators.minLength(3)
-        ])
-      ),
-      ClientEmailAddress: new FormControl(
-        this.quote.ClientEmailAddress,
-        Validators.compose([
-          Validators.required,
-          Validators.maxLength(50),
-          Validators.minLength(3)
-        ])
-      )
     });
   }
 
-  readServices(){
-    this.serviceService.getServices().subscribe((res)=>{
+  readServices() {
+    this.serviceService.getServices().subscribe((res) => {
       this.serviceList = res as Service[];
     });
   }
 
-  onSubmit(){
-    if(this.form.valid) {
+  onSubmit() {
+    if (this.form.valid) {
       this.quote = this.form.value;
-      this.quoteService.CreateQuote(this.quote).subscribe(res =>{
+      this.quoteService.CreateQuote(this.quote).subscribe(res => {
         this.refreshForm();
         this.dialogRef.close('add');
       })
     }
   }
 
-  refreshForm(){
+  refreshForm() {
     this.quote = {
       QuoteId: 0,
-      IssuedDate: '',
+      IssuedDate: null,
       QuoteDescription: '',
-      EmployeeFirstName: '',
-      EmployeeSurname: '',
-      EmployeeMiddleName: '',
-      EmployeeEmailAddress: '',
-      QuoteStatusName: '',
-      CompanyName: '',
-      ClientEmailAddress: '',
+      EmployeeId: 0,
+      QuoteStatusId: 0,
+      ClientId: 0,
     }
   }
 
-  Close(){
+  Close() {
     this.dialog.closeAll();
   }
 
