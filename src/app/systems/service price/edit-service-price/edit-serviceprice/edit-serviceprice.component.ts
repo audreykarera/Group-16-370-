@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
+import { NULL_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-edit-serviceprice',
@@ -75,7 +76,7 @@ export class EditServicepriceComponent implements OnInit {
     this.servicePrice = {
       ServicePriceId: 0,
       ServicePriceAmount: 0,
-      ServicePriceDate: '',
+      ServicePriceDate: null
     }
   }
 

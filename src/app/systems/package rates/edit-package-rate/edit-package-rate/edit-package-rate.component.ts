@@ -43,7 +43,7 @@ export class EditPackageRateComponent implements OnInit {
       this.packageRate = {
         PackageRateId: 0,
         PackageRatePrice: 0,
-        PackagePriceDate: ''
+        PackagePriceDate: null
       }
   }
 }
