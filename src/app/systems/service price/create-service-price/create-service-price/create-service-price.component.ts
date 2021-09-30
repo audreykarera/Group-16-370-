@@ -19,7 +19,7 @@ export class CreateServicePriceComponent implements OnInit {
     ServicePriceAmount: [
       { type: 'required', message: 'Service Price is required' },
       { type: 'minLength', message: 'Service Price must be more than 1 character' },
-      { type: 'maxLength', message: 'Service Price must be less than 30 characters' }
+      { type: 'maxLength', message: 'Service Price must be less than 5 characters' }
     ],
     ServicePriceDate: [
       { type: 'required', message: 'Service Price Date is required' },
@@ -53,8 +53,7 @@ export class CreateServicePriceComponent implements OnInit {
         ])
       ),
       ServicePriceDate: new FormControl(
-        (new Date()).toISOString().substring(0, 10)          
-        
+        (new Date()).toISOString().substring(0, 10)                  
       )
     })
   }

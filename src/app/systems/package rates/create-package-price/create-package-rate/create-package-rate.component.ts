@@ -3,7 +3,6 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { PackageRate } from 'src/app/Interfaces/Index';
-
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
 import { PackageRateService } from 'src/app/shared/services/package-rate.service';
 
@@ -15,18 +14,18 @@ import { PackageRateService } from 'src/app/shared/services/package-rate.service
 export class CreatePackageRateComponent implements OnInit {
 
   form: FormGroup;
-  rate: PackageRate;
+  packageRate: PackageRate;
 
   error_messages = {
-    PackageRatePrice: [
-      { type: 'required', message: 'Package rate is required' },
-      { type: 'minLength', message: 'Rate must be more than 1 character' },
-      { type: 'maxLength', message: 'Rate must be less than 5 characters' }
+    PackagePrice: [
+      { type: 'required', message: 'Package Rate Price is required' },
+      { type: 'minLength', message: 'Package Rate Price  must be more than 1 character' },
+      { type: 'maxLength', message: 'Package Rate Price  must be less than 5 characters' }
     ],
     PackagePriceDate: [
-      { type: 'required', message: 'Package rate date is required' },
-      { type: 'minLength', message: 'Rate date must be more than 6 character' },
-      { type: 'maxLength', message: 'Rate must be less than 6 characters' }
+      { type: 'required', message: 'Package Price Date is required' },
+      { type: 'minLength', message: 'Package Price Date must be more than 6 character' },
+      { type: 'maxLength', message: 'Package Price Date must be less than 10 characters' }
     ]
   }
 
@@ -40,31 +39,34 @@ export class CreatePackageRateComponent implements OnInit {
     ngOnInit(): void {
       this.refreshForm();
       this.createForm();
+      console.log('Package Rates')
     }
+
     createForm() {
       this.form = this.formBuilder.group({
-        PackageRatePrice: new FormControl(
-          this.rate.PackageRatePrice,
+        PackagePrice: new FormControl(
+          this.packageRate.PackagePrice,
             Validators.compose([
             Validators.required,
-            Validators.maxLength(4),
+            Validators.maxLength(20),
             Validators.minLength(2)
-          ])
-          
+          ])          
         ),
-        PackagtePriceDate: new FormControl(
+        PackagePriceDate: new FormControl(
           (new Date()).toISOString().substring(0, 10)
-        ),
-      });
+        )
+      })
     }
+
     Close() {
       this.dialog.closeAll();
     }
   
     OnSubmit() {
+      console.log('Package Rate added')
       if (this.form.valid) {
-        this.rate = this.form.value;
-        this.service.CreatePackageRate(this.rate).subscribe(res => {
+        this.packageRate = this.form.value;
+        this.service.CreatePackageRate(this.packageRate).subscribe(res => {
           this.refreshForm();
           this.dialogRef.close('add');
         });
@@ -72,13 +74,10 @@ export class CreatePackageRateComponent implements OnInit {
     }
   
     refreshForm() {
-      this.rate = {
+      this.packageRate = {
         PackageRateId: 0,
-        PackageRatePrice: 0,
+        PackagePrice: 0,
         PackagePriceDate: null
       }
-    }
-
-
-  
+    }  
 }

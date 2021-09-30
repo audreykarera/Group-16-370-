@@ -1,4 +1,3 @@
-
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -9,7 +8,7 @@ import { Package } from 'src/app/Interfaces/Index';
   providedIn: 'root'
 })
 export class PackageService {
-  apiUrl="http://localhost:60000/api/package/";
+  apiUrl="http://localhost:60000/api/package";
 
   constructor(
     private http:HttpClient

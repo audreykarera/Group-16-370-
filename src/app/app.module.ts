@@ -149,6 +149,8 @@ import { CreateEmployeedatetimeslotComponent } from './systems/schedule/employee
 import { EditSlotComponent } from './systems/schedule/edit-slot/edit-slot.component';
 import { CreatePackageRateComponent } from './systems/package rates/create-package-price/create-package-rate/create-package-rate.component';
 import { ViewBookingsComponent } from './systems/bookings/view-bookings/view-bookings.component';
+import { BookingserviceComponent } from './systems/bookings/bookingservice/bookingservice/bookingservice.component';
+import { CreateBookingserviceComponent } from './systems/bookings/bookingservice/bookingservice/create-bookingservice/create-bookingservice/create-bookingservice.component';
 
 
 
@@ -292,7 +294,9 @@ const angularMaterials = [
     EmployeedatetimeslotComponent,
     CreateEmployeedatetimeslotComponent,
     EditSlotComponent,
-    ViewBookingsComponent
+    ViewBookingsComponent,
+    BookingserviceComponent,
+    CreateBookingserviceComponent
   ],
 
   imports: [

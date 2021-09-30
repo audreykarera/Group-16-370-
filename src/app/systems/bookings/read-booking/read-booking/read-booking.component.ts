@@ -1,4 +1,4 @@
-import { BookingServiceService } from './../../../../shared/services/booking-service.service';
+
 import { ViewBookingsComponent } from './../../view-bookings/view-bookings.component';
 import { BookingService } from './../../../../shared/services/booking.service';
 import { Booking } from './../../../../Interfaces/Index';

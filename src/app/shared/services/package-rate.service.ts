@@ -22,13 +22,13 @@ export class PackageRateService {
       .pipe(map(res => res));
   }
 
-  UpdatePackageRate(rate: PackageRate) {
-    return this.http.put(`${this.apiUrl}/${rate.PackageRateId}`, rate)
+  UpdatePackageRate(packageRate: PackageRate) {
+    return this.http.put(`${this.apiUrl}/${packageRate.PackageRateId}`, packageRate)
       .pipe(map(res => res));
   }
 
-  CreatePackageRate(rate: PackageRate): Observable<any> {
-    return this.http.post(`${this.apiUrl}`, rate)
+  CreatePackageRate(packageRate: PackageRate): Observable<any> {
+    return this.http.post(`${this.apiUrl}`, packageRate)
       .pipe(map(res => res));
   }
 

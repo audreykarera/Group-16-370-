@@ -26,12 +26,12 @@ export class CreateServiceComponent implements OnInit {
   error_messages = {
     ServiceName: [
       { type: 'required', message: 'Service Name is required' },
-      { type: 'minLength', message: 'Service Name must be more than 1 character' },
+      { type: 'minLength', message: 'Service Name must be more than 3 character' },
       { type: 'maxLength', message: 'Service Name must be less than 30 characters' }
     ],
     ServiceDescription: [
       { type: 'required', message: 'Service Description is required' },
-      { type: 'minLength', message: 'Service Description must be more than 1 character' },
+      { type: 'minLength', message: 'Service Description must be more than 3 character' },
       { type: 'maxLength', message: 'Service Description must be less than 30 characters' }
     ],
     ServiceTypeId: [
@@ -59,9 +59,7 @@ export class CreateServiceComponent implements OnInit {
     this.refreshForm();
     this.createForm();
     this.getServiceTypes();
-    this.getServicePrices();
-
-    
+    this.getServicePrices();    
     console.log('Services')
   }
   
@@ -71,16 +69,16 @@ export class CreateServiceComponent implements OnInit {
         this.serviceTable.ServiceName,
         Validators.compose([
           Validators.required,
-          Validators.maxLength(20),
-          Validators.minLength(2)
+          Validators.maxLength(60),
+          Validators.minLength(3)
         ])
       ),
       ServiceDescription: new FormControl(
         this.serviceTable.ServiceDescription,
         Validators.compose([
           Validators.required,
-          Validators.maxLength(30),
-          Validators.minLength(2)
+          Validators.maxLength(60),
+          Validators.minLength(3)
         ])
       ),
       ServiceTypeId: new FormControl(

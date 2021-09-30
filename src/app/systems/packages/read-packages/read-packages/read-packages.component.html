@@ -22,63 +22,60 @@
                 <td mat-cell *matCellDef="let element"> {{element.packageName}} </td>
              </ng-container>
 
-<!-- package price column  -->
-             <ng-container matColumnDef="pricerate">
+<!-- package details column  -->
+             <ng-container matColumnDef="packagedetails">
                <th mat-header-cell *matHeaderCellDef> Package Price Rate </th>
-               <td mat-cell *matCellDef="let element"> {{element.packagePrice}} </td>
-              </ng-container>
-
-<!-- package description column  -->
-              <ng-container matColumnDef="description">
-               <th mat-header-cell *matHeaderCellDef> Package Description </th>
                <td mat-cell *matCellDef="let element"> {{element.packageDetails}} </td>
               </ng-container>
 
-<!-- extra collection column  -->
-              <ng-container matColumnDef="extracollection">
-               <th mat-header-cell *matHeaderCellDef> ExtraCollection </th>
-               <td mat-cell *matCellDef="let element"> {{element.extraCollection}} </td>
+ <!-- package rate  column  -->
+<ng-container matColumnDef="packagerateid">
+  <th mat-header-cell *matHeaderCellDef> Package Rate </th>
+  <td mat-cell *matCellDef="let element"> {{element.packagePrice}} </td>
+ </ng-container>                    
+
+<!-- service name column   -->
+ <ng-container matColumnDef="serviceid">
+               <th mat-header-cell *matHeaderCellDef> Service </th>
+               <td mat-cell *matCellDef="let element"> {{element.serviceName}} </td>
               </ng-container>
 
-<!-- extra price column  -->
-<ng-container matColumnDef="extraprice">
-  <th mat-header-cell *matHeaderCellDef> Extra Price </th>
-  <td mat-cell *matCellDef="let element"> {{element.extraPriceAmount}} </td>
- </ng-container>
+       
 
- <!-- service name column  -->
-<ng-container matColumnDef="servicename">
-  <th mat-header-cell *matHeaderCellDef> Service Name </th>
-  <td mat-cell *matCellDef="let element"> {{element.serviceName}} </td>
- </ng-container>
 
  <!-- edit column  -->             
-              <ng-container matColumnDef="edit">
-                <tr><th mat-header-cell *matHeaderCellDef> Edit </th></tr>
-                <tr>
-                  <td mat-cell *matCellDef="let row" style="width:5%">
-                     <button mat-icon-button (click)="routerEditPackage()" title="Edit Skip Package"><mat-icon>edit</mat-icon></button>
-                  </td>  
-                </tr>
-              </ng-container> 
-
-<!-- delete column  -->
-              <ng-container matColumnDef="delete">
+                <ng-container matColumnDef="edit">
           <tr>
-            <th mat-header-cell *matHeaderCellDef> Delete </th>
+            <th mat-header-cell *matHeaderCellDef> Edit </th>
           </tr>
           <tr>
-            <td mat-cell *matCellDef="let element" style="width:5%">
-              <button mat-icon-button color="danger" package="Delete Package">
-                <mat-icon (click)="DeletePackage(element.packageId)">delete</mat-icon>
+            <td mat-cell *matCellDef="let element" style="width:10%">
+               <button mat-icon-button (click)="routerEditPackage(element.packageId,element.packageName, element.packageDetails, element.packagePrice,element.serviceName)" title="Edit Service">
+                <mat-icon>edit</mat-icon>
               </button>
             </td>
           </tr>
         </ng-container> 
 
-               <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+<!-- delete column  -->
+    <ng-container matColumnDef="delete">
+          <tr>
+            <th mat-header-cell *matHeaderCellDef> Delete </th>
+          </tr>
+          <tr>
+            <td mat-cell *matCellDef="let element" style="width:10%">
+              <button mat-icon-button color="danger" title="Delete Package">
+                <mat-icon (click)="DeletePackage(element.packageId)">delete</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
+        <br>
+        <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
+        </mat-paginator>
       </div>
     </div>
   </div>

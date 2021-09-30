@@ -17,22 +17,7 @@
             </div>
         </mat-form-field>
         <br>
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Package Price Rate</mat-label>
-            <input matInput placeholder="" formControlName="PackageName">
-            <div class="errors">
-                <ng-container *ngFor="let item of error_messages.PackageName">
-                    <div class="errors" *ngIf="
-                  form.get('PackageName').hasError(item.type) &&
-                  (form.get('PackageName').dirty ||
-                    form.get('PackageName').touched)">
-                        {{ item.message }}
-                    </div>
-                </ng-container>
-            </div>
-        </mat-form-field>
-        <br>
-        <mat-form-field class="example-full-width" appearance="fill">
+       <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Package Description</mat-label>
             <input matInput placeholder="Ex. What the package includes..." formControlName="PackageDetails">
             <div class="errors">
@@ -46,52 +31,26 @@
                 </ng-container>
             </div>
         </mat-form-field>
-        <br>
+     <br>
+     <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Package Price</mat-label>
+          <mat-select formControlName="PackageRateId" >
+                <mat-option *ngFor="let item of packageRates" [value] = "item.packageRateId">
+                {{item.packagePrice}}
+                </mat-option>
+            </mat-select>
+      </mat-form-field>
+      <br>
         <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Extra Collection</mat-label>
-            <input matInput placeholder="" formControlName="ExtraCollection">
-            <div class="errors">
-                <ng-container *ngFor="let item of error_messages.PackageName">
-                    <div class="errors" *ngIf="
-                  form.get('ExtraCollection').hasError(item.type) &&
-                  (form.get('ExtraCollection').dirty ||
-                    form.get('ExtraCollection').touched)">
-                        {{ item.message }}
-                    </div>
-                </ng-container>
-            </div>
-        </mat-form-field>
-        <br>
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Extra Price</mat-label>
-            <input matInput placeholder="" formControlName="ExtraPriceAmount">
-            <div class="errors">
-                <ng-container *ngFor="let item of error_messages.PackageName">
-                    <div class="errors" *ngIf="
-                  form.get('ExtraPriceAmount').hasError(item.type) &&
-                  (form.get('ExtraPriceAmount').dirty ||
-                    form.get('ExtraPriceAmount').touched)">
-                        {{ item.message }}
-                    </div>
-                </ng-container>
-            </div>
-        </mat-form-field>
-        <br>
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Service Name</mat-label>
-            <input matInput placeholder="" formControlName="ServiceName">
-            <div class="errors">
-                <ng-container *ngFor="let item of error_messages.ServiceName">
-                    <div class="errors" *ngIf="
-                  form.get('ServiceName').hasError(item.type) &&
-                  (form.get('ServiceName').dirty ||
-                    form.get('ServiceName').touched)">
-                        {{ item.message }}
-                    </div>
-                </ng-container>
-            </div>
-        </mat-form-field>
-
+          <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Service Name </mat-label>
+            <mat-select formControlName="ServiceId" >
+                <mat-option *ngFor="let item of services" [value] = "item.serviceId">
+                {{item.serviceName}}
+                </mat-option>
+            </mat-select>
+      </mat-form-field>
+      <br>
+                      
         <div align="end">
             <button mat-stroked-button>Save</button>
         </div>
