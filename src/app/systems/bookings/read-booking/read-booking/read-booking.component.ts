@@ -21,9 +21,14 @@ export class ReadBookingComponent implements OnInit {
   bookingList: Booking[] = [];
   bookings$: Observable<Booking[]> = this.bookingService.getBookings();
   bookingTable: Booking
+  bookingServiceList: BookingService[]=[];
+  //bookingServices$:Observable<BookingService[]>=this.bookingServiceService.getBookingServices();
+  bookingServiceTable: BookingService;
 
   displayedColumns: string[] = ['id', 'client name', 'client surname','client email address', 'collectionote', 'view', 'excel'];
   dataSource = new MatTableDataSource (this.bookingList);
+
+  
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -33,6 +38,7 @@ export class ReadBookingComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private bookingService: BookingService, 
+    //private bookingServiceService :BookingServiceService
     private notificationsService: NotificationsService,
   ) { }
 
@@ -90,7 +96,16 @@ export class ReadBookingComponent implements OnInit {
       }
     });
   }
-
+  
+    // GetBookingServices(){
+    //   this.bookingServices$.subscribe(res=>{
+    //     if(res){
+    //       this.bookingList = res; 
+    //       console.log(res);
+    //     }
+    //   });
+    // }
+  
   // DeleteService(id){
   //   console.log(id);
   //   this.service.DeleteService(id).subscribe((res)=>{

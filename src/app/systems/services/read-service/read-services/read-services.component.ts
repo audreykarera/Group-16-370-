@@ -19,10 +19,6 @@ import { MatPaginator } from '@angular/material/paginator';
 import { Service, ServicePrice, ServiceType } from 'src/app/Interfaces/Index';
 
 
-// const ELEMENT_DATA: ServiceTable[] = [
-//   {servicename: 'Collection & Disposal', startingprice: 850, description: 'We will come and collect and dispose of your waste safely', servicetype: 'Oil'},
-// ];
-
 @Component({
   selector: 'app-read-services',
   templateUrl: './read-services.component.html',
@@ -109,4 +105,25 @@ export class ReadServicesComponent implements OnInit {
        }
      });
     }
+
+    routerEditService(serviceId:number, serviceName:string, serviceDescription:string, serviceTypeId:number, servicePriceId:number){
+      const dialog=new MatDialogConfig();
+      dialog.disableClose=true;
+      dialog.width='auto';
+      dialog.height='auto';
+        dialog.data={add:'yes'}
+      const dialogReference=this.dialog.open(
+        EditServiceComponent,
+        {
+          data:{serviceId:serviceId, serviceName:serviceName, serviceDescription:serviceDescription, serviceTypeId:serviceTypeId, servicePriceId:servicePriceId}
+        }
+        );
+        dialogReference.afterClosed().subscribe((res)=>{
+          if (res == 'add'){
+            this.notificationsService.successToaster('Service Edited', 'Success');
+            this.GetServices();
+          }
+        });
+      }    
+    
   }

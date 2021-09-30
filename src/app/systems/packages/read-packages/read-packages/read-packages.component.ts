@@ -1,4 +1,3 @@
-import { ExtraCollection } from './../../../extra-collection/read-extra-collection/read-extra-collection.component';
 
 import { PackageService } from '../../../../shared/services/package.service';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';

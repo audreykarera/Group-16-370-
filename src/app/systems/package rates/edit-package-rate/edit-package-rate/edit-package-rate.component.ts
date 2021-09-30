@@ -12,7 +12,8 @@ import { PackageRate } from 'src/app/Interfaces/Index';
 export class EditPackageRateComponent implements OnInit {
 
   packageRate: PackageRate;
-  constructor(private packageRateService: PackageRateService,
+  constructor(
+    private packageRateService: PackageRateService,
     public dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA)
     public data:any,
@@ -42,7 +43,7 @@ export class EditPackageRateComponent implements OnInit {
       this.packageRate = {
         PackageRateId: 0,
         PackageRatePrice: 0,
-        PackagePriceDate: ''
+        PackagePriceDate: null
       }
   }
 }

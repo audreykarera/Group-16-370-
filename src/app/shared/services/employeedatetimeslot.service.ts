@@ -18,4 +18,9 @@ export class EmployeedatetimeslotService {
     return this.http.get<EmployeeDateTimeSlot[]>(`${this.apiUrl}`)
       .pipe(map(res => res));
   }
+
+  CreateEmployeeDateTimeSlot(employeeDateTimeSlot: EmployeeDateTimeSlot): Observable<any>{
+    return this.http.post(`${this.apiUrl}`, employeeDateTimeSlot)
+    .pipe(map(res=>res));
+  }
 }

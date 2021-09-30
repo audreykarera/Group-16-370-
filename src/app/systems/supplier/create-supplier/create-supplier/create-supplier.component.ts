@@ -101,7 +101,6 @@ export class CreateSupplierComponent implements OnInit {
       SupplierContactPersonEmail: ''
     }
   }
-
 }
 
   // onSave(){
