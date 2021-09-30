@@ -1,3 +1,5 @@
+import { id } from '@swimlane/ngx-charts';
+import { element } from 'protractor';
 import { ViewBookingsComponent } from './../../view-bookings/view-bookings.component';
 import { BookingService } from './../../../../shared/services/booking.service';
 import { Booking } from './../../../../Interfaces/Index';
@@ -7,6 +9,7 @@ import { CalendarOptions } from '@fullcalendar/angular';
 import { Observable } from 'rxjs';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
+import  * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-read-booking',
@@ -14,12 +17,12 @@ import { NotificationsService } from 'src/app/shared/services/notifications.serv
   styleUrls: ['./read-booking.component.scss']
 })
 export class ReadBookingComponent implements OnInit {
-
+  fileName ='export-data.xlsx';
   bookingList: Booking[] = [];
   bookings$: Observable<Booking[]> = this.bookingService.getBookings();
   bookingTable: Booking
 
-  displayedColumns: string[] = ['id', 'client name', 'client surname','client email address', 'view'];
+  displayedColumns: string[] = ['id', 'client name', 'client surname','client email address', 'collectionote', 'view', 'excel'];
   dataSource = new MatTableDataSource (this.bookingList);
 
   applyFilter(event: Event) {
@@ -37,7 +40,7 @@ export class ReadBookingComponent implements OnInit {
     this.GetBookings();
     this.refreshForm();
   }
-  routerViewBooking(clientFirstName: string, clientSurname: string, clientEmailAddress: string, bookingId: number, bookingStatusName: string, collectionDate: string, collectionTime: string, paymentTypeName: string ) {
+  routerViewBooking(clientFirstName: string, clientSurname: string, clientEmailAddress: string, bookingStatusName: string, bookingId: number, collectionDate: string, collectionTime: string, paymentTypeName: string  ) {
     const dialog = new MatDialogConfig
     dialog.disableClose = true;
     dialog.width = '2rem';
@@ -46,12 +49,23 @@ export class ReadBookingComponent implements OnInit {
     const dialogReference = this.dialog.open(
       ViewBookingsComponent,
       {
-        data: { clientFirstName: clientFirstName, clientSurname: clientSurname, clientEmailAddress: clientEmailAddress, bookingId: bookingId, bookingStatusName: bookingStatusName, collectionDate: collectionDate,  collectionTime: collectionTime, paymentTypeName: paymentTypeName  }
+        data: { clientFirstName: clientFirstName, clientSurname: clientSurname, clientEmailAddress: clientEmailAddress, bookingStatusName: bookingStatusName, bookingId: bookingId, collectionDate: collectionDate, collectionTime: collectionTime, paymentTypeName: paymentTypeName }
       });
 
     }
-
-
+   
+    exportExcel():void {
+     
+        let element = document.getElementById('excel-table');
+        const ws:XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
+  
+        const wb:XLSX.WorkBook=XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb,ws,'Sheet1');
+        
+        XLSX.writeFile(wb,this.fileName)
+       
+    }
+    
 
   refreshForm() {
     this.bookingTable = {
@@ -72,7 +86,7 @@ export class ReadBookingComponent implements OnInit {
     this.bookings$.subscribe(res=>{
       if(res){
         this.bookingList = res; 
-        console.log(res);
+        console.log(this.bookingList);
       }
     });
   }
