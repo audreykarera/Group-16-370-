@@ -5,7 +5,7 @@ export interface Title{
 }
 export interface ExtraCollectionPrice {
     ExtraCollectionPriceId: number | null;
-    ExtraPriceAmount: string | null;   
+    ExtraPriceAmount: string | null;
 
 }
 export interface CollectionNote {
@@ -29,7 +29,7 @@ export interface Package {
     PackagePrice: string | null;
     ExtraCollection: boolean | null;
     ExtraPriceAmount: number | null;
-    ServiceName: string | null; 
+    ServiceName: string | null;
 
 }
 
@@ -44,41 +44,41 @@ export interface EmploymentStatus{
 }
 
 export class Employee {
-    EmployeeId: number | null;  
-    EmployeeFirstName: string | null; 
-    EmployeeSurname: string | null; 
-    EmployeeMiddleName: string | null; 
-    EmployeeCellPhoneNumber: string | null; 
-    EmployeeEmailAddress: string | null; 
-    EmployeeIdNumber: string | null; 
-    EmployeeEmergencyContactNumber: string | null; 
-    EmployeeEmergencyContactFirstName: string | null; 
-    EmployeeEmergencyContactSurname: string | null; 
-    TitleId: number | null; 
-    EmploymentStatusId: number | null; 
-    EmployeeTypeId: number | null; 
+    EmployeeId: number | null;
+    EmployeeFirstName: string | null;
+    EmployeeSurname: string | null;
+    EmployeeMiddleName: string | null;
+    EmployeeCellPhoneNumber: string | null;
+    EmployeeEmailAddress: string | null;
+    EmployeeIdNumber: string | null;
+    EmployeeEmergencyContactNumber: string | null;
+    EmployeeEmergencyContactFirstName: string | null;
+    EmployeeEmergencyContactSurname: string | null;
+    TitleId: number | null;
+    EmploymentStatusId: number | null;
+    EmployeeTypeId: number | null;
 }
 
 export interface DateTimeSlot{
     DateTimeSlotId: number | null;
-    Date: Date | null; 
-    StartTime: string | null; 
+    Date: Date | null;
+    StartTime: string | null;
     EndTime: string | null;
 }
 
 export interface EmployeeDateTimeSlot{
-    EmployeeDateTimeSlotId: number | null; 
-    EmployeeId: number | null; 
-    DateTimeSlotId: number | null; 
-    EquipmentId: number | null; 
-    VehicleId: number | null; 
+    EmployeeDateTimeSlotId: number | null;
+    EmployeeId: number | null;
+    DateTimeSlotId: number | null;
+    EquipmentId: number | null;
+    VehicleId: number | null;
     SlotStatusId: number | null;
 }
 
 export interface Complaint{
     ComplaintId: number | null;
-    ComplaintDescription: string | null; 
-    ComplaintDate: string | null; 
+    ComplaintDescription: string | null;
+    ComplaintDate: string | null;
     Rating: number | null;
 }
 export interface PaymentType{
@@ -111,7 +111,7 @@ export interface ServicePrice{
 export interface Service{
     ServiceId:number|null;
     ServiceName:string|null;
-    ServiceDescription:string|null;  
+    ServiceDescription:string|null;
     ServiceTypeId: number|null;
     ServicePriceId:number|null;
     // ServiceType: ServiceType;
@@ -157,6 +157,30 @@ export interface Vehicle{
     VehicleMake:string|null;
     VehicleModel:string|null;
     VehicleAvailable: boolean |null;
+}
+
+export interface Quote{
+  QuoteId: number | null;
+  IssuedDate: Date | null;
+  QuoteDescription: string | null;
+  EmployeeId: number | null;
+  QuoteStatusId: number | null;
+  ClientId: number | null;
+}
+
+export interface RequestedQuote{
+  RequestedQuoteId: number | null;
+  RequestedQuoteDescription: string | null;
+  RequestedQuoteDate: Date | null;
+  CompanyName: string | null;
+  ClientEmailAddress: string | null;
+}
+
+export interface QuoteLine{
+  QuoteLineId: number | null;
+  ServiceName: string | null;
+  QuoteDescription: string | null;
+  IssuedDate: string | null;
 }
 
 export class QuoteStatus{
