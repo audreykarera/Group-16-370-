@@ -1,4 +1,3 @@
-
 import { CreatePackageRateComponent } from './../../create-package-price/create-package-rate/create-package-rate.component';
 import { EditPackageRateComponent } from './../../edit-package-rate/edit-package-rate/edit-package-rate.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -8,6 +7,7 @@ import { NotificationsService } from 'src/app/shared/services/notifications.serv
 import { MatTableDataSource } from '@angular/material/table';
 import { Observable } from 'rxjs';
 import { PackageRate } from 'src/app/Interfaces/Index';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-read-package-rates',
@@ -18,15 +18,23 @@ export class ReadPackageRatesComponent implements OnInit {
 
    packageRateList: PackageRate[] = [];
    packageRates$: Observable<PackageRate[]> = this.service.getPackageRates();
-   rate: PackageRate
+   packageRate: PackageRate
 
-  displayedColumns: string[] = ['ratepriceId','rateprice', 'dateofprice', 'edit', 'delete'];
+  displayedColumns: string[] = ['packageprice', 'packagepricedate', 'edit', 'delete'];
   dataSource = new MatTableDataSource (this.packageRateList);
+  @ViewChild(MatPaginator) paginator: MatPaginator;
  
-  applyFilter(event: Event) {
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
+
+
+   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+    console.log(event);
   }
+
 
 
   constructor(
@@ -36,23 +44,24 @@ export class ReadPackageRatesComponent implements OnInit {
     ) {}
   
   ngOnInit(): void {
-    this.getPackageRates();
+    this.GetPackageRates();
     this.refreshForm();
     
   }
 
   refreshForm() {
-    this.rate = {
+    this.packageRate = {
     PackageRateId: 0,
-    PackageRatePrice: 0,
+    PackagePrice: 0,
     PackagePriceDate: null
     }
   }
+
   Close() {
     this.dialog.closeAll();
   }
 
-  getPackageRates(){
+  GetPackageRates(){
     this.packageRates$.subscribe(res=>{
       if(res){
         this.packageRateList = res; 
@@ -65,32 +74,12 @@ export class ReadPackageRatesComponent implements OnInit {
     console.log(id);
     this.service.DeletePackageRate(id).subscribe((res)=>{
         this.notificationsService.successToaster('Package Rate Deleted', 'Success'); 
-        this.getPackageRates();
+        this.GetPackageRates();
     });
     
   }
-
-
-  // readPackageRates(){
-  //   this.packageRateService.getPackageRate().subscribe((res)=>{
-  //     this.packageRateList=res as PackageRate[];
-  //   }, (err:HttpErrorResponse)=>{
-  //     this.notificationService.failToaster("Unable to display Payment Types", "Error");
-  //     console.log(err);
-  //   })
-  // }
-
-  // onDelete(id){
-  //   this.packageRateService.deletePackageRate(id).subscribe((res)=>{
-  //     console.log(id);
-  //     this.readPackageRates();
-  //   }, (err: HttpErrorResponse)=>{
-  //     this.notificationService.failToaster("Pacckage Rate Deleted ", "Success");
-  //   });
-  // }
-
  
-  routerEditPackageRate(packageRateId: number, packagePrice: string, packagePriceDate: string) {
+  routerEditPackageRate(packageRateId: number, packagePrice: number, packagePriceDate: string) {
     const dialog = new MatDialogConfig();
     dialog.disableClose = true;
     dialog.width ='auto';
@@ -105,7 +94,7 @@ export class ReadPackageRatesComponent implements OnInit {
     dialogReference.afterClosed().subscribe((res)=>{
       if(res == 'add'){
         this.notificationsService.successToaster('Package Rate edited', 'Success'); 
-        this.getPackageRates();
+        this.GetPackageRates();
       }
     });
 
@@ -122,7 +111,7 @@ routerAddPackageRate() {
   dialogReference.afterClosed().subscribe((res)=>{
     if(res == 'add'){
       this.notificationsService.successToaster('Package Rate Added', 'Success'); 
-      this.getPackageRates();
+      this.GetPackageRates();
     }
   });
 }

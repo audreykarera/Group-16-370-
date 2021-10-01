@@ -14,11 +14,12 @@ export interface CollectionNote {
     CollectionTime: string | null;
     ClientId: number | null;
     EmployeeId: number | null;
+  
 
 }
 export interface PackageRate {
     PackageRateId: number | null;
-    PackageRatePrice: number | null;
+    PackagePrice: number | null;
     PackagePriceDate: Date | null;
 }
 
@@ -26,11 +27,9 @@ export interface Package {
     PackageId: number | null;
     PackageName: string | null;
     PackageDetails: string | null;
-    PackagePrice: string | null;
-    ExtraCollection: boolean | null;
-    ExtraPriceAmount: number | null;
-    ServiceName: string | null;
-
+    ServiceId: number | null; 
+    PackageRateId: number | null; 
+    
 }
 
 export interface EmployeeType{
@@ -127,7 +126,7 @@ export interface Booking {
     CollectionNoteId: number|null;
     PaymentTypeId: number|null;
 }
-export interface BookingService {
+export interface BookingServices {
     BookingServiceId :number |null;
     BookingId :number|null;
     ServiceId : number | null;

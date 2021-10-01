@@ -11,9 +11,6 @@ import { Observable } from 'rxjs';
 import { MatPaginator } from '@angular/material/paginator';
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
 
-// const ELEMENT_DATA: ServicePriceTable[] = [
-//   {serviceprice: 650, dateofprice: '09/11/2021'},
-// ];
 
 @Component({
   selector: 'app-read-service-price',
@@ -44,7 +41,8 @@ export class ReadServicePriceComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private service: ServicePriceService, 
-    private notificationsService: NotificationsService,) { }
+    private notificationsService: NotificationsService,
+    ) { }
 
     ngOnInit(): void {
       this.GetServicePrices();
@@ -81,7 +79,7 @@ export class ReadServicePriceComponent implements OnInit {
       
     }
 
-    routerEditServicePrices(servicePriceId:number, servicePriceAmount:string, servicePriceDate:string){
+    routerEditServicePrices(servicePriceId:number, servicePriceAmount:number, servicePriceDate:string){
       const dialog=new MatDialogConfig();
       dialog.disableClose=true;
       dialog.width='auto';

@@ -1,4 +1,3 @@
-
 import { PackageService } from '../../../../shared/services/package.service';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { EditPackagesComponent } from './../../edit-packages/edit-packages/edit-packages.component';
@@ -26,17 +25,23 @@ export class ReadPackagesComponent implements OnInit {
   packages$: Observable<Package[]> = this.service.getPackages();
   package: Package
 
-  displayedColumns: string[] = ['packagename', 'pricerate', 'description', 'extracollection', 'extraprice','servicename', 'edit', 'delete'];
+  displayedColumns: string[] = ['packagename', 'packagedetails','packagerateid', 'serviceid','edit', 'delete'];
   dataSource = new MatTableDataSource (this.packageList);
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();''
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
   }
 
+
+   applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+    console.log(event);
+  }
   constructor(
-    private service: PackageService,
     public dialog: MatDialog,
+    private service: PackageService,    
     private notificationsService: NotificationsService,) { }
 
  
@@ -46,13 +51,12 @@ export class ReadPackagesComponent implements OnInit {
   }
   refreshForm() {
     this.package = {
-    PackageId: 0,
-    PackageName: '',
-    PackageDetails: '',
-    PackagePrice:'',
-    ExtraCollection: true,
-    ExtraPriceAmount:0,
-    ServiceName:''
+      PackageId: 0,
+      PackageName: ' ',
+      PackageDetails: ' ',  
+      PackageRateId: 0,    
+      ServiceId: 0
+     
     }
   }
 
@@ -97,7 +101,7 @@ export class ReadPackagesComponent implements OnInit {
     }
   
 
-  routerEditPackage(packageId: number, packageName: string, packageDetails: string, extraCollection: boolean, packagePrice: string, extraPriceAmount: string, serviceName: string) {
+  routerEditPackage(packageId: number, packageName: string, packageDetails: string,  packageRateId: number, serviceId: number) {
   const dialog= new MatDialogConfig();
   dialog.disableClose = true;
   dialog.width = 'auto';
@@ -106,7 +110,7 @@ export class ReadPackagesComponent implements OnInit {
   const dialogReference = this.dialog.open(
     EditPackagesComponent,
     {
-      data: {packageId:packageId, packageName:packageName,packageDetails:packageDetails, extraCollection:extraCollection,packagePrice:packagePrice, extraPriceAmount:extraPriceAmount,serviceName:serviceName}
+      data: {packageId:packageId, packageName:packageName,packageDetails:packageDetails,packageRateId:packageRateId,  serviceId: serviceId}
     }
   );
   dialogReference.afterClosed().subscribe((res)=>{
@@ -117,38 +121,5 @@ export class ReadPackagesComponent implements OnInit {
   });
 }
   
-    
-    // );
- // readPackage(){
-  //   this.servicePackage.getPackages().subscribe((res)=>{
-  //     this.packageList =res as Package;
-  //   },(err: HttpErrorResponse)=>{
-  //     this.notificationService.failToaster("Unable to display service types", "Error");
-  //     console.log(err);
-  //   })
-  // }
-
-  // readServiceType(){
-  //   this.servicePackageRate.getPackageRate().subscribe((res)=>{
-  //     this.packageRateList=res as PackageRate[];
-  //   })
-  // }
-
 }
-
-// openDeleteDialog() {
-//   const dialogInterface: DialogInterface = {
-//     dialogHeader: 'Confirmation Message',
-//     dialogContent: 'Are you sure you want to delete this?',
-//     cancelButtonLabel: 'No',
-//     confirmButtonLabel: 'Yes',
-//     callbackMethod: () => {
-     
-//     },
-//   };
-//   this.dialog.open(SharedComponent, {
-//     width: '300px',
-//     data: dialogInterface,
-//   });
-// }
 

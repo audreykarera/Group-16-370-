@@ -2,39 +2,38 @@
 <mat-dialog-content>
   <form [formGroup]="form" (ngSubmit)="OnSubmit()">
     <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>Package Rate Amount</mat-label>
+      <mat-label>Package Rate Price</mat-label>
       <input matInput placeholder="R" formControlName="PackagePrice">
-
-      <!-- <div class="errors">
-        <ng-container *ngFor="let item of error_messages.PackageRatePrice">
-          <div class="errors" *ngIf="
-            form.get('PackageRatePrice').hasError(item.type) &&
-            (form.get('PackageRatePrice').dirty ||
-              form.get('PackageRatePrice').touched)">
+      
+      <div class="errors">
+        <ng-container *ngFor="let item of error_messages.PackagePrice">
+         <div class= "errors" *ngIf="
+                  form.get('PackagePrice').hasError(item.type) &&
+                  (form.get('PackagePrice').dirty ||
+                  form.get('PackagePrice').touched)">
             {{ item.message }}
           </div>
         </ng-container>
       </div> -->
     </mat-form-field>
+  <br>
+     <mat-form-field appearance="fill">
+          <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Package Rate Date</mat-label>
+          <input matInput [matDatepicker]="picker" placeholder="2021/09/20" formControlName="PackagePriceDate">
+          <div class="errors">
+              <ng-container *ngFor="let item of error_messages.PackagePriceDate">
+                  <div class="errors" *ngIf="
+                form.get('PackagePriceDate').hasError(item.type) &&
+                (form.get('PackagePriceDate').dirty ||
+                  form.get('PackagePriceDate').touched)">
+                      {{ item.message }}
+                  </div>
+              </ng-container>
+          </div>           
+          <mat-datepicker-toggle matsuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
 
-    <br>
-
-    <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Package Rate Date</mat-label>
-       <input matInput [matDatepicker]="picker" placeholder="2021/09/20" formControlName="packagePriceDate">
-      <!-- <div class="errors">
-        <ng-container *ngFor="let item of error_messages.packagePriceDate">
-          <div class="errors" *ngIf="
-            form.get('packagePriceDate').hasError(item.type) &&
-            (form.get('packagePriceDate').dirty ||
-              form.get('packagePriceDate').touched)">
-            {{ item.message }}
-          </div>
-        </ng-container>
-      </div> -->
-      <mat-datepicker-toggle matsuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
     <div align="end">
       <button mat-stroked-button>Save</button>
     </div>

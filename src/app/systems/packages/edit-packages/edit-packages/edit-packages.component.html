@@ -1,36 +1,61 @@
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Package</title>
-</head>
-
-<body>
-    <div class="modal-body" style="width: 20rem; height: auto;" >
-        <h3>Edit Package</h3>
-        <div class="form-group">
-            <div class="container">
-                <div class="row" >
-                   <mat-form-field class="example-full-width" appearance="fill">
-                         <mat-label>Package Name</mat-label>
-                         <input matInput placeholder="">
-                    </mat-form-field>
-                    <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>Package Price Rate</mat-label>
-                         <input matInput placeholder="">
-                    </mat-form-field>
-                        <mat-form-field class="example-full-width" appearance="fill">
-                          <mat-label>Package Details</mat-label>
-                          <textarea matInput placeholder="Ex. What the package includes..."></textarea>
-                        </mat-form-field>
-                            <br>
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <button mat-stroked-button >Save</button>
-                        <button mat-raised-button (click)="Close()" color="warn">Cancel</button>
-                            </div>
+<h2 mat-dialog-title>Edit Skip Package</h2>
+<mat-dialog-content>
+    <form [formGroup]="form" (ngSubmit)="OnSubmit()">        
+     
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label> Skip Package Name</mat-label>
+            <input matInput placeholder="" formControlName="PackageName">
+            <div class="errors">
+                <ng-container *ngFor="let item of error_messages.PackageName">
+                    <div class="errors" *ngIf="
+                  form.get('PackageName').hasError(item.type) &&
+                  (form.get('PackageName').dirty ||
+                  form.get('PackageName').touched)">
+                        {{ item.message }}
                     </div>
-                </div>
+                </ng-container>
             </div>
+        </mat-form-field>
+        <br>
+       <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Package Description</mat-label>
+            <input matInput placeholder="Ex. What the package includes..." formControlName="PackageDetails">
+            <div class="errors">
+                <ng-container *ngFor="let item of error_messages.PackageDetails">
+                    <div class="errors" *ngIf="
+                  form.get('PackageDetails').hasError(item.type) &&
+                  (form.get('PackageDetails').dirty ||
+                    form.get('PackageDetails').touched)">
+                        {{ item.message }}
+                    </div>
+                </ng-container>
+            </div>
+        </mat-form-field>
+     <br>
+     <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Package Price</mat-label>
+          <mat-select formControlName="PackageRateId" >
+                <mat-option *ngFor="let item of packageRates" [value] = "item.packageRateId">
+                {{item.packagePrice}}
+                </mat-option>
+            </mat-select>
+      </mat-form-field>
+      <br>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Service Name </mat-label>
+            <mat-select formControlName="ServiceId" >
+                <mat-option *ngFor="let item of services" [value] = "item.serviceId">
+                {{item.serviceName}}
+                </mat-option>
+            </mat-select>
+      </mat-form-field>
+      <br>
+                      
+        <div align="end">
+            <button mat-stroked-button>Save</button>
         </div>
+    </form>
+    <div align="end">
+        <button mat-raised-button (click)="Close()" color="warn">Cancel</button>
+    </div>
+</mat-dialog-content> 

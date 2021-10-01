@@ -149,6 +149,8 @@ import { AddCollectionNoteComponent } from './systems/collection note/add-collec
 import { YtVideoComponent } from './systems/help/video/yt-video/yt-video.component';
 
 
+import { BookingserviceComponent } from './systems/bookings/bookingservice/bookingservice/bookingservice.component';
+import { CreateBookingserviceComponent } from './systems/bookings/bookingservice/bookingservice/create-bookingservice/create-bookingservice/create-bookingservice.component';
 
 
 
@@ -289,7 +291,9 @@ const angularMaterials = [
     AddCollectionNoteComponent,
     EditCollectionNoteComponent,
     ReadCollectionNoteComponent,
-    YtVideoComponent
+    YtVideoComponent,
+    BookingserviceComponent,
+    CreateBookingserviceComponent
   ],
 
   imports: [
