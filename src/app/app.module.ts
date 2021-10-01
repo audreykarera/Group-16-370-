@@ -1,4 +1,5 @@
-
+// Excel
+import  * as XLSX from 'xlsx';
 //Modules
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -142,6 +143,12 @@ import { CreateEmployeedatetimeslotComponent } from './systems/schedule/employee
 import { EditSlotComponent } from './systems/schedule/edit-slot/edit-slot.component';
 import { CreatePackageRateComponent } from './systems/package rates/create-package-price/create-package-rate/create-package-rate.component';
 import { ViewBookingsComponent } from './systems/bookings/view-bookings/view-bookings.component';
+import { EditCollectionNoteComponent } from './systems/collection note/edit-collection-note/edit-collection-note/edit-collection-note.component';
+import { ReadCollectionNoteComponent } from './systems/collection note/read-collection-note/read-collection-note/read-collection-note.component';
+import { AddCollectionNoteComponent } from './systems/collection note/add-collection-note/add-collection-note/add-collection-note.component';
+import { YtVideoComponent } from './systems/help/video/yt-video/yt-video.component';
+
+
 import { BookingserviceComponent } from './systems/bookings/bookingservice/bookingservice/bookingservice.component';
 import { CreateBookingserviceComponent } from './systems/bookings/bookingservice/bookingservice/create-bookingservice/create-bookingservice/create-bookingservice.component';
 
@@ -281,6 +288,10 @@ const angularMaterials = [
     CreateEmployeedatetimeslotComponent,
     EditSlotComponent,
     ViewBookingsComponent,
+    AddCollectionNoteComponent,
+    EditCollectionNoteComponent,
+    ReadCollectionNoteComponent,
+    YtVideoComponent,
     BookingserviceComponent,
     CreateBookingserviceComponent
   ],

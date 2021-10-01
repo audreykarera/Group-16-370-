@@ -28,7 +28,7 @@ export class ReadQuoteComponent implements OnInit {
   quotes$: Observable<Quote[]> = this.service.getQuotes();
   quote: Quote;
 
-  displayedColumns: string[] = ['quoteid', 'issuedDate', 'quoteDescription','companyName','emailAddress', 'generateQuote','sendQuote'];
+  displayedColumns: string[] = ['quoteid', 'issuedDate', 'quoteDescription','companyName','emailAddress', 'View'];
   dataSource = new MatTableDataSource(this.quoteList);
 
   applyFilter(event: Event) {

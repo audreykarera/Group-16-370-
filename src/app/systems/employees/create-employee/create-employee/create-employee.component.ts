@@ -67,9 +67,16 @@ export class CreateEmployeeComponent implements OnInit {
   //   }); 
   // }
 
-  onFileSelected(event){
-    console.log(event); 
+  onFileSelected(e){
+    if(e.target.files){
+      var reader = new FileReader();
+      reader.readAsDataURL(e.target.files[0]);
+      reader.onload=(event:any)=>{
+        this.url=event.target.result;
+      }     
+    } 
   }
+  url ="./assets/img/User.png";
 
   onSubmit(){
     this.employeeService.postEmployee(this.employee).subscribe((res)=>{

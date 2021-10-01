@@ -5,7 +5,16 @@ export interface Title{
 }
 export interface ExtraCollectionPrice {
     ExtraCollectionPriceId: number | null;
-    ExtraPriceAmount: number | null;   
+    ExtraPriceAmount: string | null;
+
+}
+export interface CollectionNote {
+    CollectionNoteId: number | null;
+    CollectionDate: Date | null;
+    CollectionTime: string | null;
+    ClientId: number | null;
+    EmployeeId: number | null;
+  
 
 }
 export interface PackageRate {
