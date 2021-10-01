@@ -173,7 +173,14 @@ export interface QuoteLine{
   IssuedDate: string | null;
 }
 
-export class QuoteStatus{
+export interface QuoteStatus{
     QuoteStatusId: number|null;
     QuoteStatusName: string|null;
+}
+export interface CollectionNote{
+CollectionNoteId: number |null;
+ClientId: number |null;
+EmployeeId:number |null;
+CollectionDate: Date|null;
+CollectionTime: string |null;
 }

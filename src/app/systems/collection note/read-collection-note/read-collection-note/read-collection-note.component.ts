@@ -41,7 +41,7 @@ export class ReadCollectionNoteComponent implements OnInit {
   refreshForm() {
     this.collectionNote = {
     CollectionNoteId: 0,
-    CollectionDate: '',
+    CollectionDate: null,
     CollectionTime: '',
     ClientId: 0,
     EmployeeId: 0
