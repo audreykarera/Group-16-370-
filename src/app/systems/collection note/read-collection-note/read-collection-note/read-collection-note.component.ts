@@ -19,7 +19,7 @@ export class ReadCollectionNoteComponent implements OnInit {
   collectionNote: CollectionNote
 
 
-  displayedColumns: string[] = ['collectionnoteid', 'date','time','client','employee', 'edit','delete'];
+  displayedColumns: string[] = [ 'date','time', 'employee', 'client', 'edit','delete'];
   dataSource = new MatTableDataSource(this.collectionNoteList);
 
   applyFilter(event: Event) {
@@ -41,7 +41,7 @@ export class ReadCollectionNoteComponent implements OnInit {
   refreshForm() {
     this.collectionNote = {
     CollectionNoteId: 0,
-    CollectionDate: '',
+    CollectionDate: null,
     CollectionTime: '',
     ClientId: 0,
     EmployeeId: 0

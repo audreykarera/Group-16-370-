@@ -224,5 +224,12 @@
         </mat-icon> View Invoices
       </a>
     </span>
+    <span *ngIf="Client">
+      <a mat-list-item routerLinkActive="list-item-active" routerLink="/helpvideo">
+        <mat-icon>
+          <mat-icon>help</mat-icon>
+        </mat-icon> Help
+      </a>
+    </span>
   </span>
 </mat-nav-list>

@@ -2,7 +2,8 @@
 <div mat-dialog-content>
   <div class="row">
     <div class="col">
-      <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Your Photo</label>
+      <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">Your Photo</label><br>
+      <img [src]="url" height="200"><br>
       <input class="form-control form-control-sm" id="formFileSm" type="file" (change)="onFileSelected($event)" />
       <br>
       <div>

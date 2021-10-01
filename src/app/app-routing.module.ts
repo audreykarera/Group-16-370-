@@ -1,3 +1,4 @@
+import { YtVideoComponent } from './systems/help/video/yt-video/yt-video.component';
 
 import { ReadServicePriceComponent } from './systems/service price/read-service-price/read-service-price/read-service-price.component';
 import { ReadSlotStatusComponent } from './systems/schedule/read-slot-status/read-slot-status/read-slot-status.component';
@@ -105,7 +106,8 @@ const routes: Routes = [
   { path: 'read-slot-status', component: ReadSlotStatusComponent },
   { path: 'serviceprice', component: ReadServicePriceComponent },
   { path: 'employeedatetimeslots', component: EmployeedatetimeslotComponent},
-  { path: 'collectionnote', component: ReadCollectionNoteComponent}
+  { path: 'collectionnote', component: ReadCollectionNoteComponent},
+  { path: 'helpvideo', component: YtVideoComponent},
 ];
 
 @NgModule({

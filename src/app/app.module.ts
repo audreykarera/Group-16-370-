@@ -146,6 +146,7 @@ import { ViewBookingsComponent } from './systems/bookings/view-bookings/view-boo
 import { EditCollectionNoteComponent } from './systems/collection note/edit-collection-note/edit-collection-note/edit-collection-note.component';
 import { ReadCollectionNoteComponent } from './systems/collection note/read-collection-note/read-collection-note/read-collection-note.component';
 import { AddCollectionNoteComponent } from './systems/collection note/add-collection-note/add-collection-note/add-collection-note.component';
+import { YtVideoComponent } from './systems/help/video/yt-video/yt-video.component';
 
 
 
@@ -287,7 +288,8 @@ const angularMaterials = [
     ViewBookingsComponent,
     AddCollectionNoteComponent,
     EditCollectionNoteComponent,
-    ReadCollectionNoteComponent
+    ReadCollectionNoteComponent,
+    YtVideoComponent
   ],
 
   imports: [

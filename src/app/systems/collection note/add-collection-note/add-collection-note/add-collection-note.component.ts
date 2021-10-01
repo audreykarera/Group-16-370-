@@ -50,7 +50,7 @@ export class AddCollectionNoteComponent implements OnInit {
   refreshForm() {
     this.collectionNote = {
     CollectionNoteId: 0,
-    CollectionDate: '' ,
+    CollectionDate: null ,
     CollectionTime:'' ,
     ClientId:0 ,
     EmployeeId:0,

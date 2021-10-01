@@ -10,7 +10,7 @@ export interface ExtraCollectionPrice {
 }
 export interface CollectionNote {
     CollectionNoteId: number | null;
-    CollectionDate: string | null;
+    CollectionDate: Date | null;
     CollectionTime: string | null;
     ClientId: number | null;
     EmployeeId: number | null;
