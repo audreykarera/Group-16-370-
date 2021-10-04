@@ -25,7 +25,7 @@ export class ReadExtraCollectionComponent implements OnInit {
   displayedColumns: string[] = [ 'extraCollectionPrice', 'edit','delete'];
   dataSource = new MatTableDataSource(this.extraCollectionPriceList);
   @ViewChild(MatPaginator) paginator: MatPaginator;
- 
+
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
@@ -40,7 +40,7 @@ export class ReadExtraCollectionComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    private service: ExtraCollectionPriceService, 
+    private service: ExtraCollectionPriceService,
     private notificationsService: NotificationsService,) { }
 
   ngOnInit(): void {
@@ -51,7 +51,7 @@ export class ReadExtraCollectionComponent implements OnInit {
   refreshForm() {
     this.extraCollectionPrice = {
       ExtraCollectionPriceId: 0,
-      ExtraPriceAmount:0
+      ExtraPriceAmount: '' // It was a number but it gave me errors and i changed it to string
     }
   }
   Close() {
@@ -61,7 +61,7 @@ export class ReadExtraCollectionComponent implements OnInit {
   GetExtraCollectionPrices(){
     this.extraCollectionPrices$.subscribe(res=>{
       if(res){
-        this.extraCollectionPriceList = res; 
+        this.extraCollectionPriceList = res;
         console.log(res);
       }
     });
@@ -70,10 +70,10 @@ export class ReadExtraCollectionComponent implements OnInit {
   DeleteExtraCollectionPrice(id){
     console.log(id);
     this.service.DeletePrice(id).subscribe((res)=>{
-        this.notificationsService.successToaster('Extra Collection Price Deleted', 'Success'); 
+        this.notificationsService.successToaster('Extra Collection Price Deleted', 'Success');
         this.GetExtraCollectionPrices();
     });
-    
+
   }
 
   routerEditExtraCollectionPrice(extraCollectionPriceId: number, extraPriceAmount: number) {
@@ -107,7 +107,7 @@ export class ReadExtraCollectionComponent implements OnInit {
       );
       dialogReference.afterClosed().subscribe((res)=>{
         if(res == 'add'){
-          this.notificationsService.successToaster('Extra Collection Price Added', 'Success'); 
+          this.notificationsService.successToaster('Extra Collection Price Added', 'Success');
           this.GetExtraCollectionPrices();
         }
       });

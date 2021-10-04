@@ -14,7 +14,7 @@ export interface CollectionNote {
     CollectionTime: string | null;
     ClientId: number | null;
     EmployeeId: number | null;
-  
+
 
 }
 export interface PackageRate {
@@ -27,9 +27,10 @@ export interface Package {
     PackageId: number | null;
     PackageName: string | null;
     PackageDetails: string | null;
-    ServiceId: number | null; 
-    PackageRateId: number | null; 
-    
+    PackagePrice: number | null;
+    ServiceId: number | null;
+    PackageRateId: number | null;
+
 }
 
 export interface EmployeeType{
@@ -115,7 +116,7 @@ export interface Service{
     ServicePriceId:number|null;
     // ServiceType: ServiceType;
     // ServicePrice:ServicePrice;
-    // LocationId:number|null;  
+    // LocationId:number|null;
     // Location : Location[];
 }
 

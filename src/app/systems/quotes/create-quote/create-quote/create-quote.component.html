@@ -42,6 +42,22 @@
         </mat-form-field>
         <br>
         <mat-form-field appearance="fill">
+          <mat-label>Package Name</mat-label>
+          <mat-select>
+              <mat-option *ngFor="let package of packageList" [value]="package.packageId">
+                  {{package.packageName}}</mat-option>
+          </mat-select>
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>Package Price</mat-label>
+        <mat-select>
+            <mat-option *ngFor="let package of packageList" [value]="package.packageId">
+                {{package.packagePrice}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <br>
+        <mat-form-field appearance="fill">
             <mat-label>Service Type</mat-label>
             <mat-select>
                 <mat-option *ngFor="let service of serviceList" [value]="service.serviceId">

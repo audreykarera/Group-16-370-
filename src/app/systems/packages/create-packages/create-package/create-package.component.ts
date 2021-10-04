@@ -26,7 +26,7 @@ export class CreatePackageComponent implements OnInit {
       { type: 'required', message: 'Package Name is required' },
       { type: 'minLength', message: 'Package Name must be more than 3 character' },
       { type: 'maxLength', message: 'Package Name must be less than 60 characters' }
-      
+
     ],
     PackageDetails: [
       { type: 'required', message: 'Package details are required' },
@@ -34,12 +34,12 @@ export class CreatePackageComponent implements OnInit {
       { type: 'maxLength', message: 'Package details must be less than 60 characters' }
     ],
     ServiceId: [
-      { type: 'required', message: 'Service is required' },     
+      { type: 'required', message: 'Service is required' },
     ],
     PackageRateId: [
       { type: 'required', message: 'Package Rate is required' },
     ]
-    
+
   }
 
   constructor(
@@ -47,7 +47,7 @@ export class CreatePackageComponent implements OnInit {
     private serviceService: ServiceService,
     private packageRateService: PackageRateService,
     public dialog: MatDialog,
-    private formBuilder: FormBuilder, 
+    private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<CreatePackageComponent>,
     ) { }
 
@@ -58,7 +58,7 @@ export class CreatePackageComponent implements OnInit {
     this.getServices();
     console.log('Packages')
   }
-  
+
   createForm() {
     this.form = this.formBuilder.group({
       PackageName: new FormControl(
@@ -112,10 +112,11 @@ export class CreatePackageComponent implements OnInit {
     }
   }
 
-  
+
   refreshForm() {
     this.package = {
       PackageId: 0,
+      PackagePrice: '',
       PackageName: ' ',
       PackageDetails: ' ',
       ServiceId: 0,

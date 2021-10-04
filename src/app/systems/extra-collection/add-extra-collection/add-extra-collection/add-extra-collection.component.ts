@@ -21,10 +21,10 @@ export class AddExtraCollectionComponent implements OnInit {
     ]
   }
 
-  constructor( 
+  constructor(
     private service: ExtraCollectionPriceService,
     public dialog: MatDialog,
-    private formBuilder: FormBuilder, 
+    private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<AddExtraCollectionComponent>) { }
 
   ngOnInit(): void {
@@ -62,7 +62,7 @@ export class AddExtraCollectionComponent implements OnInit {
   refreshForm() {
     this.price = {
     ExtraCollectionPriceId: 0,
-    ExtraPriceAmount: 0
+    ExtraPriceAmount: '' // It was a number but it gave me errors and i changed it to string
     }
   }
 }

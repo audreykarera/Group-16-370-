@@ -1,4 +1,5 @@
-import { Service } from './../../../../Interfaces/Index';
+import { PackageService } from './../../../../shared/services/package.service';
+import { Service, Package } from './../../../../Interfaces/Index';
 import { ServiceService } from './../../../../shared/services/service.service';
 import { QuoteService } from './../../../../shared/services/quote.service';
 import { Quote } from 'src/app/Interfaces/Index';
@@ -19,6 +20,9 @@ export class CreateQuoteComponent implements OnInit {
    serviceList: Service [];
    service: Service;
 
+   packageList: Package[];
+   package: Package;
+
   error_messages = {
     IssuedDate: [
       { type: 'required', message: 'Date is required' },
@@ -36,6 +40,7 @@ export class CreateQuoteComponent implements OnInit {
     public dialog: MatDialog,
     private quoteService: QuoteService,
     private serviceService: ServiceService,
+    private packageService: PackageService,
     public dialogRef: MatDialogRef<CreateQuoteComponent>,
     private formBuilder: FormBuilder,
     @Inject(MAT_DIALOG_DATA)
@@ -46,6 +51,7 @@ export class CreateQuoteComponent implements OnInit {
     this.refreshForm();
     this.createForm();
     this.readServices();
+    this.readPackages();
   }
 
 
@@ -73,6 +79,12 @@ export class CreateQuoteComponent implements OnInit {
   readServices() {
     this.serviceService.getServices().subscribe((res) => {
       this.serviceList = res as Service[];
+    });
+  }
+
+  readPackages() {
+    this.packageService.getPackages().subscribe((res) => {
+      this.packageList = res as Package[];
     });
   }
 

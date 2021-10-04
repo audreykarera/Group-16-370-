@@ -1,5 +1,5 @@
 // Excel
-import  * as XLSX from 'xlsx';
+ import  * as XLSX from 'xlsx';
 //Modules
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';

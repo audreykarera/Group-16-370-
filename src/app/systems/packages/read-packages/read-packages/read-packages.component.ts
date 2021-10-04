@@ -20,7 +20,7 @@ import { Package, PackageRate } from 'src/app/Interfaces/Index';
   styleUrls: ['./read-packages.component.scss']
 })
 export class ReadPackagesComponent implements OnInit {
-  
+
   packageList: Package[] = [];
   packages$: Observable<Package[]> = this.service.getPackages();
   package: Package
@@ -41,10 +41,10 @@ export class ReadPackagesComponent implements OnInit {
   }
   constructor(
     public dialog: MatDialog,
-    private service: PackageService,    
+    private service: PackageService,
     private notificationsService: NotificationsService,) { }
 
- 
+
   ngOnInit(): void {
     this.getPackages();
     this.refreshForm();
@@ -52,11 +52,12 @@ export class ReadPackagesComponent implements OnInit {
   refreshForm() {
     this.package = {
       PackageId: 0,
+      PackagePrice: 0,
       PackageName: ' ',
-      PackageDetails: ' ',  
-      PackageRateId: 0,    
+      PackageDetails: ' ',
+      PackageRateId: 0,
       ServiceId: 0
-     
+
     }
   }
 
@@ -67,7 +68,7 @@ export class ReadPackagesComponent implements OnInit {
   getPackages(){
     this.packages$.subscribe(res=>{
       if(res){
-        this.packageList = res; 
+        this.packageList = res;
         console.log(res);
       }
     });
@@ -76,10 +77,10 @@ export class ReadPackagesComponent implements OnInit {
   DeletePackage(id){
     console.log(id);
     this.service.DeletePackage(id).subscribe((res)=>{
-        this.notificationsService.successToaster('Package Deleted', 'Success'); 
+        this.notificationsService.successToaster('Package Deleted', 'Success');
         this.getPackages();
     });
-    
+
   }
 
   routerAddPackage() {
@@ -94,12 +95,12 @@ export class ReadPackagesComponent implements OnInit {
       );
       dialogReference.afterClosed().subscribe((res)=>{
         if(res == 'add'){
-          this.notificationsService.successToaster('Package Added', 'Success'); 
+          this.notificationsService.successToaster('Package Added', 'Success');
           this.getPackages();
         }
       });
     }
-  
+
 
   routerEditPackage(packageId: number, packageName: string, packageDetails: string,  packageRateId: number, serviceId: number) {
   const dialog= new MatDialogConfig();
@@ -115,11 +116,11 @@ export class ReadPackagesComponent implements OnInit {
   );
   dialogReference.afterClosed().subscribe((res)=>{
     if(res == 'add'){
-      this.notificationsService.successToaster('Package edited', 'Success'); 
+      this.notificationsService.successToaster('Package edited', 'Success');
       this.getPackages();
     }
   });
 }
-  
+
 }
 

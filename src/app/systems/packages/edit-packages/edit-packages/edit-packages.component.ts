@@ -28,7 +28,7 @@ export class EditPackagesComponent implements OnInit {
       { type: 'required', message: 'Package Name is required' },
       { type: 'minLength', message: 'Package Name must be more than 3 character' },
       { type: 'maxLength', message: 'Package Name must be less than 60 characters' }
-      
+
     ],
     PackageDetails: [
       { type: 'required', message: 'Package details are required' },
@@ -36,12 +36,12 @@ export class EditPackagesComponent implements OnInit {
       { type: 'maxLength', message: 'Package details must be less than 60 characters' }
     ],
     ServiceId: [
-      { type: 'required', message: 'Service is required' },     
+      { type: 'required', message: 'Service is required' },
     ],
     PackageRateId: [
       { type: 'required', message: 'Package Rate is required' },
     ]
-    
+
   }
 
   constructor(
@@ -50,18 +50,18 @@ export class EditPackagesComponent implements OnInit {
     private packageRateService: PackageRateService,
     private notificationService: NotificationsService,
     public dialog: MatDialog,
-    private formBuilder: FormBuilder, 
+    private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<CreatePackageComponent>,
     @Inject(MAT_DIALOG_DATA)
     public data: any
      ) { }
 
 
-    ngOnInit(): void {    
-      this.createForm(); 
-      this.refreshForm();   
+    ngOnInit(): void {
+      this.createForm();
+      this.refreshForm();
       this.getServices();
-      this.getPackageRates();      
+      this.getPackageRates();
     }
 
   Close(){
@@ -98,8 +98,9 @@ export class EditPackagesComponent implements OnInit {
    refreshForm() {
     this.packageList = {
       PackageId: 0,
-      PackageName: ' ',
-      PackageDetails: ' ',
+      PackagePrice: 0,
+      PackageName: '',
+      PackageDetails: '',
       ServiceId: 0,
       PackageRateId: 0
     }
@@ -114,5 +115,5 @@ export class EditPackagesComponent implements OnInit {
       this.packageRates=res as PackageRate[];
     })
   }
- 
+
 }
