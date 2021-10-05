@@ -116,7 +116,7 @@ export class CreatePackageComponent implements OnInit {
   refreshForm() {
     this.package = {
       PackageId: 0,
-      PackagePrice: '',
+      PackagePrice: 0,
       PackageName: ' ',
       PackageDetails: ' ',
       ServiceId: 0,

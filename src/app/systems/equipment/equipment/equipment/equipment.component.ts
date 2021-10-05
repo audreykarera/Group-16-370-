@@ -23,7 +23,7 @@ export class EquipmentComponent implements OnInit {
   equipment: Equipment;
 
   displayedColumns: string[] = ['name', 'availability', 'edit', 'delete'];
-  dataSource = new MatTableDataSource(this.equipmentList);
+  public dataSource = new MatTableDataSource<any>();
 
 
 
@@ -32,11 +32,16 @@ export class EquipmentComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
+  public myFilter = (value: string) => {
+    this.dataSource.filter = value.trim().toLowerCase();
+    console.log(this.dataSource.filter);
+  }
+
   constructor(
     public dialog: MatDialog,
     private service: EquipmentService,
     private notificationsService: NotificationsService
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     this.GetEquipments();
@@ -55,38 +60,38 @@ export class EquipmentComponent implements OnInit {
     this.dialog.closeAll();
   }
 
-  GetEquipments(){
-    this.equipment$.subscribe(res=>{
-      if(res){
+  GetEquipments() {
+    this.equipment$.subscribe(res => {
+      if (res) {
         this.equipmentList = res;
         console.log(res);
       }
     });
   }
 
-  DeleteEquipment(id){
+  DeleteEquipment(id) {
     console.log(id);
-    this.service.DeleteEquipment(id).subscribe((res)=>{
-        this.notificationsService.successToaster('Equipment Deleted', 'Success');
-        this.GetEquipments();
+    this.service.DeleteEquipment(id).subscribe((res) => {
+      this.notificationsService.successToaster('Equipment Deleted', 'Success');
+      this.GetEquipments();
     });
   }
 
-  routerEditEquipment(equipmentId: number,equipmentName: string, equipmentAvailable: boolean) {
+  routerEditEquipment(equipmentId: number, equipmentName: string, equipmentAvailable: boolean) {
     const dialog = new MatDialogConfig();
     dialog.disableClose = true;
     dialog.width = 'auto';
     dialog.height = 'auto';
-    dialog.data = {add: 'yes'};
+    dialog.data = { add: 'yes' };
     const dialogReference = this.dialog.open(
       EditEquipmentComponent,
       {
-        data: {equipmentId: equipmentId,equipmentName: equipmentName, equipmentAvailable: equipmentAvailable}
+        data: { equipmentId: equipmentId, equipmentName: equipmentName, equipmentAvailable: equipmentAvailable }
       }
     );
 
     dialogReference.afterClosed().subscribe((res) => {
-      if(res == 'add'){
+      if (res == 'add') {
         this.notificationsService.successToaster('Equipment Description editied', 'Success');
         this.GetEquipments();
       }
@@ -98,14 +103,14 @@ export class EquipmentComponent implements OnInit {
     dialog.disableClose = true;
     dialog.width = 'auto';
     dialog.height = 'auto';
-    dialog.data = {add: 'yes'};
+    dialog.data = { add: 'yes' };
     const dialogReference = this.dialog.open(
       CreateEquipmentComponent,
       dialog
     );
 
-    dialogReference.afterClosed().subscribe((res)=>{
-      if(res == 'add'){
+    dialogReference.afterClosed().subscribe((res) => {
+      if (res == 'add') {
         this.notificationsService.successToaster('Equipment Added', 'Success');
         this.GetEquipments();
       }

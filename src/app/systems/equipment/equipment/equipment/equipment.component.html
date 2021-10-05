@@ -11,7 +11,7 @@
 
       <mat-form-field appearance="standard">
         <mat-label>Filter</mat-label>
-        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+        <input matInput (keydown.enter)="myFilter($event.target.value)" placeholder="Ex. ium" #input>
       </mat-form-field>
 
       <table mat-table [dataSource]="equipmentList" class="mat-elevation-z8">
