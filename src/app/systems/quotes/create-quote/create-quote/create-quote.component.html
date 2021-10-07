@@ -11,50 +11,41 @@
       <input matInput placeholder="" formControlName="QuoteDescription">
      </mat-form-field>
       <br>
-     <!-- <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>Employee Name</mat-label>
-      <input matInput placeholder="" formControlName="EmployeeFirstName">
-     </mat-form-field>
-     <br>
-     <mat-form-field class="example-full-width" appearance="fill">
+     <mat-form-field appearance="fill">
+      <mat-label>Employee</mat-label>
+      <mat-select formControlName="EmployeeId">
+          <mat-option *ngFor="let employee of employeeList" [value]="employee.employeeId">
+              {{employee.employeeFirstName}} {{employee.employeeSurname}}</mat-option>
+      </mat-select>
+  </mat-form-field>
+  <br>
+     <mat-form-field appearance="fill">
       <mat-label>Quote Status Name</mat-label>
-      <input matInput placeholder="" formControlName="QuoteStatusName">
-     </mat-form-field>
-     <br>  -->
-     <!-- <mat-form-field class="example-full-width" appearance="fill">
+      <mat-select>
+          <mat-option *ngFor="let quoteStatus of quoteStatusList" [value]="quoteStatus.quoteStatusId">
+              {{quoteStatus.quoteStatusName}}</mat-option>
+      </mat-select>
+  </mat-form-field>
+     <!-- <br>
+      <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Client Name</mat-label>
       <input matInput placeholder="" formControlName="ClientName">
      </mat-form-field>
-     <br>  -->
+     <br> -->
 
-      <!-- <br>
+       <br>
         <mat-form-field appearance="fill">
             <mat-label>Service Name</mat-label>
             <mat-select formControlName="ServiceId" multiple>
                 <mat-option *ngFor="let service of serviceList" [value]="service.serviceId"
                 (click)="CheckBox(service)">
                   {{service.serviceName}}
+                  {{service.servicePriceAmount}}
                 </mat-option>
             </mat-select>
         </mat-form-field>
-        <br> -->
-        <!-- <mat-form-field appearance="fill">
-          <mat-label>Package Name</mat-label>
-          <mat-select>
-              <mat-option *ngFor="let package of packageList" [value]="package.packageId">
-                  {{package.packageName}}</mat-option>
-          </mat-select>
-      </mat-form-field>
-      <br>
-      <mat-form-field appearance="fill">
-        <mat-label>Package Price</mat-label>
-        <mat-select>
-            <mat-option *ngFor="let package of packageList" [value]="package.packageId">
-                {{package.packagePrice}}</mat-option>
-        </mat-select>
-    </mat-form-field>
-    <br> -->
-        <!-- <mat-form-field appearance="fill">
+        <br>
+         <mat-form-field appearance="fill">
             <mat-label>Service Type</mat-label>
             <mat-select>
                 <mat-option *ngFor="let service of serviceList" [value]="service.serviceId">
@@ -69,7 +60,7 @@
                     {{service.servicePriceAmount}}</mat-option>
             </mat-select>
         </mat-form-field>
-        <br> -->
+        <br>
      <div align="end">
       <button mat-stroked-button [disabled]="!form.valid">Save</button>
     </div>

@@ -51,7 +51,7 @@ export class ReadExtraCollectionComponent implements OnInit {
   refreshForm() {
     this.extraCollectionPrice = {
       ExtraCollectionPriceId: 0,
-      ExtraPriceAmount: '' // It was a number but it gave me errors and i changed it to string
+      ExtraPriceAmount: 0 // It was a number but it gave me errors and i changed it to string
     }
   }
   Close() {

@@ -26,25 +26,24 @@ export class CreateQuoteComponent implements OnInit {
   quoteStatusList: QuoteStatus[];
   quoteStatus: QuoteStatus;
 
-  clientList: Client[];
-  client: Client;
+  // clientList: Client[];
+  // client: Client;
 
-  //  serviceList: Service [];
-  //  service: Service;
+    serviceList: Service [];
+    service: Service;
 
-  //  packageList: Package[];
-  //  package: Package;
+
 
   error_messages = {
     IssuedDate: [
       { type: 'required', message: 'Date is required' },
     ],
     QuoteDescription: [
-      {type: 'required', message: 'A quote description is required'}
-    ]
-    // ClientName: [
-    //   {type: 'required', message: 'client name is required'}
-    // ]
+      {type: 'required', message: 'A quote description is required'},
+    ],
+    //  ClientName: [
+    //    {type: 'required', message: 'client name is required'}
+    //  ]
 
   }
 
@@ -53,9 +52,9 @@ export class CreateQuoteComponent implements OnInit {
     private quoteService: QuoteService,
     private empService: EmployeeService,
     private quoteStatusService: QuoteStatusService,
-    private clientService: ClientService,
-    //private serviceService: ServiceService,
-    //private packageService: PackageService,
+    //private clientService: ClientService,
+    private serviceService: ServiceService,
+
     public dialogRef: MatDialogRef<CreateQuoteComponent>,
     private formBuilder: FormBuilder,
     @Inject(MAT_DIALOG_DATA)
@@ -65,8 +64,10 @@ export class CreateQuoteComponent implements OnInit {
   ngOnInit(): void {
     this.refreshForm();
     this.createForm();
-    //this.readServices();
-    // this.readPackages();
+    this.readEmployees();
+    this.readQuoteStatuses();
+    this.readServices();
+
   }
 
 
@@ -79,7 +80,7 @@ export class CreateQuoteComponent implements OnInit {
       QuoteDescription: new FormControl(
         this.quote.quoteDescription,
         Validators.required
-      ),
+      )
       // EmployeeFirstName: new FormControl(
       //   this.employee.EmployeeFirstName,
       //   Validators.required
@@ -88,24 +89,19 @@ export class CreateQuoteComponent implements OnInit {
       //   this.quoteStatus.QuoteStatusName,
       //   Validators.required
       // )
-      // ClientName: new FormControl(
-      //   this.client.clientFirstName,
-      //   Validators.required
-      // )
+      //  ClientName: new FormControl(
+      //    this.client.clientFirstName,
+      //    Validators.required
+      //  )
     });
   }
 
-  // readServices() {
-  //   this.serviceService.getServices().subscribe((res) => {
-  //     this.serviceList = res as Service[];
-  //   });
-  // }
+   readServices() {
+     this.serviceService.getServices().subscribe((res) => {
+       this.serviceList = res as Service[];
+     });
+   }
 
-  // readPackages() {
-  //   this.packageService.getPackages().subscribe((res) => {
-  //     this.packageList = res as Package[];
-  //   });
-  // }
 
   readEmployees(){
     this.empService.getEmployees().subscribe((res) => {
@@ -119,11 +115,11 @@ export class CreateQuoteComponent implements OnInit {
     })
   }
 
-  readClients(){
-    this.clientService.getClients().subscribe((res) => {
-      this.clientList = res as unknown as Client[]; //quick fix
-    })
-  }
+  // readClients(){
+  //   this.clientService.getClients().subscribe((res) => {
+  //     this.clientList = res as unknown as Client[]; //quick fix
+  //   })
+  // }
 
   onSubmit() {
     if (this.form.valid) {
@@ -135,15 +131,15 @@ export class CreateQuoteComponent implements OnInit {
     }
   }
 
-  // addServiceList: Service[] = [];
+   addServiceList: Service[] = [];
 
-  // CheckBox(service: Service){
-  //   this.addServiceList.indexOf(service) === -1 ? this.addServiceList.push(service) : this.ClearCheckBox(this.addServiceList.indexOf(service));
-  // }
+   CheckBox(service: Service){
+     this.addServiceList.indexOf(service) === -1 ? this.addServiceList.push(service) : this.ClearCheckBox(this.addServiceList.indexOf(service));
+   }
 
-  // ClearCheckBox(serviceId: number){
-  //   this.addServiceList.splice(serviceId, 1);
-  // }
+   ClearCheckBox(serviceId: number){
+     this.addServiceList.splice(serviceId, 1);
+   }
 
   refreshForm() {
     this.quote = {

@@ -71,7 +71,7 @@ export class EditExtraCollectionComponent implements OnInit {
    refreshForm(){
      this.extracollectionPrice = {
       ExtraCollectionPriceId: 0,
-      ExtraPriceAmount: ''
+      ExtraPriceAmount: 0
      }
    }
 }
