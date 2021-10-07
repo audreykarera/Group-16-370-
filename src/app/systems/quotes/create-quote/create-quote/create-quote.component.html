@@ -3,45 +3,42 @@
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Issued Date</mat-label>
-      <input matInput placeholder="" formControlName="IssuedDate">
-      <div class="errors">
-        <ng-container *ngFor="let item of error_messages.IssuedDate">
-          <div class="errors" *ngIf="
-          form.get('IssuedDate').hasError(item.type) &&
-          (form.get('IssuedDate').dirty ||
-          form.get('IssuedDate').touched)">
-            {{item.message}}
-          </div>
-        </ng-container>
-      </div>
+      <input matInput placeholder="2021/10/05" formControlName="IssuedDate">
      </mat-form-field>
      <br>
-    <mat-form-field class="example-full-width" appearance="fill">
+     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Quote Description</mat-label>
       <input matInput placeholder="" formControlName="QuoteDescription">
-      <div class="errors">
-        <ng-container *ngFor="let item of error_messages.QuoteDescription">
-          <div class="errors" *ngIf="
-          form.get('QuoteDescription').hasError(item.type) &&
-          (form.get('QuoteDescription').dirty ||
-          form.get('QuoteDescription').touched)">
-            {{item.message}}
-          </div>
-        </ng-container>
-      </div>
+     </mat-form-field>
+      <br>
+     <!-- <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Employee Name</mat-label>
+      <input matInput placeholder="" formControlName="EmployeeFirstName">
      </mat-form-field>
      <br>
+     <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Quote Status Name</mat-label>
+      <input matInput placeholder="" formControlName="QuoteStatusName">
+     </mat-form-field>
+     <br>  -->
+     <!-- <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Client Name</mat-label>
+      <input matInput placeholder="" formControlName="ClientName">
+     </mat-form-field>
+     <br>  -->
 
-      <br>
+      <!-- <br>
         <mat-form-field appearance="fill">
             <mat-label>Service Name</mat-label>
-            <mat-select>
-                <mat-option *ngFor="let service of serviceList" [value]="service.serviceId">
-                    {{service.serviceName}}</mat-option>
+            <mat-select formControlName="ServiceId" multiple>
+                <mat-option *ngFor="let service of serviceList" [value]="service.serviceId"
+                (click)="CheckBox(service)">
+                  {{service.serviceName}}
+                </mat-option>
             </mat-select>
         </mat-form-field>
-        <br>
-        <mat-form-field appearance="fill">
+        <br> -->
+        <!-- <mat-form-field appearance="fill">
           <mat-label>Package Name</mat-label>
           <mat-select>
               <mat-option *ngFor="let package of packageList" [value]="package.packageId">
@@ -56,8 +53,8 @@
                 {{package.packagePrice}}</mat-option>
         </mat-select>
     </mat-form-field>
-    <br>
-        <mat-form-field appearance="fill">
+    <br> -->
+        <!-- <mat-form-field appearance="fill">
             <mat-label>Service Type</mat-label>
             <mat-select>
                 <mat-option *ngFor="let service of serviceList" [value]="service.serviceId">
@@ -72,9 +69,9 @@
                     {{service.servicePriceAmount}}</mat-option>
             </mat-select>
         </mat-form-field>
-        <br>
+        <br> -->
      <div align="end">
-      <button mat-stroked-button>Save</button>
+      <button mat-stroked-button [disabled]="!form.valid">Save</button>
     </div>
   </form>
   <div align="end">

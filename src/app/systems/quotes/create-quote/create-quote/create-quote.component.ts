@@ -1,8 +1,11 @@
+import { ClientService } from './../../../../shared/services/client.service';
+import { QuoteStatusService } from 'src/app/shared/services/quote-status.service';
+import { EmployeeService } from 'src/app/shared/services/employee.service';
 import { PackageService } from './../../../../shared/services/package.service';
-import { Service, Package } from './../../../../Interfaces/Index';
+import { Service, Package, Client } from './../../../../Interfaces/Index';
 import { ServiceService } from './../../../../shared/services/service.service';
 import { QuoteService } from './../../../../shared/services/quote.service';
-import { Quote } from 'src/app/Interfaces/Index';
+import { Quote, Employee, QuoteStatus } from 'src/app/Interfaces/Index';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -17,30 +20,42 @@ export class CreateQuoteComponent implements OnInit {
   form: FormGroup;
   quote: Quote;
 
-   serviceList: Service [];
-   service: Service;
+  employeeList: Employee[];
+  employee: Employee;
 
-   packageList: Package[];
-   package: Package;
+  quoteStatusList: QuoteStatus[];
+  quoteStatus: QuoteStatus;
+
+  clientList: Client[];
+  client: Client;
+
+  //  serviceList: Service [];
+  //  service: Service;
+
+  //  packageList: Package[];
+  //  package: Package;
 
   error_messages = {
     IssuedDate: [
       { type: 'required', message: 'Date is required' },
-      { type: 'minlength', message: 'Date must be more than 2 character' },
-      { type: 'maxlength', message: 'Date must be less than 51 characters' }
     ],
     QuoteDescription: [
-      { type: 'required', message: 'Quote Description is required' },
-      { type: 'minlength', message: 'Quote Description must be more than 2 character' },
-      { type: 'maxlength', message: 'Quote Description must be less than 51 characters' }
+      {type: 'required', message: 'A quote description is required'}
     ]
+    // ClientName: [
+    //   {type: 'required', message: 'client name is required'}
+    // ]
+
   }
 
   constructor(
     public dialog: MatDialog,
     private quoteService: QuoteService,
-    private serviceService: ServiceService,
-    private packageService: PackageService,
+    private empService: EmployeeService,
+    private quoteStatusService: QuoteStatusService,
+    private clientService: ClientService,
+    //private serviceService: ServiceService,
+    //private packageService: PackageService,
     public dialogRef: MatDialogRef<CreateQuoteComponent>,
     private formBuilder: FormBuilder,
     @Inject(MAT_DIALOG_DATA)
@@ -50,42 +65,64 @@ export class CreateQuoteComponent implements OnInit {
   ngOnInit(): void {
     this.refreshForm();
     this.createForm();
-    this.readServices();
-    this.readPackages();
+    //this.readServices();
+    // this.readPackages();
   }
 
 
   createForm() {
     this.form = this.formBuilder.group({
       IssuedDate: new FormControl(
-        this.quote.IssuedDate,
-        Validators.compose([
-          Validators.required,
-          Validators.maxLength(50),
-          Validators.minLength(3)
-        ])
+        this.quote.issuedDate,
+        Validators.required
       ),
       QuoteDescription: new FormControl(
-        this.quote.QuoteDescription,
-        Validators.compose([
-          Validators.required,
-          Validators.maxLength(50),
-          Validators.minLength(3)
-        ])
+        this.quote.quoteDescription,
+        Validators.required
       ),
+      // EmployeeFirstName: new FormControl(
+      //   this.employee.EmployeeFirstName,
+      //   Validators.required
+      // ),
+      // QuoteStatusName: new FormControl(
+      //   this.quoteStatus.QuoteStatusName,
+      //   Validators.required
+      // )
+      // ClientName: new FormControl(
+      //   this.client.clientFirstName,
+      //   Validators.required
+      // )
     });
   }
 
-  readServices() {
-    this.serviceService.getServices().subscribe((res) => {
-      this.serviceList = res as Service[];
+  // readServices() {
+  //   this.serviceService.getServices().subscribe((res) => {
+  //     this.serviceList = res as Service[];
+  //   });
+  // }
+
+  // readPackages() {
+  //   this.packageService.getPackages().subscribe((res) => {
+  //     this.packageList = res as Package[];
+  //   });
+  // }
+
+  readEmployees(){
+    this.empService.getEmployees().subscribe((res) => {
+      this.employeeList = res as Employee[];
     });
   }
 
-  readPackages() {
-    this.packageService.getPackages().subscribe((res) => {
-      this.packageList = res as Package[];
-    });
+  readQuoteStatuses(){
+    this.quoteStatusService.getQuoteStatuses().subscribe((res) => {
+      this.quoteStatusList = res as QuoteStatus[];
+    })
+  }
+
+  readClients(){
+    this.clientService.getClients().subscribe((res) => {
+      this.clientList = res as unknown as Client[]; //quick fix
+    })
   }
 
   onSubmit() {
@@ -98,14 +135,24 @@ export class CreateQuoteComponent implements OnInit {
     }
   }
 
+  // addServiceList: Service[] = [];
+
+  // CheckBox(service: Service){
+  //   this.addServiceList.indexOf(service) === -1 ? this.addServiceList.push(service) : this.ClearCheckBox(this.addServiceList.indexOf(service));
+  // }
+
+  // ClearCheckBox(serviceId: number){
+  //   this.addServiceList.splice(serviceId, 1);
+  // }
+
   refreshForm() {
     this.quote = {
-      QuoteId: 0,
-      IssuedDate: null,
-      QuoteDescription: '',
-      EmployeeId: 0,
-      QuoteStatusId: 0,
-      ClientId: 0,
+      quoteId: 0,
+      issuedDate: null,
+      quoteDescription: '',
+      employeeId: 0,
+      quoteStatusId: 0,
+      clientId: 0,
     }
   }
 

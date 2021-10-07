@@ -160,37 +160,45 @@ export interface Vehicle{
 }
 
 export interface Quote{
-  QuoteId: number | null;
-  IssuedDate: Date | null;
-  QuoteDescription: string | null;
-  EmployeeId: number | null;
-  QuoteStatusId: number | null;
-  ClientId: number | null;
+  quoteId: number | null;
+  issuedDate: Date | null;
+  quoteDescription: string | null;
+  employeeId: number | null;
+  quoteStatusId: number | null;
+  clientId: number | null;
 }
 
 export interface RequestedQuote{
-  RequestedQuoteId: number | null;
-  RequestedQuoteDescription: string | null;
-  RequestedQuoteDate: Date | null;
-  CompanyName: string | null;
-  ClientEmailAddress: string | null;
+  requestedQuoteId: number | null;
+  requestedQuoteDescription: string | null;
+  requestedQuoteDate: Date | null;
+  companyName: string | null;
+  clientEmailAddress: string | null;
 }
 
 export interface QuoteLine{
-  QuoteLineId: number | null;
-  ServiceName: string | null;
-  QuoteDescription: string | null;
-  IssuedDate: string | null;
+  quoteLineId: number | null;
+  serviceId: number | null;
+  quoteId: number | null;
 }
 
 export interface QuoteStatus{
     QuoteStatusId: number|null;
     QuoteStatusName: string|null;
 }
+
 export interface CollectionNote{
 CollectionNoteId: number |null;
 ClientId: number |null;
 EmployeeId:number |null;
 CollectionDate: Date|null;
 CollectionTime: string |null;
+}
+
+export interface Client{
+  clientId: number | null;
+  companyName: string | null;
+  clientFirstName: string | null;
+  clientSurname: string | null;
+  clientEmailAddress: string | null;
 }
