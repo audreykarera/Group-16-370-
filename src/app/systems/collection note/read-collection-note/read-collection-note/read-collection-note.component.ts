@@ -19,7 +19,7 @@ export class ReadCollectionNoteComponent implements OnInit {
   collectionNote: CollectionNote
 
 
-  displayedColumns: string[] = [ 'date','time', 'employee', 'client', 'edit','delete'];
+  displayedColumns: string[] = ['collectionnoteid', 'date','time','client','employee', 'edit','delete'];
   dataSource = new MatTableDataSource(this.collectionNoteList);
 
   applyFilter(event: Event) {
