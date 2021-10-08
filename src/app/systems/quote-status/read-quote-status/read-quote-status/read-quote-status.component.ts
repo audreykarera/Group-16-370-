@@ -22,7 +22,7 @@ export class ReadQuoteStatusComponent implements OnInit {
 
   displayedColumns: string[] = ['quoteStatus', 'edit', 'delete'];
   dataSource = new MatTableDataSource(this.quoteStatusList);
- 
+
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -40,14 +40,14 @@ export class ReadQuoteStatusComponent implements OnInit {
     this.GetQuoteStatuses();
      this.refreshForm();
    }
- 
+
    refreshForm() {
      this.quoteStatus = {
-       QuoteStatusId: 0,
-       QuoteStatusName: ''
+       quoteStatusId: 0,
+       quoteStatusName: ''
      }
    }
- 
+
    routerAddQuoteStatus() {
      const dialog = new MatDialogConfig();
      dialog.disableClose = true;
@@ -58,14 +58,14 @@ export class ReadQuoteStatusComponent implements OnInit {
        CreateQuoteStatusComponent,
        dialog
      );
- 
+
      dialogReference.afterClosed().subscribe((res) => {
        if(res == 'add')
        this.notificationsService.successToaster('Quote Status  Added', 'Success');
        this.GetQuoteStatuses();
      });
    }
- 
+
    routerEditQuoteStatus(quoteStatusId: number, quoteStatusName: string) {
      const dialog = new MatDialogConfig();
      dialog.disableClose = true;
@@ -78,7 +78,7 @@ export class ReadQuoteStatusComponent implements OnInit {
          data: {quoteStatusId: quoteStatusId, quoteStatusName: quoteStatusName}
        }
      );
- 
+
      dialogReference.afterClosed().subscribe((res) => {
        if(res == 'add'){
          this.notificationsService.successToaster('Quote Status Edited', 'Success');
@@ -86,11 +86,11 @@ export class ReadQuoteStatusComponent implements OnInit {
        }
      });
    }
- 
+
    Close() {
      this.dialog.closeAll();
    }
- 
+
    GetQuoteStatuses(){
      this.quoteStatuses$.subscribe(res =>{
        if(res){
@@ -99,7 +99,7 @@ export class ReadQuoteStatusComponent implements OnInit {
        }
      });
    }
- 
+
    DeleteQuoteStatus(id){
      console.log(id);
      this.quoteStatusService.DeleteQuoteStatus(id).subscribe((res) =>{
@@ -107,11 +107,10 @@ export class ReadQuoteStatusComponent implements OnInit {
        this.GetQuoteStatuses();
      })
    }
- 
- 
- 
- 
- 
- 
+
+
+
+
+
+
  }
- 

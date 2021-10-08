@@ -183,8 +183,8 @@ export interface QuoteLine{
 }
 
 export interface QuoteStatus{
-    QuoteStatusId: number|null;
-    QuoteStatusName: string|null;
+    quoteStatusId: number|null;
+    quoteStatusName: string|null;
 }
 
 export interface CollectionNote{
@@ -201,4 +201,8 @@ export interface Client{
   clientFirstName: string | null;
   clientSurname: string | null;
   clientEmailAddress: string | null;
+}
+
+export interface PerKmRate {
+
 }

@@ -1,18 +1,41 @@
 <h1 mat-dialog-title>Create Service Quotation</h1>
 <mat-dialog-content>
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <mat-form-field class="example-full-width" appearance="fill">
+
+     <mat-form-field appearance="fill">
       <mat-label>Issued Date</mat-label>
-      <input matInput placeholder="2021/10/05" formControlName="IssuedDate">
-     </mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="2021/10/05" formControlName="IssuedDate">
+      <div class="errors">
+          <ng-container *ngFor="let item of error_messages.IssuedDate">
+              <div class="errors" *ngIf="
+        form.get('IssuedDate').hasError(item.type) &&
+        (form.get('IssuedDate').dirty ||
+          form.get('IssuedDate').touched)">
+                  {{ item.message }}
+              </div>
+          </ng-container>
+      </div>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
      <br>
      <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Quote Description</mat-label>
       <input matInput placeholder="" formControlName="QuoteDescription">
+      <div class="errors">
+        <ng-container *ngFor="let item of error_messages.QuoteDescription">
+            <div class="errors" *ngIf="
+      form.get('QuoteDescription').hasError(item.type) &&
+      (form.get('QuoteDescription').dirty ||
+        form.get('QuoteDescription').touched)">
+                {{ item.message }}
+            </div>
+        </ng-container>
+    </div>
      </mat-form-field>
       <br>
      <mat-form-field appearance="fill">
-      <mat-label>Employee</mat-label>
+      <mat-label>Name of Employee</mat-label>
       <mat-select formControlName="EmployeeId">
           <mat-option *ngFor="let employee of employeeList" [value]="employee.employeeId">
               {{employee.employeeFirstName}} {{employee.employeeSurname}}</mat-option>
@@ -21,7 +44,7 @@
   <br>
      <mat-form-field appearance="fill">
       <mat-label>Quote Status Name</mat-label>
-      <mat-select>
+      <mat-select formControlName="QuoteStatusId">
           <mat-option *ngFor="let quoteStatus of quoteStatusList" [value]="quoteStatus.quoteStatusId">
               {{quoteStatus.quoteStatusName}}</mat-option>
       </mat-select>
@@ -47,20 +70,20 @@
         <br>
          <mat-form-field appearance="fill">
             <mat-label>Service Type</mat-label>
-            <mat-select>
+            <mat-select formControlName="ServiceTypeId">
                 <mat-option *ngFor="let service of serviceList" [value]="service.serviceId">
                     {{service.serviceTypeName}}</mat-option>
             </mat-select>
         </mat-form-field>
         <br>
-        <mat-form-field appearance="fill">
+        <!-- <mat-form-field appearance="fill">
             <mat-label>Service Price</mat-label>
             <mat-select>
                 <mat-option *ngFor="let service of serviceList" [value]="service.serviceId">
                     {{service.servicePriceAmount}}</mat-option>
             </mat-select>
         </mat-form-field>
-        <br>
+        <br> -->
      <div align="end">
       <button mat-stroked-button [disabled]="!form.valid">Save</button>
     </div>

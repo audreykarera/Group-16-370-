@@ -51,7 +51,7 @@ export class EditQuoteStatusComponent implements OnInit {
   OnSubmit(){
     if(this.form.valid) {
       const quoteStatus: QuoteStatus = this.form.value;
-      quoteStatus.QuoteStatusId = this.data.quoteStatusId;
+      quoteStatus.quoteStatusId = this.data.quoteStatusId;
       this.quoteStatusService.UpdateQuoteStatus(quoteStatus).subscribe(res=> {
         this.refreshForm();
         this.dialogRef.close('add');
@@ -66,10 +66,10 @@ export class EditQuoteStatusComponent implements OnInit {
 
   refreshForm() {
     this.quoteStatus = {
-      QuoteStatusId: 0,
-      QuoteStatusName: ''
+      quoteStatusId: 0,
+      quoteStatusName: ''
     }
-  
+
   }
 
 }

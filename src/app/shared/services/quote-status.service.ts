@@ -24,7 +24,7 @@ export class QuoteStatusService {
   }
 
   UpdateQuoteStatus(quoteStatus: QuoteStatus){
-    return this.http.put(`${this.apiUrl}/${quoteStatus.QuoteStatusId}`, quoteStatus)
+    return this.http.put(`${this.apiUrl}/${quoteStatus.quoteStatusId}`, quoteStatus)
     .pipe(map(res => res));
   }
 

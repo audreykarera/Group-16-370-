@@ -40,7 +40,7 @@ export class CreateQuoteStatusComponent implements OnInit {
     createForm(){
       this.form = this.formBuilder.group({
         QuoteStatusName: new FormControl(
-          this.quoteStatus.QuoteStatusName,
+          this.quoteStatus.quoteStatusName,
           Validators.compose([
             Validators.required,
             Validators.maxLength(20),
@@ -67,8 +67,8 @@ export class CreateQuoteStatusComponent implements OnInit {
 
     refreshForm() {
       this.quoteStatus = {
-        QuoteStatusId: 0,
-        QuoteStatusName: ''
+        quoteStatusId: 0,
+        quoteStatusName: ''
       }
     }
 

@@ -1,8 +1,9 @@
+import { QuoteLineService } from './../../../../shared/services/quote-line.service';
 import { ClientService } from './../../../../shared/services/client.service';
 import { QuoteStatusService } from 'src/app/shared/services/quote-status.service';
 import { EmployeeService } from 'src/app/shared/services/employee.service';
 import { PackageService } from './../../../../shared/services/package.service';
-import { Service, Package, Client } from './../../../../Interfaces/Index';
+import { Service, Package, Client, QuoteLine } from './../../../../Interfaces/Index';
 import { ServiceService } from './../../../../shared/services/service.service';
 import { QuoteService } from './../../../../shared/services/quote.service';
 import { Quote, Employee, QuoteStatus } from 'src/app/Interfaces/Index';
@@ -18,19 +19,23 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 export class CreateQuoteComponent implements OnInit {
 
   form: FormGroup;
+
+  quoteline: QuoteLine;
+
+  quoteList: Quote[] = [];
   quote: Quote;
 
-  employeeList: Employee[];
+  employeeList: Employee[] = [];
   employee: Employee;
 
-  quoteStatusList: QuoteStatus[];
+  quoteStatusList: QuoteStatus[] = [];
   quoteStatus: QuoteStatus;
 
   // clientList: Client[];
   // client: Client;
 
-    serviceList: Service [];
-    service: Service;
+  serviceList: Service[] = [];
+  service: Service;
 
 
 
@@ -39,17 +44,15 @@ export class CreateQuoteComponent implements OnInit {
       { type: 'required', message: 'Date is required' },
     ],
     QuoteDescription: [
-      {type: 'required', message: 'A quote description is required'},
+      { type: 'required', message: 'A quote description is required' },
     ],
-    //  ClientName: [
-    //    {type: 'required', message: 'client name is required'}
-    //  ]
 
   }
 
   constructor(
     public dialog: MatDialog,
     private quoteService: QuoteService,
+    private quoteLineService: QuoteLineService,
     private empService: EmployeeService,
     private quoteStatusService: QuoteStatusService,
     //private clientService: ClientService,
@@ -73,73 +76,15 @@ export class CreateQuoteComponent implements OnInit {
 
   createForm() {
     this.form = this.formBuilder.group({
-      IssuedDate: new FormControl(
-        this.quote.issuedDate,
-        Validators.required
-      ),
-      QuoteDescription: new FormControl(
-        this.quote.quoteDescription,
-        Validators.required
-      )
-      // EmployeeFirstName: new FormControl(
-      //   this.employee.EmployeeFirstName,
-      //   Validators.required
-      // ),
-      // QuoteStatusName: new FormControl(
-      //   this.quoteStatus.QuoteStatusName,
-      //   Validators.required
-      // )
-      //  ClientName: new FormControl(
-      //    this.client.clientFirstName,
-      //    Validators.required
-      //  )
+      IssuedDate: ['',[Validators.required]],
+      QuoteDescription: ['',[Validators.required]],
+      EmployeeId: ['',[Validators.required]],
+      QuoteStatusId: ['',[Validators.required]],
+      ServiceId: ['',[Validators.required]],
+      ServiceTypeId: ['', [Validators.required]]
     });
+
   }
-
-   readServices() {
-     this.serviceService.getServices().subscribe((res) => {
-       this.serviceList = res as Service[];
-     });
-   }
-
-
-  readEmployees(){
-    this.empService.getEmployees().subscribe((res) => {
-      this.employeeList = res as Employee[];
-    });
-  }
-
-  readQuoteStatuses(){
-    this.quoteStatusService.getQuoteStatuses().subscribe((res) => {
-      this.quoteStatusList = res as QuoteStatus[];
-    })
-  }
-
-  // readClients(){
-  //   this.clientService.getClients().subscribe((res) => {
-  //     this.clientList = res as unknown as Client[]; //quick fix
-  //   })
-  // }
-
-  onSubmit() {
-    if (this.form.valid) {
-      this.quote = this.form.value;
-      this.quoteService.CreateQuote(this.quote).subscribe(res => {
-        this.refreshForm();
-        this.dialogRef.close('add');
-      })
-    }
-  }
-
-   addServiceList: Service[] = [];
-
-   CheckBox(service: Service){
-     this.addServiceList.indexOf(service) === -1 ? this.addServiceList.push(service) : this.ClearCheckBox(this.addServiceList.indexOf(service));
-   }
-
-   ClearCheckBox(serviceId: number){
-     this.addServiceList.splice(serviceId, 1);
-   }
 
   refreshForm() {
     this.quote = {
@@ -151,6 +96,64 @@ export class CreateQuoteComponent implements OnInit {
       clientId: 0,
     }
   }
+
+  onSubmit() {
+    // if(this.form.valid) {
+    //   const Quote: Quote = this.form.value;
+    //   Quote.quoteLine = this.addServiceList;
+    //   this.quoteService.CreateQuote(Quote).subscribe(res => {
+    //     for(let x = 0; x < Quote.quoteLine.length; x++){
+    //       let QuoteLine: QuoteLine = {quoteId: res.quoteId, serviceId: Quote.quoteLine[x].serviceId}
+
+    //       this.quoteLineService.CreateQuoteLine(QuoteLine).subscribe(res => {
+
+    //       })
+    //     }
+    //     this.refreshForm();
+
+    //     this.dialogRef.close('add');
+    //   });
+    // }
+  }
+
+
+
+  addServiceList: Service[] = [];
+
+  CheckBox(service: Service) {
+    this.addServiceList.indexOf(service) === -1 ? this.addServiceList.push(service) : this.ClearCheckBox(this.addServiceList.indexOf(service));
+  }
+
+  ClearCheckBox(serviceId: number) {
+    this.addServiceList.splice(serviceId, 1);
+  }
+
+
+  readServices() {
+    this.serviceService.getServices().subscribe((res) => {
+      this.serviceList = res as Service[];
+    });
+  }
+
+
+  readEmployees() {
+    this.empService.getEmployees().subscribe((res) => {
+      this.employeeList = res as Employee[];
+    });
+  }
+
+  readQuoteStatuses() {
+    this.quoteStatusService.getQuoteStatuses().subscribe((res) => {
+      this.quoteStatusList = res as QuoteStatus[];
+    })
+  }
+
+  // readClients(){
+  //   this.clientService.getClients().subscribe((res) => {
+  //     this.clientList = res as unknown as Client[]; //quick fix
+  //   })
+  // }
+
 
   Close() {
     this.dialog.closeAll();
