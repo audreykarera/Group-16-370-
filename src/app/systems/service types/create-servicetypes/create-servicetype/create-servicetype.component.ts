@@ -46,7 +46,7 @@ export class CreateServicetypeComponent implements OnInit {
   createForm() {
     this.form = this.formBuilder.group({
       ServiceTypeName: new FormControl(
-        this.serviceType.ServiceTypeName,
+        this.serviceType.serviceTypeName,
         Validators.compose([
           Validators.required,
           Validators.maxLength(20),
@@ -54,7 +54,7 @@ export class CreateServicetypeComponent implements OnInit {
         ])
       ),
       ServiceTypeDescription: new FormControl(
-        this.serviceType.ServiceTypeDescription,
+        this.serviceType.serviceTypeDescription,
         Validators.compose([
           Validators.required,
           Validators.maxLength(60),
@@ -80,9 +80,9 @@ export class CreateServicetypeComponent implements OnInit {
 
       refreshForm(){
         this.serviceType = {
-          ServiceTypeId: 0,
-          ServiceTypeName: '',
-          ServiceTypeDescription:''
+          serviceTypeId: 0,
+          serviceTypeName: '',
+          serviceTypeDescription:''
         }
       }
 }

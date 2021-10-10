@@ -1,1 +1,68 @@
-<p>create-bookingservice works!</p>
+<h1 mat-dialog-title>Assgin Services</h1>
+<mat-dialog-content>
+    <form [formGroup]="form" (ngSubmit)="OnSubmit()">
+      <div class="row">
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Client Details</mat-label>
+          <mat-select  formControlName="clientId" >
+            <mat-option *ngFor="let client of clientList" [value]="client.clientId">
+              {{client.clientFirstName}} {{client.clientSurname}}
+              Email:{{client.clientEmailAddress}} </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+          <mat-label>Booking Status</mat-label>
+          <mat-select formControlName="bookingStatusId">
+            <mat-option *ngFor="let bookingStatus of bookingStatusList" [value]="bookingStatus.bookingStatusId">
+              {{bookingStatus.bookingStatusName}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Collection Note</mat-label>
+          <mat-select  formControlName="collectionNoteId">
+            <mat-option *ngFor="let collectionNote of collectionNoteList" [value]="collectionNote.collectionNoteId">
+              Date:{{collectionNote.collectionDate}} Time:{{collectionNote.collectionTime}}</mat-option>
+  
+          </mat-select>
+        </mat-form-field>
+        <br>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Payment Type</mat-label>
+          <mat-select  formControlName="paymentTypeId">
+            <mat-option *ngFor="let paymentType of paymentTypeList" [value]="paymentType.paymentTypeId">
+              {{paymentType.paymentTypeName}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Service Type</mat-label>
+          <mat-select (selectionChange)="dropDown($event.value)" formControlName="serviceTypeId">
+            <mat-option *ngFor="let serviceType of serviceTypeList" [value]="serviceType.serviceTypeName">
+              {{serviceType.serviceTypeName}} </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Services</mat-label>
+          <mat-select formControlName="serviceId" multiple>
+            <mat-option *ngFor="let service of services" [value]="service.serviceId">
+              {{service.serviceName}} </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+  
+      </div>
+  
+      <div align="end">
+        <button mat-stroked-button [disabled]="!form.valid">Save</button>
+        <button mat-raised-button color="warn">Cancel</button>
+      </div>
+    </form>
+  </mat-dialog-content>

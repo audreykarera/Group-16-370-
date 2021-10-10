@@ -58,7 +58,7 @@ export class EditServicetypeComponent implements OnInit {
   OnSubmit(){
    if (this.form.valid){
       const serviceType:ServiceType=this.form.value;
-      serviceType.ServiceTypeId=this.data.serviceTypeId;
+      serviceType.serviceTypeId=this.data.serviceTypeId;
       this.serviceTypeService.UpdateServiceType(serviceType).subscribe(res=>{
         this.refreshForm();
         this.dialogRef.close('add');
@@ -73,9 +73,9 @@ export class EditServicetypeComponent implements OnInit {
 
   refreshForm() {
     this.serviceType = {
-      ServiceTypeId: 0,
-      ServiceTypeName: '',
-      ServiceTypeDescription: ''
+      serviceTypeId: 0,
+      serviceTypeName: '',
+      serviceTypeDescription: ''
     }
   }
 }

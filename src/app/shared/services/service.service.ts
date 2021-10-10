@@ -26,7 +26,7 @@ export class ServiceService {
     }
   
     UpdateService(service: Service) {
-      return this.http.put(`${this.apiUrl}/${service.ServiceId}`, service)
+      return this.http.put(`${this.apiUrl}/${service.serviceId}`, service)
         .pipe(map(res => res));
     }
   

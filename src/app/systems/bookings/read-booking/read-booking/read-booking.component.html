@@ -1,13 +1,19 @@
 <div class="container-fluid page">
-  <div class="d-flex page__box p-3 mt-2">Bookings</div>
-  <div class="page__content shadow p-3">
-    <div class="page__content-data">
-      <br>
-      <div class="mat-elevation-z8">
-      <mat-form-field appearance="standard">
-        <mat-label>Filter</mat-label>
-        <input matInput (keyup)="applyFilter($event)" placeholder="filter" #input>
-      </mat-form-field>
+    <div class="d-flex page__box p-3 mt-2">Bookings</div>
+    <div class="page__content shadow p-3">
+      <div class="page__content-data">
+        <mat-form-field appearance="standard">
+          <mat-label>Filter</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+        </mat-form-field>
+        <br>
+        <div class="position-relative">
+          <div class="position-absolute top-0 end-0 icon-hover">
+            <mat-icon style="font-size: xx-large" (click)="routerAddBooking()">add</mat-icon>
+          </div>
+        </div>
+        <br>
+        <br>
 
       <table id="excel-table" mat-table [dataSource]="bookingList" class="mat-elevation-z8">
 
@@ -72,7 +78,7 @@
           <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
         </tr>
       </table>
-</div>
+
       <br>
     </div>
   </div>

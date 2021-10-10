@@ -18,8 +18,8 @@ export class BookingserviceService {
       .pipe(map(res => res));
   }
 
-  CreateBookingService(bookingService: BookingServices): Observable<any>{
-    return this.http.post(`${this.apiUrl}`, bookingService)
+  CreateBookingService(bookingServices: BookingServices): Observable<any>{
+    return this.http.post(`${this.apiUrl}`, bookingServices)
     .pipe(map(res=>res));
   }
 }

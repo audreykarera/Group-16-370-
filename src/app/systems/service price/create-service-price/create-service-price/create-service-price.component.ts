@@ -75,7 +75,7 @@ export class CreateServicePriceComponent implements OnInit {
 
   refreshForm(){
     this.servicePrice = {
-      ServicePriceId: 0,
+      servicePriceId: 0,
       ServicePriceAmount:0,
       ServicePriceDate:null
     }

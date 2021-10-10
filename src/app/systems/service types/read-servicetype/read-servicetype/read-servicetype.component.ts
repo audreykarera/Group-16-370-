@@ -62,9 +62,9 @@ export class ReadServicetypeComponent implements OnInit {
 
     refreshForm() {
       this.serviceType = {
-        ServiceTypeId: 0,
-        ServiceTypeName: '',
-        ServiceTypeDescription:''
+        serviceTypeId: 0,
+        serviceTypeName: '',
+        serviceTypeDescription:''
       }
     }
 
