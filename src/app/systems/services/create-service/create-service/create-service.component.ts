@@ -21,7 +21,7 @@ export class CreateServiceComponent implements OnInit {
   serviceTable:Service;
   serviceTypes:ServiceType[];
   servicePrices:ServicePrice[];
- 
+
 
   error_messages = {
     ServiceName: [
@@ -35,23 +35,23 @@ export class CreateServiceComponent implements OnInit {
       { type: 'maxLength', message: 'Service Description must be less than 30 characters' }
     ],
     ServiceTypeId: [
-      { type: 'required', message: 'Service Type is required' },     
+      { type: 'required', message: 'Service Type is required' },
     ],
     ServicePriceId: [
-      { type: 'required', message: 'Service Price is required' },     
+      { type: 'required', message: 'Service Price is required' },
     ]
     // LocationId: [
-    //   { type: 'required', message: 'Location is required' },     
+    //   { type: 'required', message: 'Location is required' },
     // ]
   }
 
-  
+
   constructor(
     private service: ServiceService,
     private serviceTypeService: ServiceTypeService,
     private servicePriceService:ServicePriceService,
     public dialog: MatDialog,
-    private formBuilder: FormBuilder, 
+    private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<CreateServiceComponent>
   ) { }
 
@@ -59,10 +59,10 @@ export class CreateServiceComponent implements OnInit {
     this.refreshForm();
     this.createForm();
     this.getServiceTypes();
-    this.getServicePrices();    
+    this.getServicePrices();
     console.log('Services')
   }
-  
+
   createForm() {
     this.form = this.formBuilder.group({
       ServiceName: new FormControl(
@@ -107,7 +107,7 @@ export class CreateServiceComponent implements OnInit {
       // ),
     });
   }
-  
+
   Close(){
     this.dialog.closeAll();
   }
@@ -118,13 +118,13 @@ export class CreateServiceComponent implements OnInit {
       this.serviceTable = this.form.value;
       console.log(this.serviceTable);
       this.service.CreateService(this.serviceTable).subscribe(res => {
-        
+
         this.refreshForm();
         this.dialogRef.close('add');
       });
     }
   }
-  
+
   refreshForm() {
     this.serviceTable = {
       ServiceId: 0,
@@ -132,6 +132,7 @@ export class CreateServiceComponent implements OnInit {
       ServiceDescription:'',
       ServiceTypeId:0,
       ServicePriceId:0,
+      serviceTypeName: ''
       // LocationId:0
     }
   }

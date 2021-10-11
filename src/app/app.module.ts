@@ -151,6 +151,11 @@ import { YtVideoComponent } from './systems/help/video/yt-video/yt-video.compone
 
 import { BookingserviceComponent } from './systems/bookings/bookingservice/bookingservice/bookingservice.component';
 import { CreateBookingserviceComponent } from './systems/bookings/bookingservice/bookingservice/create-bookingservice/create-bookingservice/create-bookingservice.component';
+import { ReadQuoteRequestComponent } from './systems/quotes/admin-quote-requests/read-quote-request/read-quote-request/read-quote-request.component';
+import { ReadPerKmRateComponent } from './systems/per-km-rate/read-per-km-rate/read-per-km-rate/read-per-km-rate.component';
+import { CreatePerKmRateComponent } from './systems/per-km-rate/create-per-km-rate/create-per-km-rate/create-per-km-rate.component';
+import { EditPerKmRateComponent } from './systems/per-km-rate/edit-per-km-rate/edit-per-km-rate/edit-per-km-rate.component';
+import { ViewQuoteComponent } from './systems/quotes/view-quote/view-quote/view-quote.component';
 
 
 
@@ -293,7 +298,12 @@ const angularMaterials = [
     ReadCollectionNoteComponent,
     YtVideoComponent,
     BookingserviceComponent,
-    CreateBookingserviceComponent
+    CreateBookingserviceComponent,
+    ReadQuoteRequestComponent,
+    ReadPerKmRateComponent,
+    CreatePerKmRateComponent,
+    EditPerKmRateComponent,
+    ViewQuoteComponent
   ],
 
   imports: [

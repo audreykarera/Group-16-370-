@@ -40,7 +40,7 @@ export class EditServicepriceComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
-    this.refreshForm();    
+    this.refreshForm();
   }
 
   Close(){
@@ -49,7 +49,7 @@ export class EditServicepriceComponent implements OnInit {
 
   createForm(){
     this.form=this.formBuilder.group({
-      ServicePriceAmount: [this.data.servicePriceAmount, [Validators.required, Validators.maxLength(30), Validators.minLength(2)]],
+      ServicePriceAmount: [this.data.servicePriceAmount, [Validators.required, Validators.maxLength(30), Validators.minLength(1)]],
       ServicePriceDate:[this.data.servicePriceDate, [Validators.required, Validators.maxLength(30), Validators.minLength(2)]]
     })
   }

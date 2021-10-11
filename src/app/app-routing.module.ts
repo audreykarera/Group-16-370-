@@ -1,3 +1,5 @@
+import { ReadPerKmRateComponent } from './systems/per-km-rate/read-per-km-rate/read-per-km-rate/read-per-km-rate.component';
+import { ReadQuoteRequestComponent } from './systems/quotes/admin-quote-requests/read-quote-request/read-quote-request/read-quote-request.component';
 import { YtVideoComponent } from './systems/help/video/yt-video/yt-video.component';
 
 import { ReadServicePriceComponent } from './systems/service price/read-service-price/read-service-price/read-service-price.component';
@@ -108,6 +110,8 @@ const routes: Routes = [
   { path: 'employeedatetimeslots', component: EmployeedatetimeslotComponent},
   { path: 'collectionnote', component: ReadCollectionNoteComponent},
   { path: 'helpvideo', component: YtVideoComponent},
+  {path: 'admin-read-quote-request', component: ReadQuoteRequestComponent},
+  {path: 'read-perkmrate', component: ReadPerKmRateComponent},
 ];
 
 @NgModule({

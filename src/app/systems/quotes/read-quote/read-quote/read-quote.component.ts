@@ -1,3 +1,4 @@
+import { ViewQuoteComponent } from './../../view-quote/view-quote/view-quote.component';
 import { QuoteLineService } from './../../../../shared/services/quote-line.service';
 import { RequestedQuoteService } from './../../../../shared/services/requested-quote.service';
 import { ServicePriceService } from './../../../../shared/services/service-price.service';
@@ -20,22 +21,22 @@ import { Quote, ServicePrice } from 'src/app/Interfaces/Index';
 export class ReadQuoteComponent implements OnInit {
 
   //For Requested Quotes Table
-   requestedquoteList: RequestedQuote[] = [];
-   requestedquotes$: Observable<RequestedQuote[]> = this.serviceRequestedQuotes.getRequestedQuotes();
-   requestedQuote: RequestedQuote;
+  // requestedquoteList: RequestedQuote[] = [];
+  // requestedquotes$: Observable<RequestedQuote[]> = this.serviceRequestedQuotes.getRequestedQuotes();
+  // requestedQuote: RequestedQuote;
 
   //For QuoteLine Table
-  // quoteLineList: QuoteLine[] = [];
-  // quoteLines$: Observable<QuoteLine[]> = this.qouteLineService.getQuoteLines();
-  // quoteLine: QuoteLine;
+   quoteLineList: QuoteLine[] = [];
+   quoteLines$: Observable<QuoteLine[]> = this.qouteLineService.getQuoteLines();
+   quoteLine: QuoteLine;
 
   //For Quote Table
   //  quoteList: Quote[] = [];
   //  quotes$: Observable<Quote[]> = this.service.getQuotes();
   //  quote: Quote;
 
-  displayedColumns: string[] = ['QuoteLineId', 'IssuedDate','Service','ServiceType','email','Generate', 'View'];
-  dataSource = new MatTableDataSource(this.requestedquoteList);
+  displayedColumns: string[] = ['QuoteLineId', 'IssuedDate', 'Service', 'ServiceType', 'email', 'View'];
+  dataSource = new MatTableDataSource(this.quoteLineList);
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -51,42 +52,40 @@ export class ReadQuoteComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-     //this.GetQuotes();
-    this.GetRequestedQuotes();
-    //this.GetQuoteLines();
+    //this.GetQuotes();
+    //this.GetRequestedQuotes();
+    this.GetQuoteLines();
     this.refreshForm();
   }
 
   refreshForm() {
-    this.requestedQuote = {
-      requestedQuoteId: 0,
-      requestedQuoteDescription: '',
-      requestedQuoteDate: null,
-      companyName:'',
-      clientEmailAddress: ''
+    this.quoteLine = {
+      quoteLineId: 0,
+      serviceId: 0,
+      quoteId:0,
 
     }
   }
 
 
   //For Requested Quote Table
-   GetRequestedQuotes() {
-     this.requestedquotes$.subscribe(res => {
-       if (res) {
-         this.requestedquoteList = res;
-         console.log(res);
-       }
-     })
-   }
-
-  // GetQuoteLines(){
-  //   this.quoteLines$.subscribe(res => {
+  // GetRequestedQuotes() {
+  //   this.requestedquotes$.subscribe(res => {
   //     if (res) {
-  //       this.quoteLineList = res;
+  //       this.requestedquoteList = res;
   //       console.log(res);
   //     }
   //   })
   // }
+
+   GetQuoteLines(){
+     this.quoteLines$.subscribe(res => {
+       if (res) {
+         this.quoteLineList = res;
+         console.log(res);
+       }
+     })
+   }
 
   //For Quote Table
   //  GetQuotes() {
@@ -113,9 +112,21 @@ export class ReadQuoteComponent implements OnInit {
     dialogReference.afterClosed().subscribe((res) => {
       if (res == 'add') {
         this.notificationsService.successToaster('Quote Generated', 'Success');
-        this.GetRequestedQuotes();
+        this.GetQuoteLines();
       }
     });
+  }
+
+  routerViewQuote() {
+    const dialog = new MatDialogConfig();
+    dialog.disableClose = true;
+    dialog.width = '500px',
+    dialog.height = 'auto',
+    dialog.data = { add: 'yes' }
+    const dialogReference = this.dialog.open(
+      ViewQuoteComponent,
+      dialog
+    )
   }
 
 }

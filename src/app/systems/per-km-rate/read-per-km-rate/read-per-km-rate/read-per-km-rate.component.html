@@ -1,0 +1,77 @@
+<div class="container-fluid page">
+  <div class="d-flex page__box p-3 mt-2">Per Km Rate</div>
+  <div class="page__content shadow p-3">
+    <div class="page__content-data">
+      <div class="position-relative">
+        <div class="position-absolute top-0 end-0 icon-hover">
+          <mat-icon style="font-size: xx-large" (click)="routerAddPerKmRate()">add</mat-icon>
+        </div>
+      </div>
+      <br>
+
+      <mat-form-field appearance="standard">
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+      </mat-form-field>
+
+      <table mat-table [dataSource]="perkmRateList" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>Per Km Rate Id</th>
+          <td mat-cell *matCellDef="let element">{{element.perKmRateId}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="rate">
+          <th mat-header-cell *matHeaderCellDef>Rate Amount</th>
+          <td mat-cell *matCellDef="let element">R{{element.perKmRateAmount}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="distance">
+          <th mat-header-cell *matHeaderCellDef>Distance where rate is considered</th>
+          <td mat-cell *matCellDef="let element">{{element.perKmRateDistance}}Km</td>
+        </ng-container>
+
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef>Date Created</th>
+          <td mat-cell *matCellDef="let element">{{element.perKmRateDate}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="edit">
+          <tr>
+            <th mat-header-cell *matHeaderCellDef>Edit</th>
+          </tr>
+          <tr>
+            <td mat-cell *matCellDef="let element">
+              <button mat-icon-button >
+                <mat-icon (click)="routerEditPerKmRate(element.perKmRateId,element.perKmRateAmount,element.perKmRateDistance,element.perKmRateDate)">
+                  edit</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </ng-container>
+
+        <ng-container matColumnDef="delete">
+          <tr>
+            <th mat-header-cell *matHeaderCellDef>Delete</th>
+          </tr>
+          <tr>
+            <td mat-cell *matCellDef="let element">
+              <button mat-icon-button>
+                <mat-icon (click)="DeletePerKmRate(element.perKmRateId)">delete</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let element; columns: displayedColumns;"></tr>
+
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+

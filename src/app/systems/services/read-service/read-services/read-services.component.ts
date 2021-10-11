@@ -44,10 +44,10 @@ export class ReadServicesComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
     console.log(event);
   }
-  
+
   constructor(
     public dialog: MatDialog,
-    private service: ServiceService, 
+    private service: ServiceService,
     private notificationsService: NotificationsService,) { }
 
     ngOnInit(): void {
@@ -62,6 +62,7 @@ export class ReadServicesComponent implements OnInit {
         ServiceDescription:'',
         ServiceTypeId:0,
         ServicePriceId:0,
+        serviceTypeName: ''
         // LocationId:0
       }
     }
@@ -73,7 +74,7 @@ export class ReadServicesComponent implements OnInit {
     GetServices(){
       this.services$.subscribe(res=>{
         if(res){
-          this.serviceList = res; 
+          this.serviceList = res;
           console.log(res);
         }
       });
@@ -82,10 +83,10 @@ export class ReadServicesComponent implements OnInit {
     DeleteService(id){
       console.log(id);
       this.service.DeleteService(id).subscribe((res)=>{
-          this.notificationsService.successToaster('Service Deleted', 'Success'); 
+          this.notificationsService.successToaster('Service Deleted', 'Success');
           this.GetServices();
       });
-      
+
     }
 
     routerAddServices() {
@@ -100,7 +101,7 @@ export class ReadServicesComponent implements OnInit {
       );
       dialogReference.afterClosed().subscribe((res)=>{
        if(res == 'add'){
-         this.notificationsService.successToaster('Service Price Added', 'Success'); 
+         this.notificationsService.successToaster('Service Price Added', 'Success');
          this.GetServices();
        }
      });
@@ -124,6 +125,6 @@ export class ReadServicesComponent implements OnInit {
             this.GetServices();
           }
         });
-      }    
-    
+      }
+
   }

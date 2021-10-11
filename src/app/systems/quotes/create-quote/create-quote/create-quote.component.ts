@@ -1,15 +1,17 @@
+import { PerKmRateService } from './../../../../shared/services/per-km-rate.service';
 import { QuoteLineService } from './../../../../shared/services/quote-line.service';
 import { ClientService } from './../../../../shared/services/client.service';
 import { QuoteStatusService } from 'src/app/shared/services/quote-status.service';
 import { EmployeeService } from 'src/app/shared/services/employee.service';
 import { PackageService } from './../../../../shared/services/package.service';
-import { Service, Package, Client, QuoteLine } from './../../../../Interfaces/Index';
+import { Service, Package, Client, QuoteLine, ServiceType, PerKmRate } from './../../../../Interfaces/Index';
 import { ServiceService } from './../../../../shared/services/service.service';
 import { QuoteService } from './../../../../shared/services/quote.service';
 import { Quote, Employee, QuoteStatus } from 'src/app/Interfaces/Index';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ServiceTypeService } from 'src/app/shared/services/service-type.service';
 
 @Component({
   selector: 'app-create-quote',
@@ -31,11 +33,17 @@ export class CreateQuoteComponent implements OnInit {
   quoteStatusList: QuoteStatus[] = [];
   quoteStatus: QuoteStatus;
 
+  perKmRateList: PerKmRate[] = [];
+  perKmRate: PerKmRate;
+
   // clientList: Client[];
   // client: Client;
 
   serviceList: Service[] = [];
   service: Service;
+
+  serviceTypeList: ServiceType[] = [];
+  serviceType: ServiceType;
 
 
 
@@ -55,9 +63,10 @@ export class CreateQuoteComponent implements OnInit {
     private quoteLineService: QuoteLineService,
     private empService: EmployeeService,
     private quoteStatusService: QuoteStatusService,
+    private perKmRateService: PerKmRateService,
     //private clientService: ClientService,
     private serviceService: ServiceService,
-
+    private serviceTypeService: ServiceTypeService,
     public dialogRef: MatDialogRef<CreateQuoteComponent>,
     private formBuilder: FormBuilder,
     @Inject(MAT_DIALOG_DATA)
@@ -70,7 +79,8 @@ export class CreateQuoteComponent implements OnInit {
     this.readEmployees();
     this.readQuoteStatuses();
     this.readServices();
-
+    this.readServiceTypes();
+    this.readPerKmRate();
   }
 
 
@@ -81,7 +91,8 @@ export class CreateQuoteComponent implements OnInit {
       EmployeeId: ['',[Validators.required]],
       QuoteStatusId: ['',[Validators.required]],
       ServiceId: ['',[Validators.required]],
-      ServiceTypeId: ['', [Validators.required]]
+      ServiceTypeId: ['', [Validators.required]],
+      PerKmRateId: ['', [Validators.required]]
     });
 
   }
@@ -98,22 +109,24 @@ export class CreateQuoteComponent implements OnInit {
   }
 
   onSubmit() {
-    // if(this.form.valid) {
-    //   const Quote: Quote = this.form.value;
-    //   Quote.quoteLine = this.addServiceList;
-    //   this.quoteService.CreateQuote(Quote).subscribe(res => {
-    //     for(let x = 0; x < Quote.quoteLine.length; x++){
-    //       let QuoteLine: QuoteLine = {quoteId: res.quoteId, serviceId: Quote.quoteLine[x].serviceId}
 
-    //       this.quoteLineService.CreateQuoteLine(QuoteLine).subscribe(res => {
 
-    //       })
-    //     }
-    //     this.refreshForm();
+    //  if(this.form.valid) {
+    //    const Quote: Quote = this.form.value;
+    //    Quote.quoteLine = this.addServiceList;
+    //    this.quoteService.CreateQuote(Quote).subscribe(res => {
+    //      for(let x = 0; x < Quote.quoteLine.length; x++){
+    //        let QuoteLine: QuoteLine = {quoteId: res.quoteId, serviceId: Quote.quoteLine[x].serviceId}
 
-    //     this.dialogRef.close('add');
-    //   });
-    // }
+    //        this.quoteLineService.CreateQuoteLine(QuoteLine).subscribe(res => {
+
+    //        })
+    //      }
+    //      this.refreshForm();
+
+    //      this.dialogRef.close('add');
+    //    });
+    //  }
   }
 
 
@@ -135,6 +148,12 @@ export class CreateQuoteComponent implements OnInit {
     });
   }
 
+  readServiceTypes() {
+    this.serviceTypeService.getServiceTypes().subscribe((res) => {
+      this.serviceTypeList = res as ServiceType[];
+      console.log("this is serviceList", res);
+    });
+  }
 
   readEmployees() {
     this.empService.getEmployees().subscribe((res) => {
@@ -145,6 +164,12 @@ export class CreateQuoteComponent implements OnInit {
   readQuoteStatuses() {
     this.quoteStatusService.getQuoteStatuses().subscribe((res) => {
       this.quoteStatusList = res as QuoteStatus[];
+    })
+  }
+
+  readPerKmRate(){
+    this.perKmRateService.getPerKmRates().subscribe((res) => {
+      this.perKmRateList = res as PerKmRate[];
     })
   }
 

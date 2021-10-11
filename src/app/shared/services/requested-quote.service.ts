@@ -29,4 +29,14 @@ export class RequestedQuoteService {
     .pipe(map(res => res));
   }
 
+  DeleteRequestedQuote(id: number) {
+    return this.http.delete(`${this.apiUrl}/${id}`)
+      .pipe(map(res => res));
+  }
+
+  UpdateRequestedQuote(requestedQuote: RequestedQuote) {
+    return this.http.put(`${this.apiUrl}/${requestedQuote.requestedQuoteId}`, requestedQuote)
+      .pipe(map(res => res));
+  }
+
 }

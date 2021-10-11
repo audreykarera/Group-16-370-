@@ -1,6 +1,15 @@
 <h2 mat-dialog-title>Add Service</h2>
 <mat-dialog-content>
     <form [formGroup]="form" (ngSubmit)="OnSubmit()">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Service Type</mat-label>
+          <mat-select formControlName="ServiceTypeId" >
+              <mat-option *ngFor="let item of serviceTypes" [value] = "item.serviceTypeId">
+              {{item.serviceTypeName}}
+              </mat-option>
+          </mat-select>
+    </mat-form-field>
+    <br>
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Add Service Name</mat-label>
             <input matInput placeholder="" formControlName="ServiceName">
@@ -12,8 +21,8 @@
                     form.get('ServiceName').touched)">
                         {{ item.message }}
                     </div>
-                </ng-container>              
-              </div> 
+                </ng-container>
+              </div>
         </mat-form-field>
         <br>
         <mat-form-field class="example-full-width" appearance="fill">
@@ -27,20 +36,25 @@
                   form.get('ServiceDescription').touched)">
                       {{ item.message }}
                   </div>
-              </ng-container>      
-          </div>       
+              </ng-container>
+          </div>
        </mat-form-field>
        <br>
+       <!-- <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Service price</mat-label>
+        <input matInput placeholder="" formControlName="ServicePriceId">
+        <div class="errors">
+            <ng-container *ngFor="let item of error_messages.ServicePriceId">
+                <div class="errors" *ngIf="
+              form.get('ServicePriceId').hasError(item.type) &&
+              (form.get('ServicePriceId').dirty ||
+                form.get('ServicePriceId').touched)">
+                    {{ item.message }}
+                </div>
+            </ng-container>
+        </div>
+     </mat-form-field> -->
         <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Service Type</mat-label>
-            <mat-select formControlName="ServiceTypeId" >
-                <mat-option *ngFor="let item of serviceTypes" [value] = "item.serviceTypeId">
-                {{item.serviceTypeName}}
-                </mat-option>
-            </mat-select>
-      </mat-form-field>
-      <br>
-       <mat-form-field class="example-full-width" appearance="fill">
           <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Service Price</mat-label>
           <mat-select formControlName="ServicePriceId" >
                 <mat-option *ngFor="let item of servicePrices" [value] = "item.servicePriceId">
@@ -61,9 +75,9 @@
                       {{ item.message }}
                   </div>
               </ng-container>
-               </div>    
+               </div>
       </mat-form-field> -->
-        
+
         <div align="end">
             <button mat-stroked-button >Save</button>
         </div>

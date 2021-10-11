@@ -1,3 +1,4 @@
+import { double } from "aws-sdk/clients/lightsail";
 
 export interface Title{
     TitleId: number | null;
@@ -109,6 +110,7 @@ export interface ServicePrice{
 }
 
 export interface Service{
+    serviceTypeName: string | null;
     ServiceId:number|null;
     ServiceName:string|null;
     ServiceDescription:string|null;
@@ -170,14 +172,19 @@ export interface Quote{
 
 export interface RequestedQuote{
   requestedQuoteId: number | null;
+  clientId: number | null;
   requestedQuoteDescription: string | null;
   requestedQuoteDate: Date | null;
-  companyName: string | null;
-  clientEmailAddress: string | null;
+  requestedQuoteLine: RequestedQuoteLine[] | null;
+}
+
+export interface RequestedQuoteLine{
+  serviceId: number | null;
+  requestedQuoteId: number | null;
 }
 
 export interface QuoteLine{
-  quoteLineId: number | null;
+ quoteLineId: number | null;
   serviceId: number | null;
   quoteId: number | null;
 }
@@ -204,5 +211,8 @@ export interface Client{
 }
 
 export interface PerKmRate {
-
+  perKmRateId: number | null;
+  perKmRateAmount: double | null;
+  perKmRateDistance: number | null;
+  perKmRateDate: Date | null;
 }

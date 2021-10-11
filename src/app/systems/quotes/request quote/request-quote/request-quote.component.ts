@@ -1,37 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { SharedComponent } from 'src/app/component/shared components/shared/shared.component';
 import { DialogInterface } from 'src/app/Interfaces/dialog.interface';
+import { RequestedQuote, RequestedQuoteLine, Service, ServiceType } from 'src/app/Interfaces/Index';
+import { NotificationsService } from 'src/app/shared/services/notifications.service';
+import { RequestedQuoteLineService } from 'src/app/shared/services/requested-quote-line.service';
+import { RequestedQuoteService } from 'src/app/shared/services/requested-quote.service';
+import { ServiceTypeService } from 'src/app/shared/services/service-type.service';
+import { ServiceService } from 'src/app/shared/services/service.service';
 
-interface service {
-  value: string;
-  viewValue: string;
-}
 
-interface recyclable {
-  value: string;
-  viewValue: string;
-}
-
-interface deliverable {
-  value: string;
-  viewValue: string;
-}
-
-  interface apackage {
-    value: string;
-    viewValue: string;
-}
-
-interface removable {
-  value: string;
-  viewValue: string;
-}
-
-interface santisable {
-  value: string;
-  viewValue: string;
-}
 
 @Component({
   selector: 'app-request-quote',
@@ -39,130 +18,96 @@ interface santisable {
   styleUrls: ['./request-quote.component.scss']
 })
 export class RequestQuoteComponent implements OnInit {
-  services: service[] = [
-    {value: 'CollectionandDisposal', viewValue: 'Collection and Disposal'},
-    {value: 'SkipService', viewValue: 'Skip Service'},
-    {value: 'Delivery', viewValue: 'Delivery'}, 
-    {value: 'Santisation', viewValue: 'Santisation'},
-    {value: 'Removal', viewValue: 'Removal'},
-  ];
 
-  recyclables: recyclable[]=[
-    {value: 'Used Oil', viewValue: 'Used Oil'},
-    {value: 'Used Tyres', viewValue: 'Used Tyres'},
-    {value: 'Scrap Metal', viewValue: 'Scarp Metal'},
-    {value: 'Paper & Cardboard', viewValue: 'Paper & Cardboard'},
-    {value: 'Bottles', viewValue: 'Bottles'},
-    {value: 'Plastic', viewValue: 'Plastic'},
-  ]; 
+  form: FormGroup;
 
-  deliverables: deliverable[]=[
-    {value: 'Sand, stone & topsoil', viewValue: 'Sand, stone & topsoil'},
-    {value: 'Compost & fertilizer', viewValue: 'Compost & fertilizer'},
-  ]; 
+  requestedQuoteLine: RequestedQuoteLine;
 
-  packages: apackage[]=[
-    {value: '2 Date Rate', viewValue: '2 Day Rate'},
-    {value: 'Weekend', viewValue: 'Weekend'},
-    {value: 'Mid week', viewValue: 'Mid week'},
-    {value: 'Full week', viewValue: 'Full week'},
-    {value: 'Short Term', viewValue: 'Short Term'},
-    {value: 'Long Term', viewValue: 'Long Term'},
-    
-  ];
+  requestedQuoteList: RequestedQuote[] = [];
+  requestedQuote: RequestedQuote;
 
-  santisables: santisable []=[
-    {value: 'options ?', viewValue: 'options ?'},
-  ];
+  serviceList: Service[] = [];
+  service: Service;
 
-  removables: removable[]=[
-    {value: 'Domestic garden waste', viewValue: 'Domestic garden waste'},
-    {value: 'Domestic rubbish', viewValue: 'Domestic rubbish'},
-    {value: 'Building rubble for small & medium sized construction sites', viewValue: 'Building rubble for small & medium sized construction sites'},
-  ];
+  serviceTypeList: ServiceType[] = [];
+  serviceType: ServiceType;
 
+  services: Service[] = [];
 
-  isSelected: boolean=false; 
-  CollectionandDisposal: Boolean | undefined;
-  SkipService: Boolean | undefined;
-  Delivery: Boolean | undefined;
-  Santisation: Boolean | undefined;
-  Removal: Boolean | undefined;
-  
-
-  get(data: { value: string; }){
-    this.isSelected = true; 
-    if(data.value == 'CollectionandDisposal'){
-      this.CollectionandDisposal = true;
-      this.SkipService = false;
-      this.Delivery = false;
-      this.Santisation = false;
-      this.Removal = false;
-    } else if (data.value == 'SkipService'){
-      this.CollectionandDisposal = false;
-      this.SkipService = true;
-      this.Delivery = false;
-      this.Santisation = false;
-      this.Removal = false;
-    } else if(data.value =='Delivery'){
-      this.CollectionandDisposal = false;
-      this.SkipService = false;
-      this.Delivery = true;
-      this.Santisation = false;
-      this.Removal = false;
-    } else if(data.value == 'Santisation'){
-      this.CollectionandDisposal = false;
-      this.SkipService = false;
-      this.Delivery = false;
-      this.Santisation = true;
-      this.Removal = false;
-    } else if(data.value =='Removal'){
-      this.CollectionandDisposal = false;
-      this.SkipService = false;
-      this.Delivery = false;
-      this.Santisation = false;
-      this.Removal = true;
-    }
-    else{
-    }
+  error_messages = {
+    requestedQuoteDate: [
+      { type: 'required', message: 'Date is required' },
+    ],
+    // requestedQuoteDescription: [
+    //   { type: 'required', message: 'A quote description is required' },
+    // ]
   }
-  constructor(public dialog: MatDialog) { }
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private notificationsService: NotificationsService,
+    private requestedQuoteLineService: RequestedQuoteLineService,
+    private serviceService: ServiceService,
+    private serviceTypeService: ServiceTypeService,
+    private requestedQuoteService: RequestedQuoteService
+  ) { }
 
   ngOnInit(): void {
+    this.readServiceTypes();
+    this.readServices();
+    this.createForm();
   }
-  openConfirmDialog() {
-    const dialogInterface: DialogInterface = {
-      dialogHeader: 'Confirmation Message',
-      dialogContent: 'Are you sure you want to request this quote?',
-      cancelButtonLabel: 'No',
-      confirmButtonLabel: 'Yes',
-      callbackMethod: () => {
-       
-      },
-    };
-    this.dialog.open(SharedComponent, {
-      width: '300px',
-      data: dialogInterface,
+
+  dropDown(serviceTypeName) {
+    console.log("This is serviceTypeName", serviceTypeName)
+    this.services = [];
+    this.serviceList.forEach(y => {
+      if (y.serviceTypeName == serviceTypeName) {
+        this.services.push(y)
+        console.log("This is service", y)
+      }
     });
   }
-  
-  /**
-     * This method invokes the Cancel Dialog
-     */
-  openCancelDialog() {
-    const dialogInterface: DialogInterface = {
-      dialogHeader: 'Confirmation Message',
-      dialogContent: 'Are you sure you want to cancel this request for quote ?',
-      cancelButtonLabel: 'No',
-      confirmButtonLabel: 'Yes',
-      callbackMethod: () => {
-       
-      },
-    };
-    this.dialog.open(SharedComponent, {
-      width: '300px',
-      data: dialogInterface,
+
+  createForm() {
+    this.form = this.formBuilder.group({
+      serviceTypeId: ['', [Validators.required]],
+      serviceId: ['', [Validators.required]],
+      requestedQuoteDate: ['', [Validators.required]],
+      requestedQuoteDescription: ['', [Validators.required]]
     });
   }
+
+  // addServiceList: Service[] = [];
+
+  // CheckBox(service: Service){
+  //   this.addServiceList.indexOf(service) === -1 ? this.addServiceList.push(service) : this.ClearCheckBox(this.addServiceList.indexOf(service));
+  // }
+
+  // ClearCheckBox(serviceId: number){
+  //   this.serviceList.splice(serviceId, 1);
+  // }
+
+  readServices() {
+    this.serviceService.getServices().subscribe((res) => {
+      this.serviceList = res as Service[];
+      console.log("this is serviceList", res);
+    });
+  }
+
+  readServiceTypes() {
+    this.serviceTypeService.getServiceTypes().subscribe((res) => {
+      this.serviceTypeList = res as ServiceType[];
+      console.log("this is serviceList", res);
+    });
+  }
+
+  // readRequestedQuoteLines(){
+  //   this.requestedQuoteLineService.getRequestedQuoteLines().subscribe((res) =>{
+  //     this.requestedQuoteLine = res as RequestedQuoteLine[];
+  //   })
+  // }
+
+
 
 }

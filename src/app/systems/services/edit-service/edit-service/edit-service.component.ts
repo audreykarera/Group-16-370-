@@ -37,10 +37,10 @@ export class EditServiceComponent implements OnInit {
       { type: 'maxLength', message: 'Service Description must be less than 30 characters' }
     ],
     ServiceTypeId: [
-      { type: 'required', message: 'Service Type is required' },     
+      { type: 'required', message: 'Service Type is required' },
     ],
     ServicePriceId: [
-      { type: 'required', message: 'Service Price is required' },     
+      { type: 'required', message: 'Service Price is required' },
     ]
   }
 
@@ -56,18 +56,18 @@ export class EditServiceComponent implements OnInit {
     public data: any
      ) { }
 
-     ngOnInit(): void {    
-      this.createForm(); 
-      this.refreshForm();   
+     ngOnInit(): void {
+      this.createForm();
+      this.refreshForm();
       this.getServiceTypes();
       this.getServicePrices();
-      
+
     }
 
     Close(){
       this.dialog.closeAll();
     }
-  
+
     createForm(){
       this.form=this.formBuilder.group({
         ServiceName: [this.data.serviceName, [Validators.required, Validators.maxLength(30), Validators.minLength(2)]],
@@ -102,6 +102,7 @@ export class EditServiceComponent implements OnInit {
         ServiceDescription:'',
         ServiceTypeId:0,
         ServicePriceId:0,
+        serviceTypeName: ''
         // LocationId:0
       }
     }
@@ -116,6 +117,6 @@ export class EditServiceComponent implements OnInit {
         this.servicePrices=res as ServicePrice[];
       })
     }
-  
-  
+
+
 }
