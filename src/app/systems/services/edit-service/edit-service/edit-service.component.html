@@ -2,6 +2,15 @@
 <mat-dialog-content>
     <form [formGroup]="form" (ngSubmit)="OnSubmit()">
         <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Service Type</mat-label>
+            <mat-select formControlName="ServiceTypeId" >
+                <mat-option *ngFor="let item of serviceTypes" [value] = "item.serviceTypeId">
+                {{item.serviceTypeName}}
+                </mat-option>
+            </mat-select>
+      </mat-form-field>
+      <br>
+        <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Service Name</mat-label>
             <input matInput placeholder="" formControlName="ServiceName">
             <div class="errors">
@@ -32,14 +41,24 @@
        </mat-form-field>
        <br>
         <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Service Type</mat-label>
-            <mat-select formControlName="ServiceTypeId" >
-                <mat-option *ngFor="let item of serviceTypes" [value] = "item.serviceTypeId">
-                {{item.serviceTypeName}}
-                </mat-option>
-            </mat-select>
-      </mat-form-field>
-      <br>
+            <mat-label>Service Price Amount</mat-label>
+            <input matInput placeholder="" formControlName="ServicePriceAmount">
+
+            <div class="errors">
+                <ng-container *ngFor="let item of error_messages.ServicePriceAmount">
+                    <div class="errors" *ngIf="
+                  form.get('ServicePriceAmount').hasError(item.type) &&
+                  (form.get('ServicePriceAmount').dirty ||
+                    form.get('ServicePriceAmount').touched)">
+                        {{ item.message  }}
+                        
+                    </div>
+                </ng-container>
+            </div>           
+            <span matPrefix>R&nbsp;</span>
+        </mat-form-field>
+    
+      <!--
        <mat-form-field class="example-full-width" appearance="fill">
           <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Service Price</mat-label>
           <mat-select formControlName="ServicePriceId" >
@@ -49,6 +68,7 @@
             </mat-select>
       </mat-form-field>
                 <br>
+                -->
              <!--<mat-form-field class="example-full-width" appearance="fill">
           <mat-label class="col-form-label col-form-label-sm mt-2" for="inputSmall">Location</mat-label>
           <input matInput placeholder="" formControlName="LocationId">

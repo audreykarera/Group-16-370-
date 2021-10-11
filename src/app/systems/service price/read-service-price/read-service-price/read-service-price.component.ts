@@ -2,7 +2,7 @@ import { ServicePriceService } from './../../../../shared/services/service-price
 import { CreateServicePriceComponent } from './../../create-service-price/create-service-price/create-service-price.component';
 import { EditServicepriceComponent } from './../../edit-service-price/edit-serviceprice/edit-serviceprice.component';
 import { CreateServicetypeComponent } from './../../../service types/create-servicetypes/create-servicetype/create-servicetype.component';
-import { EditServiceComponent } from './../../../services/edit-service/edit-service/edit-service.component';
+
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
@@ -51,7 +51,7 @@ export class ReadServicePriceComponent implements OnInit {
 
     refreshForm() {
       this.servicePrice = {
-        ServicePriceId: 0,
+        servicePriceId: 0,
         ServicePriceAmount: 0,
         ServicePriceDate:null
       }

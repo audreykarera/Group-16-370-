@@ -97,50 +97,50 @@ export interface Equipment {
   EquipmentName: string | null;
   EquipmentAvailable: boolean | null;
 }
-export interface ServiceType{
-    ServiceTypeId:number | null;
-    ServiceTypeName: string|null;
-    ServiceTypeDescription:string |null;
+
+export interface Booking {
+    bookingId: number|null;
+    clientId : number|null;
+    bookingStatusId: number| null;
+    collectionNoteId: number|null;
+    paymentTypeId: number|null;
+
+    serviceId:number|null;
+    bookingService:BookingServices[]|null;
+}
+export interface BookingServices {
+    bookingId :number|null;
+    serviceId : number | null;
+
+    //Paid: boolean;
+    //UnitDescription: string;
 }
 
 export interface ServicePrice{
-    ServicePriceId:number |null;
+    servicePriceId:number |null;
     ServicePriceAmount: number |null;
     ServicePriceDate:Date |null;
 }
 
 export interface Service{
-    serviceTypeName: string | null;
-    ServiceId:number|null;
-    ServiceName:string|null;
-    ServiceDescription:string|null;
-    ServiceTypeId: number|null;
-    ServicePriceId:number|null;
-    // ServiceType: ServiceType;
-    // ServicePrice:ServicePrice;
-    // LocationId:number|null;
-    // Location : Location[];
-}
-
-export interface Booking {
-    BookingId: number|null;
-    ClientId : number|null;
-    BookingStatusId: number| null;
-    CollectionNoteId: number|null;
-    PaymentTypeId: number|null;
-}
-export interface BookingServices {
-    BookingServiceId :number |null;
-    BookingId :number|null;
-    ServiceId : number | null;
-    EmployeeDateTimeSlotId: number | null;
-    EmployeeId: number |null;
-    DateTimeSlotId :number|null;
-    Paid: boolean;
-    UnitDescription: string;
-}
+    serviceId:number|null;
+    serviceName:string|null;
+    serviceDescription:string|null;
+    servicePriceAmount:number|null;
+    serviceTypeId: number|null;
+    serviceTypeName:string|null;
+    bookingId:number|null;
+    bookingServiceId:number|null;
 
 
+   // ServicePriceId:number|null;
+    // LocationId : number|null;
+}
+export interface ServiceType{
+    serviceTypeId:number | null;
+    serviceTypeName: string|null;
+    serviceTypeDescription:string |null;
+}
 export interface Supplier{
     SupplierId: number |null;
     SupplierName: string|null;
@@ -202,17 +202,17 @@ CollectionDate: Date|null;
 CollectionTime: string |null;
 }
 
-export interface Client{
-  clientId: number | null;
-  companyName: string | null;
-  clientFirstName: string | null;
-  clientSurname: string | null;
-  clientEmailAddress: string | null;
-}
 
 export interface PerKmRate {
   perKmRateId: number | null;
   perKmRateAmount: double | null;
   perKmRateDistance: number | null;
   perKmRateDate: Date | null;
+}
+export interface Client {
+    clientId:number|null;
+    CompanyName:string|null;
+    ClientFirstName:string|null;
+    ClientSurname: string|null;
+    ClientEmailAddress:string|null;
 }

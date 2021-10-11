@@ -1,3 +1,4 @@
+import { CreateBookingComponent } from './../../create-booking/create-booking/create-booking.component';
 import { id } from '@swimlane/ngx-charts';
 import { element } from 'protractor';
 import { ViewBookingsComponent } from './../../view-bookings/view-bookings.component';
@@ -21,6 +22,7 @@ export class ReadBookingComponent implements OnInit {
   bookingList: Booking[] = [];
   bookings$: Observable<Booking[]> = this.bookingService.getBookings();
   bookingTable: Booking
+
   bookingServiceList: BookingService[]=[];
   //bookingServices$:Observable<BookingService[]>=this.bookingServiceService.getBookingServices();
   bookingServiceTable: BookingService;
@@ -46,11 +48,12 @@ export class ReadBookingComponent implements OnInit {
     this.GetBookings();
     this.refreshForm();
   }
+
   routerViewBooking(clientFirstName: string, clientSurname: string, clientEmailAddress: string, bookingStatusName: string, bookingId: number, collectionDate: string, collectionTime: string, paymentTypeName: string  ) {
     const dialog = new MatDialogConfig
     dialog.disableClose = true;
-    dialog.width = '2rem';
-    dialog.height = 'autp';
+    dialog.width = 'auto';
+    dialog.height = 'auto';
     dialog.data = {add: 'yes'}
     const dialogReference = this.dialog.open(
       ViewBookingsComponent,
@@ -75,11 +78,14 @@ export class ReadBookingComponent implements OnInit {
 
   refreshForm() {
     this.bookingTable = {
-      BookingId: 0,
-      ClientId: 0,
-      BookingStatusId: 0,
-      PaymentTypeId: 0,
-      CollectionNoteId: 0,
+      bookingId: 0,
+      clientId: 0,
+      bookingStatusId: 0,
+      paymentTypeId: 0,
+      collectionNoteId: 0,
+
+      bookingService:[],
+      serviceId:0
      
     }
   }
@@ -115,36 +121,24 @@ export class ReadBookingComponent implements OnInit {
     
   // }
 
-//   routerAddBooking() {
-//     const dialog = new MatDialogConfig();
-//     dialog.disableClose = true;
-//     dialog.width = 'auto';
-//    dialog.height = 'auto';
-//    dialog.data = {add: 'yes'};
-//     const dialogReference = this.dialog.open(
-//       CreateServiceComponent,
-//       dialog
-//     );
-//     dialogReference.afterClosed().subscribe((res)=>{
-//      if(res == 'add'){
-//        this.notificationsService.successToaster('Service Price Added', 'Success'); 
-//        this.GetServices();
-//      }
-//    });
-//   }
-// }
-
-  // calendarOptions: CalendarOptions = {
-  //   initialView: 'dayGridMonth',
-  //   weekends: false,
-  //   dateClick: this.handleDateClick.bind(this), // bind is important!
-  //   events: [
-  //     { title: 'Skip booking', date: '2021-08-05' },
-  //     { title: 'event 2', date: '2019-04-02' }
-  //   ]
-  // };
-
-  // handleDateClick(arg: { dateStr: string; }) {
-  //   alert('date click! ' + arg.dateStr)
-  // }
+  routerAddBooking() {
+    const dialog = new MatDialogConfig();
+    dialog.disableClose = true;
+    dialog.width = 'auto';
+   dialog.height = 'auto';
+   dialog.data = {add: 'yes'};
+    const dialogReference = this.dialog.open(
+      CreateBookingComponent,
+      dialog
+    );
+    dialogReference.afterClosed().subscribe((res)=>{
+     if(res == 'add'){
+       this.notificationsService.successToaster('Service Price Added', 'Success'); 
+       this.GetBookings();
+     }
+   });
+  }
 }
+
+
+

@@ -17,14 +17,14 @@ export class BookingService {
       return this.http.get<Booking[]>(`${this.apiUrl}`)
         .pipe(map(res => res));
     }
-  
-    getBooking(id: number): Observable<Booking[]> {
-      return this.http.get<Booking[]>(`${this.apiUrl}/${id}`)
+  //Get Booking by Id
+    getBooking(BookingId: number): Observable<Booking[]> {
+      return this.http.get<Booking[]>(`${this.apiUrl}/${BookingId}`)
         .pipe(map(res => res));
     }
   
     UpdateBooking(booking: Booking) {
-      return this.http.put(`${this.apiUrl}/${booking.BookingId}`, booking)
+      return this.http.put(`${this.apiUrl}/${booking.bookingId}`, booking)
         .pipe(map(res => res));
     }
   

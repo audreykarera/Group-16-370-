@@ -23,7 +23,7 @@ export class ServicePriceService {
   }
 
   UpdateServicePrice(servicePrice: ServicePrice) {
-    return this.http.put(`${this.apiUrl}/${servicePrice.ServicePriceId}`, servicePrice)
+    return this.http.put(`${this.apiUrl}/${servicePrice.servicePriceId}`, servicePrice)
       .pipe(map(res => res));
   }
 

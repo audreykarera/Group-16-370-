@@ -17,10 +17,10 @@ import { Service, ServicePrice, ServiceType } from 'src/app/Interfaces/Index';
   styleUrls: ['./create-service.component.scss']
 })
 export class CreateServiceComponent implements OnInit {
-  form:FormGroup;
-  serviceTable:Service;
-  serviceTypes:ServiceType[];
-  servicePrices:ServicePrice[];
+  form: FormGroup;
+  serviceTable: Service;
+  serviceTypes: ServiceType[];
+  //servicePrices:ServicePrice[];
 
 
   error_messages = {
@@ -34,12 +34,13 @@ export class CreateServiceComponent implements OnInit {
       { type: 'minLength', message: 'Service Description must be more than 3 character' },
       { type: 'maxLength', message: 'Service Description must be less than 30 characters' }
     ],
+    ServicePriceAmount: [
+      { type: 'required', message: 'Service Price is required' },
+    ],
     ServiceTypeId: [
       { type: 'required', message: 'Service Type is required' },
-    ],
-    ServicePriceId: [
-      { type: 'required', message: 'Service Price is required' },
     ]
+
     // LocationId: [
     //   { type: 'required', message: 'Location is required' },
     // ]
@@ -49,7 +50,7 @@ export class CreateServiceComponent implements OnInit {
   constructor(
     private service: ServiceService,
     private serviceTypeService: ServiceTypeService,
-    private servicePriceService:ServicePriceService,
+    private servicePriceService: ServicePriceService,
     public dialog: MatDialog,
     private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<CreateServiceComponent>
@@ -59,14 +60,15 @@ export class CreateServiceComponent implements OnInit {
     this.refreshForm();
     this.createForm();
     this.getServiceTypes();
-    this.getServicePrices();
+
+    //this.getServicePrices();
     console.log('Services')
   }
 
   createForm() {
     this.form = this.formBuilder.group({
       ServiceName: new FormControl(
-        this.serviceTable.ServiceName,
+        this.serviceTable.serviceName,
         Validators.compose([
           Validators.required,
           Validators.maxLength(60),
@@ -74,29 +76,30 @@ export class CreateServiceComponent implements OnInit {
         ])
       ),
       ServiceDescription: new FormControl(
-        this.serviceTable.ServiceDescription,
+        this.serviceTable.serviceDescription,
         Validators.compose([
           Validators.required,
           Validators.maxLength(60),
           Validators.minLength(3)
         ])
       ),
-      ServiceTypeId: new FormControl(
-        this.serviceTable.ServiceTypeId,
+      ServicePriceAmount: new FormControl(
+        this.serviceTable.servicePriceAmount,
         Validators.compose([
           Validators.required,
           Validators.maxLength(30),
           Validators.minLength(2)
         ])
       ),
-      ServicePriceId: new FormControl(
-        this.serviceTable.ServicePriceId,
+      ServiceTypeId: new FormControl(
+        this.serviceTable.serviceTypeId,
         Validators.compose([
           Validators.required,
           Validators.maxLength(30),
           Validators.minLength(2)
         ])
       )
+
       // LocationId: new FormControl(
       //   this.serviceTable.LocationId,
       //   Validators.compose([
@@ -108,7 +111,7 @@ export class CreateServiceComponent implements OnInit {
     });
   }
 
-  Close(){
+  Close() {
     this.dialog.closeAll();
   }
 
@@ -127,23 +130,27 @@ export class CreateServiceComponent implements OnInit {
 
   refreshForm() {
     this.serviceTable = {
-      ServiceId: 0,
-      ServiceName: '',
-      ServiceDescription:'',
-      ServiceTypeId:0,
-      ServicePriceId:0,
-      serviceTypeName: ''
+      serviceId: 0,
+      serviceName: '',
+      serviceDescription: '',
+      servicePriceAmount: 0,
+      serviceTypeId: 0,
+      serviceTypeName:'',
+
+      bookingId: 0,
+      bookingServiceId: 0
+      //ServicePriceId:0,
       // LocationId:0
     }
   }
-  getServiceTypes(){
-    this.serviceTypeService.getServiceTypes().subscribe((res)=>{
-      this.serviceTypes=res as ServiceType[];
+  getServiceTypes() {
+    this.serviceTypeService.getServiceTypes().subscribe((res) => {
+      this.serviceTypes = res as ServiceType[];
     })
   }
-  getServicePrices(){
-    this.servicePriceService.getServicePrices().subscribe((res)=>{
-      this.servicePrices=res as ServicePrice[];
-    })
-  }
+  // getServicePrices(){
+  //   this.servicePriceService.getServicePrices().subscribe((res)=>{
+  //     this.servicePrices=res as ServicePrice[];
+  //   })
+  // }
 }

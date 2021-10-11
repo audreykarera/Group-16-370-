@@ -58,7 +58,7 @@ export class EditServicepriceComponent implements OnInit {
     console.log('Hello')
     if (this.form.valid){
       const servicePrice:ServicePrice=this.form.value;
-      servicePrice.ServicePriceId=this.data.servicePriceId;
+      servicePrice.servicePriceId=this.data.servicePriceId;
       this.servicePriceService.UpdateServicePrice(servicePrice).subscribe(res=>{
         this.refreshForm();
         this.dialogRef.close('add');
@@ -73,7 +73,7 @@ export class EditServicepriceComponent implements OnInit {
 
   refreshForm() {
     this.servicePrice = {
-      ServicePriceId: 0,
+      servicePriceId: 0,
       ServicePriceAmount: 0,
       ServicePriceDate: null
     }

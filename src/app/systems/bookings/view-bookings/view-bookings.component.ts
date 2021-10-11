@@ -31,11 +31,14 @@ export class ViewBookingsComponent implements OnInit {
 
    refreshForm() {
     this.booking = {
-      BookingId: 0,
-      ClientId: 0,
-      BookingStatusId: 0,
-      PaymentTypeId: 0,
-      CollectionNoteId: 0,
+      bookingId: 0,
+      clientId: 0,
+      bookingStatusId: 0,
+      paymentTypeId: 0,
+      collectionNoteId: 0,
+
+      bookingService:[],
+      serviceId:0
      
     }
     
@@ -45,6 +48,7 @@ export class ViewBookingsComponent implements OnInit {
     this.dialog.closeAll();
   
   }
+  
   createForm() {
     this.form = this.formBuilder.group({
       ClientFirstName: [this.data.clientFirstName],

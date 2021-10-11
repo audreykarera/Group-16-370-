@@ -25,12 +25,12 @@ import { Service, ServicePrice, ServiceType } from 'src/app/Interfaces/Index';
   styleUrls: ['./read-services.component.scss']
 })
 export class ReadServicesComponent implements OnInit {
- serviceList: Service[] = [];
+  serviceList: Service[] = [];
   services$: Observable<Service[]> = this.service.getServices();
   serviceTable: Service
 
  // displayedColumns: string[] = ['servicename', 'servicedescription','servicetypeid','servicepriceid','locationid', 'edit', 'delete'];
-  displayedColumns: string[] = ['servicename', 'servicedescription','servicetypeid','servicepriceid', 'edit', 'delete'];
+  displayedColumns: string[] = ['servicename', 'servicedescription','servicepriceamount','servicetypeid', 'edit', 'delete'];
   dataSource = new MatTableDataSource (this.serviceList);
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -57,12 +57,16 @@ export class ReadServicesComponent implements OnInit {
 
     refreshForm() {
       this.serviceTable = {
-        ServiceId: 0,
-        ServiceName: '',
-        ServiceDescription:'',
-        ServiceTypeId:0,
-        ServicePriceId:0,
-        serviceTypeName: ''
+        serviceId: 0,
+        serviceName: '',
+        serviceDescription:'',
+        servicePriceAmount:0,
+        serviceTypeId:0,
+        serviceTypeName:'',
+
+        bookingId:0,
+        bookingServiceId:0
+        //ServicePriceId:0,
         // LocationId:0
       }
     }
@@ -107,7 +111,7 @@ export class ReadServicesComponent implements OnInit {
      });
     }
 
-    routerEditService(serviceId:number, serviceName:string, serviceDescription:string, serviceTypeId:number, servicePriceId:number){
+    routerEditService(serviceId:number, serviceName:string, serviceDescription:string,servicePriceAmount:number, serviceTypeId:number){
       const dialog=new MatDialogConfig();
       dialog.disableClose=true;
       dialog.width='auto';
@@ -116,7 +120,7 @@ export class ReadServicesComponent implements OnInit {
       const dialogReference=this.dialog.open(
         EditServiceComponent,
         {
-          data:{serviceId:serviceId, serviceName:serviceName, serviceDescription:serviceDescription, serviceTypeId:serviceTypeId, servicePriceId:servicePriceId}
+          data:{serviceId:serviceId, serviceName:serviceName, serviceDescription:serviceDescription, servicePriceAmount:servicePriceAmount,serviceTypeId:serviceTypeId}
         }
         );
         dialogReference.afterClosed().subscribe((res)=>{
